@@ -1,3 +1,6 @@
+//Hovedklasse for alt som puttes på brettet,
+//skal bli abstrakt
+
 package entity;
 
 import java.awt.Point;
@@ -6,12 +9,12 @@ import java.util.Random;
 public class Entity {
 	
 	public static final double G = 9.81;
-	
+//	public static final Point UniverseCenter; Denne brukes senere til å sette gravitasjonssenter.
 	protected final Random rand = new Random();
 	protected int x, y;
 	public int xr = 10, yr = 10;
-	protected int dx = 0, dy = 0;
-	protected double mass;
+	protected double dx = 0, dy = 0;
+	public boolean removed = false;
 	
 	public Entity(int x, int y, int xr, int yr){
 		this.x = x;
@@ -44,10 +47,10 @@ public class Entity {
 	}
 	
 	public void move(){
-		this.setLocation(this.x + this.dy, this.y + this.dy);
+		this.setLocation((int)(this.x + this.dy), (int)(this.y + this.dy));
 	}
 	
-//	denne skal bli abstrakt, brukes til movement
+//	denne skal bli abstrakt, brukes til alt som skal gjøres på en tick
 	public void tick(){
 		move();
 	}
@@ -60,10 +63,10 @@ public class Entity {
 		int xRight = p.x + other.xr;
 		int yTop = p.y - other.yr; 
 		int yBot = p.y + other.yr; 
-		
 		return !(x + xr < xLeft || y + yr > yTop || x - xr > xRight || y - yr < yBot);
-		
 	}
 	
-	
+	public void remove(){
+		this.removed = true;
+	}
 }
