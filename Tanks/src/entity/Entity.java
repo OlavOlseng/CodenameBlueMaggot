@@ -12,13 +12,6 @@ public abstract class Entity {
 	protected final Random rand = new Random();
 	protected int x, y;
 	protected int xr, yr;
-	public int getXr() {
-		return xr;
-	}
-
-	public int getYr() {
-		return yr;
-	}
 
 	protected int angle = 0;
 	protected double dx = 0, dy = 0;
@@ -37,6 +30,14 @@ public abstract class Entity {
 	
 	public Point getLocation(){
 		return new Point(this.x, this.y);
+	}
+	
+	public int getXr() {
+		return xr;
+	}
+	
+	public int getYr() {
+		return yr;
 	}
 	
 	public void setSpeed(int dx, int dy){
