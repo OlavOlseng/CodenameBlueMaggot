@@ -1,10 +1,27 @@
 package gfx;
 
+import java.awt.Frame;
+
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class MenuPanel extends JPanel {
+import baseGame.BaseGame;
+import baseGame.testGame;
+
+public class MenuPanel extends Frame {
 	
+	public MenuPanel(){
+		setVisible(true);
+		BaseGame t = new testGame();
+		t.setVisible(true);
+		add(t);
+		validate();
+		t.init(10);
+	}
 	public static void main(String [] args){
+		
+		new MenuPanel();
+		
 	}
 	
 }
