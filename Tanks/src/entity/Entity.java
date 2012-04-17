@@ -12,13 +12,12 @@ public class Entity {
 //	public static final Point UniverseCenter; Denne brukes senere til å sette gravitasjonssenter.
 	protected final Random rand = new Random();
 	protected int x, y;
-	public int xr = 10, yr = 10;
+	protected int xr = 10, yr = 10;
 	protected double dx = 0, dy = 0;
-	public boolean removed = false;
+	protected boolean removed = false;
 	
 	public Entity(int x, int y, int xr, int yr){
-		this.x = x;
-		this.y = y;
+		setLocation(x, y);
 		this.xr = xr;
 		this.yr = yr;
 	}
@@ -41,9 +40,6 @@ public class Entity {
 	public void accelerate(int ddx, int ddy){
 		this.dx += ddx;
 		this.dy += ddy;
-	}
-//	Denne metoden skal bare applisere gravitasjon, blir kjekk når vi endrer system
-	public void gravitate(){
 	}
 	
 	public void move(){
