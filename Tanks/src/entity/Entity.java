@@ -40,7 +40,7 @@ public abstract class Entity {
 		return this.angle;
 	}
 	
-	public void accelerate(int ddx, int ddy){
+	public void accelerate(double ddx, double ddy){
 		this.dx += ddx;
 		this.dy += ddy;
 	}
