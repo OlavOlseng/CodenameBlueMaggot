@@ -1,0 +1,6 @@
+
+public class Renderable {
+
+	private Entity ent;
+	private BufferedImage img;
+}

@@ -1,0 +1,19 @@
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
+import entity.Entity;
+
+
+public class Renderer {
+
+	private ArrayList<Renderable> toBeDrawn;	
+	
+	public Renderer(){
+		
+		toBeDrawn = new ArrayList<Renderable>()
+	}
+	public void DrawImage(BufferedImage img,Entity entity){
+		
+		
+	}
+}

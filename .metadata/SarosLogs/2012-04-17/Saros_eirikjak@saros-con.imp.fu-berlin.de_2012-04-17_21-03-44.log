@@ -1,0 +1,49 @@
+INFO  2012-04-17 21:03:31,637 (Saros.java:250) Starting Saros 11.12.9.r3685 running:
+  Java Version: 1.6.0_24
+  Java Vendor: Apple Inc.
+  Eclipse Runtime Version: 3.7.0.v20110110
+  Operating System: Mac OS X (10.6.8)
+  Hardware Architecture: i386
+INFO  2012-04-17 21:03:36,957 (StatisticManager.java:303) Current feedback settings:
+  Feedback disabled: false
+  Feedback interval: 5
+  Statistic submission allowed: false
+  Pseudonym submission allowed: false
+DEBUG 2012-04-17 21:03:36,983 (StreamServiceManager.java:228) StreamServices added:
+  VideoSharing
+  SendFile
+  AudioService
+  ArchiveProject
+INFO  2012-04-17 21:03:37,066 (XMPPAccountStore.java:106) loaded 1 accounts
+INFO  2012-04-17 21:03:37,226 (ErrorLogManager.java:306) Current error log settings:
+  Error log submission allowed: false
+  Full Error log submission allowed: false
+DEBUG 2012-04-17 21:03:37,381 (SarosNet.java:206) Socks5Proxy properties changed. Socks5Proxy started on port 7777...
+DEBUG 2012-04-17 21:03:38,128 (SarosNet.java:428) New Connection State == CONNECTING
+DEBUG 2012-04-17 21:03:39,208 (StunHelper.java:121) Added WAN-IP: 46.9.75.206 (through 10.0.1.14)
+DEBUG 2012-04-17 21:03:43,292 (StunHelper.java:121) Added WAN-IP: 46.9.75.206 (through 10.0.1.14)
+DEBUG 2012-04-17 21:03:43,944 (SarosNet.java:428) [eirikjak@saros-con.imp.fu-berlin.de/Saros] New Connection State == CONNECTED
+DEBUG 2012-04-17 21:03:44,098 (DataTransferManager.java:674) Prepare bytestreams for XMPP connection. Used transport order: [XEP 65 SOCKS5, XEP 47 In-Band Bytestream]
+DEBUG 2012-04-17 21:03:44,270 (SkypeManager.java:280) Refreshing Skype username cache...
+DEBUG 2012-04-17 21:04:03,583 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: olavolseng@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-17 21:04:04,469 (WhiteboardManager.java:108) WhiteboardManager instantiated
+DEBUG 2012-04-17 21:04:04,480 (DocumentRecord.java:93) Added Node: attr(133468944447781030) name=svg
+DEBUG 2012-04-17 21:04:04,537 (IconUtils.java:198) color: RGB {255, 255, 255}
+DEBUG 2012-04-17 21:04:04,539 (IconUtils.java:209) create foreground icon with color RGB {0, 0, 0}
+DEBUG 2012-04-17 21:04:14,487 (StartupSaros.java:66) de.fu_berlin.inf.dpp.testmode=null
+DEBUG 2012-04-17 21:07:34,153 (SharedDocumentProvider.java:79) SharedDocumentProvider created by Eclipse
+DEBUG 2012-04-17 21:27:41,588 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: habitats@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-17 21:27:48,760 (DiscoveryManager.java:96) Clearing cache entry of buddy habitats@saros-con.imp.fu-berlin.de/Saros: <query xmlns="http://jabber.org/protocol/disco#info"><identity category="client" name="Smack" type="pc"/><feature var="http://jabber.org/protocol/xhtml-im"/><feature var="http://jabber.org/protocol/muc"/><feature var="http://jabber.org/protocol/bytestreams"/><feature var="http://jabber.org/protocol/commands"/><feature var="de.fu_berlin.inf.dpp"/></query>
+DEBUG 2012-04-17 21:28:25,026 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: habitats@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-17 21:29:10,434 (DiscoveryManager.java:96) Clearing cache entry of buddy habitats@saros-con.imp.fu-berlin.de/Saros: <query xmlns="http://jabber.org/protocol/disco#info"><identity category="client" name="Smack" type="pc"/><feature var="http://jabber.org/protocol/xhtml-im"/><feature var="http://jabber.org/protocol/muc"/><feature var="http://jabber.org/protocol/bytestreams"/><feature var="http://jabber.org/protocol/commands"/><feature var="de.fu_berlin.inf.dpp"/></query>
+DEBUG 2012-04-17 21:33:51,583 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: habitats@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-17 21:36:42,731 (DiscoveryManager.java:96) Clearing cache entry of buddy habitats@saros-con.imp.fu-berlin.de/Saros: <query xmlns="http://jabber.org/protocol/disco#info"><identity category="client" name="Smack" type="pc"/><feature var="http://jabber.org/protocol/xhtml-im"/><feature var="http://jabber.org/protocol/muc"/><feature var="http://jabber.org/protocol/bytestreams"/><feature var="http://jabber.org/protocol/commands"/><feature var="de.fu_berlin.inf.dpp"/></query>
+DEBUG 2012-04-17 21:37:26,684 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: habitats@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-17 21:38:27,743 (DiscoveryManager.java:96) Clearing cache entry of buddy habitats@saros-con.imp.fu-berlin.de/Saros: <query xmlns="http://jabber.org/protocol/disco#info"><identity category="client" name="Smack" type="pc"/><feature var="http://jabber.org/protocol/xhtml-im"/><feature var="http://jabber.org/protocol/muc"/><feature var="http://jabber.org/protocol/bytestreams"/><feature var="http://jabber.org/protocol/commands"/><feature var="de.fu_berlin.inf.dpp"/></query>
+DEBUG 2012-04-17 21:39:27,429 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: habitats@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-17 21:39:37,136 (DiscoveryManager.java:96) Clearing cache entry of buddy habitats@saros-con.imp.fu-berlin.de/Saros: <query xmlns="http://jabber.org/protocol/disco#info"><identity category="client" name="Smack" type="pc"/><feature var="http://jabber.org/protocol/xhtml-im"/><feature var="http://jabber.org/protocol/muc"/><feature var="http://jabber.org/protocol/bytestreams"/><feature var="http://jabber.org/protocol/commands"/><feature var="de.fu_berlin.inf.dpp"/></query>
+DEBUG 2012-04-17 21:39:44,618 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: habitats@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-17 21:40:01,197 (DiscoveryManager.java:96) Clearing cache entry of buddy habitats@saros-con.imp.fu-berlin.de/Saros: <query xmlns="http://jabber.org/protocol/disco#info"><identity category="client" name="Smack" type="pc"/><feature var="http://jabber.org/protocol/xhtml-im"/><feature var="http://jabber.org/protocol/muc"/><feature var="http://jabber.org/protocol/bytestreams"/><feature var="http://jabber.org/protocol/commands"/><feature var="de.fu_berlin.inf.dpp"/></query>
+DEBUG 2012-04-17 21:40:35,026 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: habitats@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-17 21:40:57,328 (DiscoveryManager.java:96) Clearing cache entry of buddy habitats@saros-con.imp.fu-berlin.de/Saros: <query xmlns="http://jabber.org/protocol/disco#info"><identity category="client" name="Smack" type="pc"/><feature var="http://jabber.org/protocol/xhtml-im"/><feature var="http://jabber.org/protocol/muc"/><feature var="http://jabber.org/protocol/bytestreams"/><feature var="http://jabber.org/protocol/commands"/><feature var="de.fu_berlin.inf.dpp"/></query>
+DEBUG 2012-04-17 21:42:10,217 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: habitats@saros-con.imp.fu-berlin.de/Saros

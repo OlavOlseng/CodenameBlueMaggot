@@ -1,0 +1,178 @@
+!SESSION 2012-04-16 14:52:12.711 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_24
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product -keyring /Users/ellenjohansen/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -product org.eclipse.epp.package.java.product -data /Users/ellenjohansen/CodenameBlueMaggot/CodenameBlueMaggot -product org.eclipse.epp.package.java.product -keyring /Users/ellenjohansen/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2012-04-16 14:52:20.977
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 4 4 2012-04-16 14:52:23.320
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.TaskList.
+
+!ENTRY org.eclipse.osgi 2 1 2012-04-16 20:28:59.178
+!MESSAGE NLS missing message: Saros_35 in: de.fu_berlin.inf.dpp.messages
+
+!ENTRY org.eclipse.osgi 2 1 2012-04-16 20:28:59.189
+!MESSAGE NLS missing message: Saros_38 in: de.fu_berlin.inf.dpp.messages
+
+!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:28:59.473
+!MESSAGE Received error presence package from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros, condition: not-authorized, message: A password is required to enter this room (SubscriptionManager.java:106)
+
+!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:28:59.906
+!MESSAGE DataObject could not be attached to SarosSession: Checksum(path:SPathDataObject [editorType=txt, path=src/gfx/MenuPanel.java, projectID=1590401804],hash:1695111462,length:143,vectorTime:null) (SarosSession.java:729)
+!STACK 0
+java.lang.IllegalArgumentException: SPathDataObject cannot be connected to SarosSession because its ID is unknown: 1590401804
+	at de.fu_berlin.inf.dpp.activities.SPathDataObject.toSPath(SPathDataObject.java:51)
+	at de.fu_berlin.inf.dpp.activities.serializable.ChecksumActivityDataObject.getActivity(ChecksumActivityDataObject.java:148)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.convertAndQueueProjectActivities(SarosSession.java:725)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.exec(SarosSession.java:701)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer.execQueue(ActivitySequencer.java:781)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer$2$2.run(ActivitySequencer.java:606)
+	at de.fu_berlin.inf.dpp.util.Utils$6.run(Utils.java:377)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:680)
+
+!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:28:59.909
+!MESSAGE DataObject could not be attached to SarosSession: Checksum(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],hash:-2124319502,length:1175,vectorTime:null) (SarosSession.java:729)
+!STACK 0
+java.lang.IllegalArgumentException: SPathDataObject cannot be connected to SarosSession because its ID is unknown: 1590401804
+	at de.fu_berlin.inf.dpp.activities.SPathDataObject.toSPath(SPathDataObject.java:51)
+	at de.fu_berlin.inf.dpp.activities.serializable.ChecksumActivityDataObject.getActivity(ChecksumActivityDataObject.java:148)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.convertAndQueueProjectActivities(SarosSession.java:725)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.exec(SarosSession.java:701)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer.execQueue(ActivitySequencer.java:781)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer$2$2.run(ActivitySequencer.java:606)
+	at de.fu_berlin.inf.dpp.util.Utils$6.run(Utils.java:377)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:680)
+
+!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:28:59.945
+!MESSAGE DataObject could not be attached to SarosSession: TextSelectionActivityDataObject(offset:1160,length:0,src:olavolseng@saros-con.imp.fu-berlin.de/Saros,path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804]) (SarosSession.java:729)
+!STACK 0
+java.lang.IllegalArgumentException: SPathDataObject cannot be connected to SarosSession because its ID is unknown: 1590401804
+	at de.fu_berlin.inf.dpp.activities.SPathDataObject.toSPath(SPathDataObject.java:51)
+	at de.fu_berlin.inf.dpp.activities.serializable.TextSelectionActivityDataObject.getActivity(TextSelectionActivityDataObject.java:109)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.convertAndQueueProjectActivities(SarosSession.java:725)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.exec(SarosSession.java:701)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer.execQueue(ActivitySequencer.java:781)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer$2$2.run(ActivitySequencer.java:606)
+	at de.fu_berlin.inf.dpp.util.Utils$6.run(Utils.java:377)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:680)
+
+!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:28:59.976
+!MESSAGE DataObject could not be attached to SarosSession: ViewportActivityDataObject(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],range:(15,61)) (SarosSession.java:729)
+!STACK 0
+java.lang.IllegalArgumentException: SPathDataObject cannot be connected to SarosSession because its ID is unknown: 1590401804
+	at de.fu_berlin.inf.dpp.activities.SPathDataObject.toSPath(SPathDataObject.java:51)
+	at de.fu_berlin.inf.dpp.activities.serializable.ViewportActivityDataObject.getActivity(ViewportActivityDataObject.java:108)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.convertAndQueueProjectActivities(SarosSession.java:725)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.exec(SarosSession.java:701)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer.execQueue(ActivitySequencer.java:781)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer$2$2.run(ActivitySequencer.java:606)
+	at de.fu_berlin.inf.dpp.util.Utils$6.run(Utils.java:377)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:680)
+
+!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:29:00.956
+!MESSAGE path object should not be null (SharedProjectFileDecorator.java:134)
+
+!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:29:06.382
+!MESSAGE Resource changed while paused:
+C(0) /
+C(0) /Tanks 2
+A /Tanks 2/1590401804&&&&5898140214584727669.zip
+ (SharedResourcesManager.java:426)
+
+!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:29:07.581
+!MESSAGE path object should not be null (SharedProjectFileDecorator.java:134)
+
+!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:29:15.416
+!MESSAGE path object should not be null (SharedProjectFileDecorator.java:134)
+
+!ENTRY de.fu_berlin.inf.dpp 4 0 2012-04-16 22:24:07.598
+!MESSAGE XMPP Connection Error:  (SarosNet.java:451)
+!STACK 0
+java.net.SocketException: Operation timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
+	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
+	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.read1(BufferedReader.java:187)
+	at java.io.BufferedReader.read(BufferedReader.java:261)
+	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
+	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
+	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
+	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
+	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
+	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
+	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
+
+!ENTRY de.fu_berlin.inf.dpp 4 0 2012-04-16 22:24:07.735
+!MESSAGE New Connection State == ERROR (SarosNet.java:430)
+!STACK 0
+java.net.SocketException: Operation timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
+	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
+	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.read1(BufferedReader.java:187)
+	at java.io.BufferedReader.read(BufferedReader.java:261)
+	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
+	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
+	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
+	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
+	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
+	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
+	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
+!SESSION 2012-04-17 21:03:09.041 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_24
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/ellenjohansen/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -product org.eclipse.epp.package.java.product -keyring /Users/ellenjohansen/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.resources 2 10035 2012-04-17 21:03:19.886
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.core.net 1 0 2012-04-17 21:03:37.504
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 4 4 2012-04-17 21:03:59.435
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.TaskList.
