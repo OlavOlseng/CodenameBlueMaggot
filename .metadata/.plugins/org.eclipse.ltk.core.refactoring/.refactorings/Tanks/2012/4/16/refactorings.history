@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 4 elements to &apos;Tanks/src/baseGame&apos;&#x0A;- Original project: &apos;Tanks&apos;&#x0A;- Destination element: &apos;Tanks/src/baseGame&apos;&#x0A;- Original elements:&#x0A;     BaseGame.java&#x0A;     Renderable.java&#x0A;     Renderer.java&#x0A;     testGame.java&#x0A;- Update references to refactored element" description="Move compilation units" destination="/src&lt;baseGame" element1="/src&lt;{BaseGame.java" element2="/src&lt;{Renderable.java" element3="/src&lt;{Renderer.java" element4="/src&lt;{testGame.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1334695691887" units="4" version="1.0"/>
+</session>

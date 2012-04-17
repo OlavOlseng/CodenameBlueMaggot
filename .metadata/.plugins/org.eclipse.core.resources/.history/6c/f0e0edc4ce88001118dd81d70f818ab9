@@ -1,0 +1,19 @@
+package gfx;
+
+import javax.swing.JPanel;
+
+import baseGame.BaseGame;
+import baseGame.testGame;
+
+public class MenuPanel extends JPanel {
+	
+	public MenuPanel(){
+		
+	}
+	public static void main(String [] args){
+		BaseGame t = new testGame();
+		new MenuPanel();
+		
+	}
+	
+}
