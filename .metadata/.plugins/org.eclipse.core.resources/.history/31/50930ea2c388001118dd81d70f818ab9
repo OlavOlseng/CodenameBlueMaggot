@@ -1,0 +1,20 @@
+import java.awt.Canvas;
+import java.awt.image.BufferStrategy;
+import java.util.TimerTask;
+
+
+public class BaseGame extends Canvas implements runnable {
+
+	private TimerTask runLoop;
+	private BufferStrategy buffer;
+	private boolean showFps = true;
+		
+	
+	public void init(double fps){
+		setIgnoreRepaint(true);
+		task = new TimerTask()
+			
+		
+		
+	}
+}

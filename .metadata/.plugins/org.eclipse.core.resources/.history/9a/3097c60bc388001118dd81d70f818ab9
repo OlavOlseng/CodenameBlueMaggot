@@ -1,0 +1,11 @@
+
+public class BaseGame {
+
+	private TimerTask runLoop(){
+		
+	}
+	public void init(double fps){
+		
+		
+	}
+}

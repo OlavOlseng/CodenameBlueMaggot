@@ -1,0 +1,477 @@
+INFO  2012-04-16 14:52:17,899 (Saros.java:250) Starting Saros 11.12.9.r3685 running:
+  Java Version: 1.6.0_24
+  Java Vendor: Apple Inc.
+  Eclipse Runtime Version: 3.7.0.v20110110
+  Operating System: Mac OS X (10.6.8)
+  Hardware Architecture: i386
+DEBUG 2012-04-16 14:52:19,034 (StreamServiceManager.java:228) StreamServices added:
+  ArchiveProject
+  SendFile
+  VideoSharing
+  AudioService
+INFO  2012-04-16 14:52:19,039 (XMPPAccountStore.java:106) loaded 0 accounts
+INFO  2012-04-16 14:52:19,088 (StatisticManager.java:303) Current feedback settings:
+  Feedback disabled: false
+  Feedback interval: 5
+  Statistic submission allowed: false
+  Pseudonym submission allowed: false
+INFO  2012-04-16 14:52:19,107 (ErrorLogManager.java:306) Current error log settings:
+  Error log submission allowed: false
+  Full Error log submission allowed: false
+DEBUG 2012-04-16 14:52:25,689 (WhiteboardManager.java:108) WhiteboardManager instantiated
+DEBUG 2012-04-16 14:52:25,700 (DocumentRecord.java:93) Added Node: attr(133458074569748425) name=svg
+DEBUG 2012-04-16 14:52:25,809 (IconUtils.java:198) color: RGB {255, 255, 255}
+DEBUG 2012-04-16 14:52:25,811 (IconUtils.java:209) create foreground icon with color RGB {0, 0, 0}
+DEBUG 2012-04-16 14:52:31,079 (StartupSaros.java:66) de.fu_berlin.inf.dpp.testmode=null
+DEBUG 2012-04-16 14:52:45,213 (UPnPManager.java:196) No gateway device found.
+INFO  2012-04-16 14:52:47,507 (XMPPAccountStore.java:164) saved 1 accounts
+DEBUG 2012-04-16 14:52:47,519 (SarosNet.java:206) Socks5Proxy properties changed. Socks5Proxy started on port 7777...
+DEBUG 2012-04-16 14:52:47,555 (SarosNet.java:428) New Connection State == CONNECTING
+DEBUG 2012-04-16 14:52:49,014 (SarosNet.java:428) [eirikjak@saros-con.imp.fu-berlin.de/Saros] New Connection State == CONNECTED
+DEBUG 2012-04-16 14:52:49,069 (DataTransferManager.java:674) Prepare bytestreams for XMPP connection. Used transport order: [XEP 65 SOCKS5, XEP 47 In-Band Bytestream]
+DEBUG 2012-04-16 14:52:49,076 (SkypeManager.java:280) Refreshing Skype username cache...
+DEBUG 2012-04-16 15:03:17,863 (SharedDocumentProvider.java:79) SharedDocumentProvider created by Eclipse
+DEBUG 2012-04-16 16:54:36,362 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: olavolseng@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-16 17:02:32,492 (DiscoveryManager.java:96) Clearing cache entry of buddy olavolseng@saros-con.imp.fu-berlin.de/Saros: <query xmlns="http://jabber.org/protocol/disco#info"><identity category="client" name="Smack" type="pc"/><feature var="http://jabber.org/protocol/xhtml-im"/><feature var="http://jabber.org/protocol/muc"/><feature var="http://jabber.org/protocol/bytestreams"/><feature var="http://jabber.org/protocol/commands"/><feature var="de.fu_berlin.inf.dpp"/></query>
+DEBUG 2012-04-16 17:03:20,014 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: olavolseng@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-16 20:28:40,660 (VersionManager.java:362) Version request from olavolseng@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-16 20:28:40,675 (VersionManager.java:379) Sending version info to olavolseng@saros-con.imp.fu-berlin.de/Saros
+INFO  2012-04-16 20:28:41,489 (BytestreamTransport.java:73) Received request to establish a SOCKS5 bytestream connection from olavolseng@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-16 20:28:41,490 (Socks5Transport.java:369) [SOCKS5] receiving request from olavolseng@saros-con.imp.fu-berlin.de/Saros with local proxy enabled (Port 7777). 
+DEBUG 2012-04-16 20:28:41,511 (Socks5Transport.java:560) [SOCKS5] Start to establish new response connection
+DEBUG 2012-04-16 20:28:43,746 (Socks5Transport.java:386) [SOCKS5] incoming connection is mediated.
+DEBUG 2012-04-16 20:28:43,746 (Socks5Transport.java:402) [SOCKS5] newly established session is direct! Discarding the other.
+DEBUG 2012-04-16 20:28:43,747 (Socks5Transport.java:669) nagle algorithm for socket disabled: true
+DEBUG 2012-04-16 20:28:43,805 (DataTransferManager.java:492) Bytestream connection changed SOCKS5 (direct)
+DEBUG 2012-04-16 20:28:43,807 (BinaryChannelConnection.java:54) SOCKS5 (direct) [olavolseng@saros-con.imp.fu-berlin.de/Saros] ReceiverThread started.
+DEBUG 2012-04-16 20:28:44,662 (InvitationHandler.java:60) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : Received invitation (invitationID: -4031112451901227764, sessionID: 1077680955, colorID: 1, sarosVersion: 11.12.9.r3685, sarosComp: OK)
+DEBUG 2012-04-16 20:28:44,715 (IncomingSessionNegotiation.java:74) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : Determining version...
+DEBUG 2012-04-16 20:28:44,716 (MUCSessionPreferencesNegotiatingManager.java:73) Got hosts Communication Config: server conference.jabber.ccc.de room SAROS1077680955 pw -339829653
+DEBUG 2012-04-16 20:28:58,674 (IncomingSessionNegotiation.java:205) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : Invitation accepted.
+INFO  2012-04-16 20:28:58,826 (SarosSessionManager.java:234) Saros session joined
+DEBUG 2012-04-16 20:28:58,826 (IncomingSessionNegotiation.java:213) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : Joined the session.
+DEBUG 2012-04-16 20:28:58,826 (IncomingSessionNegotiation.java:229) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : Completing invitation...
+DEBUG 2012-04-16 20:28:58,875 (WhiteboardManager.java:55) Session Started, set Color: RGB {191, 187, 130}
+DEBUG 2012-04-16 20:28:58,875 (ColorUtils.java:21) set foregroundcolor RGB {191, 187, 130}
+DEBUG 2012-04-16 20:28:58,876 (IconUtils.java:198) color: RGB {255, 255, 255}
+DEBUG 2012-04-16 20:28:58,923 (IconUtils.java:209) create foreground icon with color RGB {191, 187, 130}
+DEBUG 2012-04-16 20:28:59,213 (UserListHandler.java:52) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : Received userList
+DEBUG 2012-04-16 20:28:59,216 (MUCManager.java:73) Joining MUC...
+DEBUG 2012-04-16 20:28:59,340 (MUCSession.java:238) Trying to create room.
+DEBUG 2012-04-16 20:28:59,469 (ActivitiesHandler.java:113) Rcvd (002) [olavolseng@saros-con.imp.fu-berlin.de/Saros] : [[0:ChangeColorActivityDataObject(eirikjak@saros-con.imp.fu-berlin.de/Saros eirikjak@saros-con.imp.fu-berlin.de/Saros)], [1:ChangeColorActivityDataObject(olavolseng@saros-con.imp.fu-berlin.de/Saros eirikjak@saros-con.imp.fu-berlin.de/Saros)]]
+DEBUG 2012-04-16 20:28:59,471 (MUCSession.java:243) not-authorized(401) A password is required to enter this room
+WARN  2012-04-16 20:28:59,472 (SubscriptionManager.java:106) Received error presence package from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros, condition: not-authorized, message: A password is required to enter this room
+DEBUG 2012-04-16 20:28:59,472 (ActivitySequencer.java:764) Received activityDataObject but ActivitySequencer has not yet been started: [0:ChangeColorActivityDataObject(eirikjak@saros-con.imp.fu-berlin.de/Saros eirikjak@saros-con.imp.fu-berlin.de/Saros)]
+DEBUG 2012-04-16 20:28:59,477 (ActivitySequencer.java:210) For olavolseng@saros-con.imp.fu-berlin.de/Saros there are 1 activityDataObjects queued. First queued: [0:ChangeColorActivityDataObject(eirikjak@saros-con.imp.fu-berlin.de/Saros eirikjak@saros-con.imp.fu-berlin.de/Saros)], expected nr: 0
+DEBUG 2012-04-16 20:28:59,477 (ActivitySequencer.java:764) Received activityDataObject but ActivitySequencer has not yet been started: [1:ChangeColorActivityDataObject(olavolseng@saros-con.imp.fu-berlin.de/Saros eirikjak@saros-con.imp.fu-berlin.de/Saros)]
+DEBUG 2012-04-16 20:28:59,478 (ActivitiesHandler.java:113) Rcvd (007) [olavolseng@saros-con.imp.fu-berlin.de/Saros] : [[2:EditorActivityDataObject(type:Activated,path:SPathDataObject [editorType=txt, path=src/gfx/MenuPanel.java, projectID=1590401804])], [3:EditorActivityDataObject(type:Activated,path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804])], [4:EditorActivityDataObject(type:Activated,path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804])], [5:Checksum(path:SPathDataObject [editorType=txt, path=src/gfx/MenuPanel.java, projectID=1590401804],hash:1695111462,length:143,vectorTime:null)], [6:Checksum(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],hash:-2124319502,length:1175,vectorTime:null)], [7:TextSelectionActivityDataObject(offset:1160,length:0,src:olavolseng@saros-con.imp.fu-berlin.de/Saros,path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804])], [8:ViewportActivityDataObject(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],range:(15,61))]]
+DEBUG 2012-04-16 20:28:59,479 (ActivitySequencer.java:210) For olavolseng@saros-con.imp.fu-berlin.de/Saros there are 2 activityDataObjects queued. First queued: [0:ChangeColorActivityDataObject(eirikjak@saros-con.imp.fu-berlin.de/Saros eirikjak@saros-con.imp.fu-berlin.de/Saros)], expected nr: 0
+DEBUG 2012-04-16 20:28:59,479 (ActivitySequencer.java:764) Received activityDataObject but ActivitySequencer has not yet been started: [2:EditorActivityDataObject(type:Activated,path:SPathDataObject [editorType=txt, path=src/gfx/MenuPanel.java, projectID=1590401804])]
+DEBUG 2012-04-16 20:28:59,479 (ActivitySequencer.java:210) For olavolseng@saros-con.imp.fu-berlin.de/Saros there are 3 activityDataObjects queued. First queued: [0:ChangeColorActivityDataObject(eirikjak@saros-con.imp.fu-berlin.de/Saros eirikjak@saros-con.imp.fu-berlin.de/Saros)], expected nr: 0
+DEBUG 2012-04-16 20:28:59,479 (ActivitySequencer.java:764) Received activityDataObject but ActivitySequencer has not yet been started: [3:EditorActivityDataObject(type:Activated,path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804])]
+DEBUG 2012-04-16 20:28:59,480 (ActivitySequencer.java:210) For olavolseng@saros-con.imp.fu-berlin.de/Saros there are 4 activityDataObjects queued. First queued: [0:ChangeColorActivityDataObject(eirikjak@saros-con.imp.fu-berlin.de/Saros eirikjak@saros-con.imp.fu-berlin.de/Saros)], expected nr: 0
+DEBUG 2012-04-16 20:28:59,480 (ActivitySequencer.java:764) Received activityDataObject but ActivitySequencer has not yet been started: [4:EditorActivityDataObject(type:Activated,path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804])]
+DEBUG 2012-04-16 20:28:59,480 (ActivitySequencer.java:210) For olavolseng@saros-con.imp.fu-berlin.de/Saros there are 5 activityDataObjects queued. First queued: [0:ChangeColorActivityDataObject(eirikjak@saros-con.imp.fu-berlin.de/Saros eirikjak@saros-con.imp.fu-berlin.de/Saros)], expected nr: 0
+DEBUG 2012-04-16 20:28:59,480 (ActivitySequencer.java:764) Received activityDataObject but ActivitySequencer has not yet been started: [5:Checksum(path:SPathDataObject [editorType=txt, path=src/gfx/MenuPanel.java, projectID=1590401804],hash:1695111462,length:143,vectorTime:null)]
+DEBUG 2012-04-16 20:28:59,481 (ActivitySequencer.java:210) For olavolseng@saros-con.imp.fu-berlin.de/Saros there are 6 activityDataObjects queued. First queued: [0:ChangeColorActivityDataObject(eirikjak@saros-con.imp.fu-berlin.de/Saros eirikjak@saros-con.imp.fu-berlin.de/Saros)], expected nr: 0
+DEBUG 2012-04-16 20:28:59,481 (ActivitySequencer.java:764) Received activityDataObject but ActivitySequencer has not yet been started: [6:Checksum(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],hash:-2124319502,length:1175,vectorTime:null)]
+DEBUG 2012-04-16 20:28:59,481 (ActivitySequencer.java:210) For olavolseng@saros-con.imp.fu-berlin.de/Saros there are 7 activityDataObjects queued. First queued: [0:ChangeColorActivityDataObject(eirikjak@saros-con.imp.fu-berlin.de/Saros eirikjak@saros-con.imp.fu-berlin.de/Saros)], expected nr: 0
+DEBUG 2012-04-16 20:28:59,481 (ActivitySequencer.java:764) Received activityDataObject but ActivitySequencer has not yet been started: [7:TextSelectionActivityDataObject(offset:1160,length:0,src:olavolseng@saros-con.imp.fu-berlin.de/Saros,path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804])]
+DEBUG 2012-04-16 20:28:59,482 (ActivitySequencer.java:210) For olavolseng@saros-con.imp.fu-berlin.de/Saros there are 8 activityDataObjects queued. First queued: [0:ChangeColorActivityDataObject(eirikjak@saros-con.imp.fu-berlin.de/Saros eirikjak@saros-con.imp.fu-berlin.de/Saros)], expected nr: 0
+DEBUG 2012-04-16 20:28:59,482 (ActivitySequencer.java:764) Received activityDataObject but ActivitySequencer has not yet been started: [8:ViewportActivityDataObject(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],range:(15,61))]
+DEBUG 2012-04-16 20:28:59,586 (MUCSession.java:269) MUC joined. Server: conference.jabber.ccc.de Room: SAROS1077680955 Password -339829653
+DEBUG 2012-04-16 20:28:59,625 (MUCManagerSingletonWrapperChatView.java:45) MUCManagerSingletonWrapperChatView created / joined.
+INFO  2012-04-16 20:28:59,670 (SarosSession.java:769) Activity EditorActivityDataObject(type:Activated,path:SPathDataObject [editorType=txt, path=src/gfx/MenuPanel.java, projectID=1590401804]) for Project 1590401804 was queued.
+INFO  2012-04-16 20:28:59,671 (SarosSession.java:769) Activity EditorActivityDataObject(type:Activated,path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804]) for Project 1590401804 was queued.
+INFO  2012-04-16 20:28:59,671 (SarosSession.java:769) Activity EditorActivityDataObject(type:Activated,path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804]) for Project 1590401804 was queued.
+DEBUG 2012-04-16 20:28:59,693 (ConsistencyAction.java:99) Inconsistency indicator goes: off
+DEBUG 2012-04-16 20:28:59,715 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:28:59,716 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros with state: active
+DEBUG 2012-04-16 20:28:59,717 (MUCSession.java:92) stateChanged fired with state: active
+WARN  2012-04-16 20:28:59,741 (SarosSession.java:729) DataObject could not be attached to SarosSession: Checksum(path:SPathDataObject [editorType=txt, path=src/gfx/MenuPanel.java, projectID=1590401804],hash:1695111462,length:143,vectorTime:null)
+java.lang.IllegalArgumentException: SPathDataObject cannot be connected to SarosSession because its ID is unknown: 1590401804
+	at de.fu_berlin.inf.dpp.activities.SPathDataObject.toSPath(SPathDataObject.java:51)
+	at de.fu_berlin.inf.dpp.activities.serializable.ChecksumActivityDataObject.getActivity(ChecksumActivityDataObject.java:148)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.convertAndQueueProjectActivities(SarosSession.java:725)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.exec(SarosSession.java:701)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer.execQueue(ActivitySequencer.java:781)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer$2$2.run(ActivitySequencer.java:606)
+	at de.fu_berlin.inf.dpp.util.Utils$6.run(Utils.java:377)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:680)
+INFO  2012-04-16 20:28:59,849 (ParticipantCollector.java:147) Session started: Current number of participants: 2
+WARN  2012-04-16 20:28:59,908 (SarosSession.java:729) DataObject could not be attached to SarosSession: Checksum(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],hash:-2124319502,length:1175,vectorTime:null)
+java.lang.IllegalArgumentException: SPathDataObject cannot be connected to SarosSession because its ID is unknown: 1590401804
+	at de.fu_berlin.inf.dpp.activities.SPathDataObject.toSPath(SPathDataObject.java:51)
+	at de.fu_berlin.inf.dpp.activities.serializable.ChecksumActivityDataObject.getActivity(ChecksumActivityDataObject.java:148)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.convertAndQueueProjectActivities(SarosSession.java:725)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.exec(SarosSession.java:701)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer.execQueue(ActivitySequencer.java:781)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer$2$2.run(ActivitySequencer.java:606)
+	at de.fu_berlin.inf.dpp.util.Utils$6.run(Utils.java:377)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:680)
+DEBUG 2012-04-16 20:28:59,912 (ChatRoomsComposite.java:408) Sender: You
+DEBUG 2012-04-16 20:28:59,914 (ChatRoomsComposite.java:409) Color: Color {191, 187, 130}
+DEBUG 2012-04-16 20:28:59,915 (ConsistencyAction.java:99) Inconsistency indicator goes: off
+WARN  2012-04-16 20:28:59,942 (SarosSession.java:729) DataObject could not be attached to SarosSession: TextSelectionActivityDataObject(offset:1160,length:0,src:olavolseng@saros-con.imp.fu-berlin.de/Saros,path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804])
+java.lang.IllegalArgumentException: SPathDataObject cannot be connected to SarosSession because its ID is unknown: 1590401804
+	at de.fu_berlin.inf.dpp.activities.SPathDataObject.toSPath(SPathDataObject.java:51)
+	at de.fu_berlin.inf.dpp.activities.serializable.TextSelectionActivityDataObject.getActivity(TextSelectionActivityDataObject.java:109)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.convertAndQueueProjectActivities(SarosSession.java:725)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.exec(SarosSession.java:701)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer.execQueue(ActivitySequencer.java:781)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer$2$2.run(ActivitySequencer.java:606)
+	at de.fu_berlin.inf.dpp.util.Utils$6.run(Utils.java:377)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:680)
+INFO  2012-04-16 20:28:59,974 (StatisticManager.java:283) Session count: 5
+WARN  2012-04-16 20:28:59,974 (SarosSession.java:729) DataObject could not be attached to SarosSession: ViewportActivityDataObject(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],range:(15,61))
+java.lang.IllegalArgumentException: SPathDataObject cannot be connected to SarosSession because its ID is unknown: 1590401804
+	at de.fu_berlin.inf.dpp.activities.SPathDataObject.toSPath(SPathDataObject.java:51)
+	at de.fu_berlin.inf.dpp.activities.serializable.ViewportActivityDataObject.getActivity(ViewportActivityDataObject.java:108)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.convertAndQueueProjectActivities(SarosSession.java:725)
+	at de.fu_berlin.inf.dpp.project.internal.SarosSession.exec(SarosSession.java:701)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer.execQueue(ActivitySequencer.java:781)
+	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer$2$2.run(ActivitySequencer.java:606)
+	at de.fu_berlin.inf.dpp.util.Utils$6.run(Utils.java:377)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:680)
+INFO  2012-04-16 20:29:00,156 (ChangeColorManager.java:85) received color: RGB {191, 187, 130} from buddy: eirikjak
+INFO  2012-04-16 20:29:00,158 (SarosAnnotation.java:138) Set new User Color: RGB {191, 187, 130}
+INFO  2012-04-16 20:29:00,238 (ChangeColorManager.java:85) received color: RGB {141, 206, 231} from buddy: olavolseng
+INFO  2012-04-16 20:29:00,239 (SarosAnnotation.java:138) Set new User Color: RGB {141, 206, 231}
+DEBUG 2012-04-16 20:29:00,302 (IncomingSessionNegotiation.java:247) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : isInvitationComplete has been set to true.
+DEBUG 2012-04-16 20:29:00,305 (IncomingSessionNegotiation.java:251) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : Invitation complete confirmation sent.
+DEBUG 2012-04-16 20:29:00,309 (IncomingSessionNegotiation.java:256) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : Invitation has completed successfully.
+DEBUG 2012-04-16 20:29:00,310 (IncomingSessionNegotiation.java:260) I am a driver
+DEBUG 2012-04-16 20:29:00,365 (ChatRoomsComposite.java:408) Sender: You
+DEBUG 2012-04-16 20:29:00,366 (ChatRoomsComposite.java:409) Color: Color {191, 187, 130}
+DEBUG 2012-04-16 20:29:00,413 (ChatRoomsComposite.java:408) Sender: You
+DEBUG 2012-04-16 20:29:00,414 (ChatRoomsComposite.java:409) Color: Color {191, 187, 130}
+DEBUG 2012-04-16 20:29:00,436 (SarosSession.java:478) The invitation of [eirikjak@saros-con.imp.fu-berlin.de/Saros]  is now complete
+DEBUG 2012-04-16 20:29:00,449 (UserListHandler.java:52) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : Received userList
+WARN  2012-04-16 20:29:00,955 (SharedProjectFileDecorator.java:134) path object should not be null
+DEBUG 2012-04-16 20:29:00,979 (ActivitiesHandler.java:113) Rcvd (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] : [[9:de.fu_berlin.inf.dpp.activities.serializable.ProjectsAddedActivityDataObject@92205c48]]
+DEBUG 2012-04-16 20:29:01,274 (SXEIncomingSynchronizationProcess.java:66) SXE(5911) invitation from olavolseng@saros-con.imp.fu-berlin.de/Saros received
+INFO  2012-04-16 20:29:01,280 (ProjectNegotiationObservable.java:61) This is ProjectNegotiation number 1 in this session. There are 0 process(es) in this session
+DEBUG 2012-04-16 20:29:01,283 (SXEController.java:537) Whiteboard state changed from INIT to CONNECTING
+DEBUG 2012-04-16 20:29:01,284 (SXEIncomingSynchronizationProcess.java:92) SXE(5911) queue incoming records from now
+DEBUG 2012-04-16 20:29:01,284 (SarosSXETransmitter.java:146) SXE send accept-state to olavolseng@saros-con.imp.fu-berlin.de/Saros waiting for [state]
+DEBUG 2012-04-16 20:29:01,285 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:01,339 (EnterProjectNamePage.java:469) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:01,378 (SXEIncomingSynchronizationProcess.java:99) SXE(5911) state received
+DEBUG 2012-04-16 20:29:01,824 (SXEController.java:137) SXE (5911): receive state and start session at invitee side
+DEBUG 2012-04-16 20:29:01,825 (DocumentRecord.java:93) Added Node: attr(133458860252043284) name=svg
+DEBUG 2012-04-16 20:29:04,798 (IncomingProjectNegotiation.java:662) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : Creating new project...
+DEBUG 2012-04-16 20:29:05,340 (IncomingProjectNegotiation.java:356) compute required Files for project Tanks 2 with ID: 1590401804
+DEBUG 2012-04-16 20:29:05,387 (IncomingProjectNegotiation.java:789) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : Computing file list diff...
+DEBUG 2012-04-16 20:29:05,396 (FileUtils.java:352) .create() Creating folder src not possible - it already exists
+DEBUG 2012-04-16 20:29:05,424 (FileUtils.java:352) .create() Creating folder src not possible - it already exists
+DEBUG 2012-04-16 20:29:05,495 (XMPPTransmitter.java:832) fileLists.size(): 1
+DEBUG 2012-04-16 20:29:05,640 (XMPPTransmitter.java:340) Receiving archive
+DEBUG 2012-04-16 20:29:05,735 (ActivitiesHandler.java:113) Rcvd (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] : [[10:StopActivityDataObject (id: 202902408-3231626862002247207, type: LOCKREQUEST, state: INITIATED, initiator: olavolseng@saros-con.imp.fu-berlin.de/Saros, affected user: eirikjak@saros-con.imp.fu-berlin.de/Saros, src: olavolseng@saros-con.imp.fu-berlin.de/Saros)]]
+DEBUG 2012-04-16 20:29:05,797 (EditorManager.java:1823) Lock all editors
+DEBUG 2012-04-16 20:29:06,008 (XMPPTransmitter.java:649) Sent (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] [[0:StopActivityDataObject (id: 202902408-3231626862002247207, type: LOCKREQUEST, state: ACKNOWLEDGED, initiator: olavolseng@saros-con.imp.fu-berlin.de/Saros, affected user: eirikjak@saros-con.imp.fu-berlin.de/Saros, src: eirikjak@saros-con.imp.fu-berlin.de/Saros)]]
+DEBUG 2012-04-16 20:29:06,247 (ActivitiesHandler.java:113) Rcvd (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] : [[11:StopActivityDataObject (id: 202902408-3231626862002247207, type: UNLOCKREQUEST, state: INITIATED, initiator: olavolseng@saros-con.imp.fu-berlin.de/Saros, affected user: eirikjak@saros-con.imp.fu-berlin.de/Saros, src: olavolseng@saros-con.imp.fu-berlin.de/Saros)]]
+WARN  2012-04-16 20:29:06,382 (SharedResourcesManager.java:426) Resource changed while paused:
+C(0) /
+C(0) /Tanks 2
+A /Tanks 2/1590401804&&&&5898140214584727669.zip
+
+DEBUG 2012-04-16 20:29:06,383 (IncomingProjectNegotiation.java:281) 1590401804&&&&5898140214584727669.zip
+DEBUG 2012-04-16 20:29:06,383 (IncomingProjectNegotiation.java:935) Inv[olavolseng@saros-con.imp.fu-berlin.de/Saros] : Writing archive to disk...
+DEBUG 2012-04-16 20:29:06,524 (EditorManager.java:1825) Unlock all editors
+DEBUG 2012-04-16 20:29:06,583 (FileUtils.java:203) File written to disk: .project
+DEBUG 2012-04-16 20:29:06,584 (FileUtils.java:203) File written to disk: .classpath
+DEBUG 2012-04-16 20:29:06,585 (FileUtils.java:203) File written to disk: src/entity/Entity.java
+DEBUG 2012-04-16 20:29:06,586 (FileUtils.java:203) File written to disk: src/gfx/MenuPanel.java
+DEBUG 2012-04-16 20:29:06,620 (XMPPTransmitter.java:649) Sent (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] [[1:StopActivityDataObject (id: 202902408-3231626862002247207, type: UNLOCKREQUEST, state: ACKNOWLEDGED, initiator: olavolseng@saros-con.imp.fu-berlin.de/Saros, affected user: eirikjak@saros-con.imp.fu-berlin.de/Saros, src: eirikjak@saros-con.imp.fu-berlin.de/Saros)]]
+DEBUG 2012-04-16 20:29:06,687 (FileUtils.java:203) File written to disk: .settings/org.eclipse.jdt.core.prefs
+DEBUG 2012-04-16 20:29:06,688 (FileUtils.java:207) Unpacked archive in 0 s
+DEBUG 2012-04-16 20:29:07,185 (ProjectDeltaVisitor.java:262) Resource .project changed
+DEBUG 2012-04-16 20:29:07,309 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:07,309 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:07,310 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:07,310 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:07,310 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:07,311 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:07,311 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:07,311 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:07,312 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:07,312 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:07,455 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+DEBUG 2012-04-16 20:29:07,456 (IncomingProjectNegotiation.java:107) 1590401804: Tanks
+INFO  2012-04-16 20:29:07,456 (SarosSession.java:796) All activities for project "1590401804" will be executed now
+DEBUG 2012-04-16 20:29:07,472 (SharedProjectDecorator.java:80) PROJECT ADDED: 1590401804
+DEBUG 2012-04-16 20:29:07,489 (SharedProjectDecorator.java:137) Decoration update
+DEBUG 2012-04-16 20:29:07,490 (SharedProjectDecorator.java:137) Decoration update
+DEBUG 2012-04-16 20:29:07,579 (EditorManager.java:387) MenuPanel.java
+WARN  2012-04-16 20:29:07,580 (SharedProjectFileDecorator.java:134) path object should not be null
+DEBUG 2012-04-16 20:29:07,614 (XMPPTransmitter.java:649) Sent (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] [[2:EditorActivityDataObject(type:Activated,path:no path)]]
+INFO  2012-04-16 20:29:09,334 (ConsistencyWatchdogClient.java:476) Inconsistencies have been detected
+DEBUG 2012-04-16 20:29:09,334 (ConsistencyAction.java:99) Inconsistency indicator goes: on
+INFO  2012-04-16 20:29:09,438 (SarosView.java:549) Show BalloonNotification title:" Inconsistencies detected" Message: "These files have become unsynchronized with the host:
+ /Tanks 2/src/entity/Entity.java 
+
+Press the inconsistency recovery button to synchronise your project. 
+You may wish to backup those file(s) in case important changes are overwritten."
+DEBUG 2012-04-16 20:29:10,201 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:10,201 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/olavolseng@saros-con.imp.fu-berlin.de/Saros with state: composing
+DEBUG 2012-04-16 20:29:10,201 (MUCSession.java:92) stateChanged fired with state: composing
+DEBUG 2012-04-16 20:29:10,201 (ChatRoomsComposite.java:221) Received ChatState from olavolseng@saros-con.imp.fu-berlin.de/Saros: composing
+DEBUG 2012-04-16 20:29:10,516 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:10,517 (ChatRoomsComposite.java:408) Sender: OlavOlseng (olavolseng@saros-con.imp.fu-berlin.de)
+DEBUG 2012-04-16 20:29:10,517 (ChatRoomsComposite.java:409) Color: Color {141, 206, 231}
+DEBUG 2012-04-16 20:29:10,616 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:10,616 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/olavolseng@saros-con.imp.fu-berlin.de/Saros with state: inactive
+DEBUG 2012-04-16 20:29:10,617 (MUCSession.java:92) stateChanged fired with state: inactive
+DEBUG 2012-04-16 20:29:10,617 (ChatRoomsComposite.java:221) Received ChatState from olavolseng@saros-con.imp.fu-berlin.de/Saros: inactive
+WARN  2012-04-16 20:29:15,415 (SharedProjectFileDecorator.java:134) path object should not be null
+DEBUG 2012-04-16 20:29:15,444 (XMPPTransmitter.java:649) Sent (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] [[3:EditorActivityDataObject(type:Activated,path:no path)]]
+DEBUG 2012-04-16 20:29:22,178 (ActivitiesHandler.java:113) Rcvd (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] : [[16:ViewportActivityDataObject(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],range:(14,60))]]
+DEBUG 2012-04-16 20:29:22,210 (ActivitiesHandler.java:113) Rcvd (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] : [[17:ViewportActivityDataObject(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],range:(9,55))]]
+DEBUG 2012-04-16 20:29:22,509 (ActivitiesHandler.java:113) Rcvd (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] : [[18:ViewportActivityDataObject(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],range:(5,51))]]
+DEBUG 2012-04-16 20:29:22,965 (ActivitiesHandler.java:113) Rcvd (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] : [[19:ViewportActivityDataObject(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],range:(0,47))]]
+DEBUG 2012-04-16 20:29:23,605 (ActivitiesHandler.java:113) Rcvd (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] : [[20:ViewportActivityDataObject(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],range:(12,58))]]
+DEBUG 2012-04-16 20:29:24,020 (ActivitiesHandler.java:113) Rcvd (001) [olavolseng@saros-con.imp.fu-berlin.de/Saros] : [[21:ViewportActivityDataObject(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],range:(15,61))]]
+DEBUG 2012-04-16 20:29:25,962 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:25,962 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/olavolseng@saros-con.imp.fu-berlin.de/Saros with state: composing
+DEBUG 2012-04-16 20:29:25,963 (MUCSession.java:92) stateChanged fired with state: composing
+DEBUG 2012-04-16 20:29:25,963 (ChatRoomsComposite.java:221) Received ChatState from olavolseng@saros-con.imp.fu-berlin.de/Saros: composing
+DEBUG 2012-04-16 20:29:27,532 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:27,532 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros with state: composing
+DEBUG 2012-04-16 20:29:27,532 (MUCSession.java:92) stateChanged fired with state: composing
+DEBUG 2012-04-16 20:29:27,533 (ChatRoomsComposite.java:221) Received ChatState from eirikjak@saros-con.imp.fu-berlin.de/Saros: composing
+DEBUG 2012-04-16 20:29:27,846 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:27,846 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros with state: inactive
+DEBUG 2012-04-16 20:29:27,846 (MUCSession.java:92) stateChanged fired with state: inactive
+DEBUG 2012-04-16 20:29:27,847 (ChatRoomsComposite.java:221) Received ChatState from eirikjak@saros-con.imp.fu-berlin.de/Saros: inactive
+DEBUG 2012-04-16 20:29:28,103 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:28,104 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros with state: composing
+DEBUG 2012-04-16 20:29:28,104 (MUCSession.java:92) stateChanged fired with state: composing
+DEBUG 2012-04-16 20:29:28,104 (ChatRoomsComposite.java:221) Received ChatState from eirikjak@saros-con.imp.fu-berlin.de/Saros: composing
+DEBUG 2012-04-16 20:29:28,438 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:28,439 (ChatRoomsComposite.java:408) Sender: You
+DEBUG 2012-04-16 20:29:28,439 (ChatRoomsComposite.java:409) Color: Color {191, 187, 130}
+DEBUG 2012-04-16 20:29:28,545 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:28,545 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros with state: inactive
+DEBUG 2012-04-16 20:29:28,546 (MUCSession.java:92) stateChanged fired with state: inactive
+DEBUG 2012-04-16 20:29:28,546 (ChatRoomsComposite.java:221) Received ChatState from eirikjak@saros-con.imp.fu-berlin.de/Saros: inactive
+DEBUG 2012-04-16 20:29:28,848 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:28,849 (ChatRoomsComposite.java:408) Sender: OlavOlseng (olavolseng@saros-con.imp.fu-berlin.de)
+DEBUG 2012-04-16 20:29:28,849 (ChatRoomsComposite.java:409) Color: Color {141, 206, 231}
+DEBUG 2012-04-16 20:29:28,958 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:28,959 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/olavolseng@saros-con.imp.fu-berlin.de/Saros with state: inactive
+DEBUG 2012-04-16 20:29:28,959 (MUCSession.java:92) stateChanged fired with state: inactive
+DEBUG 2012-04-16 20:29:28,959 (ChatRoomsComposite.java:221) Received ChatState from olavolseng@saros-con.imp.fu-berlin.de/Saros: inactive
+DEBUG 2012-04-16 20:29:30,608 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:30,608 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/olavolseng@saros-con.imp.fu-berlin.de/Saros with state: composing
+DEBUG 2012-04-16 20:29:30,608 (MUCSession.java:92) stateChanged fired with state: composing
+DEBUG 2012-04-16 20:29:30,608 (ChatRoomsComposite.java:221) Received ChatState from olavolseng@saros-con.imp.fu-berlin.de/Saros: composing
+DEBUG 2012-04-16 20:29:34,566 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:34,566 (ChatRoomsComposite.java:408) Sender: OlavOlseng (olavolseng@saros-con.imp.fu-berlin.de)
+DEBUG 2012-04-16 20:29:34,567 (ChatRoomsComposite.java:409) Color: Color {141, 206, 231}
+DEBUG 2012-04-16 20:29:34,576 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:34,577 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/olavolseng@saros-con.imp.fu-berlin.de/Saros with state: inactive
+DEBUG 2012-04-16 20:29:34,577 (MUCSession.java:92) stateChanged fired with state: inactive
+DEBUG 2012-04-16 20:29:34,577 (ChatRoomsComposite.java:221) Received ChatState from olavolseng@saros-con.imp.fu-berlin.de/Saros: inactive
+DEBUG 2012-04-16 20:29:37,021 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:37,022 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/olavolseng@saros-con.imp.fu-berlin.de/Saros with state: composing
+DEBUG 2012-04-16 20:29:37,022 (MUCSession.java:92) stateChanged fired with state: composing
+DEBUG 2012-04-16 20:29:37,022 (ChatRoomsComposite.java:221) Received ChatState from olavolseng@saros-con.imp.fu-berlin.de/Saros: composing
+DEBUG 2012-04-16 20:29:39,754 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:39,755 (ChatRoomsComposite.java:408) Sender: OlavOlseng (olavolseng@saros-con.imp.fu-berlin.de)
+DEBUG 2012-04-16 20:29:39,756 (ChatRoomsComposite.java:409) Color: Color {141, 206, 231}
+DEBUG 2012-04-16 20:29:39,815 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:39,816 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/olavolseng@saros-con.imp.fu-berlin.de/Saros with state: inactive
+DEBUG 2012-04-16 20:29:39,816 (MUCSession.java:92) stateChanged fired with state: inactive
+DEBUG 2012-04-16 20:29:39,816 (ChatRoomsComposite.java:221) Received ChatState from olavolseng@saros-con.imp.fu-berlin.de/Saros: inactive
+DEBUG 2012-04-16 20:29:44,390 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:29:44,391 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros with state: composing
+DEBUG 2012-04-16 20:29:44,391 (MUCSession.java:92) stateChanged fired with state: composing
+DEBUG 2012-04-16 20:29:44,391 (ChatRoomsComposite.java:221) Received ChatState from eirikjak@saros-con.imp.fu-berlin.de/Saros: composing
+DEBUG 2012-04-16 20:30:07,505 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:30:07,506 (ChatRoomsComposite.java:408) Sender: You
+DEBUG 2012-04-16 20:30:07,506 (ChatRoomsComposite.java:409) Color: Color {191, 187, 130}
+DEBUG 2012-04-16 20:30:07,660 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:30:07,660 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros with state: inactive
+DEBUG 2012-04-16 20:30:07,661 (MUCSession.java:92) stateChanged fired with state: inactive
+DEBUG 2012-04-16 20:30:07,661 (ChatRoomsComposite.java:221) Received ChatState from eirikjak@saros-con.imp.fu-berlin.de/Saros: inactive
+DEBUG 2012-04-16 20:30:08,888 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:30:08,889 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros with state: composing
+DEBUG 2012-04-16 20:30:08,889 (MUCSession.java:92) stateChanged fired with state: composing
+DEBUG 2012-04-16 20:30:08,889 (ChatRoomsComposite.java:221) Received ChatState from eirikjak@saros-con.imp.fu-berlin.de/Saros: composing
+DEBUG 2012-04-16 20:30:10,219 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:30:10,220 (ChatRoomsComposite.java:408) Sender: You
+DEBUG 2012-04-16 20:30:10,220 (ChatRoomsComposite.java:409) Color: Color {191, 187, 130}
+DEBUG 2012-04-16 20:30:10,269 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:30:10,269 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros with state: inactive
+DEBUG 2012-04-16 20:30:10,269 (MUCSession.java:92) stateChanged fired with state: inactive
+DEBUG 2012-04-16 20:30:10,270 (ChatRoomsComposite.java:221) Received ChatState from eirikjak@saros-con.imp.fu-berlin.de/Saros: inactive
+DEBUG 2012-04-16 20:30:12,350 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:30:12,350 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/olavolseng@saros-con.imp.fu-berlin.de/Saros with state: composing
+DEBUG 2012-04-16 20:30:12,350 (MUCSession.java:92) stateChanged fired with state: composing
+DEBUG 2012-04-16 20:30:12,351 (ChatRoomsComposite.java:221) Received ChatState from olavolseng@saros-con.imp.fu-berlin.de/Saros: composing
+DEBUG 2012-04-16 20:30:12,351 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:30:12,360 (MUCSession.java:129) processPacket called
+DEBUG 2012-04-16 20:30:12,360 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/olavolseng@saros-con.imp.fu-berlin.de/Saros with state: inactive
+DEBUG 2012-04-16 20:30:12,360 (ChatRoomsComposite.java:408) Sender: OlavOlseng (olavolseng@saros-con.imp.fu-berlin.de)
+DEBUG 2012-04-16 20:30:12,360 (MUCSession.java:92) stateChanged fired with state: inactive
+DEBUG 2012-04-16 20:30:12,361 (ChatRoomsComposite.java:409) Color: Color {141, 206, 231}
+DEBUG 2012-04-16 20:30:12,361 (ChatRoomsComposite.java:221) Received ChatState from olavolseng@saros-con.imp.fu-berlin.de/Saros: inactive
+DEBUG 2012-04-16 20:30:13,824 (MUCManagerSingletonWrapperChatView.java:59) MUCManagerSingletonWrapperChatView left / destroyed.
+DEBUG 2012-04-16 20:30:13,826 (SarosSessionManager.java:271) Leave message sent.
+DEBUG 2012-04-16 20:30:13,827 (EditorManager.java:1825) Unlock all editors
+DEBUG 2012-04-16 20:30:13,828 (EditorManager.java:1825) Unlock all editors
+DEBUG 2012-04-16 20:30:13,829 (SharedProjectDecorator.java:137) Decoration update
+DEBUG 2012-04-16 20:30:13,855 (ChatRoomsComposite.java:408) Sender: You
+DEBUG 2012-04-16 20:30:13,856 (ChatRoomsComposite.java:409) Color: Color {191, 187, 130}
+DEBUG 2012-04-16 20:30:13,909 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros with state: gone
+INFO  2012-04-16 20:30:13,946 (ParticipantCollector.java:158) Session ended: Current number of participants: 2
+DEBUG 2012-04-16 20:30:13,947 (FollowModeCollector.java:176) Processing follow mode changes took 0.0 s
+INFO  2012-04-16 20:30:13,947 (PingPongCentral.java:152) Ping statistics:
+DEBUG 2012-04-16 20:30:13,956 (MUCStateManager.java:99) Incoming Message from saros1077680955@conference.jabber.ccc.de/olavolseng@saros-con.imp.fu-berlin.de/Saros with state: composing
+DEBUG 2012-04-16 20:30:14,045 (StatisticManager.java:452) Session statistic:
+  auto.followmode.enabled=false
+  data_transfer.SOCKS5 (direct).average_throughput_kbs=37.6
+  data_transfer.SOCKS5 (direct).number_of_events=34
+  data_transfer.SOCKS5 (direct).total_size_kb=11
+  data_transfer.SOCKS5 (direct).total_time_ms=317
+  eclipse.version=3.7.0.v20110110
+  feedback.disabled=false
+  feedback.survey.interval=5
+  followmode.time.percent=0
+  followmode.time.total=0.0
+  followmode.toggles=0
+  gesture.count=0
+  java.version=1.6.0_24
+  jumped.count=0
+  jumped.driver.count=0
+  jumped.observer.count=0
+  observer.selection.count.witnessed=0
+  observer.selection.count=0
+  os.name=Mac OS X
+  random.user.id=2012-02-09_20-47-46_1228338727
+  role.1.duration=1.23
+  role.1=write_access
+  role.changes=0
+  role.driver.duration=1.23
+  role.driver.percent=100
+  role.observer.duration=0.0
+  role.observer.percent=0
+  saros.version=11.12.9.r3685
+  session.count=5
+  session.id=1077680955
+  session.local.start=2012-04-16T18:30:13.947Z
+  session.time.users.2.percent=100
+  session.time.users.2=1.23
+  session.time=1.23
+  session.users.total=2
+  textedits.chars=0
+  textedits.count=0
+  textedits.nonparallel.chars=0
+  textedits.nonparallel.percent=0
+  textedits.pastes.chars=0
+  textedits.pastes=0
+  user.is.host=false
+  voip.session.count=0
+  voip.time.percent=0
+  voip.time.total=0.0
+INFO  2012-04-16 20:30:14,047 (SessionStatistic.java:289) Writing statistic data to /Users/ellenjohansen/CodenameBlueMaggot/CodenameBlueMaggot/.metadata/.plugins/de.fu_berlin.inf.dpp/statistic_2012-04-16/session-data_1077680955_2012-02-09_20-47-46_1228338727_1334601014046.txt
+INFO  2012-04-16 20:30:14,048 (StatisticManager.java:383) Statistic was gathered and saved to /Users/ellenjohansen/CodenameBlueMaggot/CodenameBlueMaggot/.metadata/.plugins/de.fu_berlin.inf.dpp/statistic_2012-04-16/session-data_1077680955_2012-02-09_20-47-46_1228338727_1334601014046.txt, but the submission is forbidden by the user.
+INFO  2012-04-16 20:30:14,048 (FeedbackManager.java:70) Session lasted 1 min 14 s
+DEBUG 2012-04-16 20:30:14,064 (BinaryChannelConnection.java:85) SOCKS5 (direct) [olavolseng@saros-con.imp.fu-berlin.de/Saros] Connection was closed by peer. No more packets
+INFO  2012-04-16 20:30:14,195 (SarosSessionManager.java:286) Session left
+ERROR 2012-04-16 22:24:07,597 (SarosNet.java:451) XMPP Connection Error: 
+java.net.SocketException: Operation timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
+	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
+	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.read1(BufferedReader.java:187)
+	at java.io.BufferedReader.read(BufferedReader.java:261)
+	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
+	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
+	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
+	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
+	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
+	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
+	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
+ERROR 2012-04-16 22:24:07,735 (SarosNet.java:430) New Connection State == ERROR
+java.net.SocketException: Operation timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
+	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
+	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.read1(BufferedReader.java:187)
+	at java.io.BufferedReader.read(BufferedReader.java:261)
+	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
+	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
+	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
+	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
+	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
+	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
+	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
+INFO  2012-04-16 22:24:07,967 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,968 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,968 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,968 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,968 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,968 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,969 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,969 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,969 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,969 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,970 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,970 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,970 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,970 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,970 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,971 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,971 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,971 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,971 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,971 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,972 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,972 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,972 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,972 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,972 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,973 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,973 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,973 (SarosNet.java:496) Login failed:null
+INFO  2012-04-16 22:24:07,973 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.107)
+INFO  2012-04-16 22:24:07,973 (SarosNet.java:496) Login failed:null

@@ -1,0 +1,13 @@
+import java.awt.image.BufferedImage;
+
+import entity.Entity;
+
+
+public class Renderable {
+
+	private Entity ent;
+	private BufferedImage img;
+	public Renderable(BufferedImage img,Entity ent){
+		
+	}
+}

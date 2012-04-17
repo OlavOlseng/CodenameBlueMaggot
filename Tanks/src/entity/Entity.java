@@ -12,6 +12,14 @@ public abstract class Entity {
 	protected final Random rand = new Random();
 	protected int x, y;
 	protected int xr, yr;
+	public int getXr() {
+		return xr;
+	}
+
+	public int getYr() {
+		return yr;
+	}
+
 	protected int angle = 0;
 	protected double dx = 0, dy = 0;
 	protected boolean removed = false;

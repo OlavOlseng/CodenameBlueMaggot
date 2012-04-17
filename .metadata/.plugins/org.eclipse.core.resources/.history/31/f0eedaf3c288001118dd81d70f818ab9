@@ -1,0 +1,9 @@
+
+public class BaseGame {
+
+	
+	public void init(double fps){
+		
+		
+	}
+}
