@@ -6,13 +6,13 @@ package entity;
 import java.awt.Point;
 import java.util.Random;
 
-public class Entity {
+public abstract class Entity {
 	
-	public static final double G = 9.81;
-//	public static final Point UniverseCenter; Denne brukes senere til å sette gravitasjonssenter.
+	public static final double G = 4;
 	protected final Random rand = new Random();
 	protected int x, y;
-	protected int xr = 10, yr = 10;
+	protected int xr, yr;
+	protected int angle = 0;
 	protected double dx = 0, dy = 0;
 	protected boolean removed = false;
 	
@@ -36,20 +36,22 @@ public class Entity {
 		this.dy = dy;
 	}
 	
-//	Denne må overskrives senere, bli abstrakt
+	public int getAngle(){
+		return this.angle;
+	}
+	
 	public void accelerate(int ddx, int ddy){
 		this.dx += ddx;
 		this.dy += ddy;
 	}
 	
+	public abstract void gravitate();
+	
 	public void move(){
 		this.setLocation((int)(this.x + this.dy), (int)(this.y + this.dy));
 	}
 	
-//	denne skal bli abstrakt, brukes til alt som skal gjøres på en tick
-	public void tick(){
-		move();
-	}
+	public abstract void tick();
 	
 	public boolean intersects(Entity other){
 		

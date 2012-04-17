@@ -4,19 +4,16 @@ import java.awt.Point;
 
 public abstract class Projectile extends Entity {
 	
-	private int angle;
-	private double airResistance;
+	protected double airResistance;
+	protected int maxSpeed;
 	
-	public Projectile(Point origin, int size, int initialSpeed, int angle) {
+	public Projectile(Point origin, int size, double speedPercent, int angle) {
 		super(origin.x, origin.y, size, size);
 		this.angle = angle;
-		this.dx = (initialSpeed*Math.cos(angle%360*2*Math.PI/360));
-		this.dy = (initialSpeed*Math.sin(angle%360*2*Math.PI/360));
+		this.dx = (speedPercent*Math.cos(angle%360*2*Math.PI/360));
+		this.dy = (speedPercent*Math.sin(angle%360*2*Math.PI/360));
 	}
 	
-	@Override
-	public void tick(){
-//		Denne koden må applisere luftmotstand
-	}
+	public abstract void tick();
 	
 }
