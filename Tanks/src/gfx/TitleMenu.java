@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 public class TitleMenu extends JPanel implements Runnable {
 
 	public static void main(String[] args) {
-		TitleMenu menuTest = new TitleMenu();
-		menuTest.run();
+		Thread t = new Thread(new TitleMenu());
+		t.run();
 	}
 
 	public TitleMenu() {
