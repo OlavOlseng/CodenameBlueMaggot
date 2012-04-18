@@ -41,6 +41,7 @@ public class TitleMenu extends JPanel implements Runnable {
 
 			@Override
 			public void keyPressed(KeyEvent arg0) {
+				System.out.println(arg0.getID());
 				if (arg0.getKeyCode() == KeyEvent.VK_ESCAPE)
 					System.exit(1);
 			}
