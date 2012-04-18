@@ -47,3 +47,79 @@ DEBUG 2012-04-17 21:40:01,197 (DiscoveryManager.java:96) Clearing cache entry of
 DEBUG 2012-04-17 21:40:35,026 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: habitats@saros-con.imp.fu-berlin.de/Saros
 DEBUG 2012-04-17 21:40:57,328 (DiscoveryManager.java:96) Clearing cache entry of buddy habitats@saros-con.imp.fu-berlin.de/Saros: <query xmlns="http://jabber.org/protocol/disco#info"><identity category="client" name="Smack" type="pc"/><feature var="http://jabber.org/protocol/xhtml-im"/><feature var="http://jabber.org/protocol/muc"/><feature var="http://jabber.org/protocol/bytestreams"/><feature var="http://jabber.org/protocol/commands"/><feature var="de.fu_berlin.inf.dpp"/></query>
 DEBUG 2012-04-17 21:42:10,217 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: habitats@saros-con.imp.fu-berlin.de/Saros
+ERROR 2012-04-18 12:10:55,774 (SarosNet.java:451) XMPP Connection Error: 
+java.net.SocketException: No route to host
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
+	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
+	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.read1(BufferedReader.java:187)
+	at java.io.BufferedReader.read(BufferedReader.java:261)
+	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
+	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
+	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
+	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
+	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
+	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
+	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
+ERROR 2012-04-18 12:10:56,345 (SarosNet.java:430) New Connection State == ERROR
+java.net.SocketException: No route to host
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
+	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
+	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.read1(BufferedReader.java:187)
+	at java.io.BufferedReader.read(BufferedReader.java:261)
+	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
+	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
+	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
+	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
+	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
+	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
+	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
+INFO  2012-04-18 12:10:56,717 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,718 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,718 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,718 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,719 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,721 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,722 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,722 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,722 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,722 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,723 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,723 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,723 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,723 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,724 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,724 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,724 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,724 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,725 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,725 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,725 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,725 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,726 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,726 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,726 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,726 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,729 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,729 (SarosNet.java:496) Login failed:null
+INFO  2012-04-18 12:10:56,729 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.114)
+INFO  2012-04-18 12:10:56,729 (SarosNet.java:496) Login failed:null

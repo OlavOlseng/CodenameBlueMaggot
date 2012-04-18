@@ -38,7 +38,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		
 		while (true){
 		long deltaTime1 = System.currentTimeMillis() - lastTime;
-		onUpdate(deltaTime1);
+		onUppdate(deltaTime1);
 		long deltaTime2 = System.currentTimeMillis() - lastTime;
 	
 		

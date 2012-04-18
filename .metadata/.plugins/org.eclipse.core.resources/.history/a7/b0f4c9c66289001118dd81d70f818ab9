@@ -5,11 +5,8 @@ public class testGame extends BaseGame {
 	
 	
 	@Override
-	public void onUpdate(long deltaTime) {
+	public void onUppdate(long deltaTime) {
 		// TODO Auto-generated method stub
-		
-		
-		
 		
 		
 	}

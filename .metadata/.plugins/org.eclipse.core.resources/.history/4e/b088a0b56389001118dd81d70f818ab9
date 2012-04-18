@@ -10,8 +10,6 @@ public class testGame extends BaseGame {
 		
 		
 		
-		
-		
 	}
 
 	@Override
