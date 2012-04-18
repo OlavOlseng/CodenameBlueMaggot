@@ -25,34 +25,15 @@ public class testGame extends BaseGame {
 		
 	}
 	
-	
-	
-	@Override
-<<<<<<< HEAD
 	public void onUpdate(long deltaTime) {
-		// TODO Auto-generated method stub
-		
-		
-		
-		
-		
-=======
-	public void onUppdate(long deltaTime) {
 		tank.tick();
 		System.out.println("LOLOL");
->>>>>>> 7f729edd6a1948449460b17fdcd20043d78ad6d7
 	}
 
 	@Override
 	public void onDraw(Renderer renderer) {
-<<<<<<< HEAD
-		// TODO Auto-generated method stub
-		
-		
-=======
 		renderer.DrawImage(img, new Tank(0,0));
 		renderer.DrawImage(img, tank);
->>>>>>> 7f729edd6a1948449460b17fdcd20043d78ad6d7
 	}
 
 }

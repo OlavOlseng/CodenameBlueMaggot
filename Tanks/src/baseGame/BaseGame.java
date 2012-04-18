@@ -32,7 +32,6 @@ public abstract class BaseGame extends Canvas implements Runnable {
 
 	@Override
 	public void run() {
-<<<<<<< HEAD
 		
 		while (true){
 		long deltaTime1 = System.currentTimeMillis() - lastTime;
@@ -49,26 +48,6 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			Entity ent = renderable.getEnt();
 			Point loc = ent.getLocation();
 			g.drawImage(renderable.getImg(),loc.x , loc.y, ent.getXr(), ent.getYr(), Color.black, null);
-=======
->>>>>>> 7f729edd6a1948449460b17fdcd20043d78ad6d7
-
-		while (true) {
-			long deltaTime1 = System.currentTimeMillis() - lastTime;
-			long deltaTime2 = System.currentTimeMillis() - lastTime;
-
-			if (deltaTime1 < 1000 / fps)
-				continue;
-			onUppdate(deltaTime1);
-			Renderer renderer = new Renderer();
-
-			onDraw(renderer);
-			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
-			g.clearRect(0, 0, 800, 600);
-			for (Renderable renderable : renderer.getToBeDrawn()) {
-				Entity ent = renderable.getEnt();
-				Point loc = ent.getLocation();
-				g.drawImage(renderable.getImg(), loc.x, loc.y, ent.getXr(),
-						ent.getYr(), Color.black, null);
 
 			}
 
@@ -86,14 +65,9 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		String fpsCounter = "FPS: " + (1000 / (int) deltaTime);
 		g.drawChars(fpsCounter.toCharArray(), 0, fpsCounter.length(), 10, 10);
 	}
-<<<<<<< HEAD
 	
 	public abstract void onUpdate(long deltaTime);
-=======
 
-	public abstract void onUppdate(long deltaTime);
-
->>>>>>> 7f729edd6a1948449460b17fdcd20043d78ad6d7
 	public abstract void onDraw(Renderer renderer);
 
 }
