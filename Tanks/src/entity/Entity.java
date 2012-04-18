@@ -15,7 +15,7 @@ public abstract class Entity {
 
 	protected int angle = 0;
 	protected double dx = 0, dy = 0;
-	protected boolean removed = false;
+	public boolean removed = false;
 	
 	public Entity(int x, int y, int xr, int yr){
 		setLocation(x, y);
