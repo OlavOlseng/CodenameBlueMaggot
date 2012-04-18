@@ -1,5 +1,7 @@
 package gfx;
 
+import input.InputHandler;
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -16,36 +18,21 @@ import javax.swing.JPanel;
 public class TitleMenu extends JPanel implements Runnable {
 
 	public static void main(String[] args) {
-		Thread t = new Thread(new TitleMenu());
+		Thread t = new Thread(new TitleMenu(new InputHandler()));
 		t.run();
 	}
 
-	public TitleMenu() {
+	public TitleMenu(InputHandler input) {
 		window = rootFrame.getContentPane();
 		rootFrame.setPreferredSize(new Dimension(800, 600));
 		rootFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setLayout(new GridBagLayout());
+		
 
 		setPreferredSize(new Dimension(250, 400));
 
 		rootFrame.setFocusable(true);
-		rootFrame.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-			}
-
-			@Override
-			public void keyReleased(KeyEvent arg0) {
-			}
-
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-				// blablabla
-				if (arg0.getKeyCode() == KeyEvent.VK_ESCAPE)
-					System.exit(1);
-			}
-		});
+		rootFrame.addKeyListener(input);
 
 	}
 
