@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import baseGame.BaseGame;
-import baseGame.Renderer;
 
 import entity.*;
 
@@ -38,7 +37,7 @@ public class BasicLevel{
 		entities.remove(ent);
 	}
 	
-	public void render(Renderer renderer) {
+	public void render() {
 //		Denne skal rendre alt som skal rendres,
 //		bare iterer over entities og hent informasjonen du trenger.
 	}

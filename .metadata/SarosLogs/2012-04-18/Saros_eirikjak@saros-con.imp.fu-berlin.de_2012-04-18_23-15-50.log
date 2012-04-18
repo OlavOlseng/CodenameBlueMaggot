@@ -1,0 +1,33 @@
+INFO  2012-04-18 23:15:44,799 (Saros.java:250) Starting Saros 11.12.9.r3685 running:
+  Java Version: 1.6.0_24
+  Java Vendor: Apple Inc.
+  Eclipse Runtime Version: 3.7.0.v20110110
+  Operating System: Mac OS X (10.6.8)
+  Hardware Architecture: i386
+INFO  2012-04-18 23:15:46,362 (StatisticManager.java:303) Current feedback settings:
+  Feedback disabled: false
+  Feedback interval: 5
+  Statistic submission allowed: false
+  Pseudonym submission allowed: false
+INFO  2012-04-18 23:15:46,385 (ErrorLogManager.java:306) Current error log settings:
+  Error log submission allowed: false
+  Full Error log submission allowed: false
+INFO  2012-04-18 23:15:46,472 (XMPPAccountStore.java:106) loaded 1 accounts
+DEBUG 2012-04-18 23:15:46,571 (StreamServiceManager.java:228) StreamServices added:
+  SendFile
+  VideoSharing
+  ArchiveProject
+  AudioService
+DEBUG 2012-04-18 23:15:46,841 (SarosNet.java:206) Socks5Proxy properties changed. Socks5Proxy started on port 7778...
+DEBUG 2012-04-18 23:15:47,547 (SarosNet.java:428) New Connection State == CONNECTING
+DEBUG 2012-04-18 23:15:50,521 (SarosNet.java:428) [eirikjak@saros-con.imp.fu-berlin.de/Saros] New Connection State == CONNECTED
+DEBUG 2012-04-18 23:15:50,580 (DataTransferManager.java:674) Prepare bytestreams for XMPP connection. Used transport order: [XEP 65 SOCKS5, XEP 47 In-Band Bytestream]
+DEBUG 2012-04-18 23:15:50,630 (SkypeManager.java:280) Refreshing Skype username cache...
+DEBUG 2012-04-18 23:15:56,231 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: habitats@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-18 23:15:57,045 (WhiteboardManager.java:108) WhiteboardManager instantiated
+DEBUG 2012-04-18 23:15:57,056 (DocumentRecord.java:93) Added Node: attr(133478375705253323) name=svg
+DEBUG 2012-04-18 23:15:57,114 (IconUtils.java:198) color: RGB {255, 255, 255}
+DEBUG 2012-04-18 23:15:57,116 (IconUtils.java:209) create foreground icon with color RGB {0, 0, 0}
+DEBUG 2012-04-18 23:16:06,054 (StartupSaros.java:66) de.fu_berlin.inf.dpp.testmode=null
+DEBUG 2012-04-18 23:16:08,316 (StunHelper.java:121) Added WAN-IP: 80.203.121.88 (through 10.0.0.120)
+DEBUG 2012-04-18 23:16:47,997 (SharedDocumentProvider.java:79) SharedDocumentProvider created by Eclipse

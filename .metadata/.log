@@ -299,3 +299,19 @@ java.net.SocketException: No route to host
 	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
 	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
 	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
+!SESSION 2012-04-18 23:15:31.143 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_24
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product -keyring /Users/ellenjohansen/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -product org.eclipse.epp.package.java.product -data /Users/ellenjohansen/CodenameBlueMaggot/CodenameBlueMaggot -product org.eclipse.epp.package.java.product -keyring /Users/ellenjohansen/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.resources 2 10035 2012-04-18 23:15:37.763
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.core.net 1 0 2012-04-18 23:15:46.923
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 4 4 2012-04-18 23:15:53.041
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.TaskList.
