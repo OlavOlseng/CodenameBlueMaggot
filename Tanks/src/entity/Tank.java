@@ -8,7 +8,7 @@ public class Tank extends Entity {
 	private int maxHitpoints = 200;
 
 	public Tank(int x, int y) {
-		super(x, y, 15, 7);
+		super(x, y, 100, 100);
 		muzzleAngle = 0;
 		muzzleLength = 20;
 		hitpoints = 200;
@@ -44,6 +44,8 @@ public class Tank extends Entity {
 	@Override
 	public void tick() {
 		move();
+		System.out.println(x);
+		System.out.println(dx);
 	}
 	
 }

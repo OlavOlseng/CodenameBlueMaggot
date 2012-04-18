@@ -16,7 +16,7 @@ public class MenuPanel extends Frame {
 		t.setVisible(true);
 		add(t);
 		validate();
-		t.init(10);
+		t.init(60);
 	}
 	public static void main(String [] args){
 		

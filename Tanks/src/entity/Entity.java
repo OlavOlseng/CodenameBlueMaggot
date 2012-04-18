@@ -57,7 +57,7 @@ public abstract class Entity {
 	public abstract void gravitate();
 	
 	public void move(){
-		this.setLocation((int)(this.x + this.dy), (int)(this.y + this.dy));
+		this.setLocation((int)(this.x + this.dx), (int)(this.y + this.dy));
 	}
 	
 	public abstract void tick();
