@@ -53,6 +53,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 
 			long deltaTime = System.currentTimeMillis() - lastTime;
 		
+<<<<<<< HEAD
 			if (deltaTime < msDelay){
 				
 				try {
@@ -86,6 +87,24 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			g.fillRect(0, 0, 800, 600);
 			
 		
+=======
+		while (true){
+		long deltaTime2 = System.currentTimeMillis() - lastTime;
+	
+		
+		if(deltaTime2 < 1000/fps) continue;
+		long deltaTime1 = System.currentTimeMillis() - lastTime;
+		onUpdate(deltaTime1);
+		Renderer renderer = new Renderer();
+		
+		onDraw(renderer);	
+		Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
+		g.clearRect(0, 0, 800, 600);
+		for(Renderable renderable: renderer.getToBeDrawn()){
+			Entity ent = renderable.getEnt();
+			Point loc = ent.getLocation();
+			g.drawImage(renderable.getImg(),loc.x , loc.y, ent.getXr(), ent.getYr(), Color.black, null);
+>>>>>>> 2c18f0cb0b58725727dd56af0b6f4528de278388
 
 			
 		

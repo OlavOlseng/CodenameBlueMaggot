@@ -19,11 +19,17 @@ public class MenuPanel extends JFrame {
 		BaseGame t = new testGame();
 		t.setVisible(true);
 		add(t);
+<<<<<<< HEAD
 		
 		
 		t.setPreferredSize(new Dimension(800,600));
 		pack();
 		setVisible(true);
+=======
+		this.setSize(800, 600);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		validate();
+>>>>>>> 2c18f0cb0b58725727dd56af0b6f4528de278388
 		t.init(60);
 	}
 	public static void main(String [] args){
