@@ -34,16 +34,17 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	public void run() {
 		
 		while (true){
-		long deltaTime1 = System.currentTimeMillis() - lastTime;
-		onUpdate(deltaTime1);
 		long deltaTime2 = System.currentTimeMillis() - lastTime;
 	
 		
 		if(deltaTime2 < 1000/fps) continue;
+		long deltaTime1 = System.currentTimeMillis() - lastTime;
+		onUpdate(deltaTime1);
 		Renderer renderer = new Renderer();
 		
 		onDraw(renderer);	
 		Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
+		g.clearRect(0, 0, 800, 600);
 		for(Renderable renderable: renderer.getToBeDrawn()){
 			Entity ent = renderable.getEnt();
 			Point loc = ent.getLocation();
