@@ -31,3 +31,5 @@ DEBUG 2012-04-18 23:15:57,116 (IconUtils.java:209) create foreground icon with c
 DEBUG 2012-04-18 23:16:06,054 (StartupSaros.java:66) de.fu_berlin.inf.dpp.testmode=null
 DEBUG 2012-04-18 23:16:08,316 (StunHelper.java:121) Added WAN-IP: 80.203.121.88 (through 10.0.0.120)
 DEBUG 2012-04-18 23:16:47,997 (SharedDocumentProvider.java:79) SharedDocumentProvider created by Eclipse
+DEBUG 2012-04-19 00:16:11,558 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: olavolseng@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-19 00:26:29,061 (DiscoveryManager.java:96) Clearing cache entry of buddy olavolseng@saros-con.imp.fu-berlin.de/Saros: <query xmlns="http://jabber.org/protocol/disco#info"><identity category="client" name="Smack" type="pc"/><feature var="http://jabber.org/protocol/xhtml-im"/><feature var="http://jabber.org/protocol/muc"/><feature var="http://jabber.org/protocol/bytestreams"/><feature var="http://jabber.org/protocol/commands"/><feature var="de.fu_berlin.inf.dpp"/></query>

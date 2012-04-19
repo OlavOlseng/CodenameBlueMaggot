@@ -1,0 +1,25 @@
+package baseGame;
+import java.awt.image.BufferedImage;
+
+import entity.Entity;
+
+
+public class Renderable {
+
+	private double width;
+	private double height;
+	private BufferedImage img;
+	
+	public Entity getEnt() {
+		return ent;
+	}
+	
+	public BufferedImage getImg() {
+		return img;
+	}
+	
+	public Renderable(BufferedImage img,double w,double h){
+		this.img = img;
+		this.ent = ent;
+	}
+}

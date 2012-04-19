@@ -1,0 +1,5 @@
+package baseGame;
+
+public enum RenderableType {
+
+}

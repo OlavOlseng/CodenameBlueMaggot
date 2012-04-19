@@ -1,0 +1,59 @@
+package baseGame;
+import java.awt.image.BufferedImage;
+
+import entity.Entity;
+
+
+public class Renderable {
+	
+	
+	private double x;
+	private double y;
+	
+	private double height;
+	private BufferedImage img;
+	private double width;
+	private RenderableType renderType;
+	public RenderableType getRenderType() {
+		return renderType;
+	}
+
+	public void setRenderType(RenderableType renderType) {
+		this.renderType = renderType;
+	}
+
+	public double getWidth() {
+		return width;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+
+	
+	
+
+	
+	public BufferedImage getImg() {
+		return img;
+	}
+	
+	public Renderable(BufferedImage img,double w,double h,double x,double y){
+		
+		
+		this.img = img;
+		width = w;
+		height = h;
+		this.y = y;
+		this.x = x;
+	}
+	public Renderable(BufferedImage img,)
+
+	public double getX() {
+		return x;
+	}
+
+	public double getY() {
+		return y;
+	}
+}
