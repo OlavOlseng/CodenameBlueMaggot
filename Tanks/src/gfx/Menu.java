@@ -9,68 +9,64 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import javax.swing.JDesktopPane;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-public abstract class Menu extends JPanel implements Runnable {
+public abstract class Menu extends JPanel {
 
-	protected JLayeredPane layeredPane;
-	protected Container content;
-	protected JFrame rootFrame;
+	class MenuBackgroundPanel extends JPanel {
+		@Override
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			g.setColor(transparentBgColor);
+			g.fillRect(0, 0, getWidth(), getHeight());
+//			setPreferredSize(new Dimension(100,300));
+		}
+	}
+
 	protected GridBagConstraints c = new GridBagConstraints();
 	protected JPanel buttonPanel;
+	protected MenuBackgroundPanel backgroundPanel;
+	protected JLayeredPane layeredPane;
 
 	protected ArrayList<MenuButton> ButtonArr = new ArrayList<MenuButton>();
 	protected Dimension menuSize;
 	protected Color transparentBgColor;
 
-	protected final int rootFrameHeight = 600;
-	protected final int rootFrameWidth = 800;
+	protected final int rootFrameHeight = GameDebug.height;
+	protected final int rootFrameWidth = GameDebug.width;
 
-	private BufferedImage backgroundImage;
+	public Menu() {
 
-	public Menu(InputHandler input) {
-		rootFrame = new JFrame();
-		rootFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		rootFrame.setPreferredSize(new Dimension(rootFrameWidth, rootFrameHeight));
-		rootFrame.setFocusable(true);
-		rootFrame.addKeyListener(input);
-		
+		setBounds(0, 0, rootFrameWidth, rootFrameHeight);
 		setOpaque(false);
 
-		layeredPane = rootFrame.getLayeredPane();
-		layeredPane.setBounds(0, 0, rootFrameWidth, rootFrameHeight);
+		layeredPane = new JLayeredPane();
+		layeredPane.setPreferredSize(new Dimension(rootFrameHeight,rootFrameWidth));
 
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new GridBagLayout());
-		buttonPanel.setOpaque(false);
 
-		layeredPane.add(this, new Integer(1));
+		backgroundPanel = new MenuBackgroundPanel();
+
+		layeredPane.add(backgroundPanel, new Integer(2));
 		layeredPane.add(buttonPanel, new Integer(2));
 
-		// add temp game w/background etc and possibly animation
-		layeredPane.add(new GameDebug(rootFrameWidth, rootFrameHeight), new Integer(0));
+//		add(layeredPane);
+		setUp();
+		add(buttonPanel);
 	}
 
-	public void putCenter(int width, int height) {
+	public void putCenter(JPanel panel, int width, int height) {
 		setBounds((rootFrameWidth / 2) - (width / 2), (rootFrameHeight / 2) - (height / 2), width, height);
 	}
 
-	@Override
-	public void run() {
+	public void setUp() {
 
 		c.gridheight = 1;
 		c.gridwidth = 1;
@@ -90,17 +86,17 @@ public abstract class Menu extends JPanel implements Runnable {
 			c.gridy++;
 		}
 
-		rootFrame.pack();
-		rootFrame.setVisible(true);
-		rootFrame.setLocationRelativeTo(null);
-
 	}
-
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-
-		g.drawImage(backgroundImage, 0, 0, rootFrameWidth, rootFrameHeight, null);
-		g.setColor(transparentBgColor);
-		g.fillRect(0, 0, getWidth(), getHeight());
+	
+	public static void main(String[] args){
+		JFrame frame = new JFrame();
+		frame.add(new MenuTitle());
+		frame.setVisible(true);
+		frame.pack();
+		frame.addKeyListener(new InputHandler());
+		frame.setLocationRelativeTo(null);
+		
+		frame.revalidate();
+		frame.repaint();
 	}
 }
