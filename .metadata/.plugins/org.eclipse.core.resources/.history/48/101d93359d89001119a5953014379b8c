@@ -1,0 +1,25 @@
+package baseGame;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
+import entity.Entity;
+
+
+public class Renderer {
+
+	public ArrayList<Renderable> getToBeDrawn() {
+		return toBeDrawn;
+	}
+	
+	private ArrayList<Renderable> toBeDrawn;	
+	
+	public Renderer(){
+		
+		toBeDrawn = new ArrayList<Renderable>();
+	}
+	public void DrawImage(BufferedImage img,Entity entity){
+		
+		toBeDrawn.add(new Renderable(img,entity));
+		
+	}
+}

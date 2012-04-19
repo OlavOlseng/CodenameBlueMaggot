@@ -1,4 +1,5 @@
 package baseGame;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -17,9 +18,12 @@ public class Renderer {
 		
 		toBeDrawn = new ArrayList<Renderable>();
 	}
-	public void DrawImage(BufferedImage img,Entity entity){
+	public void DrawImage(BufferedImage img,int x,int y,int width,int height){
 		
-		toBeDrawn.add(new Renderable(img,entity));
+		toBeDrawn.add(new Renderable(img,x,y,width,height));
 		
+	}
+	public void DrawCircle(int x,int y,int radius,Color color){
+		toBeDrawn.add(new Renderable(x, y, radius, color));
 	}
 }
