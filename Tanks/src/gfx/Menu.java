@@ -5,6 +5,7 @@ import input.InputHandler;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,6 +14,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
@@ -25,7 +27,6 @@ public abstract class Menu extends JPanel {
 			super.paintComponent(g);
 			g.setColor(transparentBgColor);
 			g.fillRect(0, 0, getWidth(), getHeight());
-//			setPreferredSize(new Dimension(100,300));
 		}
 	}
 
@@ -38,40 +39,32 @@ public abstract class Menu extends JPanel {
 	protected Dimension menuSize;
 	protected Color transparentBgColor;
 
-	protected final int rootFrameHeight = GameDebug.height;
-	protected final int rootFrameWidth = GameDebug.width;
-
 	public Menu() {
 
-		setBounds(0, 0, rootFrameWidth, rootFrameHeight);
+		setLayout(new GridBagLayout());
 		setOpaque(false);
 
 		layeredPane = new JLayeredPane();
-		layeredPane.setPreferredSize(new Dimension(rootFrameHeight,rootFrameWidth));
+		layeredPane.setOpaque(false);
 
 		buttonPanel = new JPanel();
+		buttonPanel.setOpaque(false);
 		buttonPanel.setLayout(new GridBagLayout());
 
 		backgroundPanel = new MenuBackgroundPanel();
+		backgroundPanel.setOpaque(false);
 
-		layeredPane.add(backgroundPanel, new Integer(2));
-		layeredPane.add(buttonPanel, new Integer(2));
+		layeredPane.add(buttonPanel, new Integer(1));
+		layeredPane.add(backgroundPanel, new Integer(0));
 
-//		add(layeredPane);
-		setUp();
-		add(buttonPanel);
+		add(layeredPane);
 	}
 
-	public void putCenter(JPanel panel, int width, int height) {
-		setBounds((rootFrameWidth / 2) - (width / 2), (rootFrameHeight / 2) - (height / 2), width, height);
-	}
 
-	public void setUp() {
+	public void setUpLayout() {
 
 		c.gridheight = 1;
 		c.gridwidth = 1;
-
-		// setOpaque(false);
 
 		c.gridx = 0;
 		c.gridy = 1;
@@ -84,19 +77,8 @@ public abstract class Menu extends JPanel {
 		for (MenuButton button : ButtonArr) {
 			buttonPanel.add(button, c);
 			c.gridy++;
+			System.out.println("adding button");
 		}
 
-	}
-	
-	public static void main(String[] args){
-		JFrame frame = new JFrame();
-		frame.add(new MenuTitle());
-		frame.setVisible(true);
-		frame.pack();
-		frame.addKeyListener(new InputHandler());
-		frame.setLocationRelativeTo(null);
-		
-		frame.revalidate();
-		frame.repaint();
 	}
 }

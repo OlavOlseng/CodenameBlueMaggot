@@ -15,23 +15,22 @@ public class MenuTitle extends Menu {
 	public MenuTitle() {
 		super();
 
+		buttonPanel.setSize(size);
+		backgroundPanel.setSize(size);
+		layeredPane.setPreferredSize(size);
+
+//		super.putCenter(this, width, height);
+
 		btnExit = new MenuButton("Exit!", "exit");
 
-		super.setPreferredSize(size);
-		super.layeredPane.setPreferredSize(size);
-		super.buttonPanel.setPreferredSize(size);
-		super.backgroundPanel.setPreferredSize(size);
-		
-		super.buttonPanel.setBounds(0, 0, width, height);
-		super.backgroundPanel.setBounds(0, 0, width, height);
-
 		super.transparentBgColor = new Color(255, 10, 250, 70);
-		
-		putCenter(this, width, height);
 
 		super.ButtonArr.add(new MenuButton("NOO!", ""));
 		super.ButtonArr.add(new MenuButton("Okey!", ""));
 		super.ButtonArr.add(btnExit);
 
+		super.setUpLayout();
+
 	}
+
 }
