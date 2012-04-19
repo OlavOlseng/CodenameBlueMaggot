@@ -101,7 +101,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 					break;
 				}
 			}
-		
+			System.out.println(System.currentTimeMillis()- time1);
 			if (showFps)
 				DrawfpsCounter(g,deltaTime);
 			

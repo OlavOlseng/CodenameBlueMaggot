@@ -77,9 +77,9 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			
 
 			Renderer renderer = new Renderer();
-	
+			long time1 = System.currentTimeMillis();
 			onDraw(renderer);
-			
+			System.out.println(System.currentTimeMillis()- time1);
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
 			g.setClip(0, 0, 800, 600);
 			g.setColor(backgroundColor);
@@ -88,11 +88,10 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		
 
 			
-		
+
 			for (Renderable renderable : renderer.getToBeDrawn()) {
 				switch (renderable.getRenderType()) {
 				case BUFFEREDIMAGE:
-					
 					DrawBuffImage(g, renderable);
 					break;
 				case CIRCLE:
@@ -101,7 +100,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 					break;
 				}
 			}
-		
+
 			if (showFps)
 				DrawfpsCounter(g,deltaTime);
 			

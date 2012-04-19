@@ -72,12 +72,11 @@ public abstract class BaseGame extends Canvas implements Runnable {
 				
 				lastTime = System.currentTimeMillis();
 				
-			
+				long time1 = System.currentTimeMillis();
 				onUpdate(deltaTime);
-			
+		
 
 			Renderer renderer = new Renderer();
-	
 			onDraw(renderer);
 			
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
@@ -88,11 +87,10 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		
 
 			
-		
+
 			for (Renderable renderable : renderer.getToBeDrawn()) {
 				switch (renderable.getRenderType()) {
 				case BUFFEREDIMAGE:
-					
 					DrawBuffImage(g, renderable);
 					break;
 				case CIRCLE:
@@ -101,12 +99,11 @@ public abstract class BaseGame extends Canvas implements Runnable {
 					break;
 				}
 			}
-		
+
 			if (showFps)
 				DrawfpsCounter(g,deltaTime);
 			
 			buffer.show();
-		
 			g.dispose();
 			
 

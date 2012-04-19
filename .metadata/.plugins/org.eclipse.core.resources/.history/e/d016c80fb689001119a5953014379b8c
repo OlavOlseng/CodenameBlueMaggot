@@ -24,7 +24,7 @@ public class MenuPanel extends JFrame {
 		t.setPreferredSize(new Dimension(800,600));
 		pack();
 		setVisible(true);
-		t.init(60);
+		t.init(100);
 	}
 	public static void main(String [] args){
 		
