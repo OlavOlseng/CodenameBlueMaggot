@@ -7,6 +7,10 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
+
+import baseGame.Rendering.Renderer;
 
 import entity.Entity;
 
@@ -20,17 +24,22 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	private long msDelay;
 	private int width = 800;
 	private int height = 600;
-	private Color backgroundColor = Color.cyan;
-
+	private int backgroundColor = Color.BLACK.getRGB();
+	private int [] pixels;
+	private BufferedImage mainCanvas;
 	public void setBackgroundColor(Color backgroundColor) {
-		this.backgroundColor = backgroundColor;
+		this.backgroundColor = backgroundColor.getRGB();
 		
+	}	
+	public Color getBackGroundColor(){
+		return new Color(backgroundColor);
 	}
-
 	private Rectangle gameRect;
 
 	public void init(int fps) {
 		
+		mainCanvas = new BufferedImage(width, height,BufferedImage.TYPE_INT_RGB);
+		pixels = ((DataBufferInt)mainCanvas.getRaster().getDataBuffer()).getData();
 		this.fps = fps;
 		
 		msDelay = 1000/(long)fps;
@@ -76,27 +85,16 @@ public abstract class BaseGame extends Canvas implements Runnable {
 				onUpdate(deltaTime);
 			
 
-			Renderer renderer = new Renderer();
+			Renderer renderer = new Renderer(pixels,backgroundColor,width,height);
 	
 			onDraw(renderer);
 			
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
-			g.setClip(0, 0, 800, 600);
-			g.setColor(backgroundColor);
-			g.fillRect(0, 0, 800, 600);
 			
-			for (Renderable renderable : renderer.getToBeDrawn()) {
-				switch (renderable.getRenderType()) {
-				case BUFFEREDIMAGE:
-					
-					DrawBuffImage(g, renderable);
-					break;
-				case CIRCLE:
-					DrawCircle(g, renderable);
-				default:
-					break;
-				}
-			}
+			g.drawImage(mainCanvas, 0, 0, width, height, Color.BLACK, null);
+			
+			
+			
 		
 
 		

@@ -10,6 +10,9 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import baseGame.Rendering.RGBImage;
+import baseGame.Rendering.Renderer;
+
 import entity.Entity;
 import entity.Tank;
 
@@ -23,15 +26,18 @@ public class testGame extends BaseGame {
 	}
 	
 	ArrayList<Circle> circles;
+	int circleImg[] = {0xFF0000};
+	RGBImage img;
 	public testGame(){
 		
 		
 	setBackgroundColor(Color.BLACK);
 		Random random = new Random();
-		
+		setBackgroundColor(Color.BLACK);
+		img = new RGBImage(new File("./res/temp_background.png"));
 		circles = new ArrayList<Circle>();
 		//Lager 3000 sirkler
-		for (int i = 0;i<3000;i++){
+		for (int i = 0;i<400000;i++){
 			Circle circle = new Circle();
 			circle.x = 400;
 			circle.y = 300;
@@ -57,11 +63,12 @@ public class testGame extends BaseGame {
 
 	@Override
 	public void onDraw(Renderer renderer) {
-		
+		renderer.clearAllPixelData(Color.BLACK.getRGB());
+		renderer.DrawImage(img, 0, 0, 800, 600);
 		for(Circle circle:circles){
-			renderer.DrawCircle((int)circle.x,(int) circle.y, 1, circle.color);
+			renderer.DrawPixelArrayRGB(circleImg, (int)circle.x,(int) circle.y, 1, 1);
 		}
-		
+		renderer.makeTransparent(Color.white.getRGB());
 		
 	}
 
