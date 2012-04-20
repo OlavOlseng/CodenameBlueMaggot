@@ -26,6 +26,8 @@ public class BasicLevel{
 	public void init(){
 		entities = new ArrayList<Entity>();
 		
+		
+		
 	}
 	
 	public void addEntity(Entity ent) {
@@ -44,15 +46,13 @@ public class BasicLevel{
 	}
 	
 	public void tick() {
+		handler.tick();
 		for (Entity ent : entities) {
+			ent.tick();
 			if(ent.removed){
 				removeEntity(ent);
 				continue;
 			}
-			ent.tick();
 		}
 	}
-	
-	
-
 }

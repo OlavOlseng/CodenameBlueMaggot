@@ -43,7 +43,7 @@ public class Tank extends Entity {
 
 	@Override
 	public void tick() {
-		move();
+		super.tick();
 		System.out.println(x);
 		System.out.println(dx);
 	}

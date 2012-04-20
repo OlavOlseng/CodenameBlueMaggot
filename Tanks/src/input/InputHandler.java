@@ -50,4 +50,7 @@ public class InputHandler implements KeyListener {
 
 	}
 
+	public void tick(){
+//		trenger denne til å gå over listen med keys, og oppdatere dem.
+	}
 }
