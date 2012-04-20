@@ -37,6 +37,8 @@ public class testGame extends BaseGame {
 	
 	int circleImg[] = {0xFF0077};
 	RGBImage img;
+	RGBImage ground = new RGBImage(new File("./res/temp_ground.png"));
+	RGBImage tank;
 	public testGame(){
 		
 
@@ -45,18 +47,21 @@ public class testGame extends BaseGame {
 		setBackgroundColor(Color.BLACK);
 		
 		img = new RGBImage(new File("./res/temp_background.png"));
-		RGBImage tank = new RGBImage(new File("./res/temp_tank.png"));
+		tank = new RGBImage(new File("./res/temp_tank.png"));
 		
+		System.out.println(ground.getPixels()[0]);
+		System.out.println(0xFF0077);
 		
 		
 		img.DrawRGBImage(tank.getPixels(), 100, 100, tank.getWidth(), tank.getHeight());
-		img.DrawCircle(ALPHA_MASK, 20, 20, 10);
+		
+		ground.DrawCircle(Color.gray.getRGB(), 700, 500, 137);
 		
 		circles = new ArrayList<Circle>();
 		
 		
 		//Lager 400000 sirkler
-		for (int i = 0;i<100000;i++){
+		for (int i = 0;i<10000;i++){
 			Circle circle = new Circle();
 			circle.x = 400;
 			circle.y = 300;
@@ -85,10 +90,12 @@ public class testGame extends BaseGame {
 		renderer.clearAllPixelData(Color.BLACK.getRGB());
 		renderer.DrawImage(img, 0, 0, WIDTH, HEIGHT);
 		
+		renderer.DrawImage(ground, 0, 0, WIDTH, HEIGHT);
+		
 		for(Circle circle:circles){
 			renderer.DrawPixelArrayRGB(circleImg,ALPHA_MASK, (int)circle.x,(int) circle.y, 1, 1);
 		}
-		
+		renderer.DrawPixelArrayRGB(this.tank.getPixels(),ALPHA_MASK, 780,500, tank.getWidth(), tank.getHeight());
 	//renderer.makeTransparent(ALPHA_MASK);
 		
 	}
