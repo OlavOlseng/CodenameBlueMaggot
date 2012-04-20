@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import baseGame.BaseGame;
-import baseGame.Renderer;
+import baseGame.Rendering.Renderer;
 
 import entity.*;
 
@@ -29,7 +29,6 @@ public class BasicLevel{
 		
 		
 	}
-	
 	public void addEntity(Entity ent) {
 		if(ent instanceof Tank)
 			players.add((Tank)ent);
@@ -41,6 +40,8 @@ public class BasicLevel{
 	}
 	
 	public void render(Renderer renderer) {
+		
+		
 //		Denne skal rendre alt som skal rendres,
 //		bare iterer over entities og hent informasjonen du trenger.
 	}

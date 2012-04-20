@@ -30,13 +30,17 @@ public class Renderer {
 		
 	}
 	
+	
 	public void DrawPixelArrayRGB(int[] pixels,int x,int y, int width, int height){
+		int offset = y*canvasWidth;
+		
 		if(x>=0 && y>=0 && y<= canvasHeight && x<=canvasWidth){
 			
 			for(int i =0;i<height;i++){
 				for(int j = 0;j<width;j++){
-					if(y*canvasWidth +x+ i*canvasWidth + j < rgbPixels.length){
-					rgbPixels[(y)*canvasWidth +x+ i*canvasWidth + j] = pixels[i*width +j];
+					int adr = offset +x+ i*canvasWidth + j ;
+					if(adr < rgbPixels.length){
+					rgbPixels[adr] = pixels[i*width +j];
 					
 					}else{
 						break;
@@ -50,14 +54,15 @@ public class Renderer {
 		
 	}
 	public void DrawPixelArrayRGB(int[] pixels,int transparentColor,int x,int y, int width, int height){
+		int offset = y*canvasWidth;
 		if(x>=0 && y>=0 && y<= canvasHeight && x<=canvasWidth){
-			
 			for(int i =0;i<height;i++){
 				for(int j = 0;j<width;j++){
-					if(y*canvasWidth +x+ i*canvasWidth + j < rgbPixels.length){
+					int adr = offset +x+ i*canvasWidth + j ;
+					if(adr < rgbPixels.length){
 						int c = pixels[i*width +j];
 						if(c !=transparentColor){
-						 rgbPixels[(y)*canvasWidth +x+ i*canvasWidth + j] =c ;
+						 rgbPixels[adr] =c ;
 						}
 					}else{
 						break;
@@ -66,7 +71,6 @@ public class Renderer {
 					
 				}
 			}
-		
 			}
 		
 	}

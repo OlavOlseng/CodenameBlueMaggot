@@ -17,6 +17,13 @@ import entity.Entity;
 import entity.Tank;
 
 public class testGame extends BaseGame {
+	
+	
+	
+	public static int WIDTH = 800;
+	public static int HEIGHT = 600;
+	public static int ALPHA_MASK = 0xFF0077;
+	
 	private class Circle{
 		double x;
 		double y;
@@ -26,18 +33,30 @@ public class testGame extends BaseGame {
 	}
 	
 	ArrayList<Circle> circles;
-	int circleImg[] = {0xFF0000};
+	Random randomc = new Random();
+	
+	int circleImg[] = {0xFF0077};
 	RGBImage img;
 	public testGame(){
 		
-		
-	setBackgroundColor(Color.BLACK);
+
+		setBackgroundColor(Color.BLACK);
 		Random random = new Random();
 		setBackgroundColor(Color.BLACK);
+		
 		img = new RGBImage(new File("./res/temp_background.png"));
+		RGBImage tank = new RGBImage(new File("./res/temp_tank.png"));
+		
+		
+		
+		img.DrawRGBImage(tank.getPixels(), 100, 100, tank.getWidth(), tank.getHeight());
+		img.DrawCircle(ALPHA_MASK, 20, 20, 10);
+		
 		circles = new ArrayList<Circle>();
-		//Lager 3000 sirkler
-		for (int i = 0;i<400000;i++){
+		
+		
+		//Lager 400000 sirkler
+		for (int i = 0;i<100000;i++){
 			Circle circle = new Circle();
 			circle.x = 400;
 			circle.y = 300;
@@ -46,7 +65,7 @@ public class testGame extends BaseGame {
 			circle.dy = Math.sin(6.28*rand)*random.nextDouble()*5;
 			circles.add(circle);
 			
-			circle.color = new Color(random.nextFloat(),random.nextFloat(),random.nextFloat());
+			circle.color = new Color(random.nextInt(0xFFFFFF));
 		}
 		
 	}
@@ -64,11 +83,13 @@ public class testGame extends BaseGame {
 	@Override
 	public void onDraw(Renderer renderer) {
 		renderer.clearAllPixelData(Color.BLACK.getRGB());
-		renderer.DrawImage(img, 0, 0, 800, 600);
+		renderer.DrawImage(img, 0, 0, WIDTH, HEIGHT);
+		
 		for(Circle circle:circles){
-			renderer.DrawPixelArrayRGB(circleImg, (int)circle.x,(int) circle.y, 1, 1);
+			renderer.DrawPixelArrayRGB(circleImg,ALPHA_MASK, (int)circle.x,(int) circle.y, 1, 1);
 		}
-		renderer.makeTransparent(Color.white.getRGB());
+		
+	//renderer.makeTransparent(ALPHA_MASK);
 		
 	}
 

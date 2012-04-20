@@ -22,10 +22,11 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	private long lastTime;
 	private double fps;
 	private long msDelay;
-	private int width = 800;
-	private int height = 600;
+
 	private int backgroundColor = Color.BLACK.getRGB();
+	private BufferedImage backGround = null;
 	private int [] pixels;
+
 	private BufferedImage mainCanvas;
 	public void setBackgroundColor(Color backgroundColor) {
 		this.backgroundColor = backgroundColor.getRGB();
@@ -34,17 +35,19 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	public Color getBackGroundColor(){
 		return new Color(backgroundColor);
 	}
+	
 	private Rectangle gameRect;
 
 	public void init(int fps) {
 		
-		mainCanvas = new BufferedImage(width, height,BufferedImage.TYPE_INT_RGB);
+		mainCanvas = new BufferedImage(testGame.WIDTH, testGame.HEIGHT,BufferedImage.TYPE_INT_RGB);
 		pixels = ((DataBufferInt)mainCanvas.getRaster().getDataBuffer()).getData();
+		
 		this.fps = fps;
 		
 		msDelay = 1000/(long)fps;
 		
-		gameRect = new Rectangle(0, 0, width, height);
+		gameRect = new Rectangle(0, 0,testGame.WIDTH, testGame.HEIGHT);
 		setIgnoreRepaint(true);
 		createBufferStrategy(2);
 		buffer = getBufferStrategy();
@@ -85,21 +88,20 @@ public abstract class BaseGame extends Canvas implements Runnable {
 				onUpdate(deltaTime);
 			
 
-			Renderer renderer = new Renderer(pixels,backgroundColor,width,height);
+			Renderer renderer = new Renderer(pixels,backgroundColor,testGame.WIDTH,testGame.HEIGHT);
 	
 			onDraw(renderer);
 			
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
 			
-			g.drawImage(mainCanvas, 0, 0, width, height, Color.BLACK, null);
 			
+			g.drawImage(mainCanvas, 0, 0, testGame.WIDTH, testGame.HEIGHT, Color.BLACK, null);
 			
-			
-		
 
 		
 			if (showFps)
 				DrawfpsCounter(g,deltaTime);
+			
 			
 			buffer.show();
 		
@@ -140,7 +142,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 
 	private void DrawfpsCounter(Graphics2D g, long deltaTime) {
 		String fpsCounter = "FPS: " + (1000 / (int) deltaTime);
-		g.setColor(Color.white);
+		g.setColor(Color.BLACK);
 		g.drawChars(fpsCounter.toCharArray(), 0, fpsCounter.length(), 10, 10);
 	}
 

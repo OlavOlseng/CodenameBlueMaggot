@@ -1,4 +1,0 @@
-#Fri Apr 20 12:42:48 CEST 2012
-PLUGINS_NOT_ACTIVATED_ON_STARTUP=org.eclipse.m2e.discovery;
-eclipse.preferences.version=1
-ENABLED_DECORATORS=org.eclipse.m2e.core.mavenVersionDecorator\:false,de.fu_berlin.inf.dpp.ui.decorators.SharedProjectDecorator\:true,de.fu_berlin.inf.dpp.ui.decorators.SharedProjectFileDecorator\:true,org.eclipse.jdt.ui.override.decorator\:true,org.eclipse.jdt.ui.interface.decorator\:false,org.eclipse.jdt.ui.buildpath.decorator\:true,org.eclipse.m2e.core.maven2decorator\:true,org.eclipse.mylyn.context.ui.decorator.interest\:true,org.eclipse.mylyn.tasks.ui.decorators.task\:true,org.eclipse.mylyn.team.ui.changeset.decorator\:true,org.eclipse.team.cvs.ui.decorator\:true,org.eclipse.team.svn.ui.decorator.SVNLightweightDecorator\:false,org.eclipse.ui.LinkedResourceDecorator\:true,org.eclipse.ui.VirtualResourceDecorator\:true,org.eclipse.ui.ContentTypeDecorator\:true,org.eclipse.ui.ResourceFilterDecorator\:false,

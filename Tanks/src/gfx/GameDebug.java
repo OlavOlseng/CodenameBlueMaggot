@@ -17,6 +17,9 @@ import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+import baseGame.BaseGame;
+import baseGame.testGame;
+
 public class GameDebug extends JFrame implements Runnable {
 
 	BufferedImage backgroundImage;
@@ -27,15 +30,26 @@ public class GameDebug extends JFrame implements Runnable {
 	public  MenuTitle menu = new MenuTitle();
 
 	public GameDebug() {
+		BaseGame t = new testGame();
+		
+		t.setVisible(true);
+		JPanel lulz = new JPanel();
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 0;
+		lulz.add(t,c);
 		menu = new MenuTitle();
 		menu.setOpaque(false);
 //		menu.setVisible(false);
 
 		layeredPane = this.getLayeredPane();
 		layeredPane.add(menu, JLayeredPane.POPUP_LAYER);
+		layeredPane.add(lulz,JLayeredPane.FRAME_CONTENT_LAYER);
 		layeredPane.setOpaque(false);
 		layeredPane.setLayout(new GridBagLayout());
 
+
+		
 		InputHandler input = new InputHandler(this);
 		
 		setFocusable(true);
@@ -44,11 +58,14 @@ public class GameDebug extends JFrame implements Runnable {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackgroundImage();
 		setPreferredSize(new Dimension(height, width));
-
+		t.setPreferredSize(new Dimension(600,800));
 		pack();
+		
 		setLocationRelativeTo(null);
 
 		setVisible(true);
+		
+		t.init(60);
 	}
 
 	@Override
@@ -66,10 +83,7 @@ public class GameDebug extends JFrame implements Runnable {
 		}
 	}
 
-	public void paint(Graphics g) {
-		super.paint(g);
-		g.drawImage(backgroundImage, 0, 0, height, width, null);
-	}
+
 
 	public static void main(String[] args) {
 		Thread t = new Thread(new GameDebug());
