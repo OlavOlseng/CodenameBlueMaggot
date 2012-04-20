@@ -1,0 +1,17 @@
+package baseGame.Rendering;
+
+import java.awt.image.BufferedImage;
+
+public class RGBImage extends BufferedImage {
+
+	public RGBImage(int width, int height) {
+		super(width, height, imageType);
+		// TODO Auto-generated constructor stub
+		
+	}
+	public RGBImage(File file){
+		
+	}
+	
+
+}

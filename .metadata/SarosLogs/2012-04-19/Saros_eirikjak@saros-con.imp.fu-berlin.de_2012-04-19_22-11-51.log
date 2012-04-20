@@ -1,0 +1,112 @@
+INFO  2012-04-19 22:11:45,604 (Saros.java:250) Starting Saros 11.12.9.r3685 running:
+  Java Version: 1.6.0_24
+  Java Vendor: Apple Inc.
+  Eclipse Runtime Version: 3.7.0.v20110110
+  Operating System: Mac OS X (10.6.8)
+  Hardware Architecture: i386
+INFO  2012-04-19 22:11:47,167 (StatisticManager.java:303) Current feedback settings:
+  Feedback disabled: false
+  Feedback interval: 5
+  Statistic submission allowed: false
+  Pseudonym submission allowed: false
+INFO  2012-04-19 22:11:47,279 (XMPPAccountStore.java:106) loaded 1 accounts
+DEBUG 2012-04-19 22:11:47,287 (StreamServiceManager.java:228) StreamServices added:
+  VideoSharing
+  ArchiveProject
+  SendFile
+  AudioService
+INFO  2012-04-19 22:11:47,534 (ErrorLogManager.java:306) Current error log settings:
+  Error log submission allowed: false
+  Full Error log submission allowed: false
+DEBUG 2012-04-19 22:11:47,677 (SarosNet.java:206) Socks5Proxy properties changed. Socks5Proxy started on port 7777...
+DEBUG 2012-04-19 22:11:48,303 (SarosNet.java:428) New Connection State == CONNECTING
+DEBUG 2012-04-19 22:11:51,570 (SarosNet.java:428) [eirikjak@saros-con.imp.fu-berlin.de/Saros] New Connection State == CONNECTED
+DEBUG 2012-04-19 22:11:51,635 (DataTransferManager.java:674) Prepare bytestreams for XMPP connection. Used transport order: [XEP 65 SOCKS5, XEP 47 In-Band Bytestream]
+DEBUG 2012-04-19 22:11:51,677 (SkypeManager.java:280) Refreshing Skype username cache...
+DEBUG 2012-04-19 22:12:01,465 (WhiteboardManager.java:108) WhiteboardManager instantiated
+DEBUG 2012-04-19 22:12:01,480 (DocumentRecord.java:93) Added Node: attr(13348663214776766) name=svg
+DEBUG 2012-04-19 22:12:01,785 (IconUtils.java:198) color: RGB {255, 255, 255}
+DEBUG 2012-04-19 22:12:01,787 (IconUtils.java:209) create foreground icon with color RGB {0, 0, 0}
+DEBUG 2012-04-19 22:12:09,342 (StunHelper.java:121) Added WAN-IP: 80.203.121.88 (through 10.0.0.129)
+DEBUG 2012-04-19 22:12:12,641 (StartupSaros.java:66) de.fu_berlin.inf.dpp.testmode=null
+DEBUG 2012-04-19 22:15:17,068 (SharedDocumentProvider.java:79) SharedDocumentProvider created by Eclipse
+DEBUG 2012-04-19 22:55:27,286 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: olavolseng@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-19 23:06:53,100 (DiscoveryManager.java:96) Clearing cache entry of buddy olavolseng@saros-con.imp.fu-berlin.de/Saros: <query xmlns="http://jabber.org/protocol/disco#info"><identity category="client" name="Smack" type="pc"/><feature var="http://jabber.org/protocol/xhtml-im"/><feature var="http://jabber.org/protocol/muc"/><feature var="http://jabber.org/protocol/bytestreams"/><feature var="http://jabber.org/protocol/commands"/><feature var="de.fu_berlin.inf.dpp"/></query>
+DEBUG 2012-04-19 23:06:57,727 (DiscoveryManager.java:389) Inserted DiscoveryInfo into Cache for: olavolseng@saros-con.imp.fu-berlin.de/Saros
+DEBUG 2012-04-20 01:55:32,469 (DiscoveryManager.java:96) Clearing cache entry of buddy olavolseng@saros-con.imp.fu-berlin.de/Saros: <query xmlns="http://jabber.org/protocol/disco#info"><identity category="client" name="Smack" type="pc"/><feature var="http://jabber.org/protocol/xhtml-im"/><feature var="http://jabber.org/protocol/muc"/><feature var="http://jabber.org/protocol/bytestreams"/><feature var="http://jabber.org/protocol/commands"/><feature var="de.fu_berlin.inf.dpp"/></query>
+ERROR 2012-04-20 02:54:08,337 (SarosNet.java:451) XMPP Connection Error: 
+java.net.SocketException: Operation timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
+	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
+	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.read1(BufferedReader.java:187)
+	at java.io.BufferedReader.read(BufferedReader.java:261)
+	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
+	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
+	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
+	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
+	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
+	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
+	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
+ERROR 2012-04-20 02:54:08,464 (SarosNet.java:430) New Connection State == ERROR
+java.net.SocketException: Operation timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
+	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
+	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.read1(BufferedReader.java:187)
+	at java.io.BufferedReader.read(BufferedReader.java:261)
+	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
+	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
+	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
+	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
+	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
+	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
+	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
+INFO  2012-04-20 02:54:08,672 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,672 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,673 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,673 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,673 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,674 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,674 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,674 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,674 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,675 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,675 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,675 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,676 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,676 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,676 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,676 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,677 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,677 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,677 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,677 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,678 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,678 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,679 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,680 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,681 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,681 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,682 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,682 (SarosNet.java:496) Login failed:null
+INFO  2012-04-20 02:54:08,683 (SarosNet.java:479) Reconnecting...(ellen-johansens-macbook.local/10.0.0.129)
+INFO  2012-04-20 02:54:08,684 (SarosNet.java:496) Login failed:null

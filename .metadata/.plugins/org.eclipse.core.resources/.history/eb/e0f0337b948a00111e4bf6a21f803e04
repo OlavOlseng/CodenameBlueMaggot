@@ -1,0 +1,5 @@
+package baseGame.Rendering;
+
+public class RGBImage {
+
+}
