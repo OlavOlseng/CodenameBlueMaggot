@@ -1,166 +1,4 @@
-!SESSION 2012-04-16 14:52:12.711 -----------------------------------------------
-eclipse.buildId=I20110613-1736
-java.version=1.6.0_24
-java.vendor=Apple Inc.
-BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
-Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product -keyring /Users/ellenjohansen/.eclipse_keyring -showlocation
-Command-line arguments:  -os macosx -ws cocoa -arch x86 -product org.eclipse.epp.package.java.product -data /Users/ellenjohansen/CodenameBlueMaggot/CodenameBlueMaggot -product org.eclipse.epp.package.java.product -keyring /Users/ellenjohansen/.eclipse_keyring -showlocation
-
-!ENTRY org.eclipse.core.net 1 0 2012-04-16 14:52:20.977
-!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
-
-!ENTRY org.eclipse.ui 4 4 2012-04-16 14:52:23.320
-!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.TaskList.
-
-!ENTRY org.eclipse.osgi 2 1 2012-04-16 20:28:59.178
-!MESSAGE NLS missing message: Saros_35 in: de.fu_berlin.inf.dpp.messages
-
-!ENTRY org.eclipse.osgi 2 1 2012-04-16 20:28:59.189
-!MESSAGE NLS missing message: Saros_38 in: de.fu_berlin.inf.dpp.messages
-
-!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:28:59.473
-!MESSAGE Received error presence package from saros1077680955@conference.jabber.ccc.de/eirikjak@saros-con.imp.fu-berlin.de/Saros, condition: not-authorized, message: A password is required to enter this room (SubscriptionManager.java:106)
-
-!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:28:59.906
-!MESSAGE DataObject could not be attached to SarosSession: Checksum(path:SPathDataObject [editorType=txt, path=src/gfx/MenuPanel.java, projectID=1590401804],hash:1695111462,length:143,vectorTime:null) (SarosSession.java:729)
-!STACK 0
-java.lang.IllegalArgumentException: SPathDataObject cannot be connected to SarosSession because its ID is unknown: 1590401804
-	at de.fu_berlin.inf.dpp.activities.SPathDataObject.toSPath(SPathDataObject.java:51)
-	at de.fu_berlin.inf.dpp.activities.serializable.ChecksumActivityDataObject.getActivity(ChecksumActivityDataObject.java:148)
-	at de.fu_berlin.inf.dpp.project.internal.SarosSession.convertAndQueueProjectActivities(SarosSession.java:725)
-	at de.fu_berlin.inf.dpp.project.internal.SarosSession.exec(SarosSession.java:701)
-	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer.execQueue(ActivitySequencer.java:781)
-	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer$2$2.run(ActivitySequencer.java:606)
-	at de.fu_berlin.inf.dpp.util.Utils$6.run(Utils.java:377)
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
-	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
-	at java.lang.Thread.run(Thread.java:680)
-
-!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:28:59.909
-!MESSAGE DataObject could not be attached to SarosSession: Checksum(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],hash:-2124319502,length:1175,vectorTime:null) (SarosSession.java:729)
-!STACK 0
-java.lang.IllegalArgumentException: SPathDataObject cannot be connected to SarosSession because its ID is unknown: 1590401804
-	at de.fu_berlin.inf.dpp.activities.SPathDataObject.toSPath(SPathDataObject.java:51)
-	at de.fu_berlin.inf.dpp.activities.serializable.ChecksumActivityDataObject.getActivity(ChecksumActivityDataObject.java:148)
-	at de.fu_berlin.inf.dpp.project.internal.SarosSession.convertAndQueueProjectActivities(SarosSession.java:725)
-	at de.fu_berlin.inf.dpp.project.internal.SarosSession.exec(SarosSession.java:701)
-	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer.execQueue(ActivitySequencer.java:781)
-	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer$2$2.run(ActivitySequencer.java:606)
-	at de.fu_berlin.inf.dpp.util.Utils$6.run(Utils.java:377)
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
-	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
-	at java.lang.Thread.run(Thread.java:680)
-
-!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:28:59.945
-!MESSAGE DataObject could not be attached to SarosSession: TextSelectionActivityDataObject(offset:1160,length:0,src:olavolseng@saros-con.imp.fu-berlin.de/Saros,path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804]) (SarosSession.java:729)
-!STACK 0
-java.lang.IllegalArgumentException: SPathDataObject cannot be connected to SarosSession because its ID is unknown: 1590401804
-	at de.fu_berlin.inf.dpp.activities.SPathDataObject.toSPath(SPathDataObject.java:51)
-	at de.fu_berlin.inf.dpp.activities.serializable.TextSelectionActivityDataObject.getActivity(TextSelectionActivityDataObject.java:109)
-	at de.fu_berlin.inf.dpp.project.internal.SarosSession.convertAndQueueProjectActivities(SarosSession.java:725)
-	at de.fu_berlin.inf.dpp.project.internal.SarosSession.exec(SarosSession.java:701)
-	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer.execQueue(ActivitySequencer.java:781)
-	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer$2$2.run(ActivitySequencer.java:606)
-	at de.fu_berlin.inf.dpp.util.Utils$6.run(Utils.java:377)
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
-	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
-	at java.lang.Thread.run(Thread.java:680)
-
-!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:28:59.976
-!MESSAGE DataObject could not be attached to SarosSession: ViewportActivityDataObject(path:SPathDataObject [editorType=txt, path=src/entity/Entity.java, projectID=1590401804],range:(15,61)) (SarosSession.java:729)
-!STACK 0
-java.lang.IllegalArgumentException: SPathDataObject cannot be connected to SarosSession because its ID is unknown: 1590401804
-	at de.fu_berlin.inf.dpp.activities.SPathDataObject.toSPath(SPathDataObject.java:51)
-	at de.fu_berlin.inf.dpp.activities.serializable.ViewportActivityDataObject.getActivity(ViewportActivityDataObject.java:108)
-	at de.fu_berlin.inf.dpp.project.internal.SarosSession.convertAndQueueProjectActivities(SarosSession.java:725)
-	at de.fu_berlin.inf.dpp.project.internal.SarosSession.exec(SarosSession.java:701)
-	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer.execQueue(ActivitySequencer.java:781)
-	at de.fu_berlin.inf.dpp.net.internal.ActivitySequencer$2$2.run(ActivitySequencer.java:606)
-	at de.fu_berlin.inf.dpp.util.Utils$6.run(Utils.java:377)
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
-	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
-	at java.lang.Thread.run(Thread.java:680)
-
-!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:29:00.956
-!MESSAGE path object should not be null (SharedProjectFileDecorator.java:134)
-
-!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:29:06.382
-!MESSAGE Resource changed while paused:
-C(0) /
-C(0) /Tanks 2
-A /Tanks 2/1590401804&&&&5898140214584727669.zip
- (SharedResourcesManager.java:426)
-
-!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:29:07.581
-!MESSAGE path object should not be null (SharedProjectFileDecorator.java:134)
-
-!ENTRY de.fu_berlin.inf.dpp 2 0 2012-04-16 20:29:15.416
-!MESSAGE path object should not be null (SharedProjectFileDecorator.java:134)
-
-!ENTRY de.fu_berlin.inf.dpp 4 0 2012-04-16 22:24:07.598
-!MESSAGE XMPP Connection Error:  (SarosNet.java:451)
-!STACK 0
-java.net.SocketException: Operation timed out
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.read(SocketInputStream.java:129)
-	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
-	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
-	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
-	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
-	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
-	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
-	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
-	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
-	at java.io.InputStreamReader.read(InputStreamReader.java:167)
-	at java.io.BufferedReader.fill(BufferedReader.java:136)
-	at java.io.BufferedReader.read1(BufferedReader.java:187)
-	at java.io.BufferedReader.read(BufferedReader.java:261)
-	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
-	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
-	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
-	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
-	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
-	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
-	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
-
-!ENTRY de.fu_berlin.inf.dpp 4 0 2012-04-16 22:24:07.735
-!MESSAGE New Connection State == ERROR (SarosNet.java:430)
-!STACK 0
-java.net.SocketException: Operation timed out
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.read(SocketInputStream.java:129)
-	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
-	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
-	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
-	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
-	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
-	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
-	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
-	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
-	at java.io.InputStreamReader.read(InputStreamReader.java:167)
-	at java.io.BufferedReader.fill(BufferedReader.java:136)
-	at java.io.BufferedReader.read1(BufferedReader.java:187)
-	at java.io.BufferedReader.read(BufferedReader.java:261)
-	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
-	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
-	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
-	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
-	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
-	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
-	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
-!SESSION 2012-04-17 21:03:09.041 -----------------------------------------------
+!SESSION 2012-04-20 13:04:20.860 -----------------------------------------------
 eclipse.buildId=I20110613-1736
 java.version=1.6.0_24
 java.vendor=Apple Inc.
@@ -168,138 +6,273 @@ BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
 Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/ellenjohansen/.eclipse_keyring -showlocation
 Command-line arguments:  -os macosx -ws cocoa -arch x86 -product org.eclipse.epp.package.java.product -keyring /Users/ellenjohansen/.eclipse_keyring -showlocation
 
-!ENTRY org.eclipse.core.resources 2 10035 2012-04-17 21:03:19.886
-!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
-
-!ENTRY org.eclipse.core.net 1 0 2012-04-17 21:03:37.504
+!ENTRY org.eclipse.core.net 1 0 2012-04-20 13:07:28.743
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
-!ENTRY org.eclipse.ui 4 4 2012-04-17 21:03:59.435
-!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.TaskList.
-
-!ENTRY org.eclipse.jdt.core 4 4 2012-04-17 22:59:52.854
-!MESSAGE JavaBuilder handling CoreException
+!ENTRY org.eclipse.ui 4 0 2012-04-20 13:07:33.403
+!MESSAGE Unable to create editor ID org.eclipse.jdt.ui.CompilationUnitEditor: The file does not exist.
 !STACK 1
-org.eclipse.core.runtime.CoreException: File not found: /Users/ellenjohansen/CodenameBlueMaggot/CodenameBlueMaggot/Tanks/bin/entity/Entity.class.
-	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
-	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:371)
-	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:797)
-	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
-	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1131)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.writeClassFileCheck(IncrementalImageBuilder.java:883)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.writeClassFileContents(IncrementalImageBuilder.java:825)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.writeClassFile(AbstractImageBuilder.java:823)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.acceptResult(AbstractImageBuilder.java:187)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:508)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:364)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.compile(IncrementalImageBuilder.java:329)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:301)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.build(IncrementalImageBuilder.java:134)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildDeltas(JavaBuilder.java:265)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:193)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-Caused by: java.io.FileNotFoundException: /Users/ellenjohansen/CodenameBlueMaggot/CodenameBlueMaggot/Tanks/bin/entity/Entity.class (No such file or directory)
-	at java.io.FileInputStream.open(Native Method)
-	at java.io.FileInputStream.<init>(FileInputStream.java:106)
-	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:362)
-	... 26 more
-!SUBENTRY 1 org.eclipse.core.filesystem 4 271 2012-04-17 22:59:52.926
-!MESSAGE File not found: /Users/ellenjohansen/CodenameBlueMaggot/CodenameBlueMaggot/Tanks/bin/entity/Entity.class.
-!STACK 0
-java.io.FileNotFoundException: /Users/ellenjohansen/CodenameBlueMaggot/CodenameBlueMaggot/Tanks/bin/entity/Entity.class (No such file or directory)
-	at java.io.FileInputStream.open(Native Method)
-	at java.io.FileInputStream.<init>(FileInputStream.java:106)
-	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:362)
-	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:797)
-	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
-	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1131)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.writeClassFileCheck(IncrementalImageBuilder.java:883)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.writeClassFileContents(IncrementalImageBuilder.java:825)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.writeClassFile(AbstractImageBuilder.java:823)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.acceptResult(AbstractImageBuilder.java:187)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:508)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:364)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.compile(IncrementalImageBuilder.java:329)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:301)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.build(IncrementalImageBuilder.java:134)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildDeltas(JavaBuilder.java:265)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:193)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+org.eclipse.core.runtime.CoreException: The file does not exist.
+	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer.create(ResourceFileBuffer.java:237)
+	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:112)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.createFileInfo(TextFileDocumentProvider.java:559)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitDocumentProvider.createFileInfo(CompilationUnitDocumentProvider.java:979)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.connect(TextFileDocumentProvider.java:478)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitDocumentProvider.connect(CompilationUnitDocumentProvider.java:1243)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.doSetInput(AbstractTextEditor.java:4213)
+	at org.eclipse.ui.texteditor.StatusTextEditor.doSetInput(StatusTextEditor.java:237)
+	at org.eclipse.ui.texteditor.AbstractDecoratedTextEditor.doSetInput(AbstractDecoratedTextEditor.java:1451)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaEditor.internalDoSetInput(JavaEditor.java:2563)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaEditor.doSetInput(JavaEditor.java:2536)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.doSetInput(CompilationUnitEditor.java:1395)
+	at org.eclipse.ui.texteditor.AbstractTextEditor$19.run(AbstractTextEditor.java:3200)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:464)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:372)
+	at org.eclipse.jface.window.ApplicationWindow$1.run(ApplicationWindow.java:759)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.window.ApplicationWindow.run(ApplicationWindow.java:756)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2642)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3218)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.init(AbstractTextEditor.java:3245)
+	at org.eclipse.ui.internal.EditorManager.createSite(EditorManager.java:828)
+	at org.eclipse.ui.internal.EditorReference.createPartHelper(EditorReference.java:647)
+	at org.eclipse.ui.internal.EditorReference.createPart(EditorReference.java:465)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:595)
+	at org.eclipse.ui.internal.EditorAreaHelper.setVisibleEditor(EditorAreaHelper.java:271)
+	at org.eclipse.ui.internal.EditorManager.setVisibleEditor(EditorManager.java:1459)
+	at org.eclipse.ui.internal.EditorManager$5.runWithException(EditorManager.java:972)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3935)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3612)
+	at org.eclipse.ui.application.WorkbenchAdvisor.openWindows(WorkbenchAdvisor.java:803)
+	at org.eclipse.ui.internal.Workbench$33.runWithException(Workbench.java:1595)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3935)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3612)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2604)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+!SUBENTRY 1 org.eclipse.core.filebuffers 4 0 2012-04-20 13:07:33.404
+!MESSAGE The file does not exist.
 
-!ENTRY de.fu_berlin.inf.dpp 4 0 2012-04-18 12:10:56.278
-!MESSAGE XMPP Connection Error:  (SarosNet.java:451)
+!ENTRY org.eclipse.ui 2 2 2012-04-20 13:07:33.519
+!MESSAGE Ignored attempt to add saveable that was already registered
 !STACK 0
-java.net.SocketException: No route to host
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.read(SocketInputStream.java:129)
-	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
-	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
-	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
-	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
-	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
-	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
-	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
-	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
-	at java.io.InputStreamReader.read(InputStreamReader.java:167)
-	at java.io.BufferedReader.fill(BufferedReader.java:136)
-	at java.io.BufferedReader.read1(BufferedReader.java:187)
-	at java.io.BufferedReader.read(BufferedReader.java:261)
-	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
-	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
-	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
-	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
-	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
-	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
-	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
+org.eclipse.core.runtime.AssertionFailedException: unknown saveable: org.eclipse.ui.internal.DefaultSaveable@50d7c5 from part: org.eclipse.ui.internal.ErrorEditorPart@50d7c5
+	at org.eclipse.ui.internal.SaveablesList.logWarning(SaveablesList.java:187)
+	at org.eclipse.ui.internal.SaveablesList.addModel(SaveablesList.java:117)
+	at org.eclipse.ui.internal.SaveablesList.addModels(SaveablesList.java:289)
+	at org.eclipse.ui.internal.SaveablesList.postOpen(SaveablesList.java:695)
+	at org.eclipse.ui.internal.PartList.partOpened(PartList.java:234)
+	at org.eclipse.ui.internal.PartList.access$0(PartList.java:210)
+	at org.eclipse.ui.internal.PartList$1.propertyChanged(PartList.java:40)
+	at org.eclipse.ui.internal.WorkbenchPartReference.fireInternalPropertyChange(WorkbenchPartReference.java:375)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:610)
+	at org.eclipse.ui.internal.EditorAreaHelper.setVisibleEditor(EditorAreaHelper.java:271)
+	at org.eclipse.ui.internal.EditorManager.setVisibleEditor(EditorManager.java:1459)
+	at org.eclipse.ui.internal.EditorManager$5.runWithException(EditorManager.java:972)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3935)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3612)
+	at org.eclipse.ui.application.WorkbenchAdvisor.openWindows(WorkbenchAdvisor.java:803)
+	at org.eclipse.ui.internal.Workbench$33.runWithException(Workbench.java:1595)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3935)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3612)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2604)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
 
-!ENTRY de.fu_berlin.inf.dpp 4 0 2012-04-18 12:10:56.346
-!MESSAGE New Connection State == ERROR (SarosNet.java:430)
+!ENTRY org.eclipse.ui 4 0 2012-04-20 13:08:19.898
+!MESSAGE Unable to create editor ID org.eclipse.jdt.ui.CompilationUnitEditor: The file does not exist.
+!STACK 1
+org.eclipse.core.runtime.CoreException: The file does not exist.
+	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer.create(ResourceFileBuffer.java:237)
+	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:112)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.createFileInfo(TextFileDocumentProvider.java:559)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitDocumentProvider.createFileInfo(CompilationUnitDocumentProvider.java:979)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.connect(TextFileDocumentProvider.java:478)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitDocumentProvider.connect(CompilationUnitDocumentProvider.java:1243)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.doSetInput(AbstractTextEditor.java:4213)
+	at org.eclipse.ui.texteditor.StatusTextEditor.doSetInput(StatusTextEditor.java:237)
+	at org.eclipse.ui.texteditor.AbstractDecoratedTextEditor.doSetInput(AbstractDecoratedTextEditor.java:1451)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaEditor.internalDoSetInput(JavaEditor.java:2563)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaEditor.doSetInput(JavaEditor.java:2536)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.doSetInput(CompilationUnitEditor.java:1395)
+	at org.eclipse.ui.texteditor.AbstractTextEditor$19.run(AbstractTextEditor.java:3200)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:464)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:372)
+	at org.eclipse.jface.window.ApplicationWindow$1.run(ApplicationWindow.java:759)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.window.ApplicationWindow.run(ApplicationWindow.java:756)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2642)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3218)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.init(AbstractTextEditor.java:3245)
+	at org.eclipse.ui.internal.EditorManager.createSite(EditorManager.java:828)
+	at org.eclipse.ui.internal.EditorReference.createPartHelper(EditorReference.java:647)
+	at org.eclipse.ui.internal.EditorReference.createPart(EditorReference.java:465)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:595)
+	at org.eclipse.ui.internal.PartPane.setVisible(PartPane.java:313)
+	at org.eclipse.ui.internal.presentations.PresentablePart.setVisible(PresentablePart.java:180)
+	at org.eclipse.ui.internal.presentations.util.PresentablePartFolder.select(PresentablePartFolder.java:270)
+	at org.eclipse.ui.internal.presentations.util.LeftToRightTabOrder.select(LeftToRightTabOrder.java:65)
+	at org.eclipse.ui.internal.presentations.util.TabbedStackPresentation.selectPart(TabbedStackPresentation.java:473)
+	at org.eclipse.ui.internal.PartStack.refreshPresentationSelection(PartStack.java:1245)
+	at org.eclipse.ui.internal.PartStack.setSelection(PartStack.java:1198)
+	at org.eclipse.ui.internal.PartStack.presentationSelectionChanged(PartStack.java:834)
+	at org.eclipse.ui.internal.PartStack.access$1(PartStack.java:823)
+	at org.eclipse.ui.internal.PartStack$1.selectPart(PartStack.java:137)
+	at org.eclipse.ui.internal.presentations.util.TabbedStackPresentation$1.handleEvent(TabbedStackPresentation.java:133)
+	at org.eclipse.ui.internal.presentations.util.AbstractTabFolder.fireEvent(AbstractTabFolder.java:269)
+	at org.eclipse.ui.internal.presentations.util.AbstractTabFolder.fireEvent(AbstractTabFolder.java:278)
+	at org.eclipse.ui.internal.presentations.defaultpresentation.DefaultTabFolder.access$1(DefaultTabFolder.java:1)
+	at org.eclipse.ui.internal.presentations.defaultpresentation.DefaultTabFolder$2.handleEvent(DefaultTabFolder.java:88)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4125)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1457)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1480)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1465)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1270)
+	at org.eclipse.swt.custom.CTabFolder.setSelection(CTabFolder.java:2745)
+	at org.eclipse.swt.custom.CTabFolder.onMouse(CTabFolder.java:1432)
+	at org.eclipse.swt.custom.CTabFolder$1.handleEvent(CTabFolder.java:257)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4125)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1457)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1480)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1465)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1270)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3971)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3610)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2696)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2660)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+!SUBENTRY 1 org.eclipse.core.filebuffers 4 0 2012-04-20 13:08:19.899
+!MESSAGE The file does not exist.
+
+!ENTRY org.eclipse.ui 2 2 2012-04-20 13:08:19.906
+!MESSAGE Ignored attempt to add saveable that was already registered
 !STACK 0
-java.net.SocketException: No route to host
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.read(SocketInputStream.java:129)
-	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
-	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
-	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
-	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
-	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
-	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
-	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
-	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
-	at java.io.InputStreamReader.read(InputStreamReader.java:167)
-	at java.io.BufferedReader.fill(BufferedReader.java:136)
-	at java.io.BufferedReader.read1(BufferedReader.java:187)
-	at java.io.BufferedReader.read(BufferedReader.java:261)
-	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
-	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
-	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
-	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
-	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
-	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
-	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
-!SESSION 2012-04-18 23:15:31.143 -----------------------------------------------
+org.eclipse.core.runtime.AssertionFailedException: unknown saveable: org.eclipse.ui.internal.DefaultSaveable@1228caa from part: org.eclipse.ui.internal.ErrorEditorPart@1228caa
+	at org.eclipse.ui.internal.SaveablesList.logWarning(SaveablesList.java:187)
+	at org.eclipse.ui.internal.SaveablesList.addModel(SaveablesList.java:117)
+	at org.eclipse.ui.internal.SaveablesList.addModels(SaveablesList.java:289)
+	at org.eclipse.ui.internal.SaveablesList.postOpen(SaveablesList.java:695)
+	at org.eclipse.ui.internal.PartList.partOpened(PartList.java:234)
+	at org.eclipse.ui.internal.PartList.access$0(PartList.java:210)
+	at org.eclipse.ui.internal.PartList$1.propertyChanged(PartList.java:40)
+	at org.eclipse.ui.internal.WorkbenchPartReference.fireInternalPropertyChange(WorkbenchPartReference.java:375)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:610)
+	at org.eclipse.ui.internal.PartPane.setVisible(PartPane.java:313)
+	at org.eclipse.ui.internal.presentations.PresentablePart.setVisible(PresentablePart.java:180)
+	at org.eclipse.ui.internal.presentations.util.PresentablePartFolder.select(PresentablePartFolder.java:270)
+	at org.eclipse.ui.internal.presentations.util.LeftToRightTabOrder.select(LeftToRightTabOrder.java:65)
+	at org.eclipse.ui.internal.presentations.util.TabbedStackPresentation.selectPart(TabbedStackPresentation.java:473)
+	at org.eclipse.ui.internal.PartStack.refreshPresentationSelection(PartStack.java:1245)
+	at org.eclipse.ui.internal.PartStack.setSelection(PartStack.java:1198)
+	at org.eclipse.ui.internal.PartStack.presentationSelectionChanged(PartStack.java:834)
+	at org.eclipse.ui.internal.PartStack.access$1(PartStack.java:823)
+	at org.eclipse.ui.internal.PartStack$1.selectPart(PartStack.java:137)
+	at org.eclipse.ui.internal.presentations.util.TabbedStackPresentation$1.handleEvent(TabbedStackPresentation.java:133)
+	at org.eclipse.ui.internal.presentations.util.AbstractTabFolder.fireEvent(AbstractTabFolder.java:269)
+	at org.eclipse.ui.internal.presentations.util.AbstractTabFolder.fireEvent(AbstractTabFolder.java:278)
+	at org.eclipse.ui.internal.presentations.defaultpresentation.DefaultTabFolder.access$1(DefaultTabFolder.java:1)
+	at org.eclipse.ui.internal.presentations.defaultpresentation.DefaultTabFolder$2.handleEvent(DefaultTabFolder.java:88)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4125)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1457)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1480)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1465)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1270)
+	at org.eclipse.swt.custom.CTabFolder.setSelection(CTabFolder.java:2745)
+	at org.eclipse.swt.custom.CTabFolder.onMouse(CTabFolder.java:1432)
+	at org.eclipse.swt.custom.CTabFolder$1.handleEvent(CTabFolder.java:257)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4125)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1457)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1480)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1465)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1270)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3971)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3610)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2696)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2660)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+!SESSION 2012-04-20 13:08:35.222 -----------------------------------------------
 eclipse.buildId=I20110613-1736
 java.version=1.6.0_24
 java.vendor=Apple Inc.
@@ -307,63 +280,94 @@ BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
 Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product -keyring /Users/ellenjohansen/.eclipse_keyring -showlocation
 Command-line arguments:  -os macosx -ws cocoa -arch x86 -product org.eclipse.epp.package.java.product -data /Users/ellenjohansen/CodenameBlueMaggot/CodenameBlueMaggot -product org.eclipse.epp.package.java.product -keyring /Users/ellenjohansen/.eclipse_keyring -showlocation
 
-!ENTRY org.eclipse.core.resources 2 10035 2012-04-18 23:15:37.763
-!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
-
-!ENTRY org.eclipse.core.net 1 0 2012-04-18 23:15:46.923
+!ENTRY org.eclipse.core.net 1 0 2012-04-20 13:08:39.792
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
-!ENTRY org.eclipse.ui 4 4 2012-04-18 23:15:53.041
-!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.TaskList.
+!ENTRY org.eclipse.ui 4 4 2012-04-20 13:08:40.797
+!MESSAGE Could not create view: 'org.eclipse.ui.internal.introview'.
 
-!ENTRY de.fu_berlin.inf.dpp 4 0 2012-04-19 12:09:22.844
-!MESSAGE XMPP Connection Error:  (SarosNet.java:451)
-!STACK 0
-java.net.SocketException: Network is down
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.read(SocketInputStream.java:129)
-	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
-	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
-	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
-	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
-	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
-	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
-	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
-	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
-	at java.io.InputStreamReader.read(InputStreamReader.java:167)
-	at java.io.BufferedReader.fill(BufferedReader.java:136)
-	at java.io.BufferedReader.read1(BufferedReader.java:187)
-	at java.io.BufferedReader.read(BufferedReader.java:261)
-	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
-	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
-	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
-	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
-	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
-	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
-	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
+!ENTRY org.eclipse.ui 4 0 2012-04-20 13:08:42.170
+!MESSAGE Problems occurred restoring workbench.
+!SUBENTRY 1 unknown 0 0 2012-04-20 13:08:42.170
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2012-04-20 13:08:42.170
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2012-04-20 13:08:42.170
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2012-04-20 13:08:42.170
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.ui 4 0 2012-04-20 13:08:42.170
+!MESSAGE Unable to restore perspective: Workspace - Java.
+!SUBENTRY 2 org.eclipse.ui 0 0 2012-04-20 13:08:42.170
+!MESSAGE Problems occurred restoring perspective.
+!SUBENTRY 3 org.eclipse.ui 0 0 2012-04-20 13:08:42.170
+!MESSAGE 
+!SUBENTRY 2 unknown 0 0 2012-04-20 13:08:42.170
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-04-20 13:08:42.170
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-04-20 13:08:42.170
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-04-20 13:08:42.171
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-04-20 13:08:42.171
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-04-20 13:08:42.171
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-04-20 13:08:42.171
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-04-20 13:08:42.171
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-04-20 13:08:42.171
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-04-20 13:08:42.171
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.ui 4 0 2012-04-20 13:08:42.171
+!MESSAGE Could not find view: org.eclipse.ui.internal.introview
+!SUBENTRY 1 unknown 0 0 2012-04-20 13:08:42.171
+!MESSAGE OK
 
-!ENTRY de.fu_berlin.inf.dpp 4 0 2012-04-19 12:09:22.919
-!MESSAGE New Connection State == ERROR (SarosNet.java:430)
+!ENTRY org.eclipse.ui 4 0 2012-04-20 13:08:48.416
+!MESSAGE Unhandled event loop exception
 !STACK 0
-java.net.SocketException: Network is down
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.read(SocketInputStream.java:129)
-	at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:293)
-	at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
-	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:798)
-	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:755)
-	at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:75)
-	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
-	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
-	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
-	at java.io.InputStreamReader.read(InputStreamReader.java:167)
-	at java.io.BufferedReader.fill(BufferedReader.java:136)
-	at java.io.BufferedReader.read1(BufferedReader.java:187)
-	at java.io.BufferedReader.read(BufferedReader.java:261)
-	at org.xmlpull.mxp1.MXParser.fillBuf(MXParser.java:2992)
-	at org.xmlpull.mxp1.MXParser.more(MXParser.java:3046)
-	at org.xmlpull.mxp1.MXParser.nextImpl(MXParser.java:1144)
-	at org.xmlpull.mxp1.MXParser.next(MXParser.java:1093)
-	at org.jivesoftware.smack.PacketReader.parsePackets(PacketReader.java:325)
-	at org.jivesoftware.smack.PacketReader.access$000(PacketReader.java:43)
-	at org.jivesoftware.smack.PacketReader$1.run(PacketReader.java:70)
+java.lang.NullPointerException
+	at org.eclipse.ui.internal.PartStack.smartUnzoom(PartStack.java:1398)
+	at org.eclipse.ui.internal.PartStack$3.runWithException(PartStack.java:1469)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:180)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:150)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4610)
+	at org.eclipse.ui.internal.StartupThreading.runWithoutExceptions(StartupThreading.java:94)
+	at org.eclipse.ui.internal.PartStack.setState(PartStack.java:1462)
+	at org.eclipse.ui.internal.ViewStack.setMinimized(ViewStack.java:151)
+	at org.eclipse.ui.internal.ViewStackTrimToolBar.restoreToPresentation(ViewStackTrimToolBar.java:61)
+	at org.eclipse.ui.internal.ViewStackTrimToolBar$2.widgetSelected(ViewStackTrimToolBar.java:80)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:240)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4125)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1457)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1480)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1465)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1270)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3971)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3610)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2696)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2660)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
