@@ -23,7 +23,22 @@ public class RGBImage {
 		return canvasHeight;
 	}
 
-
+	public RGBImage(BufferedImage img){
+		setBufferedImage(img);
+	}
+	private void setBufferedImage(BufferedImage img){
+		if(img.getType() != BufferedImage.TYPE_INT_RGB){
+			rgbBufferedImage = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+			
+			rgbBufferedImage.getGraphics().drawImage(img ,0, 0, img.getWidth(), img.getHeight(),Color.white,null);
+			}else{
+				rgbBufferedImage = img;
+			}
+			canvasWidth= img.getWidth();
+			canvasHeight = img.getHeight();
+			rgbPixels = ((DataBufferInt)rgbBufferedImage.getRaster().getDataBuffer()).getData();
+			
+	}
 	public RGBImage(File file){
 		
 		
@@ -37,17 +52,7 @@ public class RGBImage {
 			e.printStackTrace();
 		}
 		
-		if(img.getType() != BufferedImage.TYPE_INT_RGB){
-		rgbBufferedImage = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
-		
-		rgbBufferedImage.getGraphics().drawImage(img ,0, 0, img.getWidth(), img.getHeight(),Color.white,null);
-		}else{
-			rgbBufferedImage = img;
-		}
-		canvasWidth= img.getWidth();
-		canvasHeight = img.getHeight();
-		rgbPixels = ((DataBufferInt)rgbBufferedImage.getRaster().getDataBuffer()).getData();
-		
+		setBufferedImage(img);
 		
 		
 	}
