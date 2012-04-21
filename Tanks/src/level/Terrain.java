@@ -20,5 +20,83 @@ public class Terrain extends RGBImage {
 		DrawCircle(testGame.ALPHA_MASK, x, y, radius);
 	}
 
-	
+	private void DrawCircle(int color,int x0,int y0, int radius){
+		int width = radius*2 +2;
+		int[] pixels = new int[width*width];
+		
+		for(int i =0;i<pixels.length;i++){
+			pixels[i] =-1;
+		}
+		
+		int xf =radius;
+		int yf = radius;
+		
+		int f = 1 - radius;
+		  int ddF_x = 1;
+		  int ddF_y = -2 * radius;
+		  int x = 0;
+		  int y = radius;
+		  
+		  setPixel(pixels,width,color,xf, yf + radius);
+		  setPixel(pixels,width,color,xf, yf - radius);
+		  setPixel(pixels,width,color,xf + radius, yf);
+		  setPixel(pixels,width,color,xf - radius, yf);
+		 
+		  while(x < y)
+		  {
+		   
+		    if(f >= 0) 
+		    {
+		      y--;
+		      ddF_y += 2;
+		      f += ddF_y;
+		    }
+		    x++;
+		    ddF_x += 2;
+		    f += ddF_x;    
+		    setPixel(pixels,width,color,xf + x, yf + y);
+		    setPixel(pixels,width,color,xf - x, yf + y);
+		    setPixel(pixels,width,color,xf + x, yf - y);
+		    setPixel(pixels,width,color,xf - x, yf - y);
+		    setPixel(pixels,width,color,xf + y, yf + x);
+		    setPixel(pixels,width,color,xf - y, yf + x);
+		    setPixel(pixels,width,color,xf + y, yf - x);
+		    setPixel(pixels,width,color,xf - y, yf - x);
+		  }
+		
+		 boolean doFill = false;
+		 int Y =0;
+		for(int X  = 0; X<pixels.length*0.25;X++){
+		
+			if(X%(width/2) == 0){
+				pixels[(X-1)%(width/2) + Y*width+1] = color;
+				pixels[(X-1)%(width/2) + Y*width+1 + pixels.length/2] = color;
+				
+				
+				Y++;
+				doFill = false;
+				
+			}
+			int posX = X%(width/2);
+			int posY = Y*width;
+			int pixelC = pixels[posX + posY];
+			if(doFill){
+				pixels[posX + posY] = color;
+				pixels[width - posX + posY] = color;
+				
+				pixels[pixels.length - (posX+ posY)] = color;
+				
+				pixels[pixels.length - (width - posX + posY)] = color;
+			}
+			if(pixelC ==color){
+				doFill = true;
+			}
+			
+		} 
+		pixels[width/2 * width + width/2] = color;
+		
+		
+		DrawRGBImage(pixels,-1, x0,y0, width, width);
+		  
+	}
 }

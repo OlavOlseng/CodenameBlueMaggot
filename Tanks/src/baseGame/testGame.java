@@ -1,7 +1,12 @@
 package baseGame;
 
+import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Frame;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -21,13 +26,12 @@ import entity.Entity;
 import entity.Tank;
 
 public class testGame extends BaseGame implements KeyListener {
-	
-	
-	
-	public static int WIDTH = 800;
-	public static int HEIGHT = 600;
+
+	public static int WIDTH = 1024;
+	public static int HEIGHT = 720;
 	public static int ALPHA_MASK = 0xFF0077;
-	
+	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	GraphicsDevice gs = ge.getDefaultScreenDevice();
 	private class Circle{
 		double x;
 		double y;
@@ -47,7 +51,7 @@ public class testGame extends BaseGame implements KeyListener {
 	
 	
 	public testGame(){
-		
+	
 		addKeyListener(this);
 		setBackgroundColor(Color.BLACK);
 		Random random = new Random();
@@ -59,7 +63,7 @@ public class testGame extends BaseGame implements KeyListener {
 		
 		
 		tank = new RGBImage(new BufferedImage(40, 60, BufferedImage.TYPE_INT_RGB));
-		tankEntity.x = 450;
+		tankEntity.x = 500;
 		tankEntity.y = 200;
 		tankEntity.dx = 0;
 		tankEntity.dy = 3;
@@ -77,6 +81,7 @@ public class testGame extends BaseGame implements KeyListener {
 		circles = new ArrayList<Circle>();
 		
 		
+	
 		//Lager 400000 sirkler
 	/*	for (int i = 0;i<10000;i++){
 			Circle circle = new Circle();
@@ -94,14 +99,14 @@ public class testGame extends BaseGame implements KeyListener {
 	
 	public void onUpdate(long deltaTime) {
 		
-		if(!ground.hitTestpoint((int)tankEntity.x, (int)tankEntity.y + 60)){
-		tankEntity.x += tankEntity.dx*0.001*deltaTime;
+		if(!ground.hitTestpoint((int)tankEntity.x, (int)tankEntity.y + 61)){
+		tankEntity.x += tankEntity.dx*0.1*deltaTime;
 		tankEntity.y += tankEntity.dy*0.1*deltaTime;
 		}else{
 			while(ground.hitTestpoint((int)tankEntity.x,(int)tankEntity.y +60)){
 				tankEntity.y-=1;
 			}
-			tankEntity.y++;
+		
 		}
 		
 		for(Circle circle:circles){
@@ -116,9 +121,9 @@ public class testGame extends BaseGame implements KeyListener {
 	@Override
 	public void onDraw(Renderer renderer) {
 		renderer.clearAllPixelData(Color.BLACK.getRGB());
-		renderer.DrawImage(img, 0, 0, WIDTH, HEIGHT);
+		renderer.DrawImage(img, 0, 0, 800, 600);
 		
-		renderer.DrawPixelArrayRGB(ground.getPixels(),ALPHA_MASK, 0, 0, WIDTH, HEIGHT);
+		renderer.DrawPixelArrayRGB(ground.getPixels(),ALPHA_MASK, 0, 0, 800, 600);
 		
 		for(Circle circle:circles){
 			renderer.DrawPixelArrayRGB(circleImg,ALPHA_MASK, (int)circle.x,(int) circle.y, 1, 1);
