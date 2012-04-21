@@ -16,6 +16,8 @@ import entity.Entity;
 
 public abstract class BaseGame extends Canvas implements Runnable {
 	
+	private int canvasWidth;
+	private int canvasHeight;
 	private Thread runLoop;
 	private BufferStrategy buffer;
 	private boolean showFps = true;
@@ -38,16 +40,17 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	
 	private Rectangle gameRect;
 
-	public void init(int fps) {
-		
-		mainCanvas = new BufferedImage(testGame.WIDTH, testGame.HEIGHT,BufferedImage.TYPE_INT_RGB);
+	public void init(int width,int height, int fps) {
+		canvasWidth = width;
+		canvasHeight = height;
+		mainCanvas = new BufferedImage(canvasWidth, canvasHeight,BufferedImage.TYPE_INT_RGB);
 		pixels = ((DataBufferInt)mainCanvas.getRaster().getDataBuffer()).getData();
 		
 		this.fps = fps;
 		
 		msDelay = 1000/(long)fps;
 		
-		gameRect = new Rectangle(0, 0,testGame.WIDTH, testGame.HEIGHT);
+		gameRect = new Rectangle(0, 0,canvasWidth, canvasHeight);
 		setIgnoreRepaint(true);
 		createBufferStrategy(2);
 		buffer = getBufferStrategy();
@@ -88,14 +91,13 @@ public abstract class BaseGame extends Canvas implements Runnable {
 				onUpdate(deltaTime);
 			
 
-			Renderer renderer = new Renderer(pixels,backgroundColor,testGame.WIDTH,testGame.HEIGHT);
+			Renderer renderer = new Renderer(pixels,backgroundColor,canvasWidth,canvasHeight);
 	
 			onDraw(renderer);
 			
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
-			
-			
-			g.drawImage(mainCanvas, 0, 0, testGame.WIDTH, testGame.HEIGHT, Color.BLACK, null);
+
+			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
 			
 
 		

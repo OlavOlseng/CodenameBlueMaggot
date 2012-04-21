@@ -9,11 +9,11 @@ public class gameDebug extends JFrame {
 		setVisible(true);
 		testGame game = new testGame();
 		add(game);
-		this.setPreferredSize(new Dimension(800,600));
+		this.setPreferredSize(new Dimension(testGame.WIDTH,testGame.HEIGHT));
 		pack();
 		
 		game.setVisible(true);
-		game.init(60);
+		game.init(testGame.WIDTH,testGame.HEIGHT,60);
 		
 	}
 	public static void main(String[] args) {
