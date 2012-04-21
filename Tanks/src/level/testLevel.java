@@ -53,6 +53,13 @@ public class testLevel extends BasicLevel {
 
 	public void onDraw(Renderer renderer) {
 		super.render(renderer);
+<<<<<<< HEAD
+		
+		renderer.DrawImage(terrain,testGame.ALPHA_MASK, 0, 0,terrain.getWidth(), terrain.getHeight());
+		
+		renderer.DrawImage(tank,-1, (int)tankEntity.getLocation()[0] - (int)tankEntity.getXr(), (int)tankEntity.getLocation()[1] -(int)tankEntity.getYr() +1, tank.getWidth(), tank.getHeight());
+		
+=======
 
 		renderer.DrawImage(terrain, testGame.ALPHA_MASK, 0, 0,
 				terrain.getWidth(), terrain.getHeight());
@@ -61,6 +68,7 @@ public class testLevel extends BasicLevel {
 				- (int) tankEntity.getXr(), (int) tankEntity.getLocation()[1]
 				- (int) tankEntity.getYr() + 1, tank.getWidth(),
 				tank.getHeight());
+>>>>>>> bccd588a8f9371135b3dbaf48d6871c4369f2d11
 	}
 
 }
