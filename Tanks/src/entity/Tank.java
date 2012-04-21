@@ -3,6 +3,9 @@ package entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import level.BasicLevel;
+import level.Terrain;
+
 import inputhandler.InputHandler;
 
 public class Tank extends Entity {
@@ -14,16 +17,46 @@ public class Tank extends Entity {
 	private InputHandler input;
 	private int playerNumber;
 	private int jetPackFuel = 100;
+	private boolean canGoLeft = true;
+	private boolean canGoRight = true;
+	
 	private List<Projectile> weaponList = new ArrayList<Projectile>();
+	private PixelHitbox boxUnderCenter;
+	private PixelHitbox boxLeft;
+	private PixelHitbox boxRight;
+	private PixelHitbox boxUp;
 	private int currentWeapon = 0;
 	
-	public Tank(double x, double y, int playerNumber, InputHandler input) {
-		super(x, y, 100, 100);
+	public Tank(double x, double y, int playerNumber, InputHandler input,BasicLevel level) {
+		super(x, y, 11, 6,level);
 		muzzleAngle = 0;
 		muzzleLength = 20;
 		hitpoints = 200;
 		this.playerNumber = playerNumber;
 		this.input = input;
+		boxUnderCenter = new PixelHitbox();
+		boxUnderCenter.addPoint(new FloatingPoint(xr/2 -1,yr*2));
+		boxUnderCenter.addPoint(new FloatingPoint(xr/2,yr*2));
+		boxUnderCenter.addPoint(new FloatingPoint(xr/2 +2,yr*2));
+			
+		boxLeft = new PixelHitbox();
+		boxRight = new PixelHitbox();
+		for (int i = 0;i<yr-3;i++){
+			boxLeft.addPoint(new FloatingPoint(0, i));
+		}
+		for(int ii = 0;ii<yr-3;ii++){
+			boxRight.addPoint(new FloatingPoint(xr*2, ii));
+		}
+		
+		
+			
+			
+		
+		
+		/*for(int ii = 0;ii<yr-2;ii++){
+			boxLeft.addPoint(new FloatingPoint(0, ii));
+		}*/
+		
 	}
 	
 	public void setMuzzleAngle(int degrees){
@@ -57,16 +90,54 @@ public class Tank extends Entity {
 		double yBot = p[1] + other.yr;
 		return !(x + xr < xLeft || y + yr > yTop || x - xr > xRight || y - yr < yBot);
 	}
-	
-	@Override
-	public void intersectsTerrain() {
-		// TODO Auto-generated method stub
+	public void handleTerrainIntersection(){
+		canGoLeft = true;
+		canGoRight = true;
+		for(FloatingPoint point:boxLeft){
+			if(level.getTerrain().hitTestpoint((int)(point.getX() +x),(int)(point.getY()  + y))){
+		
+				canGoLeft = false;
+				if(dx<0)
+					dx=0;
+				
+			}
+			
+		}
+		for(FloatingPoint point:boxRight){
+			if(level.getTerrain().hitTestpoint((int)(point.getX() +x),(int)(point.getY()  + y))){
+				
+				canGoRight = false;
+				if(dx>0)
+					dx=0;
+				
+			}
+			
+		}
+		
+		for(FloatingPoint point: boxUnderCenter){
+		if(level.getTerrain().hitTestpoint((int)(point.getX() + x), (int)(point.getY() + y ))){
+			while(level.getTerrain().hitTestpoint((int)(point.getX() + x), (int)(point.getY() + y))){
+				setLocation(x, y-1);
+				setSpeed(dx,0);
+				
+			}
+			break;
+		}
+		}
+		
+	}
+	public boolean intersectsTerrain() {
+		if(level.getTerrain().hitTestpoint((int)x, (int)(y+yr*2))){
+			return true;
+		}
+		
+		return false;
 	}
 	
 	public void jetPack(){
 		int fuelTick = 10;
 		if(jetPackFuel >= fuelTick){
-			accelerate(0, 8);
+			accelerate(0, -0.8);
 			jetPackFuel -= fuelTick;
 		}
 	}
@@ -78,22 +149,21 @@ public class Tank extends Entity {
 			currentWeapon++;
 	}
 	
-	@Override
-	public void gravitate() {
-	}
+	
 	
 	private void player1Input(){
 		if(input.up1.down)
 			jetPack();
 		if(input.down1.down)
 			toggleWeapon();
-		if(input.left1.down){
-			if(dx < 4)
-				accelerate(0.5, 0);
+		if(input.right1.down && canGoRight){
+			
+			if(dx < 2  )
+				accelerate(0.2, 0);
 		}
-		if(input.left1.down){
-			if(dx > -4)
-				accelerate(-0.5, 0);
+		if(input.left1.down && canGoLeft){
+			if(dx > -2 )
+				accelerate(-0.2, 0);
 		}
 	}
 	
@@ -112,6 +182,9 @@ public class Tank extends Entity {
 		if(jetPackFuel + 5 > 100)
 			jetPackFuel = 100;
 		else
-			jetPackFuel += 5;
+			jetPackFuel += 3;
+		
+		handleTerrainIntersection();
 	}
+	
 }

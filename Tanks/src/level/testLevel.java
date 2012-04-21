@@ -20,21 +20,23 @@ public class testLevel extends BasicLevel {
 	
 	public testLevel(BaseGame game, InputHandler handler) {
 		super(game, handler);
-		tankEntity = new Tank(400,200);
+		
+		tankEntity = new Tank(400,200,1,handler,this);
 		addEntity(tankEntity);
 		tankEntity.setSpeed(0, 1);
-		tank = new RGBImage(new BufferedImage(40, 60,
-				BufferedImage.TYPE_INT_RGB));
+		/*tank = new RGBImage(new BufferedImage(16, 12,BufferedImage.TYPE_INT_RGB));
 		// TODO Auto-generated constructor stub
-	
+		
 		
 		for(int ii = 0; ii<tank.getPixels().length;ii++){
 			tank.getPixels()[ii] = 0xFF0000;
 			
-		}
+		}*/
+		tank = new RGBImage(new File("./res/Tank_Flat.png"));
 		
-		terrain = new Terrain(new File("./res/temp_ground.png"));
-	
+		
+		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
+		terrain.addExplosion(400, 300, 100);
 	}
 	public void tick(){
 		super.tick();
@@ -44,8 +46,8 @@ public class testLevel extends BasicLevel {
 	public void onDraw(Renderer renderer){
 		
 		super.render(renderer);
-		renderer.DrawImage(terrain,testGame.ALPHA_MASK, 0, 0, 800, 600);
-		renderer.DrawImage(tank, (int)tankEntity.getLocation()[0], (int)tankEntity.getLocation()[1], 40, 60);
+		renderer.DrawImage(terrain,testGame.ALPHA_MASK, 0, 0,terrain.getWidth(), terrain.getHeight());
+		renderer.DrawImage(tank,-1, (int)tankEntity.getLocation()[0], (int)tankEntity.getLocation()[1], tank.getWidth(), tank.getHeight());
 	}
 	
 

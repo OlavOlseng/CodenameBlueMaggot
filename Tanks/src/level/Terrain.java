@@ -13,6 +13,9 @@ public class Terrain extends RGBImage {
 		// TODO Auto-generated constructor stub
 	}
 	public boolean hitTestpoint(int x,int y){
+		if(x<0 || x>getWidth() ||y < 0 || y>getHeight())
+				return false;
+		
 		return getPixel(x, y) != testGame.ALPHA_MASK;
 		
 	}

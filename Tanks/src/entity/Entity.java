@@ -6,6 +6,8 @@ package entity;
 import java.awt.Point;
 import java.util.Random;
 
+import level.BasicLevel;
+
 import baseGame.testGame;
 
 public abstract class Entity {
@@ -14,12 +16,13 @@ public abstract class Entity {
 	protected final Random rand = new Random();
 	protected double x, y;
 	protected double xr, yr;
-
+	protected  BasicLevel level;
 	protected int angle = 0;
 	protected double dx = 0, dy = 0;
 	public boolean removed = false;
 
-	public Entity(double x, double y, double xr, double yr) {
+	public Entity(double x, double y, double xr, double yr, BasicLevel level) {
+		this.level = level;
 		setLocation(x, y);
 		this.xr = xr;
 		this.yr = yr;
@@ -60,7 +63,9 @@ public abstract class Entity {
 	public  void gravitate(){
 		accelerate(0, 0.2);
 	};
-
+	public void applyFriction(){
+		accelerate(-dx*0.05,0);
+	}
 	public void move() {
 		this.setLocation((this.x + this.dx), (this.y + this.dy));
 	}
@@ -68,13 +73,14 @@ public abstract class Entity {
 	public void tick() {
 		move();
 		gravitate();
+		applyFriction();
 		if (x > testGame.WIDTH + 100 || x < -100 || y > testGame.HEIGHT + 100 || y < -300)
 			remove();
 	}
 
 	abstract public boolean intersectsEntity(Entity other);
 	
-	abstract public void intersectsTerrain();		
+	abstract public boolean intersectsTerrain();		
 	
 	public void remove() {
 		this.removed = true;

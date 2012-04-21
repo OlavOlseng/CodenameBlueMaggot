@@ -33,7 +33,7 @@ public class testGame extends BaseGame implements KeyListener {
 
 	public static int WIDTH = 1024;
 	public static int HEIGHT = 720;
-	public static int ALPHA_MASK = 0xFF0077;
+	public static int ALPHA_MASK = -1;
 	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	GraphicsDevice gs = ge.getDefaultScreenDevice();
 	InputHandler handler = new InputHandler();
@@ -57,8 +57,8 @@ public class testGame extends BaseGame implements KeyListener {
 	Circle tankEntity = new Circle();
 
 	public testGame() {
-
-		addKeyListener(this);
+		
+		addKeyListener(handler);
 		setBackgroundColor(Color.BLACK);
 		Random random = new Random();
 		setBackgroundColor(Color.BLACK);

@@ -25,6 +25,9 @@ public class BasicLevel{
 		players = new ArrayList<Tank>();
 		init();
 	}
+	public Terrain getTerrain(){
+		return terrain;
+	}
 	public void init(){
 		entities = new ArrayList<Entity>();
 		
