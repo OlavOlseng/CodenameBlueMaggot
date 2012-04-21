@@ -1,5 +1,3 @@
-To do list:
-
 package entity;
 
 import java.util.ArrayList;
@@ -117,6 +115,3 @@ public class Tank extends Entity {
 			jetPackFuel += 5;
 	}
 }
-
-
-
