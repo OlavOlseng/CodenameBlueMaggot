@@ -1,0 +1,16 @@
+package baseGame;
+
+import javax.swing.JFrame;
+
+public class gameDebug extends JFrame {
+	public gameDebug(){
+		
+		testGame game = new testGame();
+		game.setPreferredSize(800,600);
+		
+	}
+	public static void main(String[] args) {
+		new gameDebug();
+	}
+
+}

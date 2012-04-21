@@ -1,0 +1,15 @@
+package baseGame;
+
+import javax.swing.JFrame;
+
+public class gameDebug extends JFrame {
+	public gameDebug(){
+		
+		
+		
+	}
+	public static void main(String[] args) {
+		new gameDebug();
+	}
+
+}
