@@ -57,14 +57,17 @@ public abstract class Entity {
 		this.dy += ddy;
 	}
 
-	public abstract void gravitate();
+	public  void gravitate(){
+		accelerate(0, 0.2);
+	};
 
 	public void move() {
-		this.setLocation((int) (this.x + this.dx), (int) (this.y + this.dy));
+		this.setLocation((this.x + this.dx), (this.y + this.dy));
 	}
 	
 	public void tick() {
 		move();
+		gravitate();
 		if (x > testGame.WIDTH + 100 || x < -100 || y > testGame.HEIGHT + 100 || y < -300)
 			remove();
 	}
