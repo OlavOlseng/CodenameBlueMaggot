@@ -18,6 +18,7 @@ public class PixelHitbox implements Iterable<FloatingPoint> {
 	@Override
 	public Iterator<FloatingPoint> iterator() {
 		// TODO Auto-generated method stub
+		
 		return points.iterator();
 	}
 }

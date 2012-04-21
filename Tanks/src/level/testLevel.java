@@ -34,9 +34,13 @@ public class testLevel extends BasicLevel {
 		}*/
 		tank = new RGBImage(new File("./res/Tank_Flat.png"));
 		
-		
-		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
+		terrain = new Terrain(new File("./res/testlvl.png"));
+		//terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
 		terrain.addExplosion(400, 300, 100);
+		terrain.addExplosion(400, 400, 50);
+		terrain.addExplosion(380, 410, 40);
+		terrain.addExplosion(340, 430,30);
+		terrain.addExplosion(350, 440, 10);
 	}
 	public void tick(){
 		super.tick();
@@ -44,10 +48,11 @@ public class testLevel extends BasicLevel {
 		
 	}
 	public void onDraw(Renderer renderer){
-		
 		super.render(renderer);
+		
 		renderer.DrawImage(terrain,testGame.ALPHA_MASK, 0, 0,terrain.getWidth(), terrain.getHeight());
-		renderer.DrawImage(tank,-1, (int)tankEntity.getLocation()[0], (int)tankEntity.getLocation()[1], tank.getWidth(), tank.getHeight());
+		
+		renderer.DrawImage(tank,-1, (int)tankEntity.getLocation()[0] - (int)tankEntity.getXr(), (int)tankEntity.getLocation()[1] -(int)tankEntity.getYr() +1, tank.getWidth(), tank.getHeight());
 	}
 	
 

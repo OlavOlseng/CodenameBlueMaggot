@@ -35,17 +35,23 @@ public class Tank extends Entity {
 		this.playerNumber = playerNumber;
 		this.input = input;
 		boxUnderCenter = new PixelHitbox();
-		boxUnderCenter.addPoint(new FloatingPoint(xr/2 -1,yr*2));
-		boxUnderCenter.addPoint(new FloatingPoint(xr/2,yr*2));
-		boxUnderCenter.addPoint(new FloatingPoint(xr/2 +2,yr*2));
-			
+		boxUnderCenter.addPoint(new FloatingPoint(-2 ,yr));
+		boxUnderCenter.addPoint(new FloatingPoint(0, yr));
+		
+		
+		boxUnderCenter.addPoint(new FloatingPoint(2,yr));
+		
+		
 		boxLeft = new PixelHitbox();
 		boxRight = new PixelHitbox();
-		for (int i = 0;i<yr-3;i++){
-			boxLeft.addPoint(new FloatingPoint(0, i));
+		boxUp = new PixelHitbox();
+		boxUp.addPoint(new FloatingPoint(-2, -yr+2));
+		boxUp.addPoint(new FloatingPoint(+2, -yr+2));
+		for (int i =(int) -yr+2;i<-2;i++){
+			boxLeft.addPoint(new FloatingPoint(-xr, i));
 		}
-		for(int ii = 0;ii<yr-3;ii++){
-			boxRight.addPoint(new FloatingPoint(xr*2, ii));
+		for(int ii = (int)-yr+2;ii<-2;ii++){
+			boxRight.addPoint(new FloatingPoint(xr, ii));
 		}
 		
 		
@@ -113,7 +119,16 @@ public class Tank extends Entity {
 			}
 			
 		}
-		
+		for(FloatingPoint point:boxUp){
+			if(level.getTerrain().hitTestpoint((int)(point.getX() + x), (int)(point.getY() + y ))){
+				while(level.getTerrain().hitTestpoint((int)(point.getX() + x), (int)(point.getY() + y))){
+					setLocation(x, y+1);
+					setSpeed(dx,0.3);
+					
+				}
+				break;
+			}
+		}
 		for(FloatingPoint point: boxUnderCenter){
 		if(level.getTerrain().hitTestpoint((int)(point.getX() + x), (int)(point.getY() + y ))){
 			while(level.getTerrain().hitTestpoint((int)(point.getX() + x), (int)(point.getY() + y))){

@@ -28,7 +28,7 @@ public class Terrain extends RGBImage {
 		int[] pixels = new int[width*width];
 		
 		for(int i =0;i<pixels.length;i++){
-			pixels[i] =-1;
+			pixels[i] =-100;
 		}
 		
 		int xf =radius;
@@ -99,7 +99,7 @@ public class Terrain extends RGBImage {
 		pixels[width/2 * width + width/2] = color;
 		
 		
-		DrawRGBImage(pixels,-1, x0,y0, width, width);
+		DrawRGBImage(pixels,-100, x0,y0, width, width);
 		  
 	}
 }
