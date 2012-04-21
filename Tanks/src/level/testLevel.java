@@ -53,6 +53,7 @@ public class testLevel extends BasicLevel {
 		renderer.DrawImage(terrain,testGame.ALPHA_MASK, 0, 0,terrain.getWidth(), terrain.getHeight());
 		
 		renderer.DrawImage(tank,-1, (int)tankEntity.getLocation()[0] - (int)tankEntity.getXr(), (int)tankEntity.getLocation()[1] -(int)tankEntity.getYr() +1, tank.getWidth(), tank.getHeight());
+		
 	}
 	
 
