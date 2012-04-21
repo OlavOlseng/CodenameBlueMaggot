@@ -49,6 +49,7 @@ public class Tank extends Entity {
 	
 	@Override
 	public void intersectsTerrain() {
+		
 		// TODO Auto-generated method stub
 		
 	}
@@ -56,6 +57,7 @@ public class Tank extends Entity {
 	
 	@Override
 	public void gravitate() {
+		
 	}
 
 	@Override

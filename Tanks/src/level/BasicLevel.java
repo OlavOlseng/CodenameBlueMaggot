@@ -1,6 +1,6 @@
 package level;
 
-import input.InputHandler;
+import inputhandler.InputHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +12,17 @@ import entity.*;
 
 public class BasicLevel{
 	
-	private List<Entity> entities;
-	private ArrayList<Tank> players;
-	private InputHandler handler;
-	private BaseGame game;
-	private Terrain terrain;
+	protected List<Entity> entities;
+	protected ArrayList<Tank> players;
+	protected InputHandler handler;
+	protected BaseGame game;
+	protected Terrain terrain;
+	
 	
 	public BasicLevel(BaseGame game, InputHandler handler){
 		this.game = game;
 		this.handler = handler;
+		players = new ArrayList<Tank>();
 		init();
 	}
 	public void init(){
@@ -34,6 +36,7 @@ public class BasicLevel{
 		entities.add(ent);
 	}
 	
+	
 	public void removeEntity(Entity ent){
 		entities.remove(ent);
 	}
@@ -46,6 +49,7 @@ public class BasicLevel{
 	}
 	
 	public void tick() {
+		
 		handler.tick();
 		for (Entity ent : entities) {
 			ent.tick();
