@@ -1,8 +1,9 @@
-package baseGame;
+package level;
 
 import java.awt.Color;
 import java.io.File;
 
+import baseGame.testGame;
 import baseGame.Rendering.RGBImage;
 
 public class Terrain extends RGBImage {

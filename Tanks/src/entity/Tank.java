@@ -7,7 +7,7 @@ public class Tank extends Entity {
 	private int hitpoints;
 	private int maxHitpoints = 200;
 
-	public Tank(int x, int y) {
+	public Tank(double x, double y) {
 		super(x, y, 100, 100);
 		muzzleAngle = 0;
 		muzzleLength = 20;
@@ -38,14 +38,28 @@ public class Tank extends Entity {
 	}
 	
 	@Override
+	public boolean intersectsEntity(Entity other) {
+		double[] p = other.getLocation();
+		double xLeft = p[0] - other.xr;
+		double xRight = p[0] + other.xr;
+		double yTop = p[1] - other.yr;
+		double yBot = p[1] + other.yr;
+		return !(x + xr < xLeft || y + yr > yTop || x - xr > xRight || y - yr < yBot);
+	}
+	
+	@Override
+	public void intersectsTerrain() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	@Override
 	public void gravitate() {
 	}
 
 	@Override
 	public void tick() {
 		super.tick();
-		System.out.println(x);
-		System.out.println(dx);
 	}
-	
 }

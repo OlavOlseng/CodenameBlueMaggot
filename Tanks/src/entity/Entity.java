@@ -6,41 +6,44 @@ package entity;
 import java.awt.Point;
 import java.util.Random;
 
+import baseGame.testGame;
+
 public abstract class Entity {
 
 	public static final double G = 4;
 	protected final Random rand = new Random();
-	protected int x, y;
-	protected int xr, yr;
+	protected double x, y;
+	protected double xr, yr;
 
 	protected int angle = 0;
 	protected double dx = 0, dy = 0;
 	public boolean removed = false;
 
-	public Entity(int x, int y, int xr, int yr) {
+	public Entity(double x, double y, double xr, double yr) {
 		setLocation(x, y);
 		this.xr = xr;
 		this.yr = yr;
 	}
 
-	public void setLocation(int x, int y) {
+	public void setLocation(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
 
-	public Point getLocation() {
-		return new Point(this.x, this.y);
+	public double[] getLocation() {
+		double[] location = {x,y};
+		return location;
 	}
 
-	public int getXr() {
+	public double getXr() {
 		return xr;
 	}
 
-	public int getYr() {
+	public double getYr() {
 		return yr;
 	}
 
-	public void setSpeed(int dx, int dy) {
+	public void setSpeed(double dx, double dy) {
 		this.dx = dx;
 		this.dy = dy;
 	}
@@ -62,21 +65,14 @@ public abstract class Entity {
 	
 	public void tick() {
 		move();
-		if (x > 900 || x < -100 || y > 700 || y < -100)
+		if (x > testGame.WIDTH + 100 || x < -100 || y > testGame.HEIGHT + 100 || y < -300)
 			remove();
 	}
 
-	public boolean intersects(Entity other) {
-		// denne blokken lager hitbox kantene, dette kan eventuelt gjøres om til
-		// et hitbox objekt senere;
-		Point p = other.getLocation();
-		int xLeft = p.x - other.xr;
-		int xRight = p.x + other.xr;
-		int yTop = p.y - other.yr;
-		int yBot = p.y + other.yr;
-		return !(x + xr < xLeft || y + yr > yTop || x - xr > xRight || y - yr < yBot);
-	}
-
+	abstract public boolean intersectsEntity(Entity other);
+	
+	abstract public void intersectsTerrain();		
+	
 	public void remove() {
 		this.removed = true;
 	}

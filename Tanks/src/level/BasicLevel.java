@@ -16,19 +16,18 @@ public class BasicLevel{
 	private ArrayList<Tank> players;
 	private InputHandler handler;
 	private BaseGame game;
+	private Terrain terrain;
 	
 	public BasicLevel(BaseGame game, InputHandler handler){
 		this.game = game;
 		this.handler = handler;
-		
 		init();
 	}
 	public void init(){
 		entities = new ArrayList<Entity>();
 		
-		
-		
 	}
+	
 	public void addEntity(Entity ent) {
 		if(ent instanceof Tank)
 			players.add((Tank)ent);

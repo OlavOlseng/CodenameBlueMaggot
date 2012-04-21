@@ -4,7 +4,7 @@ import java.awt.Point;
 
 public class Shell extends Projectile {
 	
-	public Shell(Point origin, int size, double speedPercent, int angle) {
+	public Shell(double[] origin, int size, double speedPercent, int angle) {
 		super(origin, size, speedPercent, angle);
 		this.maxSpeed = 50;
 		this.airResistance = 1;
@@ -19,7 +19,7 @@ public class Shell extends Projectile {
 
 	@Override
 	public void gravitate() {
-		this.accelerate(0, Entity.G);
+		this.accelerate(0, 5);
 	}
 
 }

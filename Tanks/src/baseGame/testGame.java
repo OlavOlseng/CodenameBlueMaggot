@@ -12,6 +12,8 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import level.Terrain;
+
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
