@@ -4,6 +4,7 @@ import inputhandler.InputHandler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import baseGame.BaseGame;
 import baseGame.Rendering.Renderer;
@@ -17,6 +18,7 @@ public class BasicLevel {
 	protected InputHandler handler;
 	protected BaseGame game;
 	protected Terrain terrain;
+	private Random rand = new Random();
 
 	public BasicLevel(BaseGame game, InputHandler handler) {
 		this.game = game;
@@ -57,7 +59,13 @@ public class BasicLevel {
 	public void tick() {
 
 		handler.tick();
-		for (int i = 0; i< entities.size(); i++) {
+		if (handler.menu.clicked) {
+			for (int i = 0; i < 100; i++) {
+				addEntity(new Shell(500, 50, 5, this, rand.nextDouble(),
+						rand.nextInt(360)));
+			}
+		}
+		for (int i = 0; i < entities.size(); i++) {
 			Entity ent = entities.get(i);
 			ent.tick();
 			if (ent.removed) {

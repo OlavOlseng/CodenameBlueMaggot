@@ -60,7 +60,6 @@ public abstract class Projectile extends Entity {
 	public void tick() {
 		super.tick();
 		if (intersectsTerrain() || intersectsEntity()){
-			System.out.println("TREFFE");
 			explode();
 			remove();
 		}

@@ -39,8 +39,6 @@ public class testLevel extends BasicLevel {
 		 */
 		tank = new RGBImage(new File("./res/Tank_Flat.png"));
 		terrain = new Terrain(new File("./res/testlvl.png"));
-		for (int i=0; i < 50; i++){
-			addEntity(new Shell(500, 50, 5, this, rand.nextDouble() , rand.nextInt(360)));
 		}
 		// terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
 //		terrain.addExplosion(400, 300, 100);
@@ -48,7 +46,6 @@ public class testLevel extends BasicLevel {
 //		terrain.addExplosion(380, 410, 40);
 //		terrain.addExplosion(340, 430, 30);
 //		terrain.addExplosion(350, 440, 10);
-	}
 
 	public void tick() {
 		super.tick();
