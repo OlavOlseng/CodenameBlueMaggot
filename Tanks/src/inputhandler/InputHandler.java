@@ -12,22 +12,22 @@ public class InputHandler implements KeyListener{
 
 	private List<Key> keys = new ArrayList<Key>();
 	
-	private Key menu = new Key(keys);
-	private Key up1 = new Key(keys);
-	private Key down1 = new Key(keys);
-	private Key left1 = new Key(keys);
-	private Key right1 = new Key(keys);
-	private Key fire1 = new HeldKey(keys, 100);
-	private Key rotateR1 = new Key(keys);
-	private Key rotateL1 = new Key(keys);
+	public Key menu = new Key(keys);
+	public Key up1 = new Key(keys);
+	public Key down1 = new Key(keys);
+	public Key left1 = new Key(keys);
+	public Key right1 = new Key(keys);
+	public Key fire1 = new HeldKey(keys, 100);
+	public Key rotateR1 = new Key(keys);
+	public Key rotateL1 = new Key(keys);
 	
-	private Key up2 = new Key(keys);
-	private Key down2 = new Key(keys);
-	private Key left2 = new Key(keys);
-	private Key right2 = new Key(keys);
-	private Key fire2 = new HeldKey(keys, 100);
-	private Key rotateR2 = new Key(keys);
-	private Key rotateL2 = new Key(keys);
+	public Key up2 = new Key(keys);
+	public Key down2 = new Key(keys);
+	public Key left2 = new Key(keys);
+	public Key right2 = new Key(keys);
+	public Key fire2 = new HeldKey(keys, 100);
+	public Key rotateR2 = new Key(keys);
+	public Key rotateL2 = new Key(keys);
 
 	public void releaseAll() {
 		for (Key key : keys) {
