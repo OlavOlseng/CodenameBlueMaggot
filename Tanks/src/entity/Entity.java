@@ -78,7 +78,7 @@ public abstract class Entity {
 			remove();
 	}
 
-	abstract public boolean intersectsEntity(Entity other);
+	abstract public boolean intersectsEntity();
 	
 	abstract public boolean intersectsTerrain();		
 	
