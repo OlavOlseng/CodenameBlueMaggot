@@ -13,7 +13,8 @@ public abstract class Projectile extends Entity {
 
 	public Projectile(double x, double y, int size, BasicLevel level,
 			double speedPercent, int angle) {
-		super(x + (size + 12)*Math.cos(Math.toDegrees(angle)), y - (size + 12)*Math.sin(Math.toDegrees(angle)), size, size, level);
+		super(x + size * Math.cos(Math.toDegrees(angle)), y - size
+				* Math.sin(Math.toDegrees(angle)), size, size, level);
 		this.angle = angle;
 		this.dx = (speedPercent * Math.cos(angle % 360 * 2 * Math.PI / 360));
 		this.dy = (speedPercent * -Math.sin(angle % 360 * 2 * Math.PI / 360));
@@ -46,22 +47,9 @@ public abstract class Projectile extends Entity {
 		return false;
 	}
 
-	@Override
-	public boolean intersectsTerrain() {
-		for (FloatingPoint point : hitbox) {
-			if (level.getTerrain().hitTestpoint((int) (x + point.getX()),
-					(int) (y + point.getY())))
-				return true;
-		}
-		return false;
-	}
 
 	@Override
 	public void tick() {
 		super.tick();
-		if (intersectsTerrain() || intersectsEntity()){
-			explode();
-			remove();
-		}
 	}
 }

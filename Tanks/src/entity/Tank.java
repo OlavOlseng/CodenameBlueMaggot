@@ -71,7 +71,7 @@ public class Tank extends Entity {
 
 	public void incrementMuzzleAngle(int degrees) {
 		setMuzzleAngle(this.muzzleAngle + degrees);
-		muzzleAngle = muzzleAngle % 360;
+		muzzleAngle = ( (360 +muzzleAngle) % 360);
 		
 	}
 	
@@ -90,7 +90,9 @@ public class Tank extends Entity {
 	}
 	
 	public void fire(double speedPercent) {
-		level.addEntity(new Shell(this.x, this.y, this.level, speedPercent, this.muzzleAngle));
+		if (speedPercent < 0.2)
+			speedPercent = 0.2;
+		level.addEntity(new Grenade(this.x + muzzleLength*Math.cos(Math.toRadians(muzzleAngle)), this.y  - muzzleLength*Math.sin(Math.toRadians(muzzleAngle)) , this.level, speedPercent, this.muzzleAngle - 4));
 	}
 
 	@Override
@@ -168,9 +170,9 @@ public class Tank extends Entity {
 	}
 
 	public void jetPack() {
-		int fuelTick = 10;
+		int fuelTick = 13;
 		if (jetPackFuel >= fuelTick) {
-			accelerate(0, -0.8);
+			accelerate(0, -0.45);
 			jetPackFuel -= fuelTick;
 		}
 	}
@@ -201,7 +203,6 @@ public class Tank extends Entity {
 		}
 		if (chargingCannon && !input.fire1.down || cannonCharge >= 1){
 			fire(cannonCharge);
-			System.out.println(cannonCharge);
 			chargingCannon = false;
 			cannonCharge = 0;
 		}
@@ -212,7 +213,31 @@ public class Tank extends Entity {
 	}
 
 	private void player2Input() {
+		if (input.up2.down)
+			jetPack();
+		if (input.down2.down)
+			toggleWeapon();
+		if (input.right2.down && canGoRight) {
 
+			if (dx < 2)
+				accelerate(0.2, 0);
+		}
+		if (input.left2.down && canGoLeft) {
+			if (dx > -2)
+				accelerate(-0.2, 0);
+		}
+		if (input.fire2.clicked){
+			chargingCannon = true;
+		}
+		if (chargingCannon && !input.fire2.down || cannonCharge >= 1){
+			fire(cannonCharge);
+			chargingCannon = false;
+			cannonCharge = 0;
+		}
+		if(input.rotateL2.down)
+			incrementMuzzleAngle(3);
+		if(input.rotateR2.down)
+			incrementMuzzleAngle(-3);
 	}
 	public int getMuzzleAngle() {
 		return muzzleAngle;
@@ -231,7 +256,7 @@ public class Tank extends Entity {
 		if (jetPackFuel + 5 > 100)
 			jetPackFuel = 100;
 		else
-			jetPackFuel += 3;
+			jetPackFuel += 2;
 		
 		handleTerrainIntersection();
 	}

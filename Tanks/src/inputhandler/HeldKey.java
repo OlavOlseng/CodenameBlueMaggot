@@ -26,7 +26,6 @@ public class HeldKey extends Key {
 			if (ticksHeld >= maxTicksHeld) {
 				down = false;
 			}
-			System.out.println(ticksHeld + " " + maxTicksHeld);
 		}
 	}
 }

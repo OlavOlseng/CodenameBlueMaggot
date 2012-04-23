@@ -62,7 +62,7 @@ public abstract class Entity {
 	}
 
 	public  void gravitate(){
-		accelerate(0, 0.2);
+		accelerate(0, 0.1);
 	};
 	public void applyFriction(){
 		accelerate(-dx*frictionConstant,0);
@@ -75,7 +75,7 @@ public abstract class Entity {
 		move();
 		gravitate();
 		applyFriction();
-		if (x > testGame.WIDTH + 100 || x < -100 || y > testGame.HEIGHT + 100 || y < -300)
+		if (x > testGame.WIDTH + 100 || x < -100 || y > testGame.HEIGHT + 100 || y < -400)
 			remove();
 	}
 
