@@ -1,6 +1,8 @@
 package level;
 
 import java.awt.Color;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Random;
@@ -17,9 +19,15 @@ import baseGame.Rendering.Renderer;
 
 public class testLevel extends BasicLevel {
 
-	RGBImage tank;
-	RGBImage shell;
-	Entity tankEntity;
+	private RGBImage tank;
+	private RGBImage shell;
+	private RGBImage muzzle1;
+	private RGBImage crossHair;
+	private int muzzle1Rotation;
+	
+	private RGBImage muzzle2;
+	private Tank tankEntity;
+	
 	Random rand = new Random();
 	public testLevel(BaseGame game, InputHandler handler) {
 		super(game, handler);
@@ -39,19 +47,17 @@ public class testLevel extends BasicLevel {
 		 * 
 		 * }
 		 */
+	
 		shell = new RGBImage(new File("./res/Shell_temp.png"));
 		tank = new RGBImage(new File("./res/Tank_Flat.png"));
 		terrain = new Terrain(new File("./res/testlvl.png"));
-//		 terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
-		}
-//		terrain.addExplosion(400, 300, 100);
-//		terrain.addExplosion(400, 400, 50);
-//		terrain.addExplosion(380, 410, 40);
-//		terrain.addExplosion(340, 430, 30);
-//		terrain.addExplosion(350, 440, 10);
+		crossHair = new RGBImage(new File("./res/Crosshair.png"));
 
+		}
+//		
 	public void tick() {
 		super.tick();
+		
 	}
 
 	public void onDraw(Renderer renderer) {
@@ -65,8 +71,7 @@ public class testLevel extends BasicLevel {
 		}
 		renderer.DrawImage(terrain,testGame.ALPHA_MASK, 0, 0,terrain.getWidth(), terrain.getHeight());
 		renderer.DrawImage(tank,-1, (int)tankEntity.getLocation()[0] - (int)tankEntity.getXr(), (int)tankEntity.getLocation()[1] -(int)tankEntity.getYr() +1, tank.getWidth(), tank.getHeight());
-		
-
+		renderer.DrawImage(crossHair,-1,(int) tankEntity.getCrosshairLocation().getX()-10, (int)tankEntity.getCrosshairLocation().getY()-10,crossHair.getWidth(), crossHair.getHeight());
 		}
 
 }

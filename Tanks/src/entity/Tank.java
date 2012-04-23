@@ -12,7 +12,9 @@ public class Tank extends Entity {
 
 	private InputHandler input;
 	private int muzzleAngle;
-	private int muzzleLength;
+	private int muzzleLength = 15;
+
+
 	private int hitpoints;
 	private int maxHitpoints = 200;
 	private int playerNumber;
@@ -28,7 +30,7 @@ public class Tank extends Entity {
 	private PixelHitbox boxRight;
 	private PixelHitbox boxUp;
 	private int currentWeapon = 0;
-
+	
 	public Tank(double x, double y, int playerNumber, InputHandler input,
 			BasicLevel level) {
 		super(x, y, 11, 6, level);
@@ -39,8 +41,9 @@ public class Tank extends Entity {
 		this.input = input;
 		boxUnderCenter = new PixelHitbox();
 		boxUnderCenter.addPoint(new FloatingPoint(-2, yr));
+		boxUnderCenter.addPoint(new FloatingPoint(-1, yr));
 		boxUnderCenter.addPoint(new FloatingPoint(0, yr));
-
+		boxUnderCenter.addPoint(new FloatingPoint(1, yr));
 		boxUnderCenter.addPoint(new FloatingPoint(2, yr));
 
 		boxLeft = new PixelHitbox();
@@ -69,9 +72,13 @@ public class Tank extends Entity {
 	public void incrementMuzzleAngle(int degrees) {
 		setMuzzleAngle(this.muzzleAngle + degrees);
 		muzzleAngle = muzzleAngle % 360;
-		System.out.println(muzzleAngle);
+		
 	}
-
+	
+	public FloatingPoint getCrosshairLocation(){
+		return(new FloatingPoint( x+ muzzleLength*Math.cos(Math.toRadians(muzzleAngle)),y-muzzleLength*Math.sin(Math.toRadians(muzzleAngle))));
+	}
+	
 	public void changeHp(int amount) {
 		if (hitpoints + amount > maxHitpoints)
 			hitpoints = maxHitpoints;
@@ -206,6 +213,9 @@ public class Tank extends Entity {
 
 	private void player2Input() {
 
+	}
+	public int getMuzzleAngle() {
+		return muzzleAngle;
 	}
 
 	@Override

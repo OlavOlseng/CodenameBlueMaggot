@@ -1,6 +1,7 @@
 package level;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 import baseGame.testGame;
@@ -12,8 +13,11 @@ public class Terrain extends RGBImage {
 		super(file);
 		// TODO Auto-generated constructor stub
 	}
+	public Terrain(BufferedImage img){
+		super(img);
+	}
 	public boolean hitTestpoint(int x,int y){
-		if(x<0 || x>getWidth() ||y < 0 || y>=getHeight())
+		if(x<0 || x>=getWidth() ||y < 0 || y>=getHeight())
 				return false;
 		
 		return getPixel(x, y) != testGame.ALPHA_MASK;
