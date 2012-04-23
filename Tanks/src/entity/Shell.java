@@ -17,10 +17,6 @@ public class Shell extends Projectile {
 
 	}
 
-	@Override
-	public void gravitate() {
-		this.accelerate(0, 0.05);
-	}
 
 	@Override
 	public void explode() {
