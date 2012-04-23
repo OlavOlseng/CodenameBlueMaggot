@@ -23,13 +23,13 @@ public class Tank extends Entity {
 	private boolean canGoLeft = true;
 	private boolean canGoRight = true;
 	private boolean chargingCannon = false;
+	private int currentWeapon = 0;
 	
-	private List<Projectile> weaponList = new ArrayList<Projectile>();
+	private ArrayList<Integer> weaponList = new ArrayList<Integer>();
 	private PixelHitbox boxUnderCenter;
 	private PixelHitbox boxLeft;
 	private PixelHitbox boxRight;
 	private PixelHitbox boxUp;
-	private int currentWeapon = 0;
 	
 	public Tank(double x, double y, int playerNumber, InputHandler input,
 			BasicLevel level) {
@@ -39,6 +39,9 @@ public class Tank extends Entity {
 		hitpoints = maxHitpoints;
 		this.playerNumber = playerNumber;
 		this.input = input;
+		weaponList.add(0);
+		weaponList.add(1);
+		
 		boxUnderCenter = new PixelHitbox();
 		boxUnderCenter.addPoint(new FloatingPoint(-2, yr));
 		boxUnderCenter.addPoint(new FloatingPoint(-1, yr));
@@ -57,6 +60,7 @@ public class Tank extends Entity {
 		for (int ii = (int) -yr + 2; ii < -2; ii++) {
 			boxRight.addPoint(new FloatingPoint(xr, ii));
 		}
+		
 		
 		/*
 		 * for(int ii = 0;ii<yr-2;ii++){ boxLeft.addPoint(new FloatingPoint(0,
@@ -92,21 +96,14 @@ public class Tank extends Entity {
 	public void fire(double speedPercent) {
 		if (speedPercent < 0.2)
 			speedPercent = 0.2;
-		level.addEntity(new Shell(this.x + muzzleLength*Math.cos(Math.toRadians(muzzleAngle)), this.y  - muzzleLength*Math.sin(Math.toRadians(muzzleAngle)) , this.level, speedPercent, this.muzzleAngle - 4));
-	}
-
-	@Override
-	public boolean intersectsEntity() {
-		for (Entity ent : level.getPlayers()) {
-			double[] p = ent.getLocation();
-			double xLeft = p[0] - ent.xr;
-			double xRight = p[0] + ent.xr;
-			double yTop = p[1] - ent.yr;
-			double yBot = p[1] + ent.yr;
-			if (!(x + xr < xLeft || y + yr > yBot || x - xr > xRight || y - yr < yTop))
-				return true;
+		switch(weaponList.get(currentWeapon)){
+		case 0:
+			level.addEntity(new Shell(this.x + muzzleLength*Math.cos(Math.toRadians(muzzleAngle)), this.y  - muzzleLength*Math.sin(Math.toRadians(muzzleAngle)) , this.level, speedPercent, this.muzzleAngle - 4));
+			break;
+		case 1:
+			level.addEntity(new Grenade(this.x + muzzleLength*Math.cos(Math.toRadians(muzzleAngle)), this.y  - muzzleLength*Math.sin(Math.toRadians(muzzleAngle)) , this.level, speedPercent, this.muzzleAngle - 4));
+			
 		}
-		return false;
 	}
 
 	public void handleTerrainIntersection() {
@@ -178,16 +175,15 @@ public class Tank extends Entity {
 	}
 
 	public void toggleWeapon() {
-		if (currentWeapon == weaponList.size() - 1)
+		currentWeapon++;
+		if (currentWeapon >= weaponList.size())
 			currentWeapon = 0;
-		else
-			currentWeapon++;
 	}
 
 	private void player1Input() {
 		if (input.up1.down)
 			jetPack();
-		if (input.down1.down)
+		if (input.down1.clicked)
 			toggleWeapon();
 		if (input.right1.down && canGoRight) {
 
@@ -215,7 +211,7 @@ public class Tank extends Entity {
 	private void player2Input() {
 		if (input.up2.down)
 			jetPack();
-		if (input.down2.down)
+		if (input.down2.clicked)
 			toggleWeapon();
 		if (input.right2.down && canGoRight) {
 

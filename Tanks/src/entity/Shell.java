@@ -12,7 +12,7 @@ public class Shell extends Projectile {
 			int angle) {
 		super(x, y, 4, level, speedPercent, angle);
 		this.maxSpeed = 25;
-		this.frictionConstant = 0.01;
+		this.frictionConstant = 0.008;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
@@ -23,6 +23,7 @@ public class Shell extends Projectile {
 	public void explode() {
 		level.getTerrain().addExplosion((int) (x - explosionRadius),
 				(int) (y - explosionRadius), explosionRadius);
+		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, 50));
 	}
 
 	@Override
@@ -39,10 +40,18 @@ public class Shell extends Projectile {
 		}
 		return false;
 	}
-	
+
+	public boolean handleIntersections(){
+		for(int i =0; i< level.getPlayers().size(); i++){
+			if (intersectsEntity((Entity) level.getPlayers().get(i)))
+			return true;
+		}
+		return false;
+	}
+
 	public void tick() {
 		super.tick();
-		if (intersectsTerrain() || intersectsEntity()) {
+		if (intersectsTerrain() || handleIntersections()) {
 			explode();
 			remove();
 		}

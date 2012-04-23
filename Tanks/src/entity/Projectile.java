@@ -31,7 +31,8 @@ public abstract class Projectile extends Entity {
 	}
 
 	abstract public void explode();
-
+	
+	
 	@Override
 	public void tick() {
 		super.tick();

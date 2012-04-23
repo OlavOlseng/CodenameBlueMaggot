@@ -79,18 +79,15 @@ public abstract class Entity {
 			remove();
 	}
 
-		public boolean intersectsEntity() {
-			for (Entity ent : level.getPlayers()) {
+		public boolean intersectsEntity(Entity ent) {
 				double[] p = ent.getLocation();
 				double xLeft = p[0] - ent.xr;
 				double xRight = p[0] + ent.xr;
 				double yTop = p[1] - ent.yr;
 				double yBot = p[1] + ent.yr;
 				if (!(x + xr < xLeft || y + yr < yTop || x - xr > xRight || y - yr > yBot)){
-					System.out.println("traff");
 					return true;
-			}
-			}
+		}
 			return false;
 	}
 	

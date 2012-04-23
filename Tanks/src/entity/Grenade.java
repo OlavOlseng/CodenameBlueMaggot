@@ -22,6 +22,7 @@ public class Grenade extends Projectile {
 	public void explode() {
 		level.getTerrain().addExplosion((int) (x - explosionRadius),
 				(int) (y - explosionRadius), explosionRadius);
+		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, 50));
 	}
 
 	@Override
