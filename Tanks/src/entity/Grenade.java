@@ -10,7 +10,7 @@ public class Grenade extends Projectile {
 
 	public Grenade(double x, double y, BasicLevel level, double speedPercent,
 			int angle) {
-		super(x, y, 5, level, speedPercent, angle);
+		super(x, y, 4, level, speedPercent, angle);
 		this.maxSpeed = 15;
 		this.frictionConstant = 0.012;
 		this.angle = angle;

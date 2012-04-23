@@ -10,7 +10,7 @@ public class Shell extends Projectile {
 
 	public Shell(double x, double y, BasicLevel level, double speedPercent,
 			int angle) {
-		super(x, y, 5, level, speedPercent, angle);
+		super(x, y, 6, level, speedPercent, angle);
 		this.maxSpeed = 25;
 		this.frictionConstant = 0.01;
 		this.angle = angle;

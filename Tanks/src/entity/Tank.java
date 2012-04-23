@@ -12,7 +12,7 @@ public class Tank extends Entity {
 
 	private InputHandler input;
 	private int muzzleAngle;
-	private int muzzleLength = 15;
+	private int muzzleLength = 16;
 
 
 	private int hitpoints;
@@ -92,18 +92,18 @@ public class Tank extends Entity {
 	public void fire(double speedPercent) {
 		if (speedPercent < 0.2)
 			speedPercent = 0.2;
-		level.addEntity(new Grenade(this.x + muzzleLength*Math.cos(Math.toRadians(muzzleAngle)), this.y  - muzzleLength*Math.sin(Math.toRadians(muzzleAngle)) , this.level, speedPercent, this.muzzleAngle - 4));
+		level.addEntity(new Shell(this.x + muzzleLength*Math.cos(Math.toRadians(muzzleAngle)), this.y  - muzzleLength*Math.sin(Math.toRadians(muzzleAngle)) , this.level, speedPercent, this.muzzleAngle - 4));
 	}
 
 	@Override
 	public boolean intersectsEntity() {
-		for (Entity ent : level.getEntities()) {
+		for (Entity ent : level.getPlayers()) {
 			double[] p = ent.getLocation();
 			double xLeft = p[0] - ent.xr;
 			double xRight = p[0] + ent.xr;
 			double yTop = p[1] - ent.yr;
 			double yBot = p[1] + ent.yr;
-			if (!(x + xr < xLeft || y + yr > yTop || x - xr > xRight || y - yr < yBot))
+			if (!(x + xr < xLeft || y + yr > yBot || x - xr > xRight || y - yr < yTop))
 				return true;
 		}
 		return false;

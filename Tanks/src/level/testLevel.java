@@ -26,13 +26,15 @@ public class testLevel extends BasicLevel {
 	private RGBImage muzzle1;
 	private RGBImage crossHair1;
 	private RGBImage crossHair2;
+	private RGBImage grenade;
 	private int muzzle1Rotation;
-	
+
 	private RGBImage muzzle2;
 	private Tank tankEntity1;
 	private Tank tankEntity2;
-	
+
 	Random rand = new Random();
+
 	public testLevel(BaseGame game, InputHandler handler) {
 		super(game, handler);
 
@@ -51,36 +53,67 @@ public class testLevel extends BasicLevel {
 		 * 
 		 * }
 		 */
-	
+
+		grenade = new RGBImage(new File("./res/Grenade_temp.png"));
 		shell = new RGBImage(new File("./res/Shell_temp.png"));
 		tank1 = new RGBImage(new File("./res/Tank_Flat.png"));
 		tank2 = new RGBImage(new File("./res/Tank_Flat.png"));
-//		terrain = new Terrain(new File("./res/testlvl.png"));
+		// terrain = new Terrain(new File("./res/testlvl.png"));
 		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
 		crossHair1 = new RGBImage(new File("./res/Crosshair.png"));
 		crossHair2 = new RGBImage(new File("./res/Crosshair.png"));
 
-		}
-//		
+	}
+
+	//
 	public void tick() {
 		super.tick();
-		
+
 	}
 
 	public void onDraw(Renderer renderer) {
 		super.render(renderer);
-		
+
 		for (Entity ent : entities) {
-			if (ent instanceof Shell || ent instanceof Grenade){
-				renderer.DrawImage(shell, -1, (int)(ent.getLocation()[0] - ent.getXr()), (int)(ent.getLocation()[1]- ent.getYr()), shell.getWidth(), shell.getHeight());
+			if (ent instanceof Shell) {
+				renderer.DrawImage(shell, -1,
+						(int) (ent.getLocation()[0] - ent.getXr()),
+						(int) (ent.getLocation()[1] - ent.getYr()),
+						shell.getWidth(), shell.getHeight());
 			}
-			
+			if (ent instanceof Grenade) {
+				renderer.DrawImage(grenade, -1,
+						(int) (ent.getLocation()[0] - ent.getXr()),
+						(int) (ent.getLocation()[1] - ent.getYr()),
+						shell.getWidth(), shell.getHeight());
+			}
 		}
-		renderer.DrawImage(terrain,testGame.ALPHA_MASK, 0, 0,terrain.getWidth(), terrain.getHeight());
-		renderer.DrawImage(tank1,-1, (int)tankEntity1.getLocation()[0] - (int)tankEntity1.getXr(), (int)tankEntity1.getLocation()[1] -(int)tankEntity1.getYr() +1, tank1.getWidth(), tank1.getHeight());
-		renderer.DrawImage(tank2,-1, (int)tankEntity2.getLocation()[0] - (int)tankEntity2.getXr(), (int)tankEntity2.getLocation()[1] -(int)tankEntity2.getYr() +1, tank2.getWidth(), tank2.getHeight());
-		renderer.DrawImage(crossHair1,-1,(int) tankEntity1.getCrosshairLocation().getX()-crossHair1.getWidth()/2, (int)tankEntity1.getCrosshairLocation().getY()-crossHair1.getHeight()/2,crossHair1.getWidth(), crossHair1.getHeight());
-		renderer.DrawImage(crossHair2,-1,(int) tankEntity2.getCrosshairLocation().getX()-crossHair2.getWidth()/2, (int)tankEntity2.getCrosshairLocation().getY()-crossHair2.getHeight()/2,crossHair2.getWidth(), crossHair2.getHeight());
-		}
+		renderer.DrawImage(terrain, testGame.ALPHA_MASK, 0, 0,
+				terrain.getWidth(), terrain.getHeight());
+		renderer.DrawImage(tank1, -1, (int) tankEntity1.getLocation()[0]
+				- (int) tankEntity1.getXr(), (int) tankEntity1.getLocation()[1]
+				- (int) tankEntity1.getYr() + 1, tank1.getWidth(),
+				tank1.getHeight());
+		renderer.DrawImage(tank2, -1, (int) tankEntity2.getLocation()[0]
+				- (int) tankEntity2.getXr(), (int) tankEntity2.getLocation()[1]
+				- (int) tankEntity2.getYr() + 1, tank2.getWidth(),
+				tank2.getHeight());
+		renderer.DrawImage(
+				crossHair1,
+				-1,
+				(int) tankEntity1.getCrosshairLocation().getX()
+						- crossHair1.getWidth() / 2,
+				(int) tankEntity1.getCrosshairLocation().getY()
+						- crossHair1.getHeight() / 2, crossHair1.getWidth(),
+				crossHair1.getHeight());
+		renderer.DrawImage(
+				crossHair2,
+				-1,
+				(int) tankEntity2.getCrosshairLocation().getX()
+						- crossHair2.getWidth() / 2,
+				(int) tankEntity2.getCrosshairLocation().getY()
+						- crossHair2.getHeight() / 2, crossHair2.getWidth(),
+				crossHair2.getHeight());
+	}
 
 }

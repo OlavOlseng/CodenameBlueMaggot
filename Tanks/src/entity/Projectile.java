@@ -33,23 +33,6 @@ public abstract class Projectile extends Entity {
 	abstract public void explode();
 
 	@Override
-	public boolean intersectsEntity() {
-		for (Entity ent : level.getPlayers()) {
-
-			double[] p = ent.getLocation();
-			double xLeft = p[0] - ent.xr;
-			double xRight = p[0] + ent.xr;
-			double yTop = p[1] - ent.yr;
-			double yBot = p[1] + ent.yr;
-			if (!(x + xr < xLeft || y + yr < yBot || x - xr > xRight || y - yr < yTop)){
-				return true;
-			}
-		}
-		return false;
-	}
-
-
-	@Override
 	public void tick() {
 		super.tick();
 	}
