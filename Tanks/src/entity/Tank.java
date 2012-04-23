@@ -125,18 +125,6 @@ public class Tank extends Entity {
 			}
 
 		}
-		for (FloatingPoint point : boxUp) {
-			if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
-					(int) (point.getY() + y))) {
-				while (level.getTerrain().hitTestpoint(
-						(int) (point.getX() + x), (int) (point.getY() + y))) {
-					setLocation(x, y + 1);
-					setSpeed(dx, 0.3);
-
-				}
-				break;
-			}
-		}
 		for (FloatingPoint point : boxUnderCenter) {
 			if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
 					(int) (point.getY() + y))) {
@@ -144,6 +132,18 @@ public class Tank extends Entity {
 						(int) (point.getX() + x), (int) (point.getY() + y))) {
 					setLocation(x, y - 1);
 					setSpeed(dx, 0);
+					
+				}
+				return;
+			}
+		}
+		for (FloatingPoint point : boxUp) {
+			if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
+					(int) (point.getY() + y))) {
+				while (level.getTerrain().hitTestpoint(
+						(int) (point.getX() + x), (int) (point.getY() + y))) {
+					setLocation(x, y + 1);
+					setSpeed(dx, 0.3);
 
 				}
 				break;
@@ -192,16 +192,16 @@ public class Tank extends Entity {
 		if (input.fire1.clicked){
 			chargingCannon = true;
 		}
-		if (chargingCannon && !input.fire1.down){
+		if (chargingCannon && !input.fire1.down || cannonCharge >= 1){
 			fire(cannonCharge);
 			System.out.println(cannonCharge);
 			chargingCannon = false;
 			cannonCharge = 0;
 		}
 		if(input.rotateL1.down)
-			incrementMuzzleAngle(2);
+			incrementMuzzleAngle(3);
 		if(input.rotateR1.down)
-			incrementMuzzleAngle(-2);
+			incrementMuzzleAngle(-3);
 	}
 
 	private void player2Input() {
@@ -224,7 +224,6 @@ public class Tank extends Entity {
 			jetPackFuel += 3;
 		
 		handleTerrainIntersection();
-		muzzleAngle = muzzleAngle%360;
 	}
 
 }

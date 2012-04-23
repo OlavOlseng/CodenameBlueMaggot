@@ -13,7 +13,7 @@ public abstract class Projectile extends Entity {
 
 	public Projectile(double x, double y, int size, BasicLevel level,
 			double speedPercent, int angle) {
-		super(x, y, size, size, level);
+		super(x + (size + 12)*Math.cos(Math.toDegrees(angle)), y - (size + 12)*Math.sin(Math.toDegrees(angle)), size, size, level);
 		this.angle = angle;
 		this.dx = (speedPercent * Math.cos(angle % 360 * 2 * Math.PI / 360));
 		this.dy = (speedPercent * -Math.sin(angle % 360 * 2 * Math.PI / 360));

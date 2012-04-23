@@ -19,6 +19,7 @@ public abstract class Entity {
 	protected  BasicLevel level;
 	protected int angle = 0;
 	protected double dx = 0, dy = 0;
+	protected double frictionConstant = 0.05;
 	public boolean removed = false;
 
 	public Entity(double x, double y, double xr, double yr, BasicLevel level) {
@@ -64,7 +65,7 @@ public abstract class Entity {
 		accelerate(0, 0.2);
 	};
 	public void applyFriction(){
-		accelerate(-dx*0.05,0);
+		accelerate(-dx*frictionConstant,0);
 	}
 	public void move() {
 		this.setLocation((this.x + this.dx), (this.y + this.dy));

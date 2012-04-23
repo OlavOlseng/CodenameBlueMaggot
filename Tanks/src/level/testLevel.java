@@ -18,6 +18,7 @@ import baseGame.Rendering.Renderer;
 public class testLevel extends BasicLevel {
 
 	RGBImage tank;
+	RGBImage shell;
 	Entity tankEntity;
 	Random rand = new Random();
 	public testLevel(BaseGame game, InputHandler handler) {
@@ -26,6 +27,7 @@ public class testLevel extends BasicLevel {
 		tankEntity = new Tank(10, 10, 1, handler, this);
 		addEntity(tankEntity);
 		tankEntity.setSpeed(0, 1);
+		System.out.println(entities.size());
 		/*
 		 * tank = new RGBImage(new BufferedImage(16,
 		 * 12,BufferedImage.TYPE_INT_RGB)); // TODO Auto-generated constructor
@@ -37,9 +39,10 @@ public class testLevel extends BasicLevel {
 		 * 
 		 * }
 		 */
+		shell = new RGBImage(new File("./res/Shell_temp.png"));
 		tank = new RGBImage(new File("./res/Tank_Flat.png"));
-//		terrain = new Terrain(new File("./res/testlvl.png"));
-		 terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
+		terrain = new Terrain(new File("./res/testlvl.png"));
+//		 terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
 		}
 //		terrain.addExplosion(400, 300, 100);
 //		terrain.addExplosion(400, 400, 50);
@@ -54,8 +57,13 @@ public class testLevel extends BasicLevel {
 	public void onDraw(Renderer renderer) {
 		super.render(renderer);
 		
+		for (Entity ent : entities) {
+			if (ent instanceof Shell){
+				renderer.DrawImage(shell, -1, (int)(ent.getLocation()[0] - ent.getXr()), (int)(ent.getLocation()[1]- ent.getYr()), shell.getWidth(), shell.getHeight());
+			}
+			
+		}
 		renderer.DrawImage(terrain,testGame.ALPHA_MASK, 0, 0,terrain.getWidth(), terrain.getHeight());
-		
 		renderer.DrawImage(tank,-1, (int)tankEntity.getLocation()[0] - (int)tankEntity.getXr(), (int)tankEntity.getLocation()[1] -(int)tankEntity.getYr() +1, tank.getWidth(), tank.getHeight());
 		
 
