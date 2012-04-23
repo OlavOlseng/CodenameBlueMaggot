@@ -61,7 +61,7 @@ public class BasicLevel {
 		handler.tick();
 		if (handler.menu.clicked) {
 			for (int i = 0; i < 100; i++) {
-				addEntity(new Shell(500, 50, 5, this, rand.nextDouble(),
+				addEntity(new Shell(500, 50, this, rand.nextDouble(),
 						rand.nextInt(360)));
 			}
 		}

@@ -16,7 +16,7 @@ public abstract class Projectile extends Entity {
 		super(x, y, size, size, level);
 		this.angle = angle;
 		this.dx = (speedPercent * Math.cos(angle % 360 * 2 * Math.PI / 360));
-		this.dy = (speedPercent * Math.sin(angle % 360 * 2 * Math.PI / 360));
+		this.dy = (speedPercent * -Math.sin(angle % 360 * 2 * Math.PI / 360));
 		this.hitbox = new PixelHitbox();
 		init();
 	}

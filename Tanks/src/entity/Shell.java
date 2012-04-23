@@ -6,10 +6,10 @@ import level.BasicLevel;
 
 public class Shell extends Projectile {
 
-	public Shell(double x, double y, int size, BasicLevel level,
+	public Shell(double x, double y, BasicLevel level,
 			double speedPercent, int angle) {
-		super(x, y, size, level, speedPercent, angle);
-		this.maxSpeed = 10;
+		super(x, y, 5, level, speedPercent, angle);
+		this.maxSpeed = 40;
 		this.airResistance = 0.02;
 		this.angle = angle;
 		this.dx = dx*maxSpeed;
@@ -19,7 +19,7 @@ public class Shell extends Projectile {
 
 	@Override
 	public void gravitate() {
-		this.accelerate(0, 0.5);
+		this.accelerate(0, 0.05);
 	}
 
 	@Override

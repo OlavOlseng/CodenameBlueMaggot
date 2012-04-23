@@ -59,7 +59,7 @@ public class InputHandler implements KeyListener{
 		if (e.getKeyCode() == KeyEvent.VK_S) down1.toggle(pressed);
 		if (e.getKeyCode() == KeyEvent.VK_A) left1.toggle(pressed);
 		if (e.getKeyCode() == KeyEvent.VK_D) right1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_TAB) fire1.toggle(pressed);
+		if (e.getKeyCode() == KeyEvent.VK_F) fire1.toggle(pressed);
 		if (e.getKeyCode() == KeyEvent.VK_E) rotateR1.toggle(pressed);
 		if (e.getKeyCode() == KeyEvent.VK_Q) rotateL1.toggle(pressed);
 		

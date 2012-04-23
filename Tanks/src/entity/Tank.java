@@ -10,16 +10,18 @@ import inputhandler.InputHandler;
 
 public class Tank extends Entity {
 
+	private InputHandler input;
 	private int muzzleAngle;
 	private int muzzleLength;
 	private int hitpoints;
 	private int maxHitpoints = 200;
-	private InputHandler input;
 	private int playerNumber;
 	private int jetPackFuel = 100;
+	private double cannonCharge = 0;
 	private boolean canGoLeft = true;
 	private boolean canGoRight = true;
-
+	private boolean chargingCannon = false;
+	
 	private List<Projectile> weaponList = new ArrayList<Projectile>();
 	private PixelHitbox boxUnderCenter;
 	private PixelHitbox boxLeft;
@@ -32,7 +34,7 @@ public class Tank extends Entity {
 		super(x, y, 11, 6, level);
 		muzzleAngle = 0;
 		muzzleLength = 20;
-		hitpoints = 200;
+		hitpoints = maxHitpoints;
 		this.playerNumber = playerNumber;
 		this.input = input;
 		boxUnderCenter = new PixelHitbox();
@@ -52,21 +54,22 @@ public class Tank extends Entity {
 		for (int ii = (int) -yr + 2; ii < -2; ii++) {
 			boxRight.addPoint(new FloatingPoint(xr, ii));
 		}
-
+		
 		/*
 		 * for(int ii = 0;ii<yr-2;ii++){ boxLeft.addPoint(new FloatingPoint(0,
 		 * ii)); }
 		 */
 
 	}
-
+	
 	public void setMuzzleAngle(int degrees) {
 		this.muzzleAngle = degrees;
 	}
 
 	public void incrementMuzzleAngle(int degrees) {
 		setMuzzleAngle(this.muzzleAngle + degrees);
-		muzzleAngle = muzzleAngle % 60;
+		muzzleAngle = muzzleAngle % 360;
+		System.out.println(muzzleAngle);
 	}
 
 	public void changeHp(int amount) {
@@ -78,8 +81,9 @@ public class Tank extends Entity {
 		} else
 			hitpoints += amount;
 	}
-
+	
 	public void fire(double speedPercent) {
+		level.addEntity(new Shell(this.x, this.y, this.level, speedPercent, this.muzzleAngle));
 	}
 
 	@Override
@@ -185,6 +189,19 @@ public class Tank extends Entity {
 			if (dx > -2)
 				accelerate(-0.2, 0);
 		}
+		if (input.fire1.clicked){
+			chargingCannon = true;
+		}
+		if (chargingCannon && !input.fire1.down){
+			fire(cannonCharge);
+			System.out.println(cannonCharge);
+			chargingCannon = false;
+			cannonCharge = 0;
+		}
+		if(input.rotateL1.down)
+			incrementMuzzleAngle(2);
+		if(input.rotateR1.down)
+			incrementMuzzleAngle(-2);
 	}
 
 	private void player2Input() {
@@ -199,12 +216,15 @@ public class Tank extends Entity {
 		if (playerNumber == 2)
 			player2Input();
 
+		if(chargingCannon)
+			cannonCharge += 0.015;
 		if (jetPackFuel + 5 > 100)
 			jetPackFuel = 100;
 		else
 			jetPackFuel += 3;
-
+		
 		handleTerrainIntersection();
+		muzzleAngle = muzzleAngle%360;
 	}
 
 }

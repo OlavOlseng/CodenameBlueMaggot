@@ -14,7 +14,8 @@ public class HeldKey extends Key {
 	@Override
 	public void toggle(boolean pressed) {
 		super.toggle(pressed);
-		ticksHeld = 0;
+		if(pressed)
+			ticksHeld = 0;
 	}
 
 	@Override
@@ -22,8 +23,10 @@ public class HeldKey extends Key {
 		super.tick();
 		if (down) {
 			ticksHeld++;
-			if (ticksHeld > maxTicksHeld)
+			if (ticksHeld >= maxTicksHeld) {
 				down = false;
+			}
+			System.out.println(ticksHeld + " " + maxTicksHeld);
 		}
 	}
 }

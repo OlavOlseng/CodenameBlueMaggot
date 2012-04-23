@@ -23,7 +23,7 @@ public class testLevel extends BasicLevel {
 	public testLevel(BaseGame game, InputHandler handler) {
 		super(game, handler);
 
-		tankEntity = new Tank(400, 200, 1, handler, this);
+		tankEntity = new Tank(10, 10, 1, handler, this);
 		addEntity(tankEntity);
 		tankEntity.setSpeed(0, 1);
 		/*
@@ -38,9 +38,9 @@ public class testLevel extends BasicLevel {
 		 * }
 		 */
 		tank = new RGBImage(new File("./res/Tank_Flat.png"));
-		terrain = new Terrain(new File("./res/testlvl.png"));
+//		terrain = new Terrain(new File("./res/testlvl.png"));
+		 terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
 		}
-		// terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
 //		terrain.addExplosion(400, 300, 100);
 //		terrain.addExplosion(400, 400, 50);
 //		terrain.addExplosion(380, 410, 40);
