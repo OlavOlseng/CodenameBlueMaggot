@@ -13,7 +13,7 @@ public class gameDebug extends JFrame {
 		pack();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		game.setVisible(true);
-		game.init(testGame.WIDTH,testGame.HEIGHT,60);
+		game.init();
 		
 	}
 	public static void main(String[] args) {

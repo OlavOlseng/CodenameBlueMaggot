@@ -19,6 +19,15 @@ public class Key {
 		}
 	}
 
+	public byte toByte(){
+		if(down){
+			return 0x1;
+		}else{
+			return 0x0;
+		}
+		
+	}
+	
 	public void tick() {
 		if (absorbs < presses) {
 			absorbs++;

@@ -40,7 +40,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	
 	private Rectangle gameRect;
 
-	public void init(int width,int height, int fps) {
+	protected void init(int width,int height, int fps) {
 		canvasWidth = width;
 		canvasHeight = height;
 		mainCanvas = new BufferedImage(canvasWidth, canvasHeight,BufferedImage.TYPE_INT_RGB);
