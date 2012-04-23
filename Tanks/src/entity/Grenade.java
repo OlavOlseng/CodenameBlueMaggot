@@ -3,15 +3,15 @@ package entity;
 import level.BasicLevel;
 
 public class Grenade extends Projectile {
-	
+
 	private int liveTime = 0;
 	private int explosionTime = 150;
 	int explosionRadius = 25;
 
-	public Grenade(double x, double y, BasicLevel level,
-			double speedPercent, int angle) {
+	public Grenade(double x, double y, BasicLevel level, double speedPercent,
+			int angle) {
 		super(x, y, 5, level, speedPercent, angle);
-		this.maxSpeed = 20;
+		this.maxSpeed = 15;
 		this.frictionConstant = 0.012;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
@@ -23,29 +23,39 @@ public class Grenade extends Projectile {
 		level.getTerrain().addExplosion((int) (x - explosionRadius),
 				(int) (y - explosionRadius), explosionRadius);
 	}
-	
+
 	@Override
 	public void applyFriction() {
 		accelerate(-dx * frictionConstant, -dy * frictionConstant);
 	}
-	
+
 	@Override
 	public boolean intersectsTerrain() {
 		FloatingPoint point = hitbox.getPoint(0);
-		if(level.getTerrain().hitTestpoint((int)(point.getX() + x), (int)(point.getY() + y))){
-			this.setSpeed(-dx*0.4, dy);
+		if (level.getTerrain().hitTestpoint((int) (point.getX() + x ),
+				(int) (point.getY() + y))) {
+			this.setSpeed(-dx * 0.55, dy);
+			this.setLocation(x + 1, y);
 		}
 		point = hitbox.getPoint(4);
-		if(level.getTerrain().hitTestpoint((int)(point.getX() + x), (int)(point.getY() + y)))
-			this.setSpeed(-dx*0.4, dy);
-		
+		if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
+				(int) (point.getY() + y))) {
+			this.setSpeed(-dx * 0.55, dy);
+			this.setLocation(x - 1, y);
+		}
+
 		point = hitbox.getPoint(1);
-		if(level.getTerrain().hitTestpoint((int)(point.getX() + x), (int)(point.getY() + y)))
-			this.setSpeed(dx, -dy*0.4);
-		
+		if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
+				(int) (point.getY() + y))) {
+			this.setSpeed(dx, -dy * 0.55);
+			this.setLocation(x, y + 1);
+		}
 		point = hitbox.getPoint(3);
-		if(level.getTerrain().hitTestpoint((int)(point.getX() + x), (int)(point.getY() + y)))
-			this.setSpeed(dx, -dy*0.4);
+		if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
+				(int) (point.getY() + y))) {
+			this.setSpeed(dx, -dy * 0.55);
+			this.setLocation(x, y - 1);
+		}
 		return false;
 	}
 

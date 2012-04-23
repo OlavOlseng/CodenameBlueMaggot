@@ -50,6 +50,10 @@ public class BasicLevel {
 		return entities;
 	}
 
+	public ArrayList<Tank> getPlayers() {
+		return players;
+	}
+	
 	public void render(Renderer renderer) {
 
 		// Denne skal rendre alt som skal rendres,
