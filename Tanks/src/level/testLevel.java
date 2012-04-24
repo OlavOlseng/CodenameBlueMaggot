@@ -9,6 +9,7 @@ import java.util.Random;
 
 import entity.Entity;
 import entity.Grenade;
+import entity.ScoreBubble;
 import entity.Shell;
 import entity.Tank;
 
@@ -28,6 +29,7 @@ public class testLevel extends BasicLevel {
 	private RGBImage crossHair1;
 	private RGBImage crossHair2;
 	private RGBImage grenade;
+	private RGBImage scoreBubble;
 	private int muzzle1Rotation;
 
 	private RGBImage muzzle2;
@@ -74,6 +76,7 @@ public class testLevel extends BasicLevel {
 		 * }
 		 */
 
+		scoreBubble = new RGBImage(new File("./res/Scorebubble.png"));
 		grenade = new RGBImage(new File("./res/Grenade_temp.png"));
 		shell = new RGBImage(new File("./res/Shell_temp.png"));
 		tank1 = new RGBImage(new File("./res/Tank_Flat.png"));
@@ -90,7 +93,7 @@ public class testLevel extends BasicLevel {
 	//
 	public void tick() {
 		super.tick();
-
+		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
 	}
 
 	public void onDraw(Renderer renderer) {
@@ -109,7 +112,13 @@ public class testLevel extends BasicLevel {
 				renderer.DrawImage(grenade, -1,
 						(int) (ent.getLocation()[0] - ent.getXr()),
 						(int) (ent.getLocation()[1] - ent.getYr()),
-						shell.getWidth(), shell.getHeight());
+						grenade.getWidth(), grenade.getHeight());
+			}
+			if (ent instanceof ScoreBubble) {
+				renderer.DrawImage(scoreBubble, -1,
+						(int) (ent.getLocation()[0] - ent.getXr()),
+						(int) (ent.getLocation()[1] - ent.getYr()),
+						scoreBubble.getWidth(), scoreBubble.getHeight());
 			}
 		}
 		renderer.DrawImage(terrain, -1, 0, 0,

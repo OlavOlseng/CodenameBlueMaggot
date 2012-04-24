@@ -22,7 +22,6 @@ public abstract class Entity implements NetworkObject {
 		this.id = id;
 	}
 
-	public static final double G = 4;
 	protected final Random rand = new Random();
 	protected double x, y;
 	protected double xr, yr;
@@ -94,7 +93,7 @@ public abstract class Entity implements NetworkObject {
 		move();
 		gravitate();
 		applyFriction();
-		if (x > testGame.WIDTH + 100 || x < -100 || y > testGame.HEIGHT + 100 || y < -400)
+		if (x > testGame.WIDTH + 100 || x < -100 || y > testGame.HEIGHT + 100 || y < -800)
 			remove();
 	}
 
@@ -109,8 +108,6 @@ public abstract class Entity implements NetworkObject {
 		}
 			return false;
 	}
-	
-	abstract public boolean intersectsTerrain();		
 	
 	public void remove() {
 		this.removed = true;

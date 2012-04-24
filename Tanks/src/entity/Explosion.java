@@ -11,10 +11,6 @@ public class Explosion extends Entity{
 		this.explosionPower = explosionPower;
 	}
 	
-	@Override
-	public boolean intersectsTerrain() {
-		return false;
-	}
 	
 	public void handleIntersects(){
 		for(int i = 0; i < level.getEntities().size(); i++){

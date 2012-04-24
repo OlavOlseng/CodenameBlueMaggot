@@ -37,8 +37,6 @@ public class BasicLevel {
 	}
 
 	public void addEntity(Entity ent) {
-		if (ent instanceof Tank)
-			players.add((Tank) ent);
 		entities.add(ent);
 	}
 
