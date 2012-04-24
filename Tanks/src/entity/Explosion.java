@@ -6,9 +6,12 @@ public class Explosion extends Entity{
 	
 	double explosionPower;
 	
+	
 	public Explosion(double x, double y, double radius, BasicLevel level, double explosionPower) {
 		super(x, y, radius, radius, level);
 		this.explosionPower = explosionPower;
+		
+		
 	}
 	
 	
@@ -29,5 +32,6 @@ public class Explosion extends Entity{
 		handleIntersects();
 		this.remove();
 	}
+	
 
 }

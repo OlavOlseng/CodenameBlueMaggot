@@ -51,19 +51,15 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 	private ConnectionManager connection;
 	
 	public void init(){
-<<<<<<< HEAD
 
-		//startReularGame();
-		startOnlineGame(false);
+
+		startReularGame();
+		//startOnlineGame(false);
 		//startOnlineGame(true);
-=======
-		keyStrokes = new ArrayList<byte[]>();
-		//connection.becomeHost();
-		//isHost = true;
-//		connection.joinGame("127.0.0.1");
+
+		
 		
 		startGame();
->>>>>>> origin/master
 		
 	}
 	

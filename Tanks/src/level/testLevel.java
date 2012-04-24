@@ -94,6 +94,16 @@ public class testLevel extends BasicLevel {
 	public void tick() {
 		super.tick();
 		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
+		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
+		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
+		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
+		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
+		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
+		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
+		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
+		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
+		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
+		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
 	}
 
 	public void onDraw(Renderer renderer) {
@@ -101,8 +111,10 @@ public class testLevel extends BasicLevel {
 		
 		renderer.DrawImage(backGround, 0,0, testGame.WIDTH, testGame.HEIGHT);
 		
-		for (Entity ent : entities) {
+			for (Entity ent : entities) {
+			
 			if (ent instanceof Shell) {
+				
 				renderer.DrawImage(shell, -1,
 						(int) (ent.getLocation()[0] - ent.getXr()),
 						(int) (ent.getLocation()[1] - ent.getYr()),
