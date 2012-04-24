@@ -10,7 +10,9 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
+import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
+import baseGame.animations.AnimationFactory;
 
 import entity.Entity;
 
@@ -28,10 +30,12 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	private int backgroundColor = Color.BLACK.getRGB();
 	private BufferedImage backGround = null;
 	private int [] pixels;
-
+	
+	
 	private BufferedImage mainCanvas;
 	public void setBackgroundColor(Color backgroundColor) {
 		this.backgroundColor = backgroundColor.getRGB();
+		
 		
 	}	
 	public Color getBackGroundColor(){
@@ -41,11 +45,12 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	private Rectangle gameRect;
 
 	protected void init(int width,int height, int fps) {
+		AnimationFactory.getInstance();
 		canvasWidth = width;
 		canvasHeight = height;
 		mainCanvas = new BufferedImage(canvasWidth, canvasHeight,BufferedImage.TYPE_INT_RGB);
 		pixels = ((DataBufferInt)mainCanvas.getRaster().getDataBuffer()).getData();
-		
+
 		this.fps = fps;
 		
 		msDelay = 1000/(long)fps;
@@ -56,6 +61,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		buffer = getBufferStrategy();
 
 		runLoop = new Thread(this);
+		
 		lastTime = System.currentTimeMillis();
 		runLoop.run();
 
@@ -88,9 +94,8 @@ public abstract class BaseGame extends Canvas implements Runnable {
 				lastTime = System.currentTimeMillis();
 				
 			
-				onUpdate(deltaTime);
+			onUpdate(deltaTime);
 			
-
 			Renderer renderer = new Renderer(pixels,backgroundColor,canvasWidth,canvasHeight);
 	
 			onDraw(renderer);

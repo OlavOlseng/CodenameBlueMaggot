@@ -47,21 +47,23 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 	private InputHandler handler = new InputHandler();
 	
 	private testLevel level ;
+	
 	private OnlineLevel onlineLevel;
 	private ConnectionManager connection;
 	
 	public void init(){
+		
 
-
-		startReularGame();
+		startReuglarGame();
 		//startOnlineGame(false);
 		//startOnlineGame(true);
 
 		
 		
-		startGame();
+	//	startGame();
 		
 	}
+	
 	
 	public testGame() {
 	
@@ -104,11 +106,11 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 	
 
 	
-	public void startReularGame() {
+	public void startReuglarGame() {
 		// TODO Auto-generated method stub
-	
-		online = true;
+		
 		level =  new testLevel(this,handler);
+		
 		init(WIDTH,HEIGHT,60);
 		
 		

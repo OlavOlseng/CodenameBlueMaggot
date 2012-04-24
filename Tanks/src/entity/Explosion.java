@@ -9,6 +9,7 @@ public class Explosion extends Entity{
 	
 	public Explosion(double x, double y, double radius, BasicLevel level, double explosionPower) {
 		super(x, y, radius, radius, level);
+		
 		this.explosionPower = explosionPower;
 		
 		

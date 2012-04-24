@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Random;
 
+import entity.Animations;
 import entity.Entity;
 import entity.Grenade;
 import entity.ScoreBubble;
@@ -19,6 +20,8 @@ import baseGame.BaseGame;
 import baseGame.testGame;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
+import baseGame.animations.Animation;
+import baseGame.animations.AnimationFactory;
 
 public class testLevel extends BasicLevel {
 
@@ -31,9 +34,9 @@ public class testLevel extends BasicLevel {
 	private RGBImage grenade;
 	private RGBImage scoreBubble;
 	private int muzzle1Rotation;
-
-	private RGBImage muzzle2;
 	
+	private RGBImage muzzle2;
+	private int index = 0;;
 	private Tank tankEntity1;
 	private Tank tankEntity2;
 	
@@ -59,31 +62,23 @@ public class testLevel extends BasicLevel {
 
 	public testLevel(BaseGame game, InputHandler handler) {
 		super(game, handler);
-		
 		tankEntity1 = new Tank(10, 10, 1, handler, this);
 		addEntity(tankEntity1);
 		tankEntity2 = new Tank(1000, 10, 2, handler, this);
 		addEntity(tankEntity2);
-		/*
-		 * tank = new RGBImage(new BufferedImage(16,
-		 * 12,BufferedImage.TYPE_INT_RGB)); // TODO Auto-generated constructor
-		 * stub
-		 * 
-		 * 
-		 * for(int ii = 0; ii<tank.getPixels().length;ii++){
-		 * tank.getPixels()[ii] = 0xFF0000;
-		 * 
-		 * }
-		 */
-
+		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Animation_temp.png"), Animations.TEST, 20, 50);
+		
+		System.out.println("lalalalala");
+		RGBImage[] frames = AnimationFactory.getInstance().getAnimation(Animations.TEST, Animations.TEST_ANIMATION);
+		
 		scoreBubble = new RGBImage(new File("./res/Scorebubble.png"));
 		grenade = new RGBImage(new File("./res/Grenade_temp.png"));
 		shell = new RGBImage(new File("./res/Shell_temp.png"));
 		tank1 = new RGBImage(new File("./res/Tank_Flat.png"));
 		tank2 = new RGBImage(new File("./res/Tank_Flat.png"));
+		
 		// terrain = new Terrain(new File("./res/testlvl.png"));
 		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
-
 		backGround = new RGBImage(new File("./res/Cityscape_background.png"));
 		crossHair1 = new RGBImage(new File("./res/Crosshair.png"));
 		crossHair2 = new RGBImage(new File("./res/Crosshair.png"));
@@ -104,10 +99,12 @@ public class testLevel extends BasicLevel {
 		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
 		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
 		addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0, 100));
+		System.out.println("Objects: " + entities.size() );
 	}
 
 	public void onDraw(Renderer renderer) {
 		super.render(renderer);
+		
 		
 		renderer.DrawImage(backGround, 0,0, testGame.WIDTH, testGame.HEIGHT);
 		
@@ -132,9 +129,14 @@ public class testLevel extends BasicLevel {
 						(int) (ent.getLocation()[1] - ent.getYr()),
 						scoreBubble.getWidth(), scoreBubble.getHeight());
 			}
+			if(ent instanceof Animation){
+				Animation ani = (Animation)ent;
+				renderer.DrawImage(ani.nextFrame(), (int)ani.getLocation()[0] - 10, (int)ani.getLocation()[1] -25, 20, 50);
+			}
 		}
-		renderer.DrawImage(terrain, -1, 0, 0,
-				terrain.getWidth(), terrain.getHeight());
+			
+		renderer.DrawImage(terrain, -1, 0, 0,terrain.getWidth(), terrain.getHeight());
+		
 		renderer.DrawImage(tank1, -1, (int) tankEntity1.getLocation()[0]
 				- (int) tankEntity1.getXr(), (int) tankEntity1.getLocation()[1]
 				- (int) tankEntity1.getYr() + 1, tank1.getWidth(),
@@ -159,6 +161,7 @@ public class testLevel extends BasicLevel {
 				(int) tankEntity2.getCrosshairLocation().getY()
 						- crossHair2.getHeight() / 2, crossHair2.getWidth(),
 				crossHair2.getHeight());
+		
 	}
 
 	

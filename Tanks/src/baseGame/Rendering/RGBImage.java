@@ -15,17 +15,26 @@ public class RGBImage {
 	
 	private int canvasWidth;
 	private int canvasHeight;
+	
 	public int getWidth() {
 		return canvasWidth;
 	}
-
+	
 	public int getHeight() {
 		return canvasHeight;
+		
 	}
-
+	
+	public RGBImage(int[] pixels,int width,int height){
+		rgbPixels = pixels;
+		canvasHeight = height;
+		canvasWidth = width;
+		
+	}
 	public RGBImage(BufferedImage img){
 		setBufferedImage(img);
 	}
+	
 	private void setBufferedImage(BufferedImage img){
 		if(img.getType() != BufferedImage.TYPE_INT_RGB){
 			rgbBufferedImage = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -125,6 +134,18 @@ public void DrawRGBImage(int[] pixels,int mask,int x,int y, int width, int heigh
 			pixels[width*y + x] = color;
 			}
 	}
+	public RGBImage getSubImage(int x,int y,int width,int height){
+		int[] pixels = new int[height*width];
+		RGBImage img = new RGBImage(pixels, width, height);
+		
+		for(int i = 0;i<height;i++){
+			for(int ii = 0;ii<width;ii++){
+				img.setPixel(getPixel(x+ii, y+i), ii, i);
+			}
+		}
+		return img;
+		
+	}
 	public void setPixel(int color,int x, int y){
 		if(x>=0 && y>=0 && y<= canvasHeight && x<=canvasWidth){
 		rgbPixels[canvasWidth*y + x] = color;
@@ -137,9 +158,7 @@ public void DrawRGBImage(int[] pixels,int mask,int x,int y, int width, int heigh
 	}
 	Polygon poly = new Polygon();
 	
-	public BufferedImage getRgbBufferedImage() {
-		return rgbBufferedImage;
-	}
+	
 	
 
 	public int[] getPixels() {

@@ -40,6 +40,7 @@ public class ConnectionManager {
 	
 	
 	public void becomeHost(){
+		
 		try {
 			listener = new ServerSocket(7227,2);
 		} catch (IOException e) {
@@ -89,7 +90,6 @@ public class ConnectionManager {
 		delegate.connectionFailed(e.getLocalizedMessage());
 		return;
 	}
-	System.out.println("lidshfu");
 	startListenerThread();
 	startWritingThread();
 	delegate.startGame();
@@ -118,6 +118,7 @@ public class ConnectionManager {
 				}
 				 
 			};
+			
 			Timer timer = new Timer();
 			timer.schedule(acceptLoop,0,1000);
 			
@@ -177,10 +178,12 @@ public class ConnectionManager {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 				try {
 					synchronized (delegate) {
 						if(delegate.shouldWrite()){
 						out.write(delegate.onWrite());
+						
 						}
 						}
 					}

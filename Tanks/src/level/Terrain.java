@@ -17,12 +17,14 @@ public class Terrain extends RGBImage {
 		super(img);
 	}
 	public boolean hitTestpoint(int x,int y){
+		
 		if(x<0 || x>=getWidth() ||y < 0 || y>=getHeight())
 				return false;
 		
 		return getPixel(x, y) != testGame.ALPHA_MASK;
 		
 	}
+	
 	public void addExplosion(int x,int y,int radius){
 		DrawCircle(testGame.ALPHA_MASK, x, y, radius);
 	}
@@ -88,6 +90,7 @@ public class Terrain extends RGBImage {
 			int posY = Y*width;
 			int pixelC = pixels[posX + posY];
 			if(doFill){
+				
 				pixels[posX + posY] = color;
 				pixels[width - posX + posY] = color;
 				

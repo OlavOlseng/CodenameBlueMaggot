@@ -36,9 +36,7 @@ public class Renderer {
 	
 	public void DrawPixelArrayRGB(int[] pixels,int x,int y, int width, int height){
 		int offset = y*canvasWidth;
-		
-		
-			
+
 			for(int i =0;i<height;i++){
 				for(int j = 0;j<width;j++){
 					int adr = offset +x+ i*canvasWidth + j ;
