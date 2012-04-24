@@ -12,7 +12,7 @@ public class Grenade extends Projectile {
 			int angle) {
 		super(x, y, 4, level, speedPercent, angle);
 		this.maxSpeed = 15;
-		this.frictionConstant = 0.012;
+		this.frictionConstant = 0.001;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
@@ -29,11 +29,10 @@ public class Grenade extends Projectile {
 	public void applyFriction() {
 		accelerate(-dx * frictionConstant, -dy * frictionConstant);
 	}
-
-	@Override
-	public boolean intersectsTerrain() {
+	
+	public void handleIntersects(){
 		FloatingPoint point = hitbox.getPoint(0);
-		if (level.getTerrain().hitTestpoint((int) (point.getX() + x ),
+		if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
 				(int) (point.getY() + y))) {
 			this.setSpeed(-dx * 0.55, dy);
 			this.setLocation(x + 1, y);
@@ -48,22 +47,22 @@ public class Grenade extends Projectile {
 		point = hitbox.getPoint(1);
 		if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
 				(int) (point.getY() + y))) {
-			this.setSpeed(dx, -dy * 0.55);
+			this.setSpeed(dx*0.8, -dy * 0.55);
 			this.setLocation(x, y + 1);
 		}
 		point = hitbox.getPoint(3);
 		if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
 				(int) (point.getY() + y))) {
-			this.setSpeed(dx, -dy * 0.55);
+			this.setSpeed(dx*0.5, -dy * 0.55);
 			this.setLocation(x, y - 1);
 		}
-		return false;
 	}
+	
 
 	public void tick() {
 		super.tick();
 		liveTime++;
-		intersectsTerrain();
+		handleIntersects();
 		if (liveTime >= explosionTime) {
 			explode();
 			remove();

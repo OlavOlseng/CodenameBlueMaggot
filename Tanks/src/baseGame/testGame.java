@@ -49,9 +49,9 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 		keyStrokes = new ArrayList<byte[]>();
 		//connection.becomeHost();
 		//isHost = true;
-		connection.joinGame("127.0.0.1");
+//		connection.joinGame("127.0.0.1");
 		
-		//startGame();
+		startGame();
 		
 	}
 	public testGame() {

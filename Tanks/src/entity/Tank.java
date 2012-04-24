@@ -3,6 +3,10 @@ package entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.weapon.GrenadeGun;
+import entity.weapon.ShellGun;
+import entity.weapon.Weapon;
+
 import level.BasicLevel;
 import level.Terrain;
 
@@ -13,7 +17,7 @@ public class Tank extends Entity {
 	private InputHandler input;
 	private int muzzleAngle;
 	private int muzzleLength = 16;
-
+	private int score = 0;
 
 	private int hitpoints;
 	private int maxHitpoints = 200;
@@ -25,7 +29,7 @@ public class Tank extends Entity {
 	private boolean chargingCannon = false;
 	private int currentWeapon = 0;
 	
-	private ArrayList<Integer> weaponList = new ArrayList<Integer>();
+	private ArrayList<Weapon> weaponList = new ArrayList<Weapon>();
 	private PixelHitbox boxUnderCenter;
 	private PixelHitbox boxLeft;
 	private PixelHitbox boxRight;
@@ -34,13 +38,15 @@ public class Tank extends Entity {
 	public Tank(double x, double y, int playerNumber, InputHandler input,
 			BasicLevel level) {
 		super(x, y, 11, 6, level);
+		this.level.getPlayers().add(this);
 		muzzleAngle = 0;
 		muzzleLength = 20;
 		hitpoints = maxHitpoints;
 		this.playerNumber = playerNumber;
 		this.input = input;
-		weaponList.add(0);
-		weaponList.add(1);
+		
+		weaponList.add(new ShellGun());
+		weaponList.add(new GrenadeGun());
 		
 		boxUnderCenter = new PixelHitbox();
 		boxUnderCenter.addPoint(new FloatingPoint(-2, yr));
@@ -79,6 +85,14 @@ public class Tank extends Entity {
 		
 	}
 	
+	public void addScore(int amount){
+		this.score += amount;
+	}
+	
+	public int getScore() {
+		return score;
+	}
+	
 	public FloatingPoint getCrosshairLocation(){
 		return(new FloatingPoint( x+ muzzleLength*Math.cos(Math.toRadians(muzzleAngle)),y-muzzleLength*Math.sin(Math.toRadians(muzzleAngle))));
 	}
@@ -96,14 +110,7 @@ public class Tank extends Entity {
 	public void fire(double speedPercent) {
 		if (speedPercent < 0.2)
 			speedPercent = 0.2;
-		switch(weaponList.get(currentWeapon)){
-		case 0:
-			level.addEntity(new Shell(this.x + muzzleLength*Math.cos(Math.toRadians(muzzleAngle)), this.y  - muzzleLength*Math.sin(Math.toRadians(muzzleAngle)) , this.level, speedPercent, this.muzzleAngle - 4));
-			break;
-		case 1:
-			level.addEntity(new Grenade(this.x + muzzleLength*Math.cos(Math.toRadians(muzzleAngle)), this.y  - muzzleLength*Math.sin(Math.toRadians(muzzleAngle)) , this.level, speedPercent, this.muzzleAngle - 4));
-			
-		}
+		weaponList.get(currentWeapon).fire(this.x + muzzleLength*Math.cos(Math.toRadians(muzzleAngle)), this.y  - muzzleLength*Math.sin(Math.toRadians(muzzleAngle)) , this.level, speedPercent, this.muzzleAngle - 4);
 	}
 
 	public void handleTerrainIntersection() {
@@ -165,7 +172,13 @@ public class Tank extends Entity {
 
 		return false;
 	}
-
+	
+	private void tickWeapons(){
+		for (Weapon wep : weaponList) {
+			wep.tick();
+		}
+	}
+	
 	public void jetPack() {
 		int fuelTick = 13;
 		if (jetPackFuel >= fuelTick) {
@@ -255,6 +268,7 @@ public class Tank extends Entity {
 			jetPackFuel += 2;
 		
 		handleTerrainIntersection();
+		tickWeapons();
 	}
 
 }

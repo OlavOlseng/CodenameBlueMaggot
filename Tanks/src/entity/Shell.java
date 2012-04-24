@@ -31,7 +31,6 @@ public class Shell extends Projectile {
 		accelerate(-dx * frictionConstant, -dy * frictionConstant);
 	}
 
-	@Override
 	public boolean intersectsTerrain() {
 		for (FloatingPoint point : hitbox) {
 			if (level.getTerrain().hitTestpoint((int) (x + point.getX()),
