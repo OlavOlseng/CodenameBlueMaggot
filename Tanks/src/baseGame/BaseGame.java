@@ -96,7 +96,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			onDraw(renderer);
 			
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
-
+			
 			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
 			
 

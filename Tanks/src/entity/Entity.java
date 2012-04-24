@@ -8,9 +8,19 @@ import java.util.Random;
 
 import level.BasicLevel;
 
+import Networking.NetworkObject;
 import baseGame.testGame;
 
-public abstract class Entity {
+public abstract class Entity implements NetworkObject {
+
+	private int id;
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public static final double G = 4;
 	protected final Random rand = new Random();
@@ -70,7 +80,16 @@ public abstract class Entity {
 	public void move() {
 		this.setLocation((this.x + this.dx), (this.y + this.dy));
 	}
-	
+	public String getObject(){
+		return "'" +to5DigitString(getId())+ "'" +to5DigitString(x) + "'" + to5DigitString(y)
+				+"'"+to5DigitString(dx) + "'" + to5DigitString(dy);
+		
+	}
+	private String to5DigitString(double x){
+		String part1 = String.format("%.0f", x);
+		String part2 = String.format("%."+(5-part1.length())+"f", x-(int)x).substring(1);
+		return part1 + part2;
+	}
 	public void tick() {
 		move();
 		gravitate();

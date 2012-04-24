@@ -13,6 +13,7 @@ import entity.Shell;
 import entity.Tank;
 
 import inputhandler.InputHandler;
+import Networking.NetworkObject;
 import baseGame.BaseGame;
 import baseGame.testGame;
 import baseGame.Rendering.RGBImage;
@@ -30,14 +31,33 @@ public class testLevel extends BasicLevel {
 	private int muzzle1Rotation;
 
 	private RGBImage muzzle2;
+	
 	private Tank tankEntity1;
 	private Tank tankEntity2;
+	
+	public Tank getTankEntity1() {
+		return tankEntity1;
+	}
 
+	public void setTankEntity1(Tank tankEntity1) {
+		this.tankEntity1 = tankEntity1;
+	}
+
+	public Tank getTankEntity2() {
+		return tankEntity2;
+	}
+
+	public void setTankEntity2(Tank tankEntity2) {
+		this.tankEntity2 = tankEntity2;
+	}
+
+	private RGBImage backGround;
+	
 	Random rand = new Random();
 
 	public testLevel(BaseGame game, InputHandler handler) {
 		super(game, handler);
-
+		
 		tankEntity1 = new Tank(10, 10, 1, handler, this);
 		addEntity(tankEntity1);
 		tankEntity2 = new Tank(1000, 10, 2, handler, this);
@@ -60,11 +80,13 @@ public class testLevel extends BasicLevel {
 		tank2 = new RGBImage(new File("./res/Tank_Flat.png"));
 		// terrain = new Terrain(new File("./res/testlvl.png"));
 		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
+
+		backGround = new RGBImage(new File("./res/Cityscape_background.png"));
 		crossHair1 = new RGBImage(new File("./res/Crosshair.png"));
 		crossHair2 = new RGBImage(new File("./res/Crosshair.png"));
 
 	}
-
+	
 	//
 	public void tick() {
 		super.tick();
@@ -73,7 +95,9 @@ public class testLevel extends BasicLevel {
 
 	public void onDraw(Renderer renderer) {
 		super.render(renderer);
-
+		
+		renderer.DrawImage(backGround, 0,0, testGame.WIDTH, testGame.HEIGHT);
+		
 		for (Entity ent : entities) {
 			if (ent instanceof Shell) {
 				renderer.DrawImage(shell, -1,
@@ -88,7 +112,7 @@ public class testLevel extends BasicLevel {
 						shell.getWidth(), shell.getHeight());
 			}
 		}
-		renderer.DrawImage(terrain, testGame.ALPHA_MASK, 0, 0,
+		renderer.DrawImage(terrain, -1, 0, 0,
 				terrain.getWidth(), terrain.getHeight());
 		renderer.DrawImage(tank1, -1, (int) tankEntity1.getLocation()[0]
 				- (int) tankEntity1.getXr(), (int) tankEntity1.getLocation()[1]
@@ -115,5 +139,7 @@ public class testLevel extends BasicLevel {
 						- crossHair2.getHeight() / 2, crossHair2.getWidth(),
 				crossHair2.getHeight());
 	}
+
+	
 
 }

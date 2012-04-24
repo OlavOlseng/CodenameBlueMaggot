@@ -23,7 +23,7 @@ public class ConnectionManager {
 	private OutputStream out;
 	private InputStream in;
 	private ConnectionDelegate delegate;
-	private int messageLenght = 35*5;
+	private int messageLenght = 7;
 	private Thread readThread;
 	private Thread writeThread;
 
@@ -128,7 +128,7 @@ public class ConnectionManager {
 			public void run(){
 				while(true){
 					try {
-						Thread.sleep(20);
+						Thread.sleep(2);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -172,7 +172,7 @@ public class ConnectionManager {
 			public void run(){
 				while(true){
 				try {
-					Thread.sleep(20);
+					Thread.sleep(2);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
