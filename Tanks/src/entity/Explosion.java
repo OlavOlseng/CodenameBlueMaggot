@@ -3,7 +3,7 @@ package entity;
 import baseGame.animations.Animation;
 import baseGame.animations.AnimationFactory;
 import level.BasicLevel;
-
+import baseGame.animations.*;
 public class Explosion extends Entity {
 
 	double explosionPower;
@@ -13,6 +13,9 @@ public class Explosion extends Entity {
 		super(x, y, radius, radius, level);
 
 		this.explosionPower = explosionPower;
+		Animation ani = new Animation( AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS,Animations.SMALLEXPLOSION),9,0,x,y,level);
+		level.addEntity(ani);
+				 
 
 	}
 

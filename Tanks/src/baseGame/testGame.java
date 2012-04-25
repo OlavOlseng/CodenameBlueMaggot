@@ -52,8 +52,8 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 	private ConnectionManager connection;
 	
 	public void init(){
-		
-
+		System.out.println(0xFF0000);
+		System.out.println(0xFF0000 &-1);
 		startReuglarGame();
 		//startOnlineGame(false);
 		//startOnlineGame(true);

@@ -28,13 +28,15 @@ public abstract class Projectile extends Entity {
 		hitbox.addPoint(new FloatingPoint(0, 0));
 		hitbox.addPoint(new FloatingPoint(0, yr));
 		hitbox.addPoint(new FloatingPoint(xr, 0));
+		
 	}
-
+	
 	abstract public void explode();
 	
 	
 	@Override
 	public void tick() {
 		super.tick();
+		while(level.getTerrain().hitTestpoint(x, y))
 	}
 }

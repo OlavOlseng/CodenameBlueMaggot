@@ -15,6 +15,7 @@ public class Renderer {
 	private int canvasHeight;
 	private int[] rgbPixels;
 	private int backgroundColor;
+	public native int test();
 	public Renderer(int[] rgbPixels,int backgroundColor,int canvasWidth,int canvasHeight){
 		this.rgbPixels = rgbPixels;
 		this.canvasWidth = canvasWidth;
@@ -35,8 +36,9 @@ public class Renderer {
 	}
 	
 	public void DrawPixelArrayRGB(int[] pixels,int x,int y, int width, int height){
+	
 		int offset = y*canvasWidth;
-
+		
 			for(int i =0;i<height;i++){
 				for(int j = 0;j<width;j++){
 					int adr = offset +x+ i*canvasWidth + j ;
@@ -59,6 +61,7 @@ public class Renderer {
 		int offset = y*canvasWidth;
 		
 		
+		
 			for(int i =0;i<height;i++){
 				for(int j = 0;j<width;j++){
 					int adr = offset +x+ i*canvasWidth + j ;
@@ -75,7 +78,7 @@ public class Renderer {
 				}
 			}
 			
-		
+			
 	}
 	
 	public void clearAllPixelData(int clearColor){
