@@ -3,6 +3,7 @@ package baseGame;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
 import java.awt.Point;
 import java.awt.Rectangle;
 
@@ -27,19 +28,35 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	private long lastTime;
 	private double fps;
 	private long msDelay;
-
+	private RGBImage backgroundImage;
 	private int backgroundColor = Color.BLACK.getRGB();
 	private BufferedImage backGround = null;
+<<<<<<< HEAD
 	private int[] pixels;
 
+=======
+	private int [] pixels;
+	private boolean once = false;
+	
+>>>>>>> 0103038ad81f0a150fe8c0073cbc328a1bee2b2c
 	private BufferedImage mainCanvas;
 
 	public void setBackgroundColor(Color backgroundColor) {
 		this.backgroundColor = backgroundColor.getRGB();
+<<<<<<< HEAD
 
 	}
 
 	public Color getBackGroundColor() {
+=======
+		
+		
+	}	
+	public void SetBackgroundImage(RGBImage img){
+		this.backgroundImage = img;
+	}
+	public Color getBackGroundColor(){
+>>>>>>> 0103038ad81f0a150fe8c0073cbc328a1bee2b2c
 		return new Color(backgroundColor);
 	}
 
@@ -60,12 +77,21 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		setIgnoreRepaint(true);
 		createBufferStrategy(2);
 		buffer = getBufferStrategy();
-
+		GraphicsConfiguration gc = getGraphicsConfiguration();
+		
+		System.out.println(gc.getBufferCapabilities().getBackBufferCapabilities().isAccelerated());
 		runLoop = new Thread(this);
+<<<<<<< HEAD
 
 		lastTime = System.currentTimeMillis();
 		// runLoop.run();
 		runLoop.start();
+=======
+		
+		lastTime = System.currentTimeMillis();
+		runLoop.run();
+		
+>>>>>>> 0103038ad81f0a150fe8c0073cbc328a1bee2b2c
 	}
 
 	@Override
@@ -96,11 +122,23 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			Renderer renderer = new Renderer(pixels, backgroundColor, canvasWidth, canvasHeight);
 
 			onDraw(renderer);
+<<<<<<< HEAD
 
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
 
 			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
 
+=======
+		
+			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
+			
+		
+			
+			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
+		
+			
+		
+>>>>>>> 0103038ad81f0a150fe8c0073cbc328a1bee2b2c
 			if (showFps)
 				DrawfpsCounter(g, deltaTime);
 
@@ -143,7 +181,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		g.drawChars(fpsCounter.toCharArray(), 0, fpsCounter.length(), 10, 10);
 	}
 
-	public abstract void onUpdate(long deltaTime);
+	public abstract void onUpdate(double deltaTime);
 
 	public abstract void onDraw(Renderer renderer);
 

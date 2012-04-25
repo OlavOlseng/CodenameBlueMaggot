@@ -58,9 +58,9 @@ public class BasicLevel {
 		// bare iterer over entities og hent informasjonen du trenger.
 	}
 
-	public void tick() {
+	public void tick(double dt) {
 
-		handler.tick();
+		handler.tick(dt);
 		if (handler.menu.clicked) {
 			for (int i = 0; i < 100; i++) {
 				addEntity(new Grenade(500, 50, this, rand.nextDouble(),
@@ -69,7 +69,7 @@ public class BasicLevel {
 		}
 		for (int i = 0; i < entities.size(); i++) {
 			Entity ent = entities.get(i);
-			ent.tick();
+			ent.tick(dt);
 			if (ent.removed) {
 				removeEntity(ent);
 				i--;

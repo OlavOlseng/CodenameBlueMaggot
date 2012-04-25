@@ -10,6 +10,9 @@ import baseGame.*;
 import javax.imageio.ImageIO;
 
 public class RGBImage {
+	public BufferedImage getRgbBufferedImage() {
+		return rgbBufferedImage;
+	}
 	private BufferedImage rgbBufferedImage;
 	private int[] rgbPixels;
 	

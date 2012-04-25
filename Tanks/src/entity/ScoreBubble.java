@@ -1,5 +1,8 @@
 package entity;
 
+import gfx.ResourceManager;
+import baseGame.Rendering.RGBImage;
+import baseGame.Rendering.Renderer;
 import level.BasicLevel;
 
 public class ScoreBubble extends Entity {
@@ -64,10 +67,17 @@ public class ScoreBubble extends Entity {
 		}
 	}
 	
-	public void tick(){
-		super.tick();
+	public void tick(double dt){
+		super.tick(dt);
 		handleTerrainIntersections();
 		handlePlayerIntersections();
+	}
+
+	@Override
+	public void render(Renderer renderer) {
+		// TODO Auto-generated method stub
+		RGBImage img = ResourceManager.SCOREBUBBLE;
+		renderer.DrawImage(img, -1, (int) (x - getXr()),(int) (y - getYr()), img.getWidth(), img.getHeight());
 	}
 	
 }

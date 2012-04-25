@@ -2,7 +2,9 @@ package baseGame.animations;
 
 import level.BasicLevel;
 import entity.Entity;
+import gfx.ResourceManager;
 import baseGame.Rendering.RGBImage;
+import baseGame.Rendering.Renderer;
 
 public class Animation extends Entity {
 
@@ -20,10 +22,10 @@ public class Animation extends Entity {
 		
 	}
 	@Override
-	public void tick(){
+	public void tick(double dt){
 		if(currentFrame+1 < frames.length){
 			
-				currentFrame+=framesPerTick ;
+				currentFrame+=framesPerTick*dt ;
 		}else{
 			remove();
 		}
@@ -31,5 +33,12 @@ public class Animation extends Entity {
 	public RGBImage nextFrame(){
 		
 		return frames[(int)Math.floor(currentFrame)];
+	}
+	@Override
+	public void render(Renderer renderer) {
+		// TODO Auto-generated method stub
+		RGBImage img = nextFrame();
+		renderer.DrawImage(img, -1, (int)(x - getXr()),(int) (y - getYr()),img.getWidth() , img.getHeight());
+		
 	}
 }

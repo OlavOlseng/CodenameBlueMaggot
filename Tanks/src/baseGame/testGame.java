@@ -36,9 +36,10 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 
 	private OnlineLevel onlineLevel;
 	private ConnectionManager connection;
-
-	public void init() {
-
+	
+	public void init(){
+		System.out.println(0xFF0000);
+		System.out.println(0xFF0000 &-1);
 		startReuglarGame();
 		// startOnlineGame(false);
 		// startOnlineGame(true);
@@ -57,8 +58,10 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 
 	}
 
-	public void onUpdate(long deltaTime) {
-		level.tick();
+	public void onUpdate(double deltaTime) {
+			deltaTime *=  0.0625;
+		level.tick(deltaTime);
+		
 	}
 
 	@Override
