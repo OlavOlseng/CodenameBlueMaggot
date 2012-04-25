@@ -35,9 +35,9 @@ public class InputHandler implements KeyListener{
 		}
 	}
 	
-	public void tick(){
+	public void tick(double dt){
 		for (Key key : keys) {
-			key.tick();
+			key.tick(dt);
 		}
 	}
 	

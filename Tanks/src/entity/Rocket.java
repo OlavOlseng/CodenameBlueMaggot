@@ -1,5 +1,8 @@
 package entity;
 
+import gfx.ResourceManager;
+import baseGame.Rendering.RGBImage;
+import baseGame.Rendering.Renderer;
 import level.BasicLevel;
 
 public class Rocket extends Projectile {
@@ -11,7 +14,7 @@ public class Rocket extends Projectile {
 	int ticks = 0;
 	
 	public Rocket(double x, double y, BasicLevel level, double speedPercent,
-			int angle) {
+			double angle) {
 		super(x, y, 4, 4, level, speedPercent, angle);
 		this.maxSpeed = 10;
 		this.frictionConstant = 0.004;
@@ -50,8 +53,8 @@ public class Rocket extends Projectile {
 		return false;
 	}
 
-	public void tick() {
-		super.tick();
+	public void tick(double dt) {
+		super.tick(dt);
 		 if(Math.sqrt(dx*dx + dy*dy) < maxSpeed && fuel > ticks){
 		this.accelerate(thrust * Math.cos(Math.toRadians(angle)),
 				-thrust* Math.sin(Math.toRadians(angle)));
@@ -60,8 +63,16 @@ public class Rocket extends Projectile {
 		 explode();
 		 remove();
 		 }
-		gravitate();
+	
 		 ticks++;
+	}
+
+	@Override
+	public void render(Renderer renderer) {
+		// TODO Auto-generated method stub
+		RGBImage img = ResourceManager.ROCKET;
+		renderer.DrawImage(img ,-1, (int) (x - getXr()),(int) (y - getYr()), img.getWidth(), img.getHeight());
+		
 	}
 
 }

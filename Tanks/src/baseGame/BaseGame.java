@@ -161,7 +161,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		g.drawChars(fpsCounter.toCharArray(), 0, fpsCounter.length(), 10, 10);
 	}
 
-	public abstract void onUpdate(long deltaTime);
+	public abstract void onUpdate(double deltaTime);
 
 	public abstract void onDraw(Renderer renderer);
 

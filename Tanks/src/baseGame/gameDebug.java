@@ -9,7 +9,9 @@ public class gameDebug extends JFrame {
 		setVisible(true);
 		testGame game = new testGame();
 		add(game);
+		
 		this.setPreferredSize(new Dimension(testGame.WIDTH,testGame.HEIGHT));
+		
 		pack();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		game.setVisible(true);
