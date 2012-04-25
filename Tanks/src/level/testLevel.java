@@ -73,6 +73,7 @@ public class testLevel extends BasicLevel {
 		addEntity(tankEntity2);
 
 		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion1.png"), Animations.EXPLOSIONS, 50, 50);
+		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion2.png"), Animations.EXPLOSIONS, 100, 100);
 
 		scoreBubble = new RGBImage(new File("./res/Scorebubble.png"));
 		grenade = new RGBImage(new File("./res/Grenade_temp.png"));
@@ -90,8 +91,8 @@ public class testLevel extends BasicLevel {
 	}
 
 	//
-	public void tick() {
-		super.tick();
+	public void tick(double dt) {
+		super.tick(dt);
 		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,
 		// 100));
 		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,

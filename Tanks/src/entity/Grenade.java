@@ -28,8 +28,6 @@ public class Grenade extends Projectile {
 	public void explode() {
 		level.getTerrain().addExplosion((int) (x - explosionRadius), (int) (y - explosionRadius), explosionRadius);
 		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, explosionPower));
-//		level.addEntity(new Animation(AnimationFactory.getInstance().getAnimation(Animations.TEST,
-//				Animations.TEST_ANIMATION), 240, 0, x, y, level));
 
 	}
 
@@ -75,7 +73,6 @@ public class Grenade extends Projectile {
 
 	@Override
 	public void render(Renderer renderer) {
-		// TODO Auto-generated method stub
 		RGBImage img = ResourceManager.GRENADE;
 		renderer.DrawImage(img, -1, (int) (x - getXr()),(int) (y - getYr()), img.getWidth(), img.getHeight());
 		

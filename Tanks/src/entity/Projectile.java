@@ -37,13 +37,12 @@ public abstract class Projectile extends Entity {
 	abstract public void explode();
 	
 	
-<<<<<<< HEAD
 //	@Override
 //	public void tick() {
 //		super.tick();
 //		while(level.getTerrain().hitTestpoint(x, y))
 //	}
-=======
+	
 	@Override
 	public void tick(double dt) {
 		
@@ -59,5 +58,4 @@ public abstract class Projectile extends Entity {
 		super.tick(dt);
 		
 	}
->>>>>>> 15408c03b393657f6d041149724f1fdacd83c727
 }
