@@ -1,4 +1,4 @@
-package input;
+package inputhandler;
 
 import gfx.GameDebug;
 import gfx.MenuTitle;
@@ -6,19 +6,20 @@ import gfx.MenuTitle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class InputHandler implements KeyListener {
+public class InputHandlerMenu implements KeyListener {
 
-	MenuTitle menu;
+	MenuTitle menuTitle;
 	GameDebug game;
 
-	public InputHandler(GameDebug game) {
+	public InputHandlerMenu(GameDebug game) {
 		this.game = game;
 	}
-	public  InputHandler(MenuTitle menu){
-		this.menu = menu;
+
+	public InputHandlerMenu(MenuTitle menuTitle) {
+		this.menuTitle = menuTitle;
 	}
 
-	public InputHandler() {
+	public InputHandlerMenu() {
 	}
 
 	@Override
@@ -27,11 +28,11 @@ public class InputHandler implements KeyListener {
 			System.out.println("dicks");
 		if (arg0.getKeyCode() == KeyEvent.VK_A)
 			System.out.println("superdicks");
-		if (arg0.getKeyCode() == KeyEvent.VK_ESCAPE){
+		if (arg0.getKeyCode() == KeyEvent.VK_ESCAPE) {
+			System.out.println("dicks");
 			game.toggleMenu();
 		}
-		
-		if (arg0.getKeyCode() == KeyEvent.VK_Q){
+		if (arg0.getKeyCode() == KeyEvent.VK_Q) {
 			System.exit(1);
 		}
 		System.out.println(arg0.getKeyCode());
@@ -50,7 +51,7 @@ public class InputHandler implements KeyListener {
 
 	}
 
-	public void tick(){
-//		trenger denne til å gå over listen med keys, og oppdatere dem.
+	public void tick() {
+		// trenger denne til å gå over listen med keys, og oppdatere dem.
 	}
 }

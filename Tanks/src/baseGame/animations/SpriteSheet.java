@@ -19,7 +19,6 @@ public class SpriteSheet extends RGBImage {
 		this.spriteWidth = spriteWidth;
 		this.spriteHeight = spriteHeigt;
 		animations = new HashMap<Integer,RGBImage[]>();
-		System.out.println("yow");
 		// TODO Auto-generated constructor stub
 		
 	}

@@ -24,8 +24,7 @@ public class Grenade extends Projectile {
 	public void explode() {
 		level.getTerrain().addExplosion((int) (x - explosionRadius), (int) (y - explosionRadius), explosionRadius);
 		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, 50));
-		level.addEntity(new Animation(AnimationFactory.getInstance().getAnimation(Animations.TEST,
-				Animations.TEST_ANIMATION), 240, 0, x, y, level));
+		level.addEntity(new Animation(AnimationFactory.getInstance().getAnimation(Animations.TEST, Animations.TEST_ANIMATION), 240, 0, x, y, level));
 
 	}
 

@@ -76,6 +76,4 @@ public class InputHandler implements KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
-	
-	
 }

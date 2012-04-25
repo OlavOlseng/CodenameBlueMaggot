@@ -1,6 +1,6 @@
 package Networking;
 
-import input.InputHandler;
+import inputhandler.InputHandlerMenu;
 
 import java.io.IOException;
 import java.io.InputStream;
