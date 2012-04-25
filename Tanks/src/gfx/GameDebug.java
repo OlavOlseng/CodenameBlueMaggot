@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-import baseGame.gameDebugPanel;
+import baseGame.gameDebug;
 import baseGame.testGame;
 
 public class GameDebug extends JFrame implements Runnable {
@@ -16,20 +16,19 @@ public class GameDebug extends JFrame implements Runnable {
 	InputHandlerMenu input = new InputHandlerMenu(this);
 	private JLayeredPane layeredPane = new JLayeredPane();
 	public MenuTitle menuTitle = new MenuTitle();
-	gameDebugPanel game;
+	gameDebug game;
 
 	public GameDebug() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setPreferredSize(new Dimension(testGame.WIDTH, testGame.HEIGHT));
 		setLayout(null);
-		setLocation(0, 0);
 
 		setFocusable(true);
 		addKeyListener(input);
 
 		JPanel gamePanel = new JPanel();
 
-		game = new gameDebugPanel();
+		game = new gameDebug();
 		gamePanel.setBounds(0, 0, testGame.WIDTH, testGame.HEIGHT);
 
 		gamePanel.add(game);
@@ -47,6 +46,7 @@ public class GameDebug extends JFrame implements Runnable {
 		add(layeredPane);
 		pack();
 		setVisible(true);
+		setLocationRelativeTo(null);
 	}
 
 	@Override

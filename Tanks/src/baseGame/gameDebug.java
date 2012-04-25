@@ -1,25 +1,31 @@
 package baseGame;
 
-import java.awt.Dimension;
+import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class gameDebug extends JFrame {
+/**
+ * @author Habitats
+ * run gfx.GameDebug instead of this one!
+ */
+public class gameDebug extends JPanel {
+	testGame game;
+	JFrame frame = new JFrame();
+
 	public gameDebug() {
-		setVisible(true);
-		testGame game = new testGame();
+		setLayout(new BorderLayout());
+		game = new testGame();
+		game.setPreferredSize(testGame.DIMENSION);
+		setBounds(0, 0, testGame.WIDTH, testGame.HEIGHT);
 		add(game);
-
-		this.setPreferredSize(new Dimension(testGame.WIDTH, testGame.HEIGHT));
-
-		pack();
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		game.setVisible(true);
-		game.init();
-
+		setOpaque(false);
+		setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		new gameDebug();
+	public void run() {
+		game.setVisible(true);
+		game.init();
+		System.out.println("initiated game");
 	}
 }
