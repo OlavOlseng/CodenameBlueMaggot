@@ -7,13 +7,15 @@ import baseGame.animations.*;
 public class Explosion extends Entity {
 
 	double explosionPower;
-
+	Animation ani;
 	public Explosion(double x, double y, double radius, BasicLevel level,
 			double explosionPower) {
 		super(x, y, radius, radius, level);
 
 		this.explosionPower = explosionPower;
-		Animation ani = new Animation( AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS,Animations.SMALLEXPLOSION),9,0,x,y,level);
+		if(radius >= 25)
+			ani = new Animation( AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS,Animations.SMALLEXPLOSION),9,0,x,y,level);
+		ani = new Animation( AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS,Animations.BIGEXPLOSION),13,0,x,y,level);
 		level.addEntity(ani);
 				 
 
