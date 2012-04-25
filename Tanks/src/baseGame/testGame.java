@@ -77,9 +77,9 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 		
 	}
 
-	public void onUpdate(long deltaTime) {
-			
-		level.tick();
+	public void onUpdate(double deltaTime) {
+			deltaTime *=  0.0625;
+		level.tick(deltaTime);
 		
 	}
 	

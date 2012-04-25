@@ -28,7 +28,7 @@ public class Key {
 		
 	}
 	
-	public void tick() {
+	public void tick(double dt) {
 		if (absorbs < presses) {
 			absorbs++;
 			clicked = true;

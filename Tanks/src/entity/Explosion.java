@@ -1,5 +1,6 @@
 package entity;
 
+import baseGame.Rendering.Renderer;
 import baseGame.animations.Animation;
 import baseGame.animations.AnimationFactory;
 import level.BasicLevel;
@@ -13,9 +14,13 @@ public class Explosion extends Entity {
 		super(x, y, radius, radius, level);
 
 		this.explosionPower = explosionPower;
+<<<<<<< HEAD
 		if(radius >= 25)
 			ani = new Animation( AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS,Animations.SMALLEXPLOSION),9,0,x,y,level);
 		ani = new Animation( AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS,Animations.BIGEXPLOSION),13,0,x,y,level);
+=======
+		Animation ani = new Animation( AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS,Animations.SMALLEXPLOSION),18,0,x,y,level);
+>>>>>>> 15408c03b393657f6d041149724f1fdacd83c727
 		level.addEntity(ani);
 				 
 
@@ -39,9 +44,15 @@ public class Explosion extends Entity {
 	}
 
 	@Override
-	public void tick() {
+	public void tick(double dt) {
 		handleIntersects();
 		this.remove();
+	}
+
+	@Override
+	public void render(Renderer renderer) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

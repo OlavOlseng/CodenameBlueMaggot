@@ -79,7 +79,7 @@ public class testLevel extends BasicLevel {
 		rocket = new RGBImage(new File("./res/Rocket.png"));
 		shell = new RGBImage(new File("./res/Shell_temp.png"));
 		tank1 = new RGBImage(new File("./res/Tank_Flat.png"));
-		tank2 = new RGBImage(new File("./res/Tank_Flat.png"));
+		tank2 = new RGBImage(new File("./res/Tank2.png"));
 
 		// terrain = new Terrain(new File("./res/testlvl.png"));
 		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
@@ -122,42 +122,13 @@ public class testLevel extends BasicLevel {
 
 		renderer.DrawImage(backGround, 0, 0, testGame.WIDTH, testGame.HEIGHT);
 		renderer.DrawImage(terrain, -1, 0, 0, terrain.getWidth(), terrain.getHeight());
+		
 		for (Entity ent : entities) {
-
-			if (ent instanceof Shell) {
-
-				renderer.DrawImage(shell, -1, (int) (ent.getLocation()[0] - ent.getXr()),
-						(int) (ent.getLocation()[1] - ent.getYr()), shell.getWidth(), shell.getHeight());
-			}
-			if (ent instanceof Grenade) {
-				renderer.DrawImage(grenade, -1, (int) (ent.getLocation()[0] - ent.getXr()),
-						(int) (ent.getLocation()[1] - ent.getYr()), grenade.getWidth(), grenade.getHeight());
-			}
-			if (ent instanceof Rocket) {
-				renderer.DrawImage(rocket, -1, (int) (ent.getLocation()[0] - ent.getXr()),
-						(int) (ent.getLocation()[1] - ent.getYr()), rocket.getWidth(), rocket.getHeight());
-			}
-			if (ent instanceof ScoreBubble) {
-				renderer.DrawImage(scoreBubble, -1, (int) (ent.getLocation()[0] - ent.getXr()),
-						(int) (ent.getLocation()[1] - ent.getYr()), scoreBubble.getWidth(), scoreBubble.getHeight());
-			}
-			if (ent instanceof Animation) {
-				Animation ani = (Animation) ent;
-				renderer.DrawImage(ani.nextFrame(), -1, (int) ani.getLocation()[0] - (int) ani.getXr(),
-						(int) ani.getLocation()[1] - (int) ani.getYr(), 50, 50);
-			}
+		ent.render(renderer);
+			
 		}
 
-		renderer.DrawImage(tank1, -1, (int) tankEntity1.getLocation()[0] - (int) tankEntity1.getXr(),
-				(int) tankEntity1.getLocation()[1] - (int) tankEntity1.getYr() + 1, tank1.getWidth(), tank1.getHeight());
-		renderer.DrawImage(tank2, -1, (int) tankEntity2.getLocation()[0] - (int) tankEntity2.getXr(),
-				(int) tankEntity2.getLocation()[1] - (int) tankEntity2.getYr() + 1, tank2.getWidth(), tank2.getHeight());
-		renderer.DrawImage(crossHair1, -1, (int) tankEntity1.getCrosshairLocation().getX() - crossHair1.getWidth() / 2,
-				(int) tankEntity1.getCrosshairLocation().getY() - crossHair1.getHeight() / 2, crossHair1.getWidth(),
-				crossHair1.getHeight());
-		renderer.DrawImage(crossHair2, -1, (int) tankEntity2.getCrosshairLocation().getX() - crossHair2.getWidth() / 2,
-				(int) tankEntity2.getCrosshairLocation().getY() - crossHair2.getHeight() / 2, crossHair2.getWidth(),
-				crossHair2.getHeight());
+	
 
 	}
 

@@ -1,5 +1,8 @@
 package entity;
 
+import gfx.ResourceManager;
+import baseGame.Rendering.RGBImage;
+import baseGame.Rendering.Renderer;
 import baseGame.animations.Animation;
 import baseGame.animations.AnimationFactory;
 import level.BasicLevel;
@@ -11,7 +14,7 @@ public class Grenade extends Projectile {
 	int explosionRadius = 25;
 	double explosionPower = 100;
 	
-	public Grenade(double x, double y, BasicLevel level, double speedPercent, int angle) {
+	public Grenade(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		super(x, y, 4, 4, level, speedPercent, angle);
 		this.maxSpeed = 15;
 		this.frictionConstant = 0.001;
@@ -30,7 +33,7 @@ public class Grenade extends Projectile {
 
 	}
 
-	@Override
+	
 	public void applyFriction() {
 		accelerate(-dx * frictionConstant, -dy * frictionConstant);
 	}
@@ -59,13 +62,22 @@ public class Grenade extends Projectile {
 		}
 	}
 
-	public void tick() {
-		super.tick();
+	public void tick(double dt) {
+		super.tick(dt);
+		applyFriction();
 		liveTime++;
 		handleIntersects();
 		if (liveTime >= explosionTime) {
 			explode();
 			remove();
 		}
+	}
+
+	@Override
+	public void render(Renderer renderer) {
+		// TODO Auto-generated method stub
+		RGBImage img = ResourceManager.GRENADE;
+		renderer.DrawImage(img, -1, (int) (x - getXr()),(int) (y - getYr()), img.getWidth(), img.getHeight());
+		
 	}
 }
