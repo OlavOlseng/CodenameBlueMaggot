@@ -12,6 +12,7 @@ public class MenuButton extends JButton {
 
 		setContentAreaFilled(true);
 		setText(label);
+		setOpaque(true);
 		setBorderPainted(false);
 		setBackground(Color.red);
 		

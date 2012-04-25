@@ -1,21 +1,16 @@
 package gfx;
 
-import input.InputHandler;
+import baseGame.testGame;
 
 import java.awt.Color;
-import java.awt.Container;
+import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
@@ -78,6 +73,9 @@ public abstract class Menu extends JPanel {
 			c.gridy++;
 			System.out.println("adding button");
 		}
-
+	}
+	
+	public void putCenter(Component c, int width, int height){
+		c.setBounds(testGame.WIDTH/2-width/2, testGame.HEIGHT/2-height/2, width, height);	
 	}
 }

@@ -1,100 +1,73 @@
 package gfx;
 
-import input.InputHandler;
+import inputhandler.InputHandlerMenu;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-import baseGame.BaseGame;
+import baseGame.gameDebugPanel;
 import baseGame.testGame;
 
 public class GameDebug extends JFrame implements Runnable {
 
-	BufferedImage backgroundImage;
-	public int width = 600;
-	public int height = 800;
-	InputHandler input = new InputHandler();
-	private JLayeredPane layeredPane;
-	public  MenuTitle menu = new MenuTitle();
+	InputHandlerMenu input = new InputHandlerMenu(this);
+	private JLayeredPane layeredPane = new JLayeredPane();
+	public MenuTitle menuTitle = new MenuTitle();
+	gameDebugPanel game;
 
 	public GameDebug() {
-		BaseGame t = new testGame();
-		
-		t.setVisible(true);
-		JPanel lulz = new JPanel();
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridx = 0;
-		c.gridy = 0;
-		lulz.add(t,c);
-		menu = new MenuTitle();
-		menu.setOpaque(false);
-//		menu.setVisible(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setPreferredSize(new Dimension(testGame.WIDTH, testGame.HEIGHT));
+		setLayout(null);
+		setLocation(0, 0);
 
-		layeredPane = this.getLayeredPane();
-		layeredPane.add(menu, JLayeredPane.POPUP_LAYER);
-		layeredPane.add(lulz,JLayeredPane.FRAME_CONTENT_LAYER);
-		layeredPane.setOpaque(false);
-		layeredPane.setLayout(new GridBagLayout());
-
-
-		
-		InputHandler input = new InputHandler(this);
-		
 		setFocusable(true);
 		addKeyListener(input);
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBackgroundImage();
-		setPreferredSize(new Dimension(height, width));
-		t.setPreferredSize(new Dimension(600,800));
-		pack();
-		
-		setLocationRelativeTo(null);
+		JPanel gamePanel = new JPanel();
 
+		game = new gameDebugPanel();
+		gamePanel.setBounds(0, 0, testGame.WIDTH, testGame.HEIGHT);
+
+		gamePanel.add(game);
+
+		// need to override default layoutmanager on jpanel in order to not get
+		// a fucking border at top (flowlayout)
+		gamePanel.setLayout(new BorderLayout());
+
+		layeredPane.setBounds(0, 0, testGame.WIDTH, testGame.HEIGHT);
+		layeredPane.setOpaque(false);
+
+		layeredPane.add(gamePanel, new Integer(0));
+		layeredPane.add(menuTitle, new Integer(1));
+
+		add(layeredPane);
+		pack();
 		setVisible(true);
-		
-		t.init(60);
 	}
 
 	@Override
 	public void run() {
-		// while(true)
-		 repaint();
+		game.run();
+		repaint();
 	}
 
-	public void setBackgroundImage() {
-
-		try {
-			backgroundImage = ImageIO.read(new File("./res/temp_background.png"));
-		} catch (IOException e) {
-			System.out.println("File not found.");
+	public void toggleMenu() {
+		if (menuTitle.isVisible()) {
+			testGame.PAUSED = false;
+			menuTitle.setVisible(false);
+		} else {
+			testGame.PAUSED = true;
+			menuTitle.setVisible(true);
 		}
+		repaint();
 	}
-
-
 
 	public static void main(String[] args) {
 		Thread t = new Thread(new GameDebug());
 		t.start();
-	}
-
-	public  void toggleMenu() {
-		if (menu.isVisible())
-			menu.setVisible(false);
-		else
-			menu.setVisible(true);
-		repaint();
 	}
 }
