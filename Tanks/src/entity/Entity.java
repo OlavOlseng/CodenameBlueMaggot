@@ -15,7 +15,6 @@ import baseGame.Rendering.Renderer;
 public abstract class Entity implements NetworkObject {
 
 	private int id;
-
 	public int getId() {
 		return id;
 	}
@@ -92,7 +91,6 @@ public abstract class Entity implements NetworkObject {
 		String part2 = String.format("%." + (5 - part1.length()) + "f", x - (int) x).substring(1);
 		return part1 + part2;
 	}
-	
 	public void tick(double dt) {
 		this.dt = dt;
 		move(dt);
@@ -119,6 +117,7 @@ public abstract class Entity implements NetworkObject {
 		
 	public abstract void render(Renderer renderer);
 		
+	
 	public void remove() {
 		this.removed = true;
 	}
