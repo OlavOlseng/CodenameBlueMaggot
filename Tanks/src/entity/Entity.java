@@ -15,6 +15,7 @@ import baseGame.Rendering.Renderer;
 public abstract class Entity implements NetworkObject {
 
 	private int id;
+
 	public int getId() {
 		return id;
 	}
@@ -26,7 +27,7 @@ public abstract class Entity implements NetworkObject {
 	protected final Random rand = new Random();
 	protected double x, y;
 	protected double xr, yr;
-	protected  BasicLevel level;
+	protected BasicLevel level;
 	protected double angle = 0;
 	protected double dx = 0, dy = 0;
 	protected double frictionConstant = 0.05;
@@ -69,16 +70,16 @@ public abstract class Entity implements NetworkObject {
 	}
 
 	public void accelerate(double ddx, double ddy) {
-		this.dx += ddx*dt;
-		this.dy += ddy*dt;
+		this.dx += ddx * dt;
+		this.dy += ddy * dt;
 	}
 
 	public void gravitate() {
 		accelerate(0, 0.1);
 	};
-	
+
 	public void move(double dt) {
-		this.setLocation((this.x + this.dx*dt), (this.y + this.dy*dt));
+		this.setLocation((this.x + this.dx * dt), (this.y + this.dy * dt));
 	}
 
 	public String getObject() {
@@ -91,11 +92,12 @@ public abstract class Entity implements NetworkObject {
 		String part2 = String.format("%." + (5 - part1.length()) + "f", x - (int) x).substring(1);
 		return part1 + part2;
 	}
+
 	public void tick(double dt) {
 		this.dt = dt;
 		move(dt);
 		gravitate();
-		
+
 		if (x > testGame.WIDTH + 100 || x < -100 || y > testGame.HEIGHT + 100 || y < -800)
 			remove();
 	}
@@ -111,13 +113,12 @@ public abstract class Entity implements NetworkObject {
 		}
 		return false;
 	}
-		
-		public void takeDamage(double amount){
-		}
-		
+
+	public void takeDamage(double amount) {
+	}
+
 	public abstract void render(Renderer renderer);
-		
-	
+
 	public void remove() {
 		this.removed = true;
 	}

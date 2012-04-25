@@ -17,26 +17,21 @@ public class ResourceManager {
 	public static final RGBImage GRENADE = new RGBImage(new File("./res/Grenade_temp.png"));
 	private static Terrain terrain;
 	private static RGBImage backGround;
-	
-	
-	
-	
-	
-	
+
 	public static Terrain getTerrain() {
 		return terrain;
 	}
+
 	public static void setTerrain(Terrain terrain) {
 		ResourceManager.terrain = terrain;
 	}
+
 	public static RGBImage getBackGround() {
 		return backGround;
 	}
+
 	public static void setBackGround(RGBImage backGround) {
 		ResourceManager.backGround = backGround;
 	}
-	
-	
-	
-	
+
 }

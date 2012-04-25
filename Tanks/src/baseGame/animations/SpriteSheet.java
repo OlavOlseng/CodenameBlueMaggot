@@ -9,45 +9,32 @@ import java.util.Random;
 import baseGame.Rendering.RGBImage;
 
 public class SpriteSheet extends RGBImage {
-	private HashMap<Integer,RGBImage[]> animations;
-	
+	private HashMap<Integer, RGBImage[]> animations;
+
 	private int spriteWidth;
 	private int spriteHeight;
-	
-	public SpriteSheet(File file,int spriteWidth,int spriteHeigt) {
+
+	public SpriteSheet(File file, int spriteWidth, int spriteHeigt) {
 		super(file);
 		this.spriteWidth = spriteWidth;
 		this.spriteHeight = spriteHeigt;
-		animations = new HashMap<Integer,RGBImage[]>();
-		// TODO Auto-generated constructor stub
-		
+		animations = new HashMap<Integer, RGBImage[]>();
 	}
-	
+
 	public RGBImage[] getAnimation(int index) {
-		
 		RGBImage[] animation = null;
-		if(index*spriteHeight <= getHeight() - spriteHeight){
-			
-			if(animations.containsKey((Integer)index)){
-				
-				animation = animations.get((Integer)index);
-				
-			}else{
-				
-				RGBImage allFrames = getSubImage(0, index*spriteHeight, getWidth(), spriteHeight);
-				
-				animation = new RGBImage[getWidth()/spriteWidth];
-				for(int i = 0;i<animation.length;i++){
-					animation[i] = allFrames.getSubImage(i*spriteWidth,0 , spriteWidth, spriteHeight);
-					
+		if (index * spriteHeight <= getHeight() - spriteHeight) {
+			if (animations.containsKey((Integer) index)) {
+				animation = animations.get((Integer) index);
+			} else {
+				RGBImage allFrames = getSubImage(0, index * spriteHeight, getWidth(), spriteHeight);
+				animation = new RGBImage[getWidth() / spriteWidth];
+				for (int i = 0; i < animation.length; i++) {
+					animation[i] = allFrames.getSubImage(i * spriteWidth, 0, spriteWidth, spriteHeight);
 				}
-				animations.put((Integer)index, animation);
-				
+				animations.put((Integer) index, animation);
 			}
 		}
 		return animation;
-		
-		
 	}
-
 }

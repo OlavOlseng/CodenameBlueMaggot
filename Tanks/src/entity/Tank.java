@@ -24,7 +24,6 @@ public class Tank extends Entity {
 	private int muzzleLength = 16;
 	private int score = 0;
 
-	
 	private int playerNumber;
 	private double jetPackFuel = 100;
 	private double cannonCharge = 0;
@@ -40,8 +39,7 @@ public class Tank extends Entity {
 	private PixelHitbox boxRight;
 	private PixelHitbox boxUp;
 
-	public Tank(double x, double y, int playerNumber, InputHandler input,
-			BasicLevel level) {
+	public Tank(double x, double y, int playerNumber, InputHandler input, BasicLevel level) {
 		super(x, y, 11, 6, level);
 		this.level.getPlayers().add(this);
 		muzzleAngle = 0;
@@ -98,16 +96,14 @@ public class Tank extends Entity {
 	}
 
 	public FloatingPoint getCrosshairLocation() {
-		return (new FloatingPoint(x + muzzleLength
-				* Math.cos(Math.toRadians(muzzleAngle)), y - muzzleLength
-				* Math.sin(Math.toRadians(muzzleAngle))));
+		return (new FloatingPoint(x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)), y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle))));
 	}
-
 
 	public void fire(double speedPercent) {
 		if (speedPercent < 0.2)
 			speedPercent = 0.2;
-		weaponList.get(currentWeapon).fire(this.x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)),this.y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle)),this.level, speedPercent, this.muzzleAngle - 4);
+		weaponList.get(currentWeapon).fire(this.x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)),
+				this.y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle)), this.level, speedPercent, this.muzzleAngle - 4);
 	}
 
 	public void handleTerrainIntersection() {
@@ -115,8 +111,7 @@ public class Tank extends Entity {
 		canGoRight = true;
 		canGoDown = true;
 		for (FloatingPoint point : boxLeft) {
-			if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
-					(int) (point.getY() + y))) {
+			if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
 
 				canGoLeft = false;
 				if (dx < 0)
@@ -126,8 +121,7 @@ public class Tank extends Entity {
 
 		}
 		for (FloatingPoint point : boxRight) {
-			if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
-					(int) (point.getY() + y))) {
+			if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
 
 				canGoRight = false;
 				if (dx > 0)
@@ -137,9 +131,8 @@ public class Tank extends Entity {
 
 		}
 		for (FloatingPoint point : boxUnderCenter) {
-			if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
-					(int) (point.getY() + y))) {
-				canGoDown =false;
+			if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
+				canGoDown = false;
 				while (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
 					setLocation(x, y - 1);
 					setSpeed(dx, 0);
@@ -149,8 +142,7 @@ public class Tank extends Entity {
 			}
 		}
 		for (FloatingPoint point : boxUp) {
-			if (level.getTerrain().hitTestpoint((int) (point.getX() + x),
-					(int) (point.getY() + y))) {
+			if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
 				while (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
 					setLocation(x, y + 1);
 					setSpeed(dx, 0.3);
@@ -177,7 +169,7 @@ public class Tank extends Entity {
 	}
 
 	public void jetPack() {
-		double fuelTick = 13*dt;
+		double fuelTick = 13 * dt;
 		if (jetPackFuel >= fuelTick) {
 			accelerate(0, -0.45);
 			jetPackFuel -= fuelTick;
@@ -199,7 +191,7 @@ public class Tank extends Entity {
 
 			if (dx < 2)
 				accelerate(0.2, 0);
-			
+
 		}
 		if (input.left1.down && canGoLeft) {
 			if (dx > -2)
@@ -242,23 +234,25 @@ public class Tank extends Entity {
 			cannonCharge = 0;
 		}
 		if (input.rotateL2.down)
-			incrementMuzzleAngle(3*dt);
+			incrementMuzzleAngle(3 * dt);
 		if (input.rotateR2.down)
-			incrementMuzzleAngle(-3*dt);
+			incrementMuzzleAngle(-3 * dt);
 	}
 
 	public double getMuzzleAngle() {
 		return muzzleAngle;
 	}
-	
-	public void takeDamage(double amount){
+
+	public void takeDamage(double amount) {
 		this.damageTaken += amount;
 	}
-	public void applyFriction(){
+
+	public void applyFriction() {
 		System.out.println(canGoDown);
-		if(!canGoDown)
-		accelerate(-dx*frictionConstant,0);
+		if (!canGoDown)
+			accelerate(-dx * frictionConstant, 0);
 	}
+
 	@Override
 	public void tick(double dt) {
 		super.tick(dt);
@@ -268,11 +262,11 @@ public class Tank extends Entity {
 			player2Input();
 
 		if (chargingCannon)
-			cannonCharge += 0.015*dt;
+			cannonCharge += 0.015 * dt;
 		if (jetPackFuel + 5 > 100)
 			jetPackFuel = 100;
 		else
-			jetPackFuel += 2*dt;
+			jetPackFuel += 2 * dt;
 
 		handleTerrainIntersection();
 		applyFriction();
@@ -284,22 +278,19 @@ public class Tank extends Entity {
 		// TODO Auto-generated method stub
 		RGBImage img;
 		RGBImage crossHair;
-		if(playerNumber == 1){
-		 img= ResourceManager.TANK1;
-		 crossHair = ResourceManager.CROSSHAIR1;
-		}
-		else{
+		if (playerNumber == 1) {
+			img = ResourceManager.TANK1;
+			crossHair = ResourceManager.CROSSHAIR1;
+		} else {
 			img = ResourceManager.TANK2;
 			crossHair = ResourceManager.CROSSHAIR2;
 		}
-			
-		renderer.DrawImage(img, -1, (int) (x - getXr()),(int)( y - getYr() + 1),img. getWidth(), img.getHeight());
-		
-		renderer.DrawImage(crossHair, -1, (int)(getCrosshairLocation().getX() - crossHair.getWidth() / 2),(int)( getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(),
-				crossHair.getHeight());
-		
-		
-		
+
+		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr() + 1), img.getWidth(), img.getHeight());
+
+		renderer.DrawImage(crossHair, -1, (int) (getCrosshairLocation().getX() - crossHair.getWidth() / 2),
+				(int) (getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(), crossHair.getHeight());
+
 	}
 
 }

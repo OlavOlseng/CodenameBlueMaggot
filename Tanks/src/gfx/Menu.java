@@ -55,7 +55,6 @@ public abstract class Menu extends JPanel {
 		add(layeredPane);
 	}
 
-
 	public void setUpLayout() {
 
 		c.gridheight = 1;
@@ -74,8 +73,8 @@ public abstract class Menu extends JPanel {
 			System.out.println("adding button");
 		}
 	}
-	
-	public void putCenter(Component c, int width, int height){
-		c.setBounds(testGame.WIDTH/2-width/2, testGame.HEIGHT/2-height/2, width, height);	
+
+	public void putCenter(Component c, int width, int height) {
+		c.setBounds(testGame.WIDTH / 2 - width / 2, testGame.HEIGHT / 2 - height / 2, width, height);
 	}
 }

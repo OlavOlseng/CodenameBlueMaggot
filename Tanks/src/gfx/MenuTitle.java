@@ -20,7 +20,7 @@ public class MenuTitle extends Menu {
 
 		// u need this
 		super.layeredPane.setPreferredSize(size);
-		
+
 		buttonPanel.setBounds(0, 0, width, height);
 		backgroundPanel.setBounds(0, 0, width, height);
 
@@ -34,7 +34,7 @@ public class MenuTitle extends Menu {
 		super.ButtonArr.add(new MenuButton("NOO!", ""));
 		super.ButtonArr.add(new MenuButton("Okey!", ""));
 		super.ButtonArr.add(btnExit);
-		
+
 		setVisible(false);
 		setOpaque(false);
 

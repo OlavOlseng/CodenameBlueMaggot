@@ -19,15 +19,15 @@ public class Key {
 		}
 	}
 
-	public byte toByte(){
-		if(down){
+	public byte toByte() {
+		if (down) {
 			return 0x1;
-		}else{
+		} else {
 			return 0x0;
 		}
-		
+
 	}
-	
+
 	public void tick(double dt) {
 		if (absorbs < presses) {
 			absorbs++;
