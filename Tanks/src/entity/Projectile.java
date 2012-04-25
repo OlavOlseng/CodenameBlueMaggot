@@ -11,10 +11,10 @@ public abstract class Projectile extends Entity {
 	protected int maxSpeed;
 	protected PixelHitbox hitbox;
 
-	public Projectile(double x, double y, int size, BasicLevel level,
+	public Projectile(double x, double y, double xr, double yr, BasicLevel level,
 			double speedPercent, int angle) {
-		super(x + size * Math.cos(Math.toDegrees(angle)), y - size
-				* Math.sin(Math.toDegrees(angle)), size, size, level);
+		super(x + xr * Math.cos(Math.toDegrees(angle)), y - yr
+				* Math.sin(Math.toDegrees(angle)), xr, yr, level);
 		this.angle = angle;
 		this.dx = (speedPercent * Math.cos(angle % 360 * 2 * Math.PI / 360));
 		this.dy = (speedPercent * -Math.sin(angle % 360 * 2 * Math.PI / 360));

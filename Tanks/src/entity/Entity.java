@@ -30,6 +30,7 @@ public abstract class Entity implements NetworkObject {
 	protected double dx = 0, dy = 0;
 	protected double frictionConstant = 0.05;
 	public boolean removed = false;
+	public double damageTaken = 1;
 
 	public Entity(double x, double y, double xr, double yr, BasicLevel level) {
 		this.level = level;
@@ -108,6 +109,9 @@ public abstract class Entity implements NetworkObject {
 		}
 			return false;
 	}
+		
+		public void takeDamage(double amount){
+		}
 	
 	public void remove() {
 		this.removed = true;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.weapon.GrenadeGun;
+import entity.weapon.Rocketlauncher;
 import entity.weapon.ShellGun;
 import entity.weapon.Weapon;
 
@@ -19,8 +20,7 @@ public class Tank extends Entity {
 	private int muzzleLength = 16;
 	private int score = 0;
 
-	private int hitpoints;
-	private int maxHitpoints = 200;
+	
 	private int playerNumber;
 	private int jetPackFuel = 100;
 	private double cannonCharge = 0;
@@ -41,12 +41,12 @@ public class Tank extends Entity {
 		this.level.getPlayers().add(this);
 		muzzleAngle = 0;
 		muzzleLength = 20;
-		hitpoints = maxHitpoints;
 		this.playerNumber = playerNumber;
 		this.input = input;
 
 		weaponList.add(new ShellGun());
 		weaponList.add(new GrenadeGun());
+		weaponList.add(new Rocketlauncher());
 
 		boxUnderCenter = new PixelHitbox();
 		boxUnderCenter.addPoint(new FloatingPoint(-2, yr));
@@ -98,15 +98,6 @@ public class Tank extends Entity {
 				* Math.sin(Math.toRadians(muzzleAngle))));
 	}
 
-	public void changeHp(int amount) {
-		if (hitpoints + amount > maxHitpoints)
-			hitpoints = maxHitpoints;
-		else if (hitpoints + amount < 0) {
-			hitpoints = 0;
-			remove();
-		} else
-			hitpoints += amount;
-	}
 
 	public void fire(double speedPercent) {
 		if (speedPercent < 0.2)
@@ -253,6 +244,10 @@ public class Tank extends Entity {
 
 	public int getMuzzleAngle() {
 		return muzzleAngle;
+	}
+	
+	public void takeDamage(double amount){
+		this.damageTaken += amount;
 	}
 
 	@Override

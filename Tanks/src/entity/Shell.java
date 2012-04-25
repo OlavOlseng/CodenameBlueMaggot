@@ -7,10 +7,11 @@ import level.BasicLevel;
 public class Shell extends Projectile {
 
 	int explosionRadius = 20;
-
+	double explosionPower = 100;
+	
 	public Shell(double x, double y, BasicLevel level, double speedPercent,
 			int angle) {
-		super(x, y, 4, level, speedPercent, angle);
+		super(x, y, 4, 4, level, speedPercent, angle);
 		this.maxSpeed = 25;
 		this.frictionConstant = 0.008;
 		this.angle = angle;
@@ -23,7 +24,7 @@ public class Shell extends Projectile {
 	public void explode() {
 		level.getTerrain().addExplosion((int) (x - explosionRadius),
 				(int) (y - explosionRadius), explosionRadius);
-		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, 50));
+		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, explosionPower));
 	}
 
 	@Override
