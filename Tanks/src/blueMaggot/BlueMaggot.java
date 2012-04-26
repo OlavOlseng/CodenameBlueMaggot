@@ -66,16 +66,6 @@ public class BlueMaggot extends JFrame implements Runnable {
 		game.requestFocus();
 	}
 
-	public void toggleMenu() {
-		if (menuTitle.isVisible()) {
-			Game.PAUSED = false;
-			menuTitle.setVisible(false);
-		} else {
-			Game.PAUSED = true;
-			menuTitle.setVisible(true);
-		}
-	}
-
 	public static void main(String[] args) {
 		(new BlueMaggot()).run();
 	}
@@ -90,8 +80,6 @@ public class BlueMaggot extends JFrame implements Runnable {
 				Game.PAUSED = true;
 				System.out.println("dicks");
 			}
-			// System.out.println("asasdasd");
 		}
-//		System.out.println(Thread.currentThread().getThreadGroup().activeCount());
 	}
 }
