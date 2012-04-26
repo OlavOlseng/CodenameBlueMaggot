@@ -38,10 +38,10 @@ public class BlueMaggot extends JFrame implements Runnable {
 		layeredPane.add(gamePanel, new Integer(0));
 		layeredPane.add(menuTitle, new Integer(1));
 
-		setVisible(true);
 		add(layeredPane);
 		pack();
 		setLocationRelativeTo(null);
+		setVisible(true);
 
 		run();
 	}
@@ -82,7 +82,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	public void tick() {
-		game.requestFocus();
+		// game.requestFocus();
 		if (inputReal.menu.clicked) {
 			inputReal.menu.clicked = false;
 			inputReal.releaseAll();
@@ -93,5 +93,6 @@ public class BlueMaggot extends JFrame implements Runnable {
 			}
 			// System.out.println("asasdasd");
 		}
+//		System.out.println(Thread.currentThread().getThreadGroup().activeCount());
 	}
 }

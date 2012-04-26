@@ -20,6 +20,7 @@ public class MenuButton extends JButton {
 
 		addActionListener(new ActionListener() {
 
+			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				System.out.println("Clicked: " + label);
@@ -29,8 +30,10 @@ public class MenuButton extends JButton {
 					testGame.PAUSED = false;
 					menuTitle.setVisible(false);
 				}
-				if (action.equals("newGame"))
+				if (action.equals("newGame")) {
+					game.runLoop.stop();
 					game.startReuglarGame();
+				}
 			}
 		});
 	}

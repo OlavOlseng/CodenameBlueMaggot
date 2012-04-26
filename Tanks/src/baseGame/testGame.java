@@ -5,6 +5,7 @@ import inputhandler.InputHandler;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -45,7 +46,14 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 	public static boolean PAUSED = false;
 
 	// public BlueMaggot blueMaggot;
+	
+	public void paint(Graphics g){
+		System.out.println("dicks");
+	}
 
+	public void paintComponent(Graphics g){
+		System.out.println("dicksComponent");
+	}
 	public void init() {
 		startReuglarGame();
 		// startOnlineGame(false);
