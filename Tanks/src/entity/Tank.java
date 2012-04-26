@@ -32,7 +32,8 @@ public class Tank extends Entity {
 	private boolean canGoDown = true;
 	private boolean chargingCannon = false;
 	private int currentWeapon = 0;
-
+	private double torque = 0.15;
+	
 	private ArrayList<Weapon> weaponList = new ArrayList<Weapon>();
 	private PixelHitbox boxUnderCenter;
 	private PixelHitbox boxLeft;
@@ -190,12 +191,12 @@ public class Tank extends Entity {
 		if (input.right1.down && canGoRight) {
 
 			if (dx < 2)
-				accelerate(0.2, 0);
+				accelerate(torque, 0);
 
 		}
 		if (input.left1.down && canGoLeft) {
 			if (dx > -2)
-				accelerate(-0.2, 0);
+				accelerate(-torque, 0);
 		}
 		if (input.fire1.clicked) {
 			chargingCannon = true;
@@ -219,11 +220,11 @@ public class Tank extends Entity {
 		if (input.right2.down && canGoRight) {
 
 			if (dx < 2)
-				accelerate(0.2, 0);
+				accelerate(torque, 0);
 		}
 		if (input.left2.down && canGoLeft) {
 			if (dx > -2)
-				accelerate(-0.2, 0);
+				accelerate(-torque, 0);
 		}
 		if (input.fire2.clicked) {
 			chargingCannon = true;

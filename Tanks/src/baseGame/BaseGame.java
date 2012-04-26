@@ -16,7 +16,7 @@ import baseGame.Rendering.Renderer;
 import baseGame.animations.AnimationFactory;
 
 import entity.Entity;
-import gfx.BlueMaggot;
+//import gfx.BlueMaggot;
 
 public abstract class BaseGame extends Canvas implements Runnable {
 
@@ -52,7 +52,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	private Rectangle gameRect;
 	
 	// the Game
-	public BlueMaggot blueMaggot;
+//	public BlueMaggot blueMaggot;
 
 	public void init(int width, int height, int fps) {
 		AnimationFactory.getInstance();
@@ -95,7 +95,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			deltaTime = System.currentTimeMillis() - lastTime;
 			lastTime = System.currentTimeMillis();
 			
-			blueMaggot.tick();
+//			blueMaggot.tick();
 			if (!BaseGame.PAUSED)
 				onUpdate(deltaTime);
 			

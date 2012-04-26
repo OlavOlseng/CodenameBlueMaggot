@@ -33,7 +33,6 @@ public class BasicLevel {
 
 	public void init() {
 		entities = new ArrayList<Entity>();
-
 	}
 
 	public void addEntity(Entity ent) {

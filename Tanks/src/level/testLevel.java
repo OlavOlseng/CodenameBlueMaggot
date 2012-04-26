@@ -73,16 +73,15 @@ public class testLevel extends BasicLevel {
 		addEntity(tankEntity2);
 
 		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion1.png"), Animations.EXPLOSIONS, 50, 50);
-		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion2.png"), Animations.EXPLOSIONS, 100, 100);
+		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion2.png"), Animations.EXPLOSIONS2, 100, 100);
 
 		scoreBubble = new RGBImage(new File("./res/Scorebubble.png"));
 		grenade = new RGBImage(new File("./res/Grenade_temp.png"));
 		rocket = new RGBImage(new File("./res/Rocket.png"));
 		shell = new RGBImage(new File("./res/Shell_temp.png"));
-		tank1 = new RGBImage(new File("./res/Tank_Flat.png"));
 		tank2 = new RGBImage(new File("./res/Tank2.png"));
 
-		// terrain = new Terrain(new File("./res/testlvl.png"));
+//		terrain = new Terrain(new File("./res/testlvl.png"));
 		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
 		backGround = new RGBImage(new File("./res/Cityscape_background.png"));
 		crossHair1 = new RGBImage(new File("./res/Crosshair.png"));
@@ -93,29 +92,6 @@ public class testLevel extends BasicLevel {
 	//
 	public void tick(double dt) {
 		super.tick(dt);
-		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,
-		// 100));
-		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,
-		// 100));
-		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,
-		// 100));
-		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,
-		// 100));
-		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,
-		// 100));
-		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,
-		// 100));
-		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,
-		// 100));
-		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,
-		// 100));
-		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,
-		// 100));
-		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,
-		// 100));
-		// addEntity(new ScoreBubble(rand.nextInt(1000), 10, 5, this, 0.3, 0,
-		// 100));
-		// System.out.println("Objects: " + entities.size() );
 	}
 
 	public void onDraw(Renderer renderer) {
@@ -127,17 +103,6 @@ public class testLevel extends BasicLevel {
 		for (Entity ent : entities) {
 			ent.render(renderer);
 		}
-
-		renderer.DrawImage(terrain, -1, 0, 0, terrain.getWidth(), terrain.getHeight());
-
-		renderer.DrawImage(tank1, -1, (int) tankEntity1.getLocation()[0] - (int) tankEntity1.getXr(),
-				(int) tankEntity1.getLocation()[1] - (int) tankEntity1.getYr() + 1, tank1.getWidth(), tank1.getHeight());
-		renderer.DrawImage(tank2, -1, (int) tankEntity2.getLocation()[0] - (int) tankEntity2.getXr(),
-				(int) tankEntity2.getLocation()[1] - (int) tankEntity2.getYr() + 1, tank2.getWidth(), tank2.getHeight());
-		renderer.DrawImage(crossHair1, -1, (int) tankEntity1.getCrosshairLocation().getX() - crossHair1.getWidth() / 2, (int) tankEntity1
-				.getCrosshairLocation().getY() - crossHair1.getHeight() / 2, crossHair1.getWidth(), crossHair1.getHeight());
-		renderer.DrawImage(crossHair2, -1, (int) tankEntity2.getCrosshairLocation().getX() - crossHair2.getWidth() / 2, (int) tankEntity2
-				.getCrosshairLocation().getY() - crossHair2.getHeight() / 2, crossHair2.getWidth(), crossHair2.getHeight());
 
 	}
 
