@@ -83,7 +83,7 @@ public class BasicLevel {
 
 	public void tick(double dt) {
 
-		handler.tick(dt);
+//		handler.tick(dt);
 		if (handler.grenadeSpam.clicked) {
 			for (int i = 0; i < 100; i++) {
 				addEntity(new Grenade(500, 50, this, rand.nextDouble(), rand.nextInt(360)));

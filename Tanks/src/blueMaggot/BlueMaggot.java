@@ -1,5 +1,6 @@
 package blueMaggot;
 
+import gfx.Menu;
 import gfx.MenuTitle;
 import inputhandler.InputHandler;
 import inputhandler.InputHandlerMenu;
@@ -9,7 +10,6 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-
 
 /**
  * @author Habitats * this motherfucker starts the game
@@ -72,7 +72,9 @@ public class BlueMaggot extends JFrame implements Runnable {
 	public void tick() {
 		// game.requestFocus();
 		if (inputReal.menu.clicked) {
+			System.out.println("dsicks");
 			inputReal.menu.clicked = false;
+			System.out.println(inputReal.menu.presses);
 			inputReal.releaseAll();
 			if (!menuTitle.isVisible()) {
 				menuTitle.setVisible(true);

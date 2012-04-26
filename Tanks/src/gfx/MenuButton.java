@@ -2,10 +2,9 @@ package gfx;
 
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 
 import blueMaggot.Game;
 
@@ -13,11 +12,13 @@ public class MenuButton extends Button {
 
 	public MenuButton(final String label, final String action, final MenuTitle menuTitle, final Game game) {
 
-//		setContentAreaFilled(true);
-//		setText(label);
-//		setOpaque(true);
-//		setBorderPainted(false);
+		// setContentAreaFilled(true);
+		// setText(label);
+		// setOpaque(true);
+		// setBorderPainted(false);
 		setBackground(Color.red);
+//		setFont(new Font("Her"));
+		new Font("Sans Serif",Font.BOLD,0);
 
 		addActionListener(new ActionListener() {
 
@@ -30,6 +31,7 @@ public class MenuButton extends Button {
 				if (action.equals("return")) {
 					Game.PAUSED = false;
 					menuTitle.setVisible(false);
+					game.requestFocus();
 				}
 				if (action.equals("newGame")) {
 					game.runLoop.stop();

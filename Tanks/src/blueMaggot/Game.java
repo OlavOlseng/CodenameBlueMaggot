@@ -56,6 +56,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		if (blueMaggot != null)
 			blueMaggot.tick();
 
+		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
 		if (!PAUSED)
 			level.tick(deltaTime);
