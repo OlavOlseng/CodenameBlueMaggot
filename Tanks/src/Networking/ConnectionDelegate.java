@@ -1,7 +1,7 @@
 package Networking;
 
 public interface ConnectionDelegate {
-	public void startGame();
+	public void startOnlineGame();
 
 	public void connectionFailed(String message);
 

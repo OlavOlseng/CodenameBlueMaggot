@@ -86,7 +86,7 @@ public class ConnectionManager {
 			}
 			startListenerThread();
 			startWritingThread();
-			delegate.startGame();
+			delegate.startOnlineGame();
 
 		}
 	}

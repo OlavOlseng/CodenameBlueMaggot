@@ -4,9 +4,9 @@ import entity.Entity;
 import entity.Tank;
 import inputhandler.InputHandler;
 import baseGame.BaseGame;
-import level.testLevel;
+import blueMaggot.maps.cityScape;
 
-public class OnlineLevel extends testLevel {
+public class OnlineLevel extends cityScape {
 	private int objectCount = 0;
 
 	public OnlineLevel(BaseGame game, InputHandler handler) {

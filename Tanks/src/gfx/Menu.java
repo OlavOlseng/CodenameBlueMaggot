@@ -1,6 +1,6 @@
 package gfx;
 
-import baseGame.testGame;
+import blueMaggot.Game;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -75,6 +75,6 @@ public abstract class Menu extends JPanel {
 	}
 
 	public void putCenter(Component c, int width, int height) {
-		c.setBounds(testGame.WIDTH / 2 - width / 2, testGame.HEIGHT / 2 - height / 2, width, height);
+		c.setBounds(Game.WIDTH / 2 - width / 2, Game.HEIGHT / 2 - height / 2, width, height);
 	}
 }

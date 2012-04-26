@@ -9,8 +9,8 @@ import java.util.Random;
 import level.BasicLevel;
 
 import Networking.NetworkObject;
-import baseGame.testGame;
 import baseGame.Rendering.Renderer;
+import blueMaggot.Game;
 
 public abstract class Entity implements NetworkObject {
 
@@ -98,7 +98,7 @@ public abstract class Entity implements NetworkObject {
 		move(dt);
 		gravitate();
 
-		if (x > testGame.WIDTH + 100 || x < -100 || y > testGame.HEIGHT + 100 || y < -1000)
+		if (x > Game.WIDTH + 100 || x < -100 || y > Game.HEIGHT + 100 || y < -1000)
 			remove();
 	}
 

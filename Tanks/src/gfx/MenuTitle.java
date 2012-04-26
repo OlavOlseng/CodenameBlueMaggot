@@ -6,7 +6,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import baseGame.testGame;
+import blueMaggot.Game;
 
 public class MenuTitle extends Menu {
 
@@ -17,7 +17,7 @@ public class MenuTitle extends Menu {
 	private MenuButton btnReturn;
 	private MenuButton btnNewGame;
 
-	public MenuTitle(testGame game) {
+	public MenuTitle(Game game) {
 		super();
 
 		// u need this
