@@ -3,6 +3,7 @@ package gfx;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,15 +11,16 @@ import blueMaggot.Game;
 
 public class MenuButton extends Button {
 
-	public MenuButton(final String label, final String action, final MenuTitle menuTitle, final Game game) {
+	Font f;
 
+	public MenuButton(final String label, final String action, final MenuTitle menuTitle, final Game game) {
+		f = new Font("Helvetica", Font.BOLD, 0);
 		// setContentAreaFilled(true);
 		// setText(label);
 		// setOpaque(true);
 		// setBorderPainted(false);
 		setBackground(Color.red);
-//		setFont(new Font("Her"));
-		new Font("Sans Serif",Font.BOLD,0);
+		// setFont(new Font("Her"));
 
 		addActionListener(new ActionListener() {
 
@@ -48,5 +50,11 @@ public class MenuButton extends Button {
 					game.initConnection(false);
 			}
 		});
+		repaint();
+	}
+
+	public void paint(Graphics g) {
+		g.setFont(f);
+		g.drawString("PIKKKUKKOSV", 0, 0);
 	}
 }
