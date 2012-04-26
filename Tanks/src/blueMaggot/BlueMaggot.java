@@ -40,10 +40,9 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 		add(layeredPane);
 		pack();
+		repaint();
 		setLocationRelativeTo(null);
 		setVisible(true);
-
-		run();
 	}
 
 	private void setUpGame() {
@@ -63,7 +62,6 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 		setUpGame();
 		startGame();
-		repaint();
 		game.requestFocus();
 	}
 
