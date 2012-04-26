@@ -15,7 +15,7 @@ public class Explosion extends Entity {
 		super(x, y, radius, radius, level);
 
 		this.explosionPower = explosionPower;
-		if (radius <= 25)
+		if (radius <= 40)
 			ani = new Animation(AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS,
 					Animations.SMALLEXPLOSION), 18, 0, x, y, level);
 		else

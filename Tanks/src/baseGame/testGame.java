@@ -25,6 +25,7 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 	public static int WIDTH = 1024;
 	
 	public static int HEIGHT = 768;
+	
 	public static Dimension DIMENSION = new Dimension(WIDTH, HEIGHT);
 	public static int ALPHA_MASK = -1;
 

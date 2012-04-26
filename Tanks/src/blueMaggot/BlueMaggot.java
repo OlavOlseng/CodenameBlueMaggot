@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-import baseGame.BaseGame;
+
 import baseGame.testGame;
 
 /**
@@ -38,11 +38,14 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 		layeredPane.add(gamePanel, new Integer(0));
 		layeredPane.add(menuTitle, new Integer(1));
-
+		
 		setVisible(true);
 		add(layeredPane);
 		pack();
 		setLocationRelativeTo(null);
+		
+		run();
+		
 	}
 
 	public void setUpGame() {
@@ -51,7 +54,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		gamePanel.setLayout(new BorderLayout());
 		gamePanel.setBounds(0, 0, testGame.WIDTH, testGame.HEIGHT);
 		gamePanel.add(game);
-		System.out.println("Completed: setUpGame");
+		
 	}
 
 	public void startGame() {
@@ -63,6 +66,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 	@Override
 	public void run() {
+		
 		setUpGame();
 		startGame();
 	}
@@ -78,8 +82,9 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	public static void main(String[] args) {
-		Thread t = new Thread(new BlueMaggot());
-		t.start();
+		new BlueMaggot();
+		
+		
 	}
 
 	public void tick() {
