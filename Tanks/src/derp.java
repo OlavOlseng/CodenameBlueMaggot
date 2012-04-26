@@ -13,6 +13,7 @@ public class derp extends JFrame {
 
 	public void init() {
 		game.startReuglarGame();
+		game.st
 		// while (true)
 		// System.out.println(Thread.currentThread().getThreadGroup().activeCount());
 	}

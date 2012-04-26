@@ -78,15 +78,17 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	// msg[6] = handler.fire2.toByte();
 	// return msg;
 	// }
-
+	
 	public void startReuglarGame() {
 		level = new cityScape(this, handler);
 
 		init(WIDTH, HEIGHT, 60);
+		
 	}
-
+	
 	/* network stuff */
 	public void initConnection(boolean isHost) {
+		
 		if (isHost) {
 			connection.becomeHost();
 			this.isHost = true;

@@ -9,17 +9,18 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Panel;
 import java.util.ArrayList;
 
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-public abstract class Menu extends JPanel {
+public abstract class Menu extends Panel {
 
-	class MenuBackgroundPanel extends JPanel {
+	class MenuBackgroundPanel extends Panel {
 		@Override
-		protected void paintComponent(Graphics g) {
-			super.paintComponent(g);
+		public void paint(Graphics g) {
+			super.paint(g);
 			g.setColor(transparentBgColor);
 			g.fillRect(0, 0, getWidth(), getHeight());
 		}
@@ -37,7 +38,7 @@ public abstract class Menu extends JPanel {
 	public Menu() {
 
 		setLayout(new GridBagLayout());
-		setOpaque(false);
+//		setOpaque(false);
 
 		layeredPane = new JLayeredPane();
 		layeredPane.setOpaque(false);
@@ -47,7 +48,7 @@ public abstract class Menu extends JPanel {
 		buttonPanel.setLayout(new GridBagLayout());
 
 		backgroundPanel = new MenuBackgroundPanel();
-		backgroundPanel.setOpaque(false);
+//		backgroundPanel.setOpaque(false);
 
 		layeredPane.add(buttonPanel, new Integer(1));
 		layeredPane.add(backgroundPanel, new Integer(0));
