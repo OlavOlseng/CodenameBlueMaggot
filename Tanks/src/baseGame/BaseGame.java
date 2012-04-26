@@ -96,9 +96,9 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			deltaTime = System.currentTimeMillis() - lastTime;
 			lastTime = System.currentTimeMillis();
 			
-//			blueMaggot.tick();
 			if (!BaseGame.PAUSED)
 				onUpdate(deltaTime);
+			blueMaggot.tick();
 			
 			
 			Renderer renderer = new Renderer(pixels, backgroundColor, canvasWidth, canvasHeight);
