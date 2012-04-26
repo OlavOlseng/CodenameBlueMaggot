@@ -1,5 +1,6 @@
 package baseGame;
 
+
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -14,9 +15,9 @@ import java.awt.image.DataBufferInt;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import baseGame.animations.AnimationFactory;
+import blueMaggot.BlueMaggot;
 
 import entity.Entity;
-//import gfx.BlueMaggot;
 
 public abstract class BaseGame extends Canvas implements Runnable {
 
@@ -52,7 +53,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	private Rectangle gameRect;
 	
 	// the Game
-//	public BlueMaggot blueMaggot;
+	public BlueMaggot blueMaggot;
 
 	public void init(int width, int height, int fps) {
 		AnimationFactory.getInstance();

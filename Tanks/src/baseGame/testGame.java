@@ -16,6 +16,7 @@ import Networking.ConnectionManager;
 import Networking.NetworkObject;
 import Networking.OnlineLevel;
 import baseGame.Rendering.Renderer;
+import blueMaggot.BlueMaggot;
 
 import entity.Entity;
 
@@ -48,16 +49,16 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 		// startGame();
 	}
 
-//	public testGame(BlueMaggot blueMaggot) {
-////		blueMaggot.inputReal = handler;
-//		super.blueMaggot = blueMaggot;
-//
-//		addKeyListener(handler);
-//		setBackgroundColor(Color.BLACK);
-//		Random random = new Random();
-//		setBackgroundColor(Color.BLACK);
-//		connection = new ConnectionManager(this);
-//	}
+	public testGame(BlueMaggot blueMaggot) {
+		blueMaggot.inputReal = handler;
+		super.blueMaggot = blueMaggot;
+
+		addKeyListener(handler);
+		setBackgroundColor(Color.BLACK);
+		Random random = new Random();
+		setBackgroundColor(Color.BLACK);
+		connection = new ConnectionManager(this);
+	}
 
 	public void onUpdate(double deltaTime) {
 		deltaTime *= 0.0625;

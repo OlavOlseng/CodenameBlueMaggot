@@ -1,10 +1,11 @@
 package inputhandler;
 
-import gfx.BlueMaggot;
 import gfx.MenuTitle;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import blueMaggot.BlueMaggot;
 
 public class InputHandlerMenu implements KeyListener {
 
