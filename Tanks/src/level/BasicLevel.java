@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import sound.SoundEffect;
+
 import baseGame.BaseGame;
 import baseGame.Rendering.Renderer;
 import baseGame.animations.AnimationFactory;
@@ -28,6 +30,7 @@ public class BasicLevel {
 		this.handler = handler;
 		players = new ArrayList<Tank>();
 		initLevel();
+		SoundEffect.init();
 	}
 
 	public Terrain getTerrain() {
