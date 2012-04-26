@@ -46,9 +46,7 @@ public class MenuTitle extends Menu {
 		super.ButtonArr.add(btnExit);
 
 		setVisible(false);
-//		 setOpaque(false);
-		 
-
+		
 		super.setUpLayout();
 	}
 }

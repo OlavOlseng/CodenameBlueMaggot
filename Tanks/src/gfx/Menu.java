@@ -71,8 +71,6 @@ public abstract class Menu extends Panel {
 			c.gridy++;
 			System.out.println("adding button");
 		}
-		validate();
-		repaint();
 	}
 
 	public void putCenter(Component c, int width, int height) {

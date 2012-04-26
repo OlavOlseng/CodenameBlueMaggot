@@ -14,13 +14,10 @@ public class MenuButton extends Button {
 	Font f;
 
 	public MenuButton(final String label, final String action, final MenuTitle menuTitle, final Game game) {
-		f = new Font("Helvetica", Font.BOLD, 0);
-		// setContentAreaFilled(true);
-		// setText(label);
-		// setOpaque(true);
-		// setBorderPainted(false);
-		setBackground(Color.red);
-		// setFont(new Font("Her"));
+		f = new Font("Helvetica", Font.BOLD, 9);
+		setBackground(Color.pink);
+		setLabel(label);
+		setForeground(Color.black);
 
 		addActionListener(new ActionListener() {
 
@@ -50,11 +47,13 @@ public class MenuButton extends Button {
 					game.initConnection(false);
 			}
 		});
-		repaint();
 	}
 
+	// paint images maybe
 	public void paint(Graphics g) {
-		g.setFont(f);
-		g.drawString("PIKKKUKKOSV", 0, 0);
+		super.paint(g);
+//		g.setFont(f);
+//		g.drawString("PIKKKUKKOSV", 0, 0);
+		g.fillRect(0, 0, 200, 30);
 	}
 }
