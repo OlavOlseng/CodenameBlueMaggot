@@ -15,6 +15,7 @@ import entity.*;
 
 public class BasicLevel {
 
+	protected boolean gameOver = false;
 	protected List<Entity> entities;
 	protected ArrayList<Tank> players;
 	protected InputHandler handler;
@@ -36,7 +37,8 @@ public class BasicLevel {
 	public void initLevel() {
 		entities = new ArrayList<Entity>();
 		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion1.png"), Animations.EXPLOSIONS, 50, 50);
-		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion2.png"), Animations.EXPLOSIONS2, 100, 100);
+		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion2.png"), Animations.EXPLOSIONS2, 100,
+				100);
 	}
 
 	public void addEntity(Entity ent) {
@@ -53,6 +55,21 @@ public class BasicLevel {
 
 	public ArrayList<Tank> getPlayers() {
 		return players;
+	}
+	
+	public void checkGameOver(){
+		int playerAliveCount = 0;
+		for (Tank player : players) {
+			if (!player.removed)
+				playerAliveCount++;
+
+		}
+		if (playerAliveCount <= 1)
+			gameOver = true;
+		for (Tank player : players) {
+			if (!player.removed)
+				player.addScore(1000);
+		}
 	}
 
 	public void render(Renderer renderer) {
@@ -79,5 +96,6 @@ public class BasicLevel {
 				continue;
 			}
 		}
+		checkGameOver();
 	}
 }
