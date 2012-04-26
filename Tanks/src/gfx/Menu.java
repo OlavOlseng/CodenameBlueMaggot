@@ -61,7 +61,7 @@ public abstract class Menu extends JPanel {
 		c.gridwidth = 1;
 		c.gridx = 0;
 		c.gridy = 1;
-		c.ipady = 20;
+		c.ipady = 5;
 		c.ipadx = 100;
 		c.insets = new Insets(10, 0, 10, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;

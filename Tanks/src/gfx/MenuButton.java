@@ -30,10 +30,15 @@ public class MenuButton extends JButton {
 					Game.PAUSED = false;
 					menuTitle.setVisible(false);
 				}
-				if (action.equals("newGame")) {
+				if (action.equals("newOnlineGame")) {
 					game.runLoop.stop();
-					game.startReuglarGame();
+					game.startOnlineGame();
+					game.initConnection(false);
 				}
+				if (action.equals("connFalse"))
+					game.initConnection(false);
+				if (action.equals("connTrue"))
+					game.initConnection(false);
 			}
 		});
 	}
