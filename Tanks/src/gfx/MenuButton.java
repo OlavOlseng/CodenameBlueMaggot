@@ -31,6 +31,10 @@ public class MenuButton extends Button {
 					Game.PAUSED = false;
 					menuTitle.setVisible(false);
 				}
+				if (action.equals("newGame")) {
+					game.runLoop.stop();
+					game.startReuglarGame();
+				}
 				if (action.equals("newOnlineGame")) {
 					game.runLoop.stop();
 					game.startOnlineGame();
