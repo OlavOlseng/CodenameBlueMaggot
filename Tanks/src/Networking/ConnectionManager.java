@@ -23,7 +23,7 @@ public class ConnectionManager {
 	private OutputStream out;
 	private InputStream in;
 	private ConnectionDelegate delegate;
-	private int messageLenght = 7;
+	private int messageHeader = 7;
 	private Thread readThread;
 	private Thread writeThread;
 
@@ -121,6 +121,7 @@ public class ConnectionManager {
 	}
 
 	private void startListenerThread() {
+		
 		readThread = new Thread() {
 			public void run() {
 				while (true) {
@@ -132,18 +133,35 @@ public class ConnectionManager {
 					}
 					int offset = 0;
 
-					byte[] data = new byte[messageLenght];
-					int remaining = data.length;
+					byte[] header = new byte[messageHeader];
+					int remaining = header.length;
 					try {
 						synchronized (delegate) {
 							if (!delegate.shouldRead()) {
 								continue;
 							}
 						}
+					
 						while (remaining > 0) {
-							remaining -= in.read(data, offset, data.length - offset);
+							remaining -= in.read(header, offset, header.length - offset);
+							
+							offset = header.length-remaining;
 						}
-						synchronized (delegate) {
+						
+						String head = new String(header);
+					
+						double len = Double.parseDouble((head.substring(1, 6)));
+						byte[] data = new byte[(int)len];
+						offset = 0;
+						
+						remaining = data.length;
+						
+							while (remaining > 0) {
+							remaining -= in.read(data, offset, data.length - offset);
+							offset = header.length-remaining;
+							
+								}
+							synchronized (delegate) {
 							delegate.readData(data);
 						}
 
@@ -155,7 +173,6 @@ public class ConnectionManager {
 						}
 						return;
 					}
-
 				}
 			}
 		};

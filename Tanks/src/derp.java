@@ -12,8 +12,9 @@ public class derp extends JFrame {
 	}
 
 	public void init() {
-		game.startReuglarGame();
-		game.st
+//	game.initConnection(true);
+	game.initConnection(false);
+		
 		// while (true)
 		// System.out.println(Thread.currentThread().getThreadGroup().activeCount());
 	}
