@@ -61,6 +61,8 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 		setUpGame();
 		startGame();
+		validate();
+		repaint();
 		game.requestFocus();
 	}
 

@@ -21,12 +21,13 @@ public class cityScape extends BasicLevel {
 
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
-		ResourceManager.setTerrain(new Terrain(new File("./res/Cityscape_terrain.png")));
+		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
+		ResourceManager.setTerrain(terrain);
 		ResourceManager.setBackGround(new RGBImage(new File("./res/Cityscape_background.png")));
-
+		
 		addEntity(new Tank(10, 10, 1, handler, this));
 		addEntity(new Tank(1000, 10, 2, handler, this));
-	}
+	}	
 
 	public void tick(double dt) {
 		super.tick(dt);

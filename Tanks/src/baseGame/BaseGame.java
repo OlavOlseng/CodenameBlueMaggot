@@ -2,6 +2,7 @@ package baseGame;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.Point;
@@ -96,7 +97,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			Renderer renderer = new Renderer(pixels, backgroundColor, canvasWidth, canvasHeight);
 
 			onDraw(renderer);
-
+			
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
 			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
 
@@ -108,6 +109,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		}
 	}
 
+	
 	private boolean onScreen(int x, int y, int width, int height) {
 		Rectangle rect = new Rectangle(x, y, width, height);
 		return gameRect.intersects(rect);
