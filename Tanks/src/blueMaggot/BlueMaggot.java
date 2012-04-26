@@ -56,8 +56,10 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	public void startGame() {
+		
 		game.setVisible(true);
 		game.init();
+		
 	}
 
 	@Override

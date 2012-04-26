@@ -15,13 +15,12 @@ import java.awt.image.DataBufferInt;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import baseGame.animations.AnimationFactory;
-import blueMaggot.BlueMaggot;
 
-import entity.Entity;
+
+
 
 public abstract class BaseGame extends Canvas implements Runnable {
 
-	public static boolean PAUSED = false;
 	private int canvasWidth;
 	private int canvasHeight;
 	private Thread runLoop;
@@ -52,8 +51,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 
 	private Rectangle gameRect;
 	
-	// the Game
-	public BlueMaggot blueMaggot;
+	
 
 	public void init(int width, int height, int fps) {
 		AnimationFactory.getInstance();
@@ -76,7 +74,8 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		runLoop = new Thread(this);
 
 		lastTime = System.currentTimeMillis();
-		runLoop.run();
+		runLoop.start();
+		
 
 	}
 
@@ -93,16 +92,14 @@ public abstract class BaseGame extends Canvas implements Runnable {
 					e.printStackTrace();
 				}
 			}
+			
 			deltaTime = System.currentTimeMillis() - lastTime;
 			lastTime = System.currentTimeMillis();
-			
-			if (!BaseGame.PAUSED)
-				onUpdate(deltaTime);
-			blueMaggot.tick();
-			
-			
+			onUpdate(deltaTime);
 			Renderer renderer = new Renderer(pixels, backgroundColor, canvasWidth, canvasHeight);
+			
 			onDraw(renderer);
+			
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
 			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
 			

@@ -23,6 +23,7 @@ import entity.Entity;
 public class testGame extends BaseGame implements ConnectionDelegate {
 
 	public static int WIDTH = 1024;
+	
 	public static int HEIGHT = 768;
 	public static Dimension DIMENSION = new Dimension(WIDTH, HEIGHT);
 	public static int ALPHA_MASK = -1;
@@ -31,13 +32,16 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 	public ArrayList<byte[]> keyStrokes;
 	public byte[] keyStrokestoDo;
 	public boolean isHost = false;
-
+	
+	public BlueMaggot blueMaggot;
 	private InputHandler handler = new InputHandler();
 
 	private testLevel level;
 
 	private OnlineLevel onlineLevel;
 	private ConnectionManager connection;
+
+	public static boolean PAUSED = false;
 
 //	public BlueMaggot blueMaggot;
 
@@ -49,19 +53,29 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 		// startGame();
 	}
 
+	public testGame(){
+		handler = new InputHandler();
+		addKeyListener(handler);
+	}
 	public testGame(BlueMaggot blueMaggot) {
+		this.blueMaggot = blueMaggot;
 		blueMaggot.inputReal = handler;
-		super.blueMaggot = blueMaggot;
+		
 
 		addKeyListener(handler);
 		setBackgroundColor(Color.BLACK);
 		Random random = new Random();
 		setBackgroundColor(Color.BLACK);
-		connection = new ConnectionManager(this);
+		//connection = new ConnectionManager(this);
 	}
 
 	public void onUpdate(double deltaTime) {
+		if(blueMaggot != null)
+			blueMaggot.tick();
+		
 		deltaTime *= 0.0625;
+		// the Game
+		if(!PAUSED)
 		level.tick(deltaTime);
 	}
 

@@ -48,13 +48,15 @@ public abstract class Projectile extends Entity {
 		
 		
 		
-		/*if(level.getTerrain().hitTestpoint((int)(x), (int)(y ))){
+		if(level.getTerrain().hitTestpoint((int)(x), (int)(y ))){
 			while(level.getTerrain().hitTestpoint((int)(x), (int)(y))){
 				setLocation(x - dx, y -dy);
+				
 			}
-			//setLocation(x+dx, y+dy);
+			setLocation(x+dx, y+dy);
+			setSpeed(0, 0);
 	
-		}*/
+		}
 		super.tick(dt);
 		
 	}

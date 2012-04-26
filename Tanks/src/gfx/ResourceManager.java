@@ -15,6 +15,7 @@ public class ResourceManager {
 	public static final RGBImage CROSSHAIR2 = new RGBImage(new File("./res/Crosshair.png"));
 	public static final RGBImage ROCKET = new RGBImage(new File("./res/Rocket_sheet.png"));
 	public static final RGBImage GRENADE = new RGBImage(new File("./res/Grenade_temp.png"));
+	
 	private static Terrain terrain;
 	private static RGBImage backGround;
 

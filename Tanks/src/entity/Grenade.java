@@ -62,6 +62,7 @@ public class Grenade extends Projectile {
 
 	public void tick(double dt) {
 		super.tick(dt);
+		
 		applyFriction();
 		liveTime++;
 		handleIntersects();
