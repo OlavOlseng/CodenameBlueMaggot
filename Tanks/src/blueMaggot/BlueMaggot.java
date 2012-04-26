@@ -84,7 +84,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	public void tick() {
-		game.requestFocus();
+	//	game.requestFocus();
 		if (inputReal.menu.clicked) {
 			inputReal.menu.clicked = false;
 			inputReal.releaseAll();
