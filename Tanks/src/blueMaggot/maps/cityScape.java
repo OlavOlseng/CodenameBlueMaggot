@@ -23,6 +23,7 @@ public class cityScape extends BasicLevel {
 		super(game, handler);
 		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
 		ResourceManager.setTerrain(terrain);
+		
 		ResourceManager.setBackGround(new RGBImage(new File("./res/Cityscape_background.png")));
 		
 		addEntity(new Tank(10, 10, 1, handler, this));
