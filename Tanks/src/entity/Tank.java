@@ -48,7 +48,7 @@ public class Tank extends Entity {
 		muzzleLength = 20;
 		this.playerNumber = playerNumber;
 		this.input = input;
-		frictionConstant = 0.35;
+		frictionConstant = 0.12;
 		weaponList.add(new ShellGun());
 		weaponList.add(new GrenadeGun());
 		weaponList.add(new Rocketlauncher());
@@ -120,9 +120,7 @@ public class Tank extends Entity {
 				canGoLeft = false;
 				if (dx < 0)
 					dx = 0;
-
 			}
-
 		}
 		for (FloatingPoint point : boxRight) {
 			if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
@@ -130,17 +128,19 @@ public class Tank extends Entity {
 				canGoRight = false;
 				if (dx > 0)
 					dx = 0;
-
 			}
-
+		}
+		for (FloatingPoint point : boxUnderCenter) {
+			if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y + 1))) {
+				canGoDown = false;
+				break;
+			}
 		}
 		for (FloatingPoint point : boxUnderCenter) {
 			if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
-				canGoDown = false;
 				while (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
 					setLocation(x, y - 1);
 					setSpeed(dx, 0);
-
 				}
 				return;
 			}
@@ -150,7 +150,6 @@ public class Tank extends Entity {
 				while (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
 					setLocation(x, y + 1);
 					setSpeed(dx, 0.3);
-
 				}
 				break;
 			}
@@ -161,7 +160,6 @@ public class Tank extends Entity {
 		if (level.getTerrain().hitTestpoint((int) x, (int) (y + yr * 2))) {
 			return true;
 		}
-
 		return false;
 	}
 
@@ -172,7 +170,7 @@ public class Tank extends Entity {
 	}
 
 	public void jetPack() {
-		double fuelTick = 13 * dt;
+		double fuelTick = 13*dt;
 		if (jetPackFuel >= fuelTick) {
 			accelerate(0, -0.45);
 			jetPackFuel -= fuelTick;
@@ -254,6 +252,26 @@ public class Tank extends Entity {
 		if (!canGoDown)
 			accelerate(-dx * frictionConstant, 0);
 	}
+	
+	@Override
+	public void remove() {
+		if (--life == 0) {
+			super.remove();
+			int scoreWon = 1000;
+			for (Tank player : level.getPlayers()) {
+				if (player == this)
+					continue;
+				scoreWon -= 250;
+			}
+			this.score += scoreWon;
+			return;
+		}
+		setLocation(rand.nextInt(1000), 10);
+		setSpeed(0, 0);
+		damageTaken = 1;
+	}
+	
+
 
 	@Override
 	public void tick(double dt) {
@@ -295,23 +313,4 @@ public class Tank extends Entity {
 				crossHair.getHeight());
 
 	}
-
-	@Override
-	public void remove() {
-		if (--life == 0) {
-			super.remove();
-			int scoreWon = 1000;
-			for (Tank player : level.getPlayers()) {
-				if (player == this)
-					continue;
-				scoreWon -= 250;
-			}
-			this.score += scoreWon;
-			return;
-		}
-		setLocation(rand.nextInt(1000), 10);
-		setSpeed(0, 0);
-		damageTaken = 1;
-	}
-
 }
