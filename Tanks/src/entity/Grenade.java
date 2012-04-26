@@ -11,13 +11,13 @@ public class Grenade extends Projectile {
 
 	private int liveTime = 0;
 	private int explosionTime = 150;
-	int explosionRadius = 25;
-	double explosionPower = 100;
+	int explosionRadius = 30;
+	double explosionPower = 150;
 	
 	public Grenade(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		super(x, y, 4, 4, level, speedPercent, angle);
 		this.maxSpeed = 15;
-		this.frictionConstant = 0.001;
+		this.frictionConstant = 0.0005;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
@@ -64,7 +64,7 @@ public class Grenade extends Projectile {
 		super.tick(dt);
 		
 		applyFriction();
-		liveTime++;
+		liveTime+= dt;
 		handleIntersects();
 		if (liveTime >= explosionTime) {
 			explode();

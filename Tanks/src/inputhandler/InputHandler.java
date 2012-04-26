@@ -61,7 +61,7 @@ public class InputHandler implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_2)
 			menuOff.toggle(pressed);
 
-		if (e.getKeyCode() == KeyEvent.VK_1)
+		if (e.getKeyCode() == KeyEvent.VK_0)
 			grenadeSpam.toggle(pressed);
 
 		if (e.getKeyCode() == KeyEvent.VK_W)
@@ -72,11 +72,11 @@ public class InputHandler implements KeyListener {
 			left1.toggle(pressed);
 		if (e.getKeyCode() == KeyEvent.VK_D)
 			right1.toggle(pressed);
-		if (e.getKeyCode() == 153)
+		if (e.getKeyCode() == KeyEvent.VK_2)
 			fire1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_E)
+		if (e.getKeyCode() == KeyEvent.VK_3)
 			rotateR1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_Q)
+		if (e.getKeyCode() == KeyEvent.VK_1)
 			rotateL1.toggle(pressed);
 
 		if (e.getKeyCode() == KeyEvent.VK_UP)

@@ -100,6 +100,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
 			
 			if (showFps)
+				
 				DrawfpsCounter(g, deltaTime);
 			
 			buffer.show();
