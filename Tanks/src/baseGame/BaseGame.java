@@ -80,6 +80,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 
 		while (true) {
 			long deltaTime = System.currentTimeMillis() - lastTime;
+			
 			if (deltaTime < msDelay) {
 				try {
 					Thread.sleep(msDelay - deltaTime);
@@ -119,6 +120,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	private void DrawCircle(Graphics2D g, Renderable renderable) {
 		// if (onScreen(renderable.getX(), renderable.getY(),
 		// renderable.getRadius())) {
+		
 		g.setColor(renderable.getColor());
 		g.fillOval(renderable.getX(), renderable.getY(), renderable.getRadius() * 2, renderable.getRadius() * 2);
 		// }

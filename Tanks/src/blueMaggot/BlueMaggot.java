@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-import baseGame.BaseGame;
 import baseGame.testGame;
 
 /**
@@ -43,6 +42,9 @@ public class BlueMaggot extends JFrame implements Runnable {
 		add(layeredPane);
 		pack();
 		setLocationRelativeTo(null);
+
+		run();
+
 	}
 
 	private void setUpGame() {
@@ -50,7 +52,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		gamePanel.setLayout(new BorderLayout());
 		gamePanel.setBounds(0, 0, testGame.WIDTH, testGame.HEIGHT);
 		gamePanel.add(game);
-		System.out.println("Completed: setUpGame");
+
 	}
 
 	private void startGame() {
@@ -60,6 +62,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 	@Override
 	public void run() {
+
 		setUpGame();
 		startGame();
 		repaint();
