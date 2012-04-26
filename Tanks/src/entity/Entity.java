@@ -98,7 +98,7 @@ public abstract class Entity implements NetworkObject {
 		move(dt);
 		gravitate();
 
-		if (x > testGame.WIDTH + 100 || x < -100 || y > testGame.HEIGHT + 100 || y < -800)
+		if (x > testGame.WIDTH + 100 || x < -100 || y > testGame.HEIGHT + 100 || y < -1000)
 			remove();
 	}
 

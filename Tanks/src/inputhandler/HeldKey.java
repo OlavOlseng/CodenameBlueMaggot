@@ -19,8 +19,8 @@ public class HeldKey extends Key {
 	}
 
 	@Override
-	public void tick() {
-		super.tick();
+	public void tick(double dt) {
+		super.tick(dt);
 		if (down) {
 			ticksHeld++;
 			if (ticksHeld >= maxTicksHeld) {

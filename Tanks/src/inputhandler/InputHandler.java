@@ -17,7 +17,7 @@ public class InputHandler implements KeyListener {
 	public Key down1 = new Key(keys);
 	public Key left1 = new Key(keys);
 	public Key right1 = new Key(keys);
-	public Key fire1 = new HeldKey(keys, 100);
+	public Key fire1 = new Key(keys);
 	public Key rotateR1 = new Key(keys);
 	public Key rotateL1 = new Key(keys);
 
@@ -25,7 +25,7 @@ public class InputHandler implements KeyListener {
 	public Key down2 = new Key(keys);
 	public Key left2 = new Key(keys);
 	public Key right2 = new Key(keys);
-	public Key fire2 = new HeldKey(keys, 100);
+	public Key fire2 = new Key(keys);
 	public Key rotateR2 = new Key(keys);
 	public Key rotateL2 = new Key(keys);
 	public Key grenadeSpam = new Key(keys);

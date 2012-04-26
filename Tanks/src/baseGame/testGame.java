@@ -1,6 +1,6 @@
 package baseGame;
 
-import gfx.BlueMaggot;
+//import gfx.BlueMaggot;
 import inputhandler.InputHandler;
 
 import java.awt.Color;
@@ -22,7 +22,7 @@ import entity.Entity;
 public class testGame extends BaseGame implements ConnectionDelegate {
 
 	public static int WIDTH = 1024;
-	public static int HEIGHT = 720;
+	public static int HEIGHT = 768;
 	public static Dimension DIMENSION = new Dimension(WIDTH, HEIGHT);
 	public static int ALPHA_MASK = -1;
 
@@ -38,27 +38,26 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 	private OnlineLevel onlineLevel;
 	private ConnectionManager connection;
 
-	public BlueMaggot blueMaggot;
+//	public BlueMaggot blueMaggot;
 
 	public void init() {
-		System.out.println(0xFF0000);
-		System.out.println(0xFF0000 & -1);
+		this.addKeyListener(handler);
 		startReuglarGame();
 		// startOnlineGame(false);
 		// startOnlineGame(true);
 		// startGame();
 	}
 
-	public testGame(BlueMaggot blueMaggot) {
-//		blueMaggot.inputReal = handler;
-		super.blueMaggot = blueMaggot;
-
-		addKeyListener(handler);
-		setBackgroundColor(Color.BLACK);
-		Random random = new Random();
-		setBackgroundColor(Color.BLACK);
-		connection = new ConnectionManager(this);
-	}
+//	public testGame(BlueMaggot blueMaggot) {
+////		blueMaggot.inputReal = handler;
+//		super.blueMaggot = blueMaggot;
+//
+//		addKeyListener(handler);
+//		setBackgroundColor(Color.BLACK);
+//		Random random = new Random();
+//		setBackgroundColor(Color.BLACK);
+//		connection = new ConnectionManager(this);
+//	}
 
 	public void onUpdate(double deltaTime) {
 		deltaTime *= 0.0625;
