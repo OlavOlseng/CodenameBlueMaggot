@@ -275,6 +275,7 @@ public class Tank extends Entity {
 		setSpeed(0, 0);
 		damageTaken = 1;
 		initInventory();
+		currentWeapon = 0;
 	}
 	
 

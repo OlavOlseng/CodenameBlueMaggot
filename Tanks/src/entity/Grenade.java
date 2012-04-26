@@ -15,7 +15,7 @@ public class Grenade extends Projectile {
 	double explosionPower = 150;
 	
 	public Grenade(double x, double y, BasicLevel level, double speedPercent, double angle) {
-		super(x, y, 4, 4, level, speedPercent, angle);
+		super(x, y, 5, 5, level, speedPercent, angle);
 		this.maxSpeed = 15;
 		this.frictionConstant = 0.0005;
 		this.angle = angle;
@@ -39,24 +39,24 @@ public class Grenade extends Projectile {
 	public void handleIntersects() {
 		FloatingPoint point = hitbox.getPoint(0);
 		if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
-			this.setSpeed(-dx * 0.55, dy);
-			this.setLocation(x + 1, y);
+			this.setLocation(x - dx, y);
+			this.setSpeed(-dx * 0.35, dy);
 		}
 		point = hitbox.getPoint(4);
 		if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
-			this.setSpeed(-dx * 0.55, dy);
-			this.setLocation(x - 1, y);
+			this.setLocation(x - dx, y);
+			this.setSpeed(-dx * 0.35, dy);
 		}
 
 		point = hitbox.getPoint(1);
 		if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
-			this.setSpeed(dx * 0.8, -dy * 0.55);
-			this.setLocation(x, y + 1);
+			this.setLocation(x, y - dy);
+			this.setSpeed(dx * 0.7, -dy * 0.30);
 		}
 		point = hitbox.getPoint(3);
 		if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
-			this.setSpeed(dx * 0.5, -dy * 0.55);
-			this.setLocation(x, y - 1);
+			this.setLocation(x, y - dy);
+			this.setSpeed(dx * 0.5, -dy * 0.40);
 		}
 	}
 

@@ -1,5 +1,6 @@
 package entity.weapon;
 
+import sound.SoundEffect;
 import level.BasicLevel;
 import entity.Projectile;
 import entity.Shell;
@@ -14,6 +15,7 @@ public class ShellGun implements Weapon {
 		if(currentCooldown <= 0){
 		level.addEntity(new Shell(x, y , level, speedPercent, angle));
 		currentCooldown = cooldownTime;
+		SoundEffect.SHOOT.play();
 		}
 	}
 	
