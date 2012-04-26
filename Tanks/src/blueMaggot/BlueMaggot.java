@@ -44,7 +44,6 @@ public class BlueMaggot extends JFrame implements Runnable {
 		setLocationRelativeTo(null);
 
 		run();
-
 	}
 
 	private void setUpGame() {
@@ -52,7 +51,6 @@ public class BlueMaggot extends JFrame implements Runnable {
 		gamePanel.setLayout(new BorderLayout());
 		gamePanel.setBounds(0, 0, testGame.WIDTH, testGame.HEIGHT);
 		gamePanel.add(game);
-
 	}
 
 	private void startGame() {
@@ -95,6 +93,5 @@ public class BlueMaggot extends JFrame implements Runnable {
 			}
 			// System.out.println("asasdasd");
 		}
-
 	}
 }

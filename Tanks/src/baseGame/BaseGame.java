@@ -1,6 +1,5 @@
 package baseGame;
 
-
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -15,9 +14,6 @@ import java.awt.image.DataBufferInt;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import baseGame.animations.AnimationFactory;
-
-
-
 
 public abstract class BaseGame extends Canvas implements Runnable {
 
@@ -48,8 +44,8 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	public Color getBackGroundColor() {
 		return new Color(backgroundColor);
 	}
+
 	private Rectangle gameRect;
-	
 
 	public void init(int width, int height, int fps) {
 		AnimationFactory.getInstance();
@@ -80,7 +76,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 
 		while (true) {
 			long deltaTime = System.currentTimeMillis() - lastTime;
-			
+
 			if (deltaTime < msDelay) {
 				try {
 					Thread.sleep(msDelay - deltaTime);
@@ -88,20 +84,20 @@ public abstract class BaseGame extends Canvas implements Runnable {
 					e.printStackTrace();
 				}
 			}
-			
+
 			deltaTime = System.currentTimeMillis() - lastTime;
 			lastTime = System.currentTimeMillis();
 			onUpdate(deltaTime);
 			Renderer renderer = new Renderer(pixels, backgroundColor, canvasWidth, canvasHeight);
-			
+
 			onDraw(renderer);
-			
+
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
 			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
-			
+
 			if (showFps)
 				DrawfpsCounter(g, deltaTime);
-			
+
 			buffer.show();
 			g.dispose();
 		}
@@ -120,7 +116,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	private void DrawCircle(Graphics2D g, Renderable renderable) {
 		// if (onScreen(renderable.getX(), renderable.getY(),
 		// renderable.getRadius())) {
-		
+
 		g.setColor(renderable.getColor());
 		g.fillOval(renderable.getX(), renderable.getY(), renderable.getRadius() * 2, renderable.getRadius() * 2);
 		// }
