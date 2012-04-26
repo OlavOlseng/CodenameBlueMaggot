@@ -15,6 +15,7 @@ import entity.ScoreBubble;
 import entity.Shell;
 import entity.Tank;
 import entity.weapon.Rocketlauncher;
+import gfx.ResourceManager;
 
 import inputhandler.InputHandler;
 import Networking.NetworkObject;
@@ -75,12 +76,9 @@ public class testLevel extends BasicLevel {
 		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion1.png"), Animations.EXPLOSIONS, 50, 50);
 		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion2.png"), Animations.EXPLOSIONS2, 100, 100);
 
-		scoreBubble = new RGBImage(new File("./res/Scorebubble.png"));
-		grenade = new RGBImage(new File("./res/Grenade_temp.png"));
-		rocket = new RGBImage(new File("./res/Rocket.png"));
-		shell = new RGBImage(new File("./res/Shell_temp.png"));
-		tank2 = new RGBImage(new File("./res/Tank2.png"));
-
+	
+		
+		
 //		terrain = new Terrain(new File("./res/testlvl.png"));
 		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
 		backGround = new RGBImage(new File("./res/Cityscape_background.png"));
