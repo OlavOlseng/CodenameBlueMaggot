@@ -13,9 +13,9 @@ public class Grenade extends Projectile {
 	private int explosionTime = 150;
 	int explosionRadius = 30;
 	double explosionPower = 150;
-	
+
 	public Grenade(double x, double y, BasicLevel level, double speedPercent, double angle) {
-		super(x, y, 5, 5, level, speedPercent, angle);
+		super(x, y, 4, 4, level, speedPercent, angle);
 		this.maxSpeed = 15;
 		this.frictionConstant = 0.0005;
 		this.angle = angle;
@@ -31,40 +31,49 @@ public class Grenade extends Projectile {
 
 	}
 
-	
 	public void applyFriction() {
 		accelerate(-dx * frictionConstant, -dy * frictionConstant);
 	}
 
 	public void handleIntersects() {
+		boolean up = false;
+		boolean down = false;
+		boolean left = false;
+		boolean right = false;
+
 		FloatingPoint point = hitbox.getPoint(0);
 		if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
-			this.setLocation(x - dx, y);
-			this.setSpeed(-dx * 0.35, dy);
-		}
-		point = hitbox.getPoint(4);
-		if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
-			this.setLocation(x - dx, y);
-			this.setSpeed(-dx * 0.35, dy);
-		}
-
-		point = hitbox.getPoint(1);
-		if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
-			this.setLocation(x, y - dy);
-			this.setSpeed(dx * 0.7, -dy * 0.30);
+			left = true;
 		}
 		point = hitbox.getPoint(3);
 		if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
-			this.setLocation(x, y - dy);
-			this.setSpeed(dx * 0.5, -dy * 0.40);
+			right = true;
 		}
+		point = hitbox.getPoint(1);
+		if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
+			up = true;
+		}
+		point = hitbox.getPoint(4);
+		if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
+			down = true;
+		}
+		if (up && down || down || up) {
+			setLocation(x, y -  dy);
+			setSpeed(0.6 * dx, -dy * 0.4);
+		}
+
+		if (left && right || right || left) {
+			setLocation(x -  dx, y);
+			setSpeed(-dx * 0.4, dy);
+		}
+
 	}
 
 	public void tick(double dt) {
 		super.tick(dt);
-		
+
 		applyFriction();
-		liveTime+= dt;
+		liveTime += dt;
 		handleIntersects();
 		if (liveTime >= explosionTime) {
 			explode();
@@ -75,7 +84,7 @@ public class Grenade extends Projectile {
 	@Override
 	public void render(Renderer renderer) {
 		RGBImage img = ResourceManager.GRENADE;
-		renderer.DrawImage(img, -1, (int) (x - getXr()),(int) (y - getYr()), img.getWidth(), img.getHeight());
-		
+		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr()), img.getWidth(), img.getHeight());
+
 	}
 }
