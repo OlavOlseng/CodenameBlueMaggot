@@ -29,8 +29,8 @@ public class BlueMaggot extends JFrame implements Runnable {
 		setFocusable(true);
 
 		// this is temp, goto add read listener or some shit
-		 addKeyListener(input);
-		// addKeyListener(inputReal);
+//		 addKeyListener(input);
+		 addKeyListener(inputReal);
 
 		layeredPane.setBounds(0, 0, testGame.WIDTH, testGame.HEIGHT);
 		layeredPane.setOpaque(false);
@@ -80,10 +80,10 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	public void tick() {
-//		if (BaseGame.PAUSED)
-//			menuTitle.setVisible(true);
-//		else
-//			menuTitle.setVisible(false);
-//		System.out.println("menu tick");
+		if (BaseGame.PAUSED)
+			menuTitle.setVisible(true);
+		else
+			menuTitle.setVisible(false);
+		System.out.println("menu tick");
 	}
 }
