@@ -35,7 +35,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		game = new blueMaggot.Game(this);
 		menuTitle = new MenuTitle(game);
 		layeredPane.add(gamePanel, new Integer(0));
-		layeredPane.add(menuTitle, new Integer(1));
+		layeredPane.add(menuTitle, new Integer(100));
 
 		add(layeredPane);
 		pack();
