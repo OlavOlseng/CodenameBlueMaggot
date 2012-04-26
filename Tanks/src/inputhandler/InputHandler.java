@@ -13,6 +13,8 @@ public class InputHandler implements KeyListener {
 	private List<Key> keys = new ArrayList<Key>();
 
 	public Key menu = new Key(keys);
+	public Key menuOff = new Key(keys);
+
 	public Key up1 = new Key(keys);
 	public Key down1 = new Key(keys);
 	public Key left1 = new Key(keys);
@@ -54,10 +56,10 @@ public class InputHandler implements KeyListener {
 
 	public void toggle(KeyEvent e, boolean pressed) {
 
-		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
 			menu.toggle(pressed);
-			System.out.println("pressed menu");
-		}
+		if (e.getKeyCode() == KeyEvent.VK_2)
+			menuOff.toggle(pressed);
 
 		if (e.getKeyCode() == KeyEvent.VK_1)
 			grenadeSpam.toggle(pressed);

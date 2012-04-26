@@ -55,10 +55,8 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	public void startGame() {
-		
 		game.setVisible(true);
 		game.init();
-		
 	}
 
 	@Override
@@ -84,8 +82,8 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 	public void tick() {
 		if (inputReal.menu.clicked) {
-			inputReal.menu.clicked = false;
-//			inputReal.releaseAll();
+			// inputReal.menu.clicked = false;
+			// inputReal.releaseAll();
 			if (!menuTitle.isVisible())
 				menuTitle.setVisible(true);
 			else
