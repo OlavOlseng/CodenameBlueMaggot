@@ -126,7 +126,6 @@ public class testLevel extends BasicLevel {
 
 		for (Entity ent : entities) {
 			ent.render(renderer);
-
 		}
 
 		renderer.DrawImage(terrain, -1, 0, 0, terrain.getWidth(), terrain.getHeight());

@@ -28,6 +28,7 @@ public class InputHandler implements KeyListener {
 	public Key fire2 = new HeldKey(keys, 100);
 	public Key rotateR2 = new Key(keys);
 	public Key rotateL2 = new Key(keys);
+	public Key grenadeSpam = new Key(keys);
 
 	public void releaseAll() {
 		for (Key key : keys) {
@@ -53,8 +54,13 @@ public class InputHandler implements KeyListener {
 
 	public void toggle(KeyEvent e, boolean pressed) {
 
-		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			menu.toggle(pressed);
+			System.out.println("pressed menu");
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_1)
+			grenadeSpam.toggle(pressed);
 
 		if (e.getKeyCode() == KeyEvent.VK_W)
 			up1.toggle(pressed);

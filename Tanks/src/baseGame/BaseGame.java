@@ -16,6 +16,7 @@ import baseGame.Rendering.Renderer;
 import baseGame.animations.AnimationFactory;
 
 import entity.Entity;
+import gfx.BlueMaggot;
 
 public abstract class BaseGame extends Canvas implements Runnable {
 
@@ -38,7 +39,6 @@ public abstract class BaseGame extends Canvas implements Runnable {
 
 	public void setBackgroundColor(Color backgroundColor) {
 		this.backgroundColor = backgroundColor.getRGB();
-
 	}
 
 	public void SetBackgroundImage(RGBImage img) {
@@ -50,6 +50,9 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	}
 
 	private Rectangle gameRect;
+	
+	// the Game
+	public BlueMaggot blueMaggot;
 
 	public void init(int width, int height, int fps) {
 		AnimationFactory.getInstance();
@@ -68,7 +71,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		buffer = getBufferStrategy();
 		GraphicsConfiguration gc = getGraphicsConfiguration();
 
-		System.out.println(gc.getBufferCapabilities().getBackBufferCapabilities().isAccelerated());
+		// System.out.println(gc.getBufferCapabilities().getBackBufferCapabilities().isAccelerated());
 		runLoop = new Thread(this);
 
 		lastTime = System.currentTimeMillis();
@@ -80,44 +83,34 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	public void run() {
 
 		while (true) {
-
 			long deltaTime = System.currentTimeMillis() - lastTime;
-
 			if (deltaTime < msDelay) {
-
 				try {
 					Thread.sleep(msDelay - deltaTime);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
 			}
-
 			deltaTime = System.currentTimeMillis() - lastTime;
-
 			lastTime = System.currentTimeMillis();
-
+			
+			blueMaggot.tick();
 			if (!BaseGame.PAUSED)
 				onUpdate(deltaTime);
-
+			
+			
 			Renderer renderer = new Renderer(pixels, backgroundColor, canvasWidth, canvasHeight);
-
 			onDraw(renderer);
-
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
-
 			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
-
+			
 			if (showFps)
 				DrawfpsCounter(g, deltaTime);
-
+			
 			buffer.show();
-
 			g.dispose();
-
 		}
-
 	}
 
 	private boolean onScreen(int x, int y, int width, int height) {
@@ -136,7 +129,6 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		g.setColor(renderable.getColor());
 		g.fillOval(renderable.getX(), renderable.getY(), renderable.getRadius() * 2, renderable.getRadius() * 2);
 		// }
-
 	}
 
 	private void DrawBuffImage(Graphics2D g, Renderable renderable) {

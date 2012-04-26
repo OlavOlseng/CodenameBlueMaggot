@@ -248,7 +248,7 @@ public class Tank extends Entity {
 	}
 
 	public void applyFriction() {
-		System.out.println(canGoDown);
+//		System.out.println(canGoDown);
 		if (!canGoDown)
 			accelerate(-dx * frictionConstant, 0);
 	}

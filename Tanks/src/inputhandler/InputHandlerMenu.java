@@ -1,6 +1,6 @@
 package inputhandler;
 
-import gfx.GameDebug;
+import gfx.BlueMaggot;
 import gfx.MenuTitle;
 
 import java.awt.event.KeyEvent;
@@ -9,9 +9,9 @@ import java.awt.event.KeyListener;
 public class InputHandlerMenu implements KeyListener {
 
 	MenuTitle menuTitle;
-	GameDebug game;
+	BlueMaggot game;
 
-	public InputHandlerMenu(GameDebug game) {
+	public InputHandlerMenu(BlueMaggot game) {
 		this.game = game;
 	}
 

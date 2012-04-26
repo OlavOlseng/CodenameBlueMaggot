@@ -1,5 +1,6 @@
 package baseGame;
 
+import gfx.BlueMaggot;
 import inputhandler.InputHandler;
 
 import java.awt.Color;
@@ -37,31 +38,31 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 	private OnlineLevel onlineLevel;
 	private ConnectionManager connection;
 
+	public BlueMaggot blueMaggot;
+
 	public void init() {
 		System.out.println(0xFF0000);
 		System.out.println(0xFF0000 & -1);
 		startReuglarGame();
 		// startOnlineGame(false);
 		// startOnlineGame(true);
-
 		// startGame();
-
 	}
 
-	public testGame() {
+	public testGame(BlueMaggot blueMaggot) {
+//		blueMaggot.inputReal = handler;
+		super.blueMaggot = blueMaggot;
 
 		addKeyListener(handler);
 		setBackgroundColor(Color.BLACK);
 		Random random = new Random();
 		setBackgroundColor(Color.BLACK);
 		connection = new ConnectionManager(this);
-
 	}
 
 	public void onUpdate(double deltaTime) {
 		deltaTime *= 0.0625;
 		level.tick(deltaTime);
-
 	}
 
 	@Override
@@ -69,7 +70,7 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 		renderer.clearAllPixelData(Color.WHITE.getRGB());
 		level.onDraw(renderer);
 		// renderer.makeTransparent(ALPHA_MASK);
-
+		// tick on menu stuff
 	}
 
 	public byte[] parseKeyStrokes() {
@@ -83,16 +84,12 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 		msg[5] = handler.rotateR2.toByte();
 		msg[6] = handler.fire2.toByte();
 		return msg;
-
 	}
 
 	public void startReuglarGame() {
-		// TODO Auto-generated method stub
-
 		level = new testLevel(this, handler);
 
 		init(WIDTH, HEIGHT, 60);
-
 	}
 
 	public void startOnlineGame(boolean isHost) {
@@ -104,7 +101,6 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 			connection.joinGame("127.0.0.1");
 			this.isHost = false;
 		}
-
 	}
 
 	@Override
@@ -122,7 +118,6 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 
 			keyStrokestoDo = data;
 		}
-
 	}
 
 	@Override
@@ -140,22 +135,16 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public boolean shouldRead() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean shouldWrite() {
-		// TODO Auto-generated method stub
 		return isHost && (onlineLevel != null);
 	}
 
 	@Override
 	public void startGame() {
-		// TODO Auto-generated method stub
-
 		onlineLevel = new OnlineLevel(this, handler);
-
 	}
-
 }

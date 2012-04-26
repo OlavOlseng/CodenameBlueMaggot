@@ -31,7 +31,6 @@ public class Renderer {
 
 	public void DrawImage(RGBImage img, int transparentColor, int x, int y, int width, int height) {
 		DrawPixelArrayRGB(img.getPixels(), transparentColor, x, y, width, height);
-
 	}
 
 	public void DrawPixelArrayRGB(int[] pixels, int x, int y, int width, int height) {
