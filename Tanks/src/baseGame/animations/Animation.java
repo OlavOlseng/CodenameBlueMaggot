@@ -27,7 +27,7 @@ public class Animation extends Entity {
 	public void tick(double dt) {
 		if (currentFrame + 1 < frames.length) {
 
-			currentFrame += framesPerTick * dt;
+			currentFrame += framesPerTick;
 		} else {
 			remove();
 		}

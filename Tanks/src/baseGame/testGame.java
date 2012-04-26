@@ -46,7 +46,7 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 //	public BlueMaggot blueMaggot;
 
 	public void init() {
-		this.addKeyListener(handler);
+	
 		startReuglarGame();
 		// startOnlineGame(false);
 		// startOnlineGame(true);
@@ -60,9 +60,9 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 	public testGame(BlueMaggot blueMaggot) {
 		this.blueMaggot = blueMaggot;
 		blueMaggot.inputReal = handler;
-		
-
 		addKeyListener(handler);
+
+		
 		setBackgroundColor(Color.BLACK);
 		Random random = new Random();
 		setBackgroundColor(Color.BLACK);
