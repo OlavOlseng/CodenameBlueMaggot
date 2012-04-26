@@ -16,9 +16,11 @@ import baseGame.Rendering.Renderer;
 import baseGame.animations.AnimationFactory;
 
 import entity.Entity;
+import gfx.BlueMaggot;
 
 public abstract class BaseGame extends Canvas implements Runnable {
-	
+
+	public static boolean PAUSED = false;
 	private int canvasWidth;
 	private int canvasHeight;
 	private Thread runLoop;
@@ -30,101 +32,85 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	private RGBImage backgroundImage;
 	private int backgroundColor = Color.BLACK.getRGB();
 	private BufferedImage backGround = null;
-	private int [] pixels;
+	private int[] pixels;
 	private boolean once = false;
-	
+
 	private BufferedImage mainCanvas;
+
 	public void setBackgroundColor(Color backgroundColor) {
 		this.backgroundColor = backgroundColor.getRGB();
-		
-		
-	}	
-	public void SetBackgroundImage(RGBImage img){
+	}
+
+	public void SetBackgroundImage(RGBImage img) {
 		this.backgroundImage = img;
 	}
-	public Color getBackGroundColor(){
+
+	public Color getBackGroundColor() {
 		return new Color(backgroundColor);
 	}
-	
-	private Rectangle gameRect;
 
-	protected void init(int width,int height, int fps) {
+	private Rectangle gameRect;
+	
+	// the Game
+	public BlueMaggot blueMaggot;
+
+	public void init(int width, int height, int fps) {
 		AnimationFactory.getInstance();
 		canvasWidth = width;
 		canvasHeight = height;
-		mainCanvas = new BufferedImage(canvasWidth, canvasHeight,BufferedImage.TYPE_INT_RGB);
-		pixels = ((DataBufferInt)mainCanvas.getRaster().getDataBuffer()).getData();
+		mainCanvas = new BufferedImage(canvasWidth, canvasHeight, BufferedImage.TYPE_INT_RGB);
+		pixels = ((DataBufferInt) mainCanvas.getRaster().getDataBuffer()).getData();
 
 		this.fps = fps;
-		
-		msDelay = 1000/(long)fps;
-		
-		gameRect = new Rectangle(0, 0,canvasWidth, canvasHeight);
+
+		msDelay = 1000 / (long) fps;
+
+		gameRect = new Rectangle(0, 0, canvasWidth, canvasHeight);
 		setIgnoreRepaint(true);
 		createBufferStrategy(2);
 		buffer = getBufferStrategy();
 		GraphicsConfiguration gc = getGraphicsConfiguration();
-		
-		System.out.println(gc.getBufferCapabilities().getBackBufferCapabilities().isAccelerated());
+
+		// System.out.println(gc.getBufferCapabilities().getBackBufferCapabilities().isAccelerated());
 		runLoop = new Thread(this);
-		
+
 		lastTime = System.currentTimeMillis();
 		runLoop.run();
-		
+
 	}
 
 	@Override
 	public void run() {
 
 		while (true) {
-
 			long deltaTime = System.currentTimeMillis() - lastTime;
-		
-			if (deltaTime < msDelay){
-				
+			if (deltaTime < msDelay) {
 				try {
 					Thread.sleep(msDelay - deltaTime);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				
 			}
-		
+			deltaTime = System.currentTimeMillis() - lastTime;
+			lastTime = System.currentTimeMillis();
+			
+			blueMaggot.tick();
+			if (!BaseGame.PAUSED)
+				onUpdate(deltaTime);
 			
 			
-			
-				deltaTime = System.currentTimeMillis() - lastTime;
-				
-				lastTime = System.currentTimeMillis();
-				
-			
-			onUpdate(deltaTime);
-			
-			Renderer renderer = new Renderer(pixels,backgroundColor,canvasWidth,canvasHeight);
-	
+			Renderer renderer = new Renderer(pixels, backgroundColor, canvasWidth, canvasHeight);
 			onDraw(renderer);
-		
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
-			
-		
-			
 			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
-		
 			
-		
 			if (showFps)
-				DrawfpsCounter(g,deltaTime);
-			
+				DrawfpsCounter(g, deltaTime);
 			
 			buffer.show();
-		
 			g.dispose();
-			
-
 		}
-		
 	}
 
 	private boolean onScreen(int x, int y, int width, int height) {
@@ -138,21 +124,17 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	}
 
 	private void DrawCircle(Graphics2D g, Renderable renderable) {
-		//if (onScreen(renderable.getX(), renderable.getY(),
-		//		renderable.getRadius())) {
-			g.setColor(renderable.getColor());
-			g.fillOval(renderable.getX(), renderable.getY(),
-					renderable.getRadius() * 2, renderable.getRadius() * 2);
-		//}
-
+		// if (onScreen(renderable.getX(), renderable.getY(),
+		// renderable.getRadius())) {
+		g.setColor(renderable.getColor());
+		g.fillOval(renderable.getX(), renderable.getY(), renderable.getRadius() * 2, renderable.getRadius() * 2);
+		// }
 	}
 
 	private void DrawBuffImage(Graphics2D g, Renderable renderable) {
-	//	if (onScreen(renderable.getX(), renderable.getY(),
-	//			renderable.getWidth(), renderable.getHeight()))
-			g.drawImage(renderable.getImg(), renderable.getX(),
-					renderable.getY(), renderable.getWidth(),
-					renderable.getHeight(), Color.black, null);
+		// if (onScreen(renderable.getX(), renderable.getY(),
+		// renderable.getWidth(), renderable.getHeight()))
+		g.drawImage(renderable.getImg(), renderable.getX(), renderable.getY(), renderable.getWidth(), renderable.getHeight(), Color.black, null);
 	}
 
 	private void DrawfpsCounter(Graphics2D g, long deltaTime) {
@@ -164,5 +146,4 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	public abstract void onUpdate(double deltaTime);
 
 	public abstract void onDraw(Renderer renderer);
-
 }

@@ -21,7 +21,6 @@ public class Shell extends Projectile {
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
-
 	}
 
 	@Override
@@ -68,8 +67,8 @@ public class Shell extends Projectile {
 	@Override
 	public void render(Renderer renderer) {
 		RGBImage img = ResourceManager.SHELL;
-		renderer.DrawImage(img, -1, (int) (x - getXr()),(int) (y - getYr()), img.getWidth(), img.getHeight());
+		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr()), img.getWidth(), img.getHeight());
 		// TODO Auto-generated method stub
-		
+
 	}
 }

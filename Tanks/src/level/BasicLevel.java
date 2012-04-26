@@ -51,7 +51,7 @@ public class BasicLevel {
 	public ArrayList<Tank> getPlayers() {
 		return players;
 	}
-	
+
 	public void render(Renderer renderer) {
 
 		// Denne skal rendre alt som skal rendres,
@@ -61,10 +61,9 @@ public class BasicLevel {
 	public void tick(double dt) {
 
 		handler.tick(dt);
-		if (handler.menu.clicked) {
+		if (handler.grenadeSpam.clicked) {
 			for (int i = 0; i < 100; i++) {
-				addEntity(new Grenade(500, 50, this, rand.nextDouble(),
-						rand.nextInt(360)));
+				addEntity(new Grenade(500, 50, this, rand.nextDouble(), rand.nextInt(360)));
 			}
 		}
 		for (int i = 0; i < entities.size(); i++) {

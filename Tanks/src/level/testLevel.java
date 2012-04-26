@@ -123,13 +123,21 @@ public class testLevel extends BasicLevel {
 
 		renderer.DrawImage(backGround, 0, 0, testGame.WIDTH, testGame.HEIGHT);
 		renderer.DrawImage(terrain, -1, 0, 0, terrain.getWidth(), terrain.getHeight());
-		
+
 		for (Entity ent : entities) {
-		ent.render(renderer);
-			
+			ent.render(renderer);
 		}
 
-	
+		renderer.DrawImage(terrain, -1, 0, 0, terrain.getWidth(), terrain.getHeight());
+
+		renderer.DrawImage(tank1, -1, (int) tankEntity1.getLocation()[0] - (int) tankEntity1.getXr(),
+				(int) tankEntity1.getLocation()[1] - (int) tankEntity1.getYr() + 1, tank1.getWidth(), tank1.getHeight());
+		renderer.DrawImage(tank2, -1, (int) tankEntity2.getLocation()[0] - (int) tankEntity2.getXr(),
+				(int) tankEntity2.getLocation()[1] - (int) tankEntity2.getYr() + 1, tank2.getWidth(), tank2.getHeight());
+		renderer.DrawImage(crossHair1, -1, (int) tankEntity1.getCrosshairLocation().getX() - crossHair1.getWidth() / 2, (int) tankEntity1
+				.getCrosshairLocation().getY() - crossHair1.getHeight() / 2, crossHair1.getWidth(), crossHair1.getHeight());
+		renderer.DrawImage(crossHair2, -1, (int) tankEntity2.getCrosshairLocation().getX() - crossHair2.getWidth() / 2, (int) tankEntity2
+				.getCrosshairLocation().getY() - crossHair2.getHeight() / 2, crossHair2.getWidth(), crossHair2.getHeight());
 
 	}
 
