@@ -35,7 +35,7 @@ public class Tank extends Entity {
 	private int currentWeapon = 0;
 	private double torque = 0.15;
 
-	private ArrayList<Weapon> weaponList = new ArrayList<Weapon>();
+	private ArrayList<Weapon> weaponList;
 	private PixelHitbox boxUnderCenter;
 	private PixelHitbox boxLeft;
 	private PixelHitbox boxRight;
@@ -49,9 +49,7 @@ public class Tank extends Entity {
 		this.playerNumber = playerNumber;
 		this.input = input;
 		frictionConstant = 0.12;
-		weaponList.add(new ShellGun());
-		weaponList.add(new GrenadeGun());
-		weaponList.add(new Rocketlauncher());
+		initInventory();
 
 		boxUnderCenter = new PixelHitbox();
 		boxUnderCenter.addPoint(new FloatingPoint(-2, yr));
@@ -79,6 +77,13 @@ public class Tank extends Entity {
 
 	}
 
+	public void initInventory(){
+		weaponList = new ArrayList<Weapon>();
+		weaponList.add(new ShellGun());
+		weaponList.add(new GrenadeGun());
+		weaponList.add(new Rocketlauncher());
+	}
+	
 	public void setMuzzleAngle(double degrees) {
 		this.muzzleAngle = degrees;
 	}
@@ -269,6 +274,7 @@ public class Tank extends Entity {
 		setLocation(rand.nextInt(1000), 10);
 		setSpeed(0, 0);
 		damageTaken = 1;
+		initInventory();
 	}
 	
 
@@ -307,7 +313,6 @@ public class Tank extends Entity {
 		}
 
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr() + 1), img.getWidth(), img.getHeight());
-
 		renderer.DrawImage(crossHair, -1, (int) (getCrosshairLocation().getX() - crossHair.getWidth() / 2),
 				(int) (getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(),
 				crossHair.getHeight());
