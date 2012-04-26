@@ -33,7 +33,7 @@ public class Tank extends Entity {
 	private boolean chargingCannon = false;
 	private int currentWeapon = 0;
 	private double torque = 0.15;
-	
+
 	private ArrayList<Weapon> weaponList = new ArrayList<Weapon>();
 	private PixelHitbox boxUnderCenter;
 	private PixelHitbox boxLeft;
@@ -152,7 +152,6 @@ public class Tank extends Entity {
 				break;
 			}
 		}
-
 	}
 
 	public boolean intersectsTerrain() {
@@ -249,7 +248,7 @@ public class Tank extends Entity {
 	}
 
 	public void applyFriction() {
-//		System.out.println(canGoDown);
+		// System.out.println(canGoDown);
 		if (!canGoDown)
 			accelerate(-dx * frictionConstant, 0);
 	}

@@ -75,7 +75,10 @@ public abstract class BaseGame extends Canvas implements Runnable {
 
 		lastTime = System.currentTimeMillis();
 		runLoop.start();
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 56f57fc803fb2d501ba10cbe2ad694e43f3a6a46
 
 	}
 
@@ -88,7 +91,6 @@ public abstract class BaseGame extends Canvas implements Runnable {
 				try {
 					Thread.sleep(msDelay - deltaTime);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

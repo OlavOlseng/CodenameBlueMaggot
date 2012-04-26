@@ -1,6 +1,5 @@
 package blueMaggot;
 
-
 import gfx.MenuTitle;
 import inputhandler.InputHandler;
 import inputhandler.InputHandlerMenu;
@@ -31,8 +30,8 @@ public class BlueMaggot extends JFrame implements Runnable {
 		setFocusable(true);
 
 		// this is temp, goto add read listener or some shit
-//		 addKeyListener(input);
-		 addKeyListener(inputReal);
+		// addKeyListener(input);
+		addKeyListener(inputReal);
 
 		layeredPane.setBounds(0, 0, testGame.WIDTH, testGame.HEIGHT);
 		layeredPane.setOpaque(false);
@@ -40,10 +39,10 @@ public class BlueMaggot extends JFrame implements Runnable {
 		layeredPane.add(gamePanel, new Integer(0));
 		layeredPane.add(menuTitle, new Integer(1));
 
+		setVisible(true);
 		add(layeredPane);
 		pack();
 		setLocationRelativeTo(null);
-		setVisible(true);
 	}
 
 	public void setUpGame() {
@@ -84,11 +83,14 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	public void tick() {
-		if (inputReal.menu.clicked) { 
-			menuTitle.setVisible(true);
+		if (inputReal.menu.clicked) {
+			inputReal.menu.clicked = false;
+//			inputReal.releaseAll();
+			if (!menuTitle.isVisible())
+				menuTitle.setVisible(true);
+			else
+				menuTitle.setVisible(false);
+			System.out.println("dicks");
 		}
-		else
-			menuTitle.setVisible(false);
-		System.out.println("menu tick");
 	}
 }
