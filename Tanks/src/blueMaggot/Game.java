@@ -1,6 +1,5 @@
-package baseGame;
+package blueMaggot;
 
-//import gfx.BlueMaggot;
 import inputhandler.InputHandler;
 
 import java.awt.Color;
@@ -8,74 +7,49 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-import level.testLevel;
 
 import Networking.ConnectionDelegate;
 import Networking.ConnectionManager;
 import Networking.NetworkObject;
 import Networking.OnlineLevel;
+import baseGame.BaseGame;
 import baseGame.Rendering.Renderer;
-import blueMaggot.BlueMaggot;
+import blueMaggot.maps.cityScape;
 
 import entity.Entity;
 
-public class testGame extends BaseGame implements ConnectionDelegate {
+public class Game extends BaseGame implements ConnectionDelegate {
 
 	public static int WIDTH = 1024;
-
 	public static int HEIGHT = 768;
-	
 	public static Dimension DIMENSION = new Dimension(WIDTH, HEIGHT);
+
 	public static int ALPHA_MASK = -1;
 
+	// network stuff
 	public boolean online = false;
 	public ArrayList<byte[]> keyStrokes;
 	public byte[] keyStrokestoDo;
 	public boolean isHost = false;
+	private OnlineLevel onlineLevel;
+	private ConnectionManager connection;
 
 	public BlueMaggot blueMaggot;
 	private InputHandler handler = new InputHandler();
 
-	private testLevel level;
-
-	private OnlineLevel onlineLevel;
-	private ConnectionManager connection;
+	private cityScape level;
 
 	public static boolean PAUSED = false;
 
-	// public BlueMaggot blueMaggot;
-	
-	public void paint(Graphics g){
-		System.out.println("dicks");
-	}
-
-	public void paintComponent(Graphics g){
-		System.out.println("dicksComponent");
-	}
-	public void init() {
-		startReuglarGame();
-		// startOnlineGame(false);
-		// startOnlineGame(true);
-		// startGame();
-	}
-
-	public testGame() {
+	public Game() {
 		handler = new InputHandler();
 		addKeyListener(handler);
 	}
 
-	public testGame(BlueMaggot blueMaggot) {
+	public Game(BlueMaggot blueMaggot) {
 		this.blueMaggot = blueMaggot;
 		blueMaggot.inputReal = handler;
 		addKeyListener(handler);
-
-		
-		setBackgroundColor(Color.BLACK);
-		Random random = new Random();
-		setBackgroundColor(Color.BLACK);
-		// connection = new ConnectionManager(this);
 	}
 
 	public void onUpdate(double deltaTime) {
@@ -83,7 +57,6 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 			blueMaggot.tick();
 
 		deltaTime *= 0.0625;
-		// the Game
 		if (!PAUSED)
 			level.tick(deltaTime);
 	}
@@ -92,31 +65,28 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 	public void onDraw(Renderer renderer) {
 		renderer.clearAllPixelData(Color.WHITE.getRGB());
 		level.onDraw(renderer);
-		// renderer.makeTransparent(ALPHA_MASK);
-		// tick on menu stuff
 	}
 
-	public byte[] parseKeyStrokes() {
-
-		byte[] msg = new byte[7];
-		msg[0] = handler.left2.toByte();
-		msg[1] = handler.up2.toByte();
-		msg[2] = handler.right2.toByte();
-		msg[3] = handler.down2.toByte();
-		msg[4] = handler.rotateL2.toByte();
-		msg[5] = handler.rotateR2.toByte();
-		msg[6] = handler.fire2.toByte();
-		return msg;
-	}
+	// public byte[] parseKeyStrokes() {
+	// byte[] msg = new byte[7];
+	// msg[0] = handler.left2.toByte();
+	// msg[1] = handler.up2.toByte();
+	// msg[2] = handler.right2.toByte();
+	// msg[3] = handler.down2.toByte();
+	// msg[4] = handler.rotateL2.toByte();
+	// msg[5] = handler.rotateR2.toByte();
+	// msg[6] = handler.fire2.toByte();
+	// return msg;
+	// }
 
 	public void startReuglarGame() {
-		level = new testLevel(this, handler);
+		level = new cityScape(this, handler);
 
 		init(WIDTH, HEIGHT, 60);
 	}
 
-	public void startOnlineGame(boolean isHost) {
-
+	/* network stuff */
+	public void initConnection(boolean isHost) {
 		if (isHost) {
 			connection.becomeHost();
 			this.isHost = true;
@@ -128,25 +98,19 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void connectionFailed(String message) {
-		// TODO Auto-generated method stub
 		System.out.println(message);
 	}
 
 	@Override
 	public void readData(byte[] data) {
-		// TODO Auto-generated method stub
-
 		if (data.length > 0) {
 			System.out.println("didRead:" + data.length);
-
 			keyStrokestoDo = data;
 		}
 	}
 
 	@Override
 	public byte[] onWrite() {
-		// TODO Auto-generated method stub
-
 		String msg = "";
 		List<Entity> objects = onlineLevel.getEntities();
 		for (NetworkObject obj : objects) {
@@ -167,7 +131,7 @@ public class testGame extends BaseGame implements ConnectionDelegate {
 	}
 
 	@Override
-	public void startGame() {
+	public void startOnlineGame() {
 		onlineLevel = new OnlineLevel(this, handler);
 	}
 }

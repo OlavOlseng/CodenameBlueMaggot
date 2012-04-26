@@ -1,18 +1,18 @@
 import javax.swing.JFrame;
 
-import baseGame.testGame;
+import blueMaggot.Game;
 
 public class derp extends JFrame {
-	testGame game;
+	Game game;
 
 	public derp() {
 		setVisible(true);
-		game = new testGame();
+		game = new Game();
 		add(game);
 	}
 
 	public void init() {
-		game.init();
+		game.startReuglarGame();
 		// while (true)
 		// System.out.println(Thread.currentThread().getThreadGroup().activeCount());
 	}

@@ -6,11 +6,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import baseGame.testGame;
+import blueMaggot.Game;
 
 public class MenuButton extends JButton {
 
-	public MenuButton(final String label, final String action, final MenuTitle menuTitle, final testGame game) {
+	public MenuButton(final String label, final String action, final MenuTitle menuTitle, final Game game) {
 
 		setContentAreaFilled(true);
 		setText(label);
@@ -27,7 +27,7 @@ public class MenuButton extends JButton {
 				if (action.equals("exit"))
 					System.exit(1);
 				if (action.equals("return")) {
-					testGame.PAUSED = false;
+					Game.PAUSED = false;
 					menuTitle.setVisible(false);
 				}
 				if (action.equals("newGame")) {

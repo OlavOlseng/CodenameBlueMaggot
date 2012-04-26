@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-import baseGame.testGame;
 import baseGame.Rendering.RGBImage;
+import blueMaggot.Game;
 
 public class Terrain extends RGBImage {
 
@@ -23,12 +23,12 @@ public class Terrain extends RGBImage {
 		if (x < 0 || x >= getWidth() || y < 0 || y >= getHeight())
 			return false;
 
-		return getPixel(x, y) != testGame.ALPHA_MASK;
+		return getPixel(x, y) != Game.ALPHA_MASK;
 
 	}
 
 	public void addExplosion(int x, int y, int radius) {
-		DrawCircle(testGame.ALPHA_MASK, x, y, radius);
+		DrawCircle(Game.ALPHA_MASK, x, y, radius);
 	}
 
 	private void DrawCircle(int color, int x0, int y0, int radius) {
