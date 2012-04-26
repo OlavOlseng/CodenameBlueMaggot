@@ -16,12 +16,12 @@ public class Grenade extends Projectile {
 
 	public Grenade(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		super(x, y, 4, 4, level, speedPercent, angle);
-		this.maxSpeed = 15;
+		this.maxSpeed = 9;
 		this.frictionConstant = 0.0005;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
-
+		// hitbox = new PixelHitbox();
 	}
 
 	@Override
@@ -57,24 +57,35 @@ public class Grenade extends Projectile {
 		if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
 			down = true;
 		}
-		if (up && down || down || up) {
-			setLocation(x, y -  dy);
-			setSpeed(0.6 * dx, -dy * 0.4);
-		}
 
-		if (left && right || right || left) {
-			setLocation(x -  dx, y);
+		if (up && down && left && right) {
+			
+		} else if (up && down && left) {
+			setLocation(x - dx, y);
+		} else if (up && down && right) {
+			setLocation(x - dx, y);
 			setSpeed(-dx * 0.4, dy);
+		} else if (up && left && right) {
+			setLocation(x, y - dy);
+			setSpeed(dx * 0.8, -0.8 * dy);
+		} else if (down && left && right) {
+			setLocation(x, y - dy);
+			setSpeed(dx * 0.8, -0.8 * dy);
+		} else if (right || left) {
+			setLocation(x - dx, y);
+			setSpeed(-dx * 0.4, dy);
+		} else if (down || up) {
+			setLocation(x, y - dy);
+			setSpeed(0.6 * dx, -dy * 0.4);
 		}
 
 	}
 
 	public void tick(double dt) {
 		super.tick(dt);
-
+		handleIntersects();
 		applyFriction();
 		liveTime += dt;
-		handleIntersects();
 		if (liveTime >= explosionTime) {
 			explode();
 			remove();

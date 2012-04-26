@@ -45,7 +45,7 @@ public abstract class Projectile extends Entity {
 	
 	@Override
 	public void tick(double dt) {
-		if(level.getTerrain().hitTestpoint((int)(x), (int)(y ))){
+		if(level.getTerrain().hitTestpoint((int)(x), (int)(y))){
 			while(level.getTerrain().hitTestpoint((int)(x), (int)(y))){
 				setLocation(x - dx, y -dy);
 			}
