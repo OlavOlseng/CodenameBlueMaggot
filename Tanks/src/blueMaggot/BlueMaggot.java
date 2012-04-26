@@ -5,6 +5,8 @@ import inputhandler.InputHandler;
 import inputhandler.InputHandlerMenu;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+
+import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
@@ -20,7 +22,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 	InputHandlerMenu input = new InputHandlerMenu(this);
 	public InputHandler inputReal = new InputHandler();
 	private JLayeredPane layeredPane = new JLayeredPane();
-	public MenuTitle menuTitle = new MenuTitle();
+	public MenuTitle menuTitle;
 	JPanel gamePanel = new JPanel();
 	testGame game;
 
@@ -29,13 +31,11 @@ public class BlueMaggot extends JFrame implements Runnable {
 		setPreferredSize(new Dimension(testGame.WIDTH, testGame.HEIGHT));
 		setFocusable(true);
 
-		// this is temp, goto add read listener or some shit
-		// addKeyListener(input);
-		addKeyListener(inputReal);
-
 		layeredPane.setBounds(0, 0, testGame.WIDTH, testGame.HEIGHT);
 		layeredPane.setOpaque(false);
 
+		game = new baseGame.testGame(this);
+		menuTitle = new MenuTitle(game);
 		layeredPane.add(gamePanel, new Integer(0));
 		layeredPane.add(menuTitle, new Integer(1));
 
@@ -45,8 +45,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		setLocationRelativeTo(null);
 	}
 
-	public void setUpGame() {
-		game = new baseGame.testGame(this);
+	private void setUpGame() {
 		game.setPreferredSize(testGame.DIMENSION);
 		gamePanel.setLayout(new BorderLayout());
 		gamePanel.setBounds(0, 0, testGame.WIDTH, testGame.HEIGHT);
@@ -54,7 +53,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		System.out.println("Completed: setUpGame");
 	}
 
-	public void startGame() {
+	private void startGame() {
 		game.setVisible(true);
 		game.init();
 	}
@@ -63,6 +62,8 @@ public class BlueMaggot extends JFrame implements Runnable {
 	public void run() {
 		setUpGame();
 		startGame();
+		repaint();
+		game.requestFocus();
 	}
 
 	public void toggleMenu() {
@@ -76,19 +77,21 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	public static void main(String[] args) {
-		Thread t = new Thread(new BlueMaggot());
-		t.start();
+		(new BlueMaggot()).run();
 	}
 
 	public void tick() {
+		game.requestFocus();
 		if (inputReal.menu.clicked) {
-			// inputReal.menu.clicked = false;
-			// inputReal.releaseAll();
-			if (!menuTitle.isVisible())
+			inputReal.menu.clicked = false;
+			inputReal.releaseAll();
+			if (!menuTitle.isVisible()) {
 				menuTitle.setVisible(true);
-			else
-				menuTitle.setVisible(false);
-			System.out.println("dicks");
+				testGame.PAUSED = true;
+				System.out.println("dicks");
+			}
+			// System.out.println("asasdasd");
 		}
+
 	}
 }

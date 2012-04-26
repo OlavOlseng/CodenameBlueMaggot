@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import baseGame.testGame;
+
 public class MenuButton extends JButton {
 
-	public MenuButton(final String label, final String action) {
+	public MenuButton(final String label, final String action, final MenuTitle menuTitle, final testGame game) {
 
 		setContentAreaFilled(true);
 		setText(label);
@@ -19,10 +21,16 @@ public class MenuButton extends JButton {
 		addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent event) {
 				System.out.println("Clicked: " + label);
 				if (action.equals("exit"))
 					System.exit(1);
+				if (action.equals("return")) {
+					testGame.PAUSED = false;
+					menuTitle.setVisible(false);
+				}
+				if (action.equals("newGame"))
+					game.startReuglarGame();
 			}
 		});
 	}

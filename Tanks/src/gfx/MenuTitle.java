@@ -14,8 +14,10 @@ public class MenuTitle extends Menu {
 	private int height = 300;
 	public MenuButton btnExit;
 	private Dimension size = new Dimension(width, height);
+	private MenuButton btnReturn;
+	private MenuButton btnNewGame;
 
-	public MenuTitle() {
+	public MenuTitle(testGame game) {
 		super();
 
 		// u need this
@@ -26,13 +28,15 @@ public class MenuTitle extends Menu {
 
 		super.putCenter(this, width, height);
 
-		btnExit = new MenuButton("Exit!", "exit");
+		btnExit = new MenuButton("Exit!", "exit", null, null);
+		btnReturn = new MenuButton("Return!", "return", this, game);
+		btnNewGame = new MenuButton("New Game!","newGame",null,game);
 
 		super.transparentBgColor = new Color(255, 10, 250, 70);
 
 		// add buttons for title menu here
-		super.ButtonArr.add(new MenuButton("NOO!", ""));
-		super.ButtonArr.add(new MenuButton("Okey!", ""));
+		super.ButtonArr.add(btnNewGame);
+		super.ButtonArr.add(btnReturn);
 		super.ButtonArr.add(btnExit);
 
 		setVisible(false);
