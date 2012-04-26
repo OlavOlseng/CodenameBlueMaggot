@@ -23,6 +23,7 @@ public class Tank extends Entity {
 	private double muzzleAngle;
 	private int muzzleLength = 16;
 	private int score = 0;
+	private int life = 5;
 
 	private int playerNumber;
 	private double jetPackFuel = 100;
@@ -97,14 +98,16 @@ public class Tank extends Entity {
 	}
 
 	public FloatingPoint getCrosshairLocation() {
-		return (new FloatingPoint(x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)), y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle))));
+		return (new FloatingPoint(x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)), y - muzzleLength
+				* Math.sin(Math.toRadians(muzzleAngle))));
 	}
 
 	public void fire(double speedPercent) {
 		if (speedPercent < 0.2)
 			speedPercent = 0.2;
 		weaponList.get(currentWeapon).fire(this.x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)),
-				this.y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle)), this.level, speedPercent, this.muzzleAngle - 4);
+				this.y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle)), this.level, speedPercent,
+				this.muzzleAngle - 4);
 	}
 
 	public void handleTerrainIntersection() {
@@ -162,9 +165,9 @@ public class Tank extends Entity {
 		return false;
 	}
 
-	private void tickWeapons() {
+	private void tickWeapons(double dt) {
 		for (Weapon wep : weaponList) {
-			wep.tick();
+			wep.tick(dt);
 		}
 	}
 
@@ -248,7 +251,6 @@ public class Tank extends Entity {
 	}
 
 	public void applyFriction() {
-		// System.out.println(canGoDown);
 		if (!canGoDown)
 			accelerate(-dx * frictionConstant, 0);
 	}
@@ -270,7 +272,7 @@ public class Tank extends Entity {
 
 		handleTerrainIntersection();
 		applyFriction();
-		tickWeapons();
+		tickWeapons(dt);
 	}
 
 	@Override
@@ -289,8 +291,27 @@ public class Tank extends Entity {
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr() + 1), img.getWidth(), img.getHeight());
 
 		renderer.DrawImage(crossHair, -1, (int) (getCrosshairLocation().getX() - crossHair.getWidth() / 2),
-				(int) (getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(), crossHair.getHeight());
+				(int) (getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(),
+				crossHair.getHeight());
 
+	}
+
+	@Override
+	public void remove() {
+		if (--life == 0) {
+			super.remove();
+			int scoreWon = 1000;
+			for (Tank player : level.getPlayers()) {
+				if (player == this)
+					continue;
+				scoreWon -= 250;
+			}
+			this.score += scoreWon;
+			return;
+		}
+		setLocation(rand.nextInt(1000), 10);
+		setSpeed(0, 0);
+		damageTaken = 1;
 	}
 
 }

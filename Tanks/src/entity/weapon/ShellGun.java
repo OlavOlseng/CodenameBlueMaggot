@@ -18,9 +18,9 @@ public class ShellGun implements Weapon {
 	}
 	
 	@Override
-	public void tick() {
+	public void tick(double dt) {
 		if(currentCooldown > 0)
-			currentCooldown--;
+			currentCooldown-= dt;
 	}
 	
 }

@@ -8,11 +8,11 @@ import level.BasicLevel;
 public class Rocket extends Projectile {
 
 	RGBImage rocketSheet = ResourceManager.ROCKET;
-	int explosionRadius = 40;
-	double explosionPower = 200;
-	double thrust = 0.6;
-	int fuel = 50;
-	int ticks = 0;
+	int explosionRadius = 45;
+	double explosionPower = 350;
+	double thrust = 0.65;
+	double fuel = 45;
+	double burnTime = 0;
 	
 	public Rocket(double x, double y, BasicLevel level, double speedPercent,
 			double angle) {
@@ -55,18 +55,17 @@ public class Rocket extends Projectile {
 
 	public void tick(double dt) {
 		super.tick(dt);
-		 if(Math.sqrt(dx*dx + dy*dy) < maxSpeed && fuel > ticks){
+		 if(Math.sqrt(dx*dx + dy*dy) < maxSpeed && fuel > burnTime){
 		this.accelerate(thrust * Math.cos(Math.toRadians(angle)),
 				-thrust* Math.sin(Math.toRadians(angle)));
 		 }
 		 this.angle = (Math.toDegrees(Math.atan2(-dy,dx)) + 360)%360;
-		 System.out.println(angle);
 		 if (intersectsTerrain() || handleIntersections()) {
 		 explode();
 		 remove();
 		 }
 	
-		 ticks++;
+		 burnTime+= dt;
 	}
 	
 	@Override

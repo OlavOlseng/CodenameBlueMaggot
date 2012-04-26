@@ -11,13 +11,13 @@ import level.BasicLevel;
 
 public class Shell extends Projectile {
 
-	int explosionRadius = 20;
-	double explosionPower = 100;
+	int explosionRadius = 25;
+	double explosionPower = 150;
 
 	public Shell(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		super(x, y, 4, 4, level, speedPercent, angle);
 		this.maxSpeed = 25;
-		this.frictionConstant = 0.008;
+		this.frictionConstant = 0.005;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
