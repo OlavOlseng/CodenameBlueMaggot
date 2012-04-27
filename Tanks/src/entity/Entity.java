@@ -115,8 +115,8 @@ public abstract class Entity implements NetworkObject {
 		if (x > Game.WIDTH + 100 || x < -100 || y > Game.HEIGHT + 100 || y < -1000)
 			remove();
 	}
-	public abstract void render(Renderer renderer);
 	
+	public abstract void render(Renderer renderer);
 
 	public void remove() {
 		this.removed = true;
