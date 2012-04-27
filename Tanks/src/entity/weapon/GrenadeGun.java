@@ -9,6 +9,7 @@ public class GrenadeGun implements Weapon {
 	private int cooldownTime = 30;
 	private int currentCooldown = 0;
 
+	@Override
 	public void fire(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		if (currentCooldown <= 0) {
 			level.addEntity(new Grenade(x, y, level, speedPercent, angle));

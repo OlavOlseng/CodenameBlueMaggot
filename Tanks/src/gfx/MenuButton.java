@@ -1,22 +1,16 @@
 package gfx;
 
 import java.awt.Button;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-
 import javax.imageio.ImageIO;
 
-import blueMaggot.BlueMaggot;
 import blueMaggot.Game;
 
 public class MenuButton extends Button {
@@ -33,9 +27,8 @@ public class MenuButton extends Button {
 		this.label = label;
 		this.menu = menu;
 		this.game = game;
-//		setPreferredSize(size);
-//		setSize(size);
-		setBounds(0, 0, (int)size.getWidth(), (int)size.getHeight());
+		// setPreferredSize(size);
+		// setSize(size);
 
 		setUp();
 	}
@@ -88,11 +81,18 @@ public class MenuButton extends Button {
 					game.requestFocus();
 				} else if (label.equals("options"))
 					game.blueMaggot.menuOptions.setVisible(true);
+				else if (label.equals("apply"))
+					game.blueMaggot.menuOptions.apply(game);
+
+				System.out.println("Player One: " + game.nickPlayerOne + " - Player Two: " + game.nickPlayerTwo + " - Is Host: " + game.isHost + " - Host IP: "
+						+ game.hostIp);
+				repaint();
 			}
 		});
 	}
 
 	// paint images maybe
+	@Override
 	public void paint(Graphics g) {
 		setForeground(new Color(255, 212, 218));
 		g.fillRect(0, 0, getWidth(), getHeight());

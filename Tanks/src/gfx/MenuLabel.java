@@ -1,6 +1,5 @@
 package gfx;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Label;
@@ -36,11 +35,12 @@ public class MenuLabel extends Label {
 			e.printStackTrace();
 		}
 		setText(label);
-		setBackground(new Color(153, 210, 228));
+		setBackground(MenuTitle.MENU_BG);
 	}
 
+	@Override
 	public void paint(Graphics g) {
-		g.setColor(new Color(153,210,228));
+		g.setColor(MenuTitle.MENU_BG);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(lblImage, 0, (getHeight() - lblImage.getHeight()) / 2, null);
 	}

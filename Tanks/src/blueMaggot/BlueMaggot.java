@@ -1,10 +1,8 @@
 package blueMaggot;
 
-import gfx.Menu;
 import gfx.MenuOptions;
 import gfx.MenuTitle;
 import inputhandler.InputHandler;
-import inputhandler.InputHandlerMenu;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 

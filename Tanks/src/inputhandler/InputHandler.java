@@ -1,12 +1,9 @@
 package inputhandler;
 
-import java.awt.Polygon;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JFrame;
 
 public class InputHandler implements KeyListener {
 

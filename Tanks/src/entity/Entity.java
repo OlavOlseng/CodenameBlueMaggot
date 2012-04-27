@@ -3,7 +3,6 @@
 
 package entity;
 
-import java.awt.Point;
 import java.util.Random;
 
 import level.BasicLevel;
@@ -18,23 +17,29 @@ public abstract class Entity implements NetworkObject {
 	private int id;
 	private boolean isOnlineClient;
 	private NetworkObjectType type;
+	@Override
 	public int getId() {
 		return id;
 	}
 	public abstract void initNetworkValues();
+	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
+	@Override
 	public void setIsOnlineGameClient(boolean isClient){
 		this.isOnlineClient = isClient;
 	}
+	@Override
 	public boolean getIsIsOnlineGameClient(){
 		return isOnlineClient;
 	}
 
+	@Override
 	public void setNetworkObjectType(NetworkObjectType type){
 		this.type = type;
 	}
+	@Override
 	public NetworkObjectType getNetworkObjectType(){
 		return type;
 		
@@ -59,6 +64,7 @@ public abstract class Entity implements NetworkObject {
 		initNetworkValues();
 	}
 
+	@Override
 	public void setLocation(double x, double y) {
 		this.x = x;
 		this.y = y;
@@ -81,6 +87,7 @@ public abstract class Entity implements NetworkObject {
 		return yr;
 	}
 
+	@Override
 	public void setSpeed(double dx, double dy) {
 		this.dx = dx;
 		this.dy = dy;
@@ -99,10 +106,12 @@ public abstract class Entity implements NetworkObject {
 		accelerate(0, 0.1);
 	};
 
+	@Override
 	public void move(double dt) {
 		this.setLocation((this.x + this.dx * dt), (this.y + this.dy * dt));
 	}
 
+	@Override
 	public String getObject() {
 		return "'" + to5DigitString(getId())+ "'" +type + "'" + to5DigitString(x) + "'" + to5DigitString(y) + "'" + to5DigitString(dx) + "'" + to5DigitString(dy);
 

@@ -88,6 +88,7 @@ public class ScoreBubble extends Entity {
 		}
 	}
 
+	@Override
 	public void tick(double dt) {
 		super.tick(dt);
 		handleTerrainIntersections();

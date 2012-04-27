@@ -46,6 +46,7 @@ public class cityScape extends BasicLevel {
 
 	}
 
+	@Override
 	public void initSpawn() {
 		playerSpawns.add(new FloatingPoint(30, 10));
 		playerSpawns.add(new FloatingPoint(180, 10));
@@ -64,6 +65,7 @@ public class cityScape extends BasicLevel {
 		SoundEffect.SPAWN.play();
 	}
 
+	@Override
 	public void tick(double dt) {
 		super.tick(dt);
 		int ticket = rand.nextInt(200);

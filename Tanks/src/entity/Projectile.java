@@ -1,9 +1,6 @@
 package entity;
 
-import java.awt.Point;
-
 import level.BasicLevel;
-import level.Terrain;
 
 public abstract class Projectile extends Entity {
 

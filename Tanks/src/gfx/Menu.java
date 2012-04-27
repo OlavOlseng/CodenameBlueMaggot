@@ -4,16 +4,10 @@ import blueMaggot.Game;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.Panel;
-import java.util.ArrayList;
-
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 
 public abstract class Menu extends Panel {
 
@@ -29,13 +23,16 @@ public abstract class Menu extends Panel {
 	public Menu() {
 		putCenter(this, width, height);
 		setLayout(new GridBagLayout());
+		repaint();
+		setBackground(MenuTitle.MENU_BG);
 	}
 
 
+	@Override
 	public void paint(Graphics g) {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, getWidth(), getHeight());
-		g.setColor(menuBg);
+		g.setColor(MenuTitle.MENU_BG);
 		g.fillRect(border, border, getWidth()-border*2, getHeight()-border*2);
 		super.paint(g);
 	}

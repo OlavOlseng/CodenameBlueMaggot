@@ -1,12 +1,11 @@
 package Networking;
 
-import baseGame.animations.Animation;
-
 public enum NetworkObjectType {
 	TANK(0),GRENADE(1),ROCKET(2),SCORE_BUBBLE(3),SHELL(4),EXPLOSION(5),ANIMATION(6);
 	
 	private final int type;
 	
+	@Override
 	public String toString(){
 		String res = "00";
 		switch (this) {

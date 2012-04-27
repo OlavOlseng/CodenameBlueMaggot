@@ -2,8 +2,6 @@ package entity;
 
 import gfx.ResourceManager;
 
-import java.awt.Point;
-
 import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
@@ -55,6 +53,7 @@ public class Shell extends Projectile {
 		return false;
 	}
 
+	@Override
 	public void tick(double dt) {
 		super.tick(dt);
 		applyFriction();

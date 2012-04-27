@@ -2,15 +2,8 @@ package baseGame;
 
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.Window;
-
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;

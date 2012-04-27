@@ -1,8 +1,6 @@
 package entity;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
@@ -15,8 +13,6 @@ import entity.weapon.Weapon;
 import gfx.ResourceManager;
 
 import level.BasicLevel;
-import level.Terrain;
-
 import inputhandler.InputHandler;
 
 public class Tank extends Entity {
@@ -294,6 +290,7 @@ public class Tank extends Entity {
 		return muzzleAngle;
 	}
 
+	@Override
 	public void takeDamage(double amount) {
 		this.damageTaken += amount;
 	}

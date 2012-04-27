@@ -1,6 +1,5 @@
 package entity.weapon;
 
-import entity.Projectile;
 import level.BasicLevel;
 
 public interface Weapon {

@@ -6,7 +6,6 @@ import baseGame.Rendering.Renderer;
 import baseGame.animations.Animation;
 import baseGame.animations.AnimationFactory;
 import level.BasicLevel;
-import baseGame.animations.*;
 
 public class Explosion extends Entity {
 

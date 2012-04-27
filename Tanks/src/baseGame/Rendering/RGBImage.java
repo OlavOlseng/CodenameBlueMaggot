@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.io.File;
 import java.io.IOException;
-import baseGame.*;
 import javax.imageio.ImageIO;
 
 public class RGBImage {

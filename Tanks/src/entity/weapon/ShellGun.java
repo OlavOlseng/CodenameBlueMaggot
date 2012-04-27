@@ -2,7 +2,6 @@ package entity.weapon;
 
 import sound.SoundEffect;
 import level.BasicLevel;
-import entity.Projectile;
 import entity.Shell;
 
 public class ShellGun implements Weapon {

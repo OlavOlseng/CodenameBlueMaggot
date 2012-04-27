@@ -3,8 +3,6 @@ package baseGame;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 
-import entity.Entity;
-
 public class Renderable {
 
 	private int x;

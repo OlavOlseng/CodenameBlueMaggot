@@ -57,6 +57,7 @@ public class Rocket extends Projectile {
 		return false;
 	}
 
+	@Override
 	public void tick(double dt) {
 		super.tick(dt);
 		 if(Math.sqrt(dx*dx + dy*dy) < maxSpeed && fuel > burnTime){

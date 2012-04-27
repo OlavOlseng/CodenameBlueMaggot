@@ -1,20 +1,12 @@
 package Networking;
 
-import inputhandler.InputHandlerMenu;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import level.BasicLevel;
-
-import baseGame.BaseGame;
 
 public class ConnectionManager {
 
@@ -123,6 +115,7 @@ public class ConnectionManager {
 	private void startListenerThread() {
 		
 		readThread = new Thread() {
+			@Override
 			public void run() {
 				while (true) {
 					try {
@@ -182,6 +175,7 @@ public class ConnectionManager {
 
 	private void startWritingThread() {
 		writeThread = new Thread() {
+			@Override
 			public void run() {
 				while (true) {
 					try {

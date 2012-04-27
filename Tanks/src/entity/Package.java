@@ -1,7 +1,6 @@
 package entity;
 
 import sound.SoundEffect;
-import entity.weapon.*;
 import gfx.ResourceManager;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
@@ -104,6 +103,7 @@ public class Package extends Entity {
 		}
 	}
 
+	@Override
 	public void tick(double dt) {
 		super.tick(dt);
 		handleTerrainIntersections();
