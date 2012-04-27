@@ -1,20 +1,12 @@
 package Networking;
 
-import inputhandler.InputHandlerMenu;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import level.BasicLevel;
-
-import baseGame.BaseGame;
 
 public class ConnectionManager {
 
@@ -121,8 +113,9 @@ public class ConnectionManager {
 	}
 
 	private void startListenerThread() {
-		
+
 		readThread = new Thread() {
+			@Override
 			public void run() {
 				while (true) {
 					try {
@@ -141,27 +134,27 @@ public class ConnectionManager {
 								continue;
 							}
 						}
-					
+
 						while (remaining > 0) {
 							remaining -= in.read(header, offset, header.length - offset);
-							
-							offset = header.length-remaining;
+
+							offset = header.length - remaining;
 						}
-						
+
 						String head = new String(header);
-					
+
 						double len = Double.parseDouble((head.substring(1, 6)));
-						byte[] data = new byte[(int)len];
+						byte[] data = new byte[(int) len];
 						offset = 0;
-						
+
 						remaining = data.length;
-						
-							while (remaining > 0) {
+
+						while (remaining > 0) {
 							remaining -= in.read(data, offset, data.length - offset);
-							offset = header.length-remaining;
-							
-								}
-							synchronized (delegate) {
+							offset = header.length - remaining;
+
+						}
+						synchronized (delegate) {
 							delegate.readData(data);
 						}
 
@@ -182,6 +175,7 @@ public class ConnectionManager {
 
 	private void startWritingThread() {
 		writeThread = new Thread() {
+			@Override
 			public void run() {
 				while (true) {
 					try {

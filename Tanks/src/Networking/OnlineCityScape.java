@@ -1,9 +1,9 @@
 package Networking;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Stack;
+
 import java.util.concurrent.locks.ReentrantLock;
 import entity.Package;
 import level.BasicLevel;
@@ -19,32 +19,39 @@ import baseGame.BaseGame;
 import baseGame.derp;
 import blueMaggot.maps.cityScape;
 
-public class OnlineCityScape extends  cityScape{
+public class OnlineCityScape extends cityScape {
 	private int objectCount = 0;
+
 	private HashMap<Integer,NetworkObject> networkObjects;
 	private Stack<String[]> movementsToDo;
+
+	
+
 	private long lastTime;
 	private boolean isClient;
 
 	public OnlineCityScape(BaseGame game, InputHandler handler) {
-	
+
 		super(game, handler);
+
 		if(derp.playerNumber != 1)
 			isClient = true;
+
 
 	}
 
 	@Override
+
 	public void init(){
 		
 		networkObjects= new HashMap<Integer, NetworkObject>();
 		movementsToDo = new Stack<String[]>();
 		lastTime = System.currentTimeMillis();
-		super.init();
-		
-		
+
+	
 	}
 	@Override
+
 	public void addPlayers(){
 		Random rand = new Random();
 		
@@ -62,21 +69,25 @@ public class OnlineCityScape extends  cityScape{
 	public void addEntity(Entity entity) {
 		if(entity.getNetworkObjectType() != NetworkObjectType.NO_SYNC){
 		networkObjects.put(new Integer(objectCount), entity);
+
+
+		networkObjects.put(new Integer(objectCount), entity);
+
+
 		entity.setId(objectCount);
 		objectCount++;
 		}
 		
 		super.addEntity(entity);
-		
-	}
 
-	public void addEntity(Entity ent,int id){
-		ent.setIsOnlineGameClient(true);
-		networkObjects.put(id, ent);
-		ent.setId(id);
-		objectCount++;
-		super.addEntity(ent);
 		}
+
+public void addEntity(Entity ent,Integer id){
+	ent.setIsOnlineGameClient(true);
+	networkObjects.put(id, ent);
+	objectCount++;
+	super.addEntity(ent);
+	}
 
 	public void catchResponse(String entityData){
 		
@@ -84,15 +95,13 @@ public class OnlineCityScape extends  cityScape{
 		
 		for (int i = 1;i<objects.length;i++){
 			String[] properties = objects[i].split("\\'");	
+			movementsToDo.add(properties);
 			
-			synchronized (movementsToDo) {
-				movementsToDo.add(properties);
-			}
-			
-		}
-		
-		
 	}
+	}
+
+	
+
 	public HashMap<Integer,NetworkObject> getNetworkObjects(){
 		return networkObjects;
 	}
@@ -103,10 +112,14 @@ public class OnlineCityScape extends  cityScape{
 		else
 		return super.shouldSpawnBubble();
 	}
+
+
+
 	@Override
-	public void tick(double dt){
+	public void tick(double dt) {
 		NetworkObject obj;
 		double time;
+
 		
 		synchronized (movementsToDo) {	
 			if(movementsToDo.size()>0){
@@ -162,25 +175,21 @@ public class OnlineCityScape extends  cityScape{
 					ent.handleMessage(move);
 					addEntity((Entity)ent, id);
 					
+
 					}
 				}
-		}
-			
-			
-			super.tick(time);
-			
-			lastTime = System.currentTimeMillis();
 
-			return;
+				super.tick(time);
+
+				lastTime = System.currentTimeMillis();
+
+				return;
 			}
 		}
-	
+
 		super.tick(dt);
-	
+
 	}
-	
 
-
-	
-
-}
+	}
+	}

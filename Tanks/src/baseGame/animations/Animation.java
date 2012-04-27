@@ -2,7 +2,6 @@ package baseGame.animations;
 
 import level.BasicLevel;
 import entity.Entity;
-import gfx.ResourceManager;
 import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
@@ -16,11 +15,10 @@ public class Animation extends Entity {
 
 	public Animation(RGBImage[] frames, int duration, int startFrame, double x, double y, BasicLevel level) {
 		super(x, y, frames[0].getWidth() / 2, frames[0].getHeight() / 2, level);
-		
+
 		framesPerTick = (double) frames.length / (double) duration;
 		this.duration = duration;
 		this.frames = frames;
-
 		this.currentFrame = startFrame;
 
 	}
@@ -28,17 +26,15 @@ public class Animation extends Entity {
 	@Override
 	public void tick(double dt) {
 		if (currentFrame + 1 < frames.length) {
-
-			currentFrame += framesPerTick*dt;
-			if(currentFrame+1 >frames.length)
-				currentFrame = frames.length-1;
+			currentFrame += framesPerTick * dt;
+			if (currentFrame + 1 > frames.length)
+				currentFrame = frames.length - 1;
 		} else {
 			remove();
 		}
 	}
 
 	public RGBImage nextFrame() {
-
 		return frames[(int) Math.floor(currentFrame)];
 	}
 
@@ -64,7 +60,9 @@ public class Animation extends Entity {
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
+
 		setNetworkObjectType(NetworkObjectType.NO_SYNC);
 		
+
 	}
 }

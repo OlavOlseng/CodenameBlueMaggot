@@ -2,7 +2,6 @@ package entity.weapon;
 
 import sound.SoundEffect;
 import level.BasicLevel;
-import entity.Projectile;
 import entity.Shell;
 
 public class ShellGun implements Weapon {
@@ -22,12 +21,12 @@ public class ShellGun implements Weapon {
 	@Override
 	public void setAmmo() {
 	}
-	
+
 	@Override
 	public int getAmmo() {
 		return 1;
 	}
-	
+
 	@Override
 	public void addAmmo() {
 	}

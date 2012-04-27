@@ -27,17 +27,25 @@ public class cityScape extends BasicLevel {
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
 		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
+		//terrain = new Terrain(new File("./res/Island_terrain.png"));
 		ResourceManager.setTerrain(terrain);
+	ResourceManager.setBackGround(new RGBImage(new File("./res/Cityscape_background2.png")));
+//		ResourceManager.setBackGround(new RGBImage(new File("./res/Island_background.png")));
 
-		ResourceManager.setBackGround(new RGBImage(new File("./res/Cityscape_background.png")));
-		
+
 		SoundEffect.SPAWN.play();
 	}
-	public void  init(){
 
-		ResourceManager.setBackGround(new RGBImage(new File("./res/Cityscape_background2.png")));
+	public void init() {
+
 		initSpawn();
+
 		addPlayers();
+
+
+	
+
+
 		SoundEffect.SPAWN.play();
 		addEntity(new Package(bubbleSpawns.get(1), this));
 
@@ -46,7 +54,11 @@ public class cityScape extends BasicLevel {
 		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this));
 		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this));
 
+
 	}
+
+	@Override
+
 	public void initSpawn() {
 		playerSpawns.add(new FloatingPoint(30, 10));
 		playerSpawns.add(new FloatingPoint(180, 10));
@@ -60,11 +72,11 @@ public class cityScape extends BasicLevel {
 	}
 
 	public void spawnBubble() {
-		this.addEntity(new ScoreBubble(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), 4, this, 0.5, rand
-				.nextInt(360), 100));
+		this.addEntity(new ScoreBubble(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), 4, this, 0.5, rand.nextInt(360), 100));
 		SoundEffect.SPAWN.play();
 	}
 
+	@Override
 	public void tick(double dt) {
 		super.tick(dt);
 		if(shouldSpawnBubble()){

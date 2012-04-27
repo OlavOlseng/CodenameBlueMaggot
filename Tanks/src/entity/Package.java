@@ -1,7 +1,6 @@
 package entity;
 
 import sound.SoundEffect;
-import entity.weapon.*;
 import gfx.ResourceManager;
 import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
@@ -9,18 +8,19 @@ import baseGame.Rendering.Renderer;
 import level.BasicLevel;
 
 public class Package extends Entity {
-	
+
 	enum Gun {
 		ROCKETLAUNCHER(2), MINELAUNCHER(3);
 		private int i;
-		private Gun(int i){
+
+		private Gun(int i) {
 			this.i = i;
 		}
 	}
 
 	Gun wep;
 	PixelHitbox hitbox;
-	
+
 	public Package(FloatingPoint point, BasicLevel level) {
 		super(point.getX(), point.getY(), 6, 6, level);
 		fillCrate();
@@ -99,12 +99,13 @@ public class Package extends Entity {
 		for (Tank player : level.getPlayers()) {
 			if (intersectsEntity(player)) {
 				player.getWeaponList().get(wep.i).addAmmo();
-				SoundEffect.BUBBLE.play();
+				SoundEffect.RELOAD.play();
 				remove();
 			}
 		}
 	}
 
+	@Override
 	public void tick(double dt) {
 		super.tick(dt);
 		handleTerrainIntersections();
@@ -121,7 +122,7 @@ public class Package extends Entity {
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
-		setNetworkObjectType(NetworkObjectType.PACKAGE);
+
 	}
 
 }

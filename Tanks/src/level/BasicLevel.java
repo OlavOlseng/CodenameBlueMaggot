@@ -26,40 +26,39 @@ public abstract class BasicLevel {
 	private Random rand = new Random();
 	public List<FloatingPoint> playerSpawns;
 	public List<FloatingPoint> bubbleSpawns;
-	
-	
+
 	public BasicLevel(BaseGame game, InputHandler handler) {
 		this.game = game;
 		this.handler = handler;
 		players = new ArrayList<Tank>();
 		initLevel();
 		SoundEffect.init();
-		
+
 	}
 
 	public Terrain getTerrain() {
 		return terrain;
 	}
-	
+
 	public void initLevel() {
 		entities = new ArrayList<Entity>();
 		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion1.png"), Animations.EXPLOSIONS, 50, 50);
-		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion2.png"), Animations.EXPLOSIONS2, 100,
-				100);
+		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion2.png"), Animations.EXPLOSIONS2, 100, 100);
 		playerSpawns = new ArrayList<FloatingPoint>();
 		bubbleSpawns = new ArrayList<FloatingPoint>();
 	}
-	
-//	requires you to init bubbleSpawns and playerSpawns
+
+	// requires you to init bubbleSpawns and playerSpawns
 	abstract public void initSpawn();
-	
-	public List<FloatingPoint> getPlayerSpawns(){
+
+	public List<FloatingPoint> getPlayerSpawns() {
 		return playerSpawns;
 	}
-	public List<FloatingPoint> getBubbleSpawns(){
+
+	public List<FloatingPoint> getBubbleSpawns() {
 		return bubbleSpawns;
 	}
-	
+
 	public void addEntity(Entity ent) {
 		entities.add(ent);
 	}
@@ -75,8 +74,8 @@ public abstract class BasicLevel {
 	public ArrayList<Tank> getPlayers() {
 		return players;
 	}
-	
-	public void checkGameOver(){
+
+	public void checkGameOver() {
 		int playerAliveCount = 0;
 		for (Tank player : players) {
 			if (!player.removed)
@@ -99,7 +98,7 @@ public abstract class BasicLevel {
 
 	public void tick(double dt) {
 
-//		handler.tick(dt);
+		// handler.tick(dt);
 		if (handler.grenadeSpam.clicked) {
 			for (int i = 0; i < 100; i++) {
 				addEntity(new Grenade(500, 50, this, rand.nextDouble(), rand.nextInt(360)));
@@ -110,8 +109,13 @@ public abstract class BasicLevel {
 		
 		for (int i = 0; i <entities.size(); i++) {
 			Entity ent = entities.get(i);
+
 			
-			if(!ent.IsOnlineGameClient()){
+			
+
+
+			if (!ent.IsOnlineGameClient()) {
+
 				ent.tick(dt);
 			}
 			if (ent.removed) {
@@ -120,7 +124,7 @@ public abstract class BasicLevel {
 				i--;
 				continue;
 			}
-		}
+		
 		checkGameOver();
 	}
-}
+}}

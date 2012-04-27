@@ -8,5 +8,5 @@ public class Animations {
 	public static final String SPRITES = "spriteSheet1";
 	public static final int SMALLEXPLOSION = 0;
 	public static final int BIGEXPLOSION = 0;
-	
+
 }

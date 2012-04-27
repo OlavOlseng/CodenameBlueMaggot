@@ -1,15 +1,5 @@
 package baseGame.Rendering;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-import java.util.ArrayList;
-
-import baseGame.Renderable;
-
-import entity.Entity;
-
 public class Renderer {
 	private int canvasWidth;
 	private int canvasHeight;

@@ -2,8 +2,6 @@ package entity;
 
 import gfx.ResourceManager;
 
-import java.awt.Point;
-
 import Networking.NetworkObjectType;
 import baseGame.derp;
 import baseGame.Rendering.RGBImage;
@@ -23,7 +21,7 @@ public class Shell extends Projectile {
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
-		
+
 	}
 
 	@Override
@@ -58,7 +56,8 @@ public class Shell extends Projectile {
 		return false;
 	}
 
-	
+
+	@Override
 	public void tick(double dt) {
 		super.tick(dt);
 		applyFriction();
@@ -89,6 +88,6 @@ public class Shell extends Projectile {
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
 		setNetworkObjectType(NetworkObjectType.SHELL);
-		
+
 	}
 }

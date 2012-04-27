@@ -1,12 +1,7 @@
 package baseGame.animations;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
-import entity.Animations;
-
 import baseGame.Rendering.RGBImage;
 
 public class AnimationFactory {

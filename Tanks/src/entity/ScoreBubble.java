@@ -88,6 +88,7 @@ public class ScoreBubble extends Entity {
 		}
 	}
 
+	@Override
 	public void tick(double dt) {
 		super.tick(dt);
 		handleTerrainIntersections();
@@ -98,7 +99,7 @@ public class ScoreBubble extends Entity {
 	public void render(Renderer renderer) {
 		// TODO Auto-generated method stub
 		RGBImage img = ResourceManager.SCOREBUBBLE;
-		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - 2*getYr()), img.getWidth(), img.getHeight());
+		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - 2 * getYr()), img.getWidth(), img.getHeight());
 	}
 
 	

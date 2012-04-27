@@ -1,11 +1,11 @@
 package entity;
 
+import sound.SoundEffect;
 import Networking.NetworkObjectType;
 import baseGame.Rendering.Renderer;
 import baseGame.animations.Animation;
 import baseGame.animations.AnimationFactory;
 import level.BasicLevel;
-import baseGame.animations.*;
 
 public class Explosion extends Entity {
 
@@ -16,12 +16,14 @@ public class Explosion extends Entity {
 		super(x, y, radius, radius, level);
 	
 		this.explosionPower = explosionPower;
-		if (radius <= 40)
-			ani = new Animation(AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS,
-					Animations.SMALLEXPLOSION), 18, 0, x, y, level);
-		else
-			ani = new Animation(AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS2,
-					Animations.BIGEXPLOSION), 26, 0, x, y, level);
+		if (radius < 40) {
+			SoundEffect.EXPLOSION1.play();
+
+			ani = new Animation(AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS, Animations.SMALLEXPLOSION), 18, 0, x, y, level);
+		} else {
+			SoundEffect.EXPLOSION2.play();
+			ani = new Animation(AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS2, Animations.BIGEXPLOSION), 26, 0, x, y, level);
+		}
 		level.addEntity(ani);
 	}
 
@@ -33,8 +35,7 @@ public class Explosion extends Entity {
 			double radius = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 			if (radius > this.xr)
 				continue;
-			other.accelerate(other.damageTaken * explosionPower * deltaX / (radius * 50), other.damageTaken
-					* explosionPower * deltaY / (radius * 50));
+			other.accelerate(other.damageTaken * explosionPower * deltaX / (radius * 50), other.damageTaken * explosionPower * deltaY / (radius * 50));
 
 			other.takeDamage(explosionPower / 500);
 		}

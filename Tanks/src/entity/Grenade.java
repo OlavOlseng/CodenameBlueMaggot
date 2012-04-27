@@ -4,8 +4,6 @@ import gfx.ResourceManager;
 import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
-import baseGame.animations.Animation;
-import baseGame.animations.AnimationFactory;
 import blueMaggot.Game;
 import level.BasicLevel;
 
@@ -86,6 +84,7 @@ public class Grenade extends Projectile {
 
 	}
 
+	@Override
 	public void tick(double dt) {
 		this.dt = dt;
 		super.move(dt);

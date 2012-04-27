@@ -3,7 +3,6 @@
 
 package entity;
 
-import java.awt.Point;
 import java.util.Random;
 
 import level.BasicLevel;
@@ -18,29 +17,44 @@ public abstract class Entity implements NetworkObject {
 	private int id;
 	private boolean isOnlineClient;
 	private NetworkObjectType type;
+
+	@Override
 	public int getId() {
 		return id;
 	}
+
+
+	public abstract void initNetworkValues();
+
+	@Override
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
+
 	public void setIsOnlineGameClient(boolean isClient){
 		this.isOnlineClient = isClient;
 	}
-	public boolean IsOnlineGameClient(){
+	
+
+	@Override
+	public boolean IsOnlineGameClient() {
+
 		return isOnlineClient;
 	}
 
-	public void setNetworkObjectType(NetworkObjectType type){
+	@Override
+	public void setNetworkObjectType(NetworkObjectType type) {
 		this.type = type;
 	}
-	public NetworkObjectType getNetworkObjectType(){
+
+	@Override
+	public NetworkObjectType getNetworkObjectType() {
 		return type;
-		
+
 	}
-	
+
 	protected final Random rand = new Random();
 	protected double x, y;
 	protected double xr, yr;
@@ -62,6 +76,7 @@ public abstract class Entity implements NetworkObject {
 		
 	
 
+
 	}
 	public void handleMessage(String[] message){
 		
@@ -74,10 +89,14 @@ public abstract class Entity implements NetworkObject {
 		setLocation(x , y);
 		setSpeed(dx, dy);
 	}
+
+	@Override
+
 	public void setLocation(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
+
 	public void setLocation(FloatingPoint point) {
 		this.x = point.getX();
 		this.y = point.getY();
@@ -96,6 +115,7 @@ public abstract class Entity implements NetworkObject {
 		return yr;
 	}
 
+	@Override
 	public void setSpeed(double dx, double dy) {
 		this.dx = dx;
 		this.dy = dy;
@@ -114,17 +134,19 @@ public abstract class Entity implements NetworkObject {
 		accelerate(0, 0.1);
 	};
 
+	@Override
 	public void move(double dt) {
 		this.setLocation((this.x + this.dx * dt), (this.y + this.dy * dt));
 	}
 
+	@Override
 	public String getObject() {
+
 		
 		if(type !=null && !isOnlineClient)
 		return "'" + to5DigitString(getId())+ "'" +type + "'"  + removed + "'"+ to5DigitString(x) + "'" + to5DigitString(y);
 		else
 		return "";
-		
 	}
 
 	protected String to5DigitString(double x) {
@@ -159,7 +181,7 @@ public abstract class Entity implements NetworkObject {
 		if (x > Game.WIDTH + 100 || x < -100 || y > Game.HEIGHT + 100 || y < -1000)
 			remove();
 	}
-	
+
 	public abstract void render(Renderer renderer);
 
 	public void remove() {
