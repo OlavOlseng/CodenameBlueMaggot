@@ -7,6 +7,7 @@ import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
 import entity.weapon.GrenadeGun;
+import entity.weapon.MineLauncher;
 import entity.weapon.Rocketlauncher;
 import entity.weapon.ShellGun;
 import entity.weapon.Weapon;
@@ -117,6 +118,7 @@ public class Tank extends Entity {
 		weaponList.add(new ShellGun());
 		weaponList.add(new GrenadeGun());
 		weaponList.add(new Rocketlauncher());
+		weaponList.add(new MineLauncher());
 	}
 	
 	public void setMuzzleAngle(double degrees) {
@@ -221,8 +223,14 @@ public class Tank extends Entity {
 		currentWeapon++;
 		if (currentWeapon >= weaponList.size())
 			currentWeapon = 0;
+		if(weaponList.get(currentWeapon).getAmmo() == 0)
+			toggleWeapon();
 	}
-
+	
+	public ArrayList<Weapon> getWeaponList() {
+		return weaponList;
+	}
+	
 	private void player1Input() {
 		if (input.up1.down)
 			jetPack();
@@ -333,6 +341,9 @@ public class Tank extends Entity {
 		handleTerrainIntersection();
 		applyFriction();
 		tickWeapons(dt);
+		if(this.y < -500)
+			remove();
+			
 	}
 
 	@Override

@@ -9,6 +9,7 @@ import level.BasicLevel;
 import level.Terrain;
 
 import entity.FloatingPoint;
+import entity.Package;
 import entity.ScoreBubble;
 import entity.Tank;
 import gfx.ResourceManager;
@@ -28,12 +29,14 @@ public class cityScape extends BasicLevel {
 		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
 		ResourceManager.setTerrain(terrain);
 
-		ResourceManager.setBackGround(new RGBImage(new File("./res/Cityscape_background.png")));
+		ResourceManager.setBackGround(new RGBImage(new File("./res/Cityscape_background2.png")));
 		initSpawn();
 
 		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this));
 		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this));
 		SoundEffect.SPAWN.play();
+		
+		addEntity(new Package(bubbleSpawns.get(1), this));
 	}
 
 	@Override
@@ -57,7 +60,7 @@ public class cityScape extends BasicLevel {
 
 	public void tick(double dt) {
 		super.tick(dt);
-		int ticket = rand.nextInt(600);
+		int ticket = rand.nextInt(200);
 		if (ticket == 5) {
 			spawnBubble();
 		}
