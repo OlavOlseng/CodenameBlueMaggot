@@ -1,5 +1,6 @@
 package entity.weapon;
 
+import sound.SoundEffect;
 import entity.Rocket;
 import level.BasicLevel;
 
@@ -16,7 +17,7 @@ public class Rocketlauncher implements Weapon {
 		level.addEntity(new Rocket(x, y , level, 0.1, angle));
 		currentCooldown = cooldownTime;
 		ammo--;
-		System.out.println(ammo);
+		SoundEffect.ROCKETLAUNCH.play();
 		}
 	}
 	

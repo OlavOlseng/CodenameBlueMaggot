@@ -20,7 +20,6 @@ public class Animation extends Entity {
 		framesPerTick = (double) frames.length / (double) duration;
 		this.duration = duration;
 		this.frames = frames;
-
 		this.currentFrame = startFrame;
 
 	}
@@ -28,7 +27,6 @@ public class Animation extends Entity {
 	@Override
 	public void tick(double dt) {
 		if (currentFrame + 1 < frames.length) {
-
 			currentFrame += framesPerTick*dt;
 			if(currentFrame+1 >frames.length)
 				currentFrame = frames.length-1;
@@ -38,7 +36,6 @@ public class Animation extends Entity {
 	}
 
 	public RGBImage nextFrame() {
-
 		return frames[(int) Math.floor(currentFrame)];
 	}
 

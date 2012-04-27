@@ -98,7 +98,7 @@ public class Package extends Entity {
 		for (Tank player : level.getPlayers()) {
 			if (intersectsEntity(player)) {
 				player.getWeaponList().get(wep.i).addAmmo();
-				SoundEffect.BUBBLE.play();
+				SoundEffect.RELOAD.play();
 				remove();
 			}
 		}
@@ -115,6 +115,12 @@ public class Package extends Entity {
 		// TODO Auto-generated method stub
 		RGBImage img = ResourceManager.PACKAGE;
 		renderer.DrawImage(img, -1, (int) (x - 7), (int) (y - 14), img.getWidth(), img.getHeight());
+	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

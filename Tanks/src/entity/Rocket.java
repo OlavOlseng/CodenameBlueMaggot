@@ -1,5 +1,6 @@
 package entity;
 
+import sound.SoundEffect;
 import gfx.ResourceManager;
 import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
@@ -23,6 +24,7 @@ public class Rocket extends Projectile {
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
+		
 	}
 
 	@Override
@@ -31,6 +33,7 @@ public class Rocket extends Projectile {
 				(int) (y - explosionRadius), explosionRadius);
 		level.addEntity(new Explosion(x, y, explosionRadius + 2, level,
 				explosionPower));
+		SoundEffect.ROCKETLAUNCH.stop();
 	}
 
 	public boolean intersectsTerrain() {

@@ -79,4 +79,10 @@ public class Mine extends Projectile {
 			accelerate(0, 0.08);
 		}
 	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		
+	}
 }

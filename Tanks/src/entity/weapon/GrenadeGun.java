@@ -1,5 +1,6 @@
 package entity.weapon;
 
+import sound.SoundEffect;
 import level.BasicLevel;
 import entity.Grenade;
 
@@ -12,6 +13,7 @@ public class GrenadeGun implements Weapon {
 		if (currentCooldown <= 0) {
 			level.addEntity(new Grenade(x, y, level, speedPercent, angle));
 			currentCooldown = cooldownTime;
+			SoundEffect.SHOOT.play();
 		}
 	}
 
