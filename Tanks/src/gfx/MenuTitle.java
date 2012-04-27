@@ -10,43 +10,32 @@ public class MenuTitle extends Menu {
 	private int width = 500;
 	private int height = 300;
 	public MenuButton btnExit;
-	private Dimension size = new Dimension(width, height);
+	
 	private MenuButton btnReturn;
 	private MenuButton btnNewGame;
 	private MenuButton btnNewOnlineGame;
-	private MenuButton btnConnFalse;
-	private MenuButton btnConnTrue;
+	private MenuButton btnOptions;
 
 	public MenuTitle(Game game) {
 		super();
 
-		// u need this
-		super.layeredPane.setPreferredSize(size);
-
-		buttonPanel.setBounds(0, 0, width, height);
-		backgroundPanel.setBounds(0, 0, width, height);
-
 		super.putCenter(this, width, height);
-
-		btnExit = new MenuButton("Exit!", "exit", null, null);
+		super.border = 5;
+		super.menuBg = new Color(153, 210, 228);
+		
 		btnReturn = new MenuButton("Return!", "return", this, game);
-		btnNewGame = new MenuButton("New Game!", "newGame", null, game);
-		btnNewOnlineGame = new MenuButton("New Online Game!", "newOnlineGame", null, game);
-		btnConnFalse = new MenuButton("EIRIK ER SØT!", "newConnFalse", null, game);
-		btnConnTrue = new MenuButton("EIRIK ER KUL!", "newConnTrue", null, game);
-
-		super.transparentBgColor = new Color(255, 10, 250, 70);
+		btnNewGame = new MenuButton("New Game!", "newGame", this, game);
+		btnNewOnlineGame = new MenuButton("New Online Game!", "newLanGame", this, game);
+		btnOptions = new MenuButton("Conn False!", "options", this, game);
+		btnExit = new MenuButton("Exit!", "exit", this, null);
 
 		// add buttons for title menu here
 		super.ButtonArr.add(btnReturn);
 		super.ButtonArr.add(btnNewGame);
 		super.ButtonArr.add(btnNewOnlineGame);
-		super.ButtonArr.add(btnConnFalse);
-		super.ButtonArr.add(btnConnTrue);
+		super.ButtonArr.add(btnOptions);
 		super.ButtonArr.add(btnExit);
 
-		setVisible(false);
-		
 		super.setUpLayout();
 	}
 }
