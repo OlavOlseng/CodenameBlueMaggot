@@ -46,6 +46,10 @@ public abstract class Entity implements NetworkObject {
 		this.x = x;
 		this.y = y;
 	}
+	public void setLocation(FloatingPoint point) {
+		this.x = point.getX();
+		this.y = point.getY();
+	}
 
 	public double[] getLocation() {
 		double[] location = { x, y };
@@ -93,15 +97,6 @@ public abstract class Entity implements NetworkObject {
 		return part1 + part2;
 	}
 
-	public void tick(double dt) {
-		this.dt = dt;
-		move(dt);
-		gravitate();
-
-		if (x > Game.WIDTH + 100 || x < -100 || y > Game.HEIGHT + 100 || y < -1000)
-			remove();
-	}
-
 	public boolean intersectsEntity(Entity ent) {
 		double[] p = ent.getLocation();
 		double xLeft = p[0] - ent.xr;
@@ -117,6 +112,14 @@ public abstract class Entity implements NetworkObject {
 	public void takeDamage(double amount) {
 	}
 
+	public void tick(double dt) {
+		this.dt = dt;
+		move(dt);
+		gravitate();
+		if (x > Game.WIDTH + 100 || x < -100 || y > Game.HEIGHT + 100 || y < -1000)
+			remove();
+	}
+	
 	public abstract void render(Renderer renderer);
 
 	public void remove() {

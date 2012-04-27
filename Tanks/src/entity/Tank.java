@@ -76,7 +76,42 @@ public class Tank extends Entity {
 		 */
 
 	}
+	
+	public Tank(FloatingPoint point, int playerNumber, InputHandler input, BasicLevel level) {
+		super(point.getX(), point.getY(), 11, 6, level);
+		this.level.getPlayers().add(this);
+		muzzleAngle = 0;
+		muzzleLength = 20;
+		this.playerNumber = playerNumber;
+		this.input = input;
+		frictionConstant = 0.12;
+		initInventory();
 
+		boxUnderCenter = new PixelHitbox();
+		boxUnderCenter.addPoint(new FloatingPoint(-2, yr));
+		boxUnderCenter.addPoint(new FloatingPoint(-1, yr));
+		boxUnderCenter.addPoint(new FloatingPoint(0, yr));
+		boxUnderCenter.addPoint(new FloatingPoint(1, yr));
+		boxUnderCenter.addPoint(new FloatingPoint(2, yr));
+
+		boxLeft = new PixelHitbox();
+		boxRight = new PixelHitbox();
+		boxUp = new PixelHitbox();
+		boxUp.addPoint(new FloatingPoint(-2, -yr + 2));
+		boxUp.addPoint(new FloatingPoint(+2, -yr + 2));
+		for (int i = (int) -yr + 2; i < -2; i++) {
+			boxLeft.addPoint(new FloatingPoint(-xr, i));
+		}
+		for (int ii = (int) -yr + 2; ii < -2; ii++) {
+			boxRight.addPoint(new FloatingPoint(xr, ii));
+		}
+
+		/*
+		 * for(int ii = 0;ii<yr-2;ii++){ boxLeft.addPoint(new FloatingPoint(0,
+		 * ii)); }
+		 */
+
+	}
 	public void initInventory(){
 		weaponList = new ArrayList<Weapon>();
 		weaponList.add(new ShellGun());
@@ -271,8 +306,8 @@ public class Tank extends Entity {
 			this.score += scoreWon;
 			return;
 		}
-		setLocation(rand.nextInt(1000), 10);
-		setSpeed(0, 0);
+		setLocation(level.getPlayerSpawns().get(rand.nextInt(level.getPlayerSpawns().size())));
+		setSpeed(0, -1);
 		damageTaken = 1;
 		initInventory();
 		currentWeapon = 0;

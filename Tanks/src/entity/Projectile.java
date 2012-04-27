@@ -24,13 +24,13 @@ public abstract class Projectile extends Entity {
 
 	public void init() {
 		
-		hitbox.addPoint(new FloatingPoint(-xr, 0));
-		hitbox.addPoint(new FloatingPoint(0, -yr));
+		hitbox.addPoint(new FloatingPoint(-xr, 0)); //left
+		hitbox.addPoint(new FloatingPoint(0, -yr)); // top
 		
-		hitbox.addPoint(new FloatingPoint(0, 0));
+		hitbox.addPoint(new FloatingPoint(0, 0));	//center
 		
-		hitbox.addPoint(new FloatingPoint(0, yr));
-		hitbox.addPoint(new FloatingPoint(xr, 0));
+		hitbox.addPoint(new FloatingPoint(xr, 0));	//right
+		hitbox.addPoint(new FloatingPoint(0, yr));	//bot
 		
 	}
 	
@@ -45,17 +45,10 @@ public abstract class Projectile extends Entity {
 	
 	@Override
 	public void tick(double dt) {
-		
-		
-		
-		if(level.getTerrain().hitTestpoint((int)(x), (int)(y ))){
+		if(level.getTerrain().hitTestpoint((int)(x), (int)(y))){
 			while(level.getTerrain().hitTestpoint((int)(x), (int)(y))){
 				setLocation(x - dx, y -dy);
-				
 			}
-			setLocation(x+dx, y+dy);
-			setSpeed(0, 0);
-	
 		}
 		super.tick(dt);
 		

@@ -89,7 +89,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	
 	/* network stuff */
 	public void initConnection(boolean isHost) {
-		
+		connection = new ConnectionManager(this);
 		if (isHost) {
 			connection.becomeHost();
 			this.isHost = true;
@@ -107,22 +107,32 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public void readData(byte[] data) {
 		if (data.length > 0) {
-			System.out.println("didRead:" + data.length);
-			keyStrokestoDo = data;
+			onlineLevel.catchResponse(new String(data));
+			
 		}
 	}
 
 	@Override
 	public byte[] onWrite() {
-		String msg = "";
+		String msgBody = "";
+		
 		List<Entity> objects = onlineLevel.getEntities();
-		for (NetworkObject obj : objects) {
-			msg += "?" + obj.getObject();
+		for ( int i = 0;i< objects.size();i++) {
+			NetworkObject obj = objects.get(i);
+			msgBody += "?" + obj.getObject();
 		}
-		System.out.println(msg);
-		return msg.getBytes();
+		
+		String msgHeader = "1" + to5DigitString(msgBody.length());
+		
+		return (msgHeader + msgBody).getBytes();
 	}
-
+	
+	private String to5DigitString(double x) {
+		String part1 = String.format("%.0f", x);
+		String part2 = String.format("%." + (5 - part1.length()) + "f", x - (int) x).substring(1);
+		return part1 + part2;
+	}
+	
 	@Override
 	public boolean shouldRead() {
 		return true;
@@ -136,5 +146,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public void startOnlineGame() {
 		onlineLevel = new OnlineLevel(this, handler);
+		level = onlineLevel;
+		init(WIDTH, HEIGHT, 60);
 	}
 }
