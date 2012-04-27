@@ -14,9 +14,13 @@ import javax.sound.sampled.*;
  * 4. You can use the static variable SoundEffect.volume to mute the sound.
  */
 public enum SoundEffect {
-   SHOOT("XF_SnrLayer01.wav"),      // bullet
+   SHOOT("Shot.wav"),      // bullet
    BUBBLE("Bubble.wav"),
-   SPAWN("Spawn.wav");
+   RELOAD("Reload.wav"),
+   SPAWN("Spawn.wav"),
+   ROCKETLAUNCH("RocketLaunch.wav"),
+   EXPLOSION1("ExplosionSmall.wav"),
+   EXPLOSION2("ExplosionBig.wav");
    
    // Nested class for specifying volume
    public static enum Volume {
@@ -56,6 +60,11 @@ public enum SoundEffect {
          clip.setFramePosition(0); // rewind to the beginning
          clip.start();     // Start playing
       }
+   }
+   
+   public void stop(){
+	   clip.stop();
+	   clip.setFramePosition(0);
    }
    
    // Optional static method to pre-load all the sound files.

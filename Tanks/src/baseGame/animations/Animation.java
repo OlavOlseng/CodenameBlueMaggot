@@ -3,6 +3,7 @@ package baseGame.animations;
 import level.BasicLevel;
 import entity.Entity;
 import gfx.ResourceManager;
+import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
@@ -19,7 +20,6 @@ public class Animation extends Entity {
 		framesPerTick = (double) frames.length / (double) duration;
 		this.duration = duration;
 		this.frames = frames;
-
 		this.currentFrame = startFrame;
 
 	}
@@ -27,7 +27,6 @@ public class Animation extends Entity {
 	@Override
 	public void tick(double dt) {
 		if (currentFrame + 1 < frames.length) {
-
 			currentFrame += framesPerTick*dt;
 			if(currentFrame+1 >frames.length)
 				currentFrame = frames.length-1;
@@ -37,7 +36,6 @@ public class Animation extends Entity {
 	}
 
 	public RGBImage nextFrame() {
-
 		return frames[(int) Math.floor(currentFrame)];
 	}
 
@@ -47,5 +45,12 @@ public class Animation extends Entity {
 		RGBImage img = nextFrame();
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr()), img.getWidth(), img.getHeight());
 
+	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.ANIMATION);
+		
 	}
 }

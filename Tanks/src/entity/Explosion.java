@@ -1,5 +1,7 @@
 package entity;
 
+import sound.SoundEffect;
+import Networking.NetworkObjectType;
 import baseGame.Rendering.Renderer;
 import baseGame.animations.Animation;
 import baseGame.animations.AnimationFactory;
@@ -15,12 +17,16 @@ public class Explosion extends Entity {
 		super(x, y, radius, radius, level);
 
 		this.explosionPower = explosionPower;
-		if (radius <= 40)
+		if (radius <= 40){
+			SoundEffect.EXPLOSION1.play();
+			
 			ani = new Animation(AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS,
 					Animations.SMALLEXPLOSION), 18, 0, x, y, level);
-		else
+		}else{
+			SoundEffect.EXPLOSION2.play();
 			ani = new Animation(AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS2,
 					Animations.BIGEXPLOSION), 26, 0, x, y, level);
+		}
 		level.addEntity(ani);
 	}
 
@@ -49,5 +55,11 @@ public class Explosion extends Entity {
 	public void render(Renderer renderer) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.EXPLOSION);
 	}
 }

@@ -1,6 +1,7 @@
 package entity;
 
 import gfx.ResourceManager;
+import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import baseGame.animations.Animation;
@@ -12,7 +13,7 @@ public class Grenade extends Projectile {
 
 	private int liveTime = 0;
 	private int explosionTime = 150;
-	int explosionRadius = 30;
+	int explosionRadius = 40;
 	double explosionPower = 150;
 
 	public Grenade(double x, double y, BasicLevel level, double speedPercent, double angle) {
@@ -65,22 +66,22 @@ public class Grenade extends Projectile {
 			setSpeed(-dx*0.5, -dy*0.5);
 		} else if (up && down && left) {
 			setLocation(x - dx, y);
-			setSpeed(-dx*0.5, dy);
+			setSpeed(-dx*0.4, dy*0.8);
 		} else if (up && down && right) {
 			setLocation(x - dx, y);
-			setSpeed(-dx*0.5 , dy);
+			setSpeed(-dx*0.4 , dy*0.8);
 		} else if (up && left && right) {
 			setLocation(x, y - dy);
-			setSpeed(dx, -dy*0.8);
+			setSpeed(dx*0.7, -dy*0.8);
 		} else if (down && left && right) {
 			setLocation(x, y - dy);
-			setSpeed(dx*0.6, -dy*0.5);
+			setSpeed(dx*0.5, -dy*0.4);
 		} else if (right || left) {
 			setLocation(x - dx, y);
 			setSpeed(-dx*0.5 , dy);
 		} else if (down || up) {
 			setLocation(x, y - dy);
-			setSpeed( dx*0.6, -dy*0.5);
+			setSpeed( dx*0.5, -dy*0.5);
 		}
 
 	}
@@ -107,5 +108,11 @@ public class Grenade extends Projectile {
 		RGBImage img = ResourceManager.GRENADE;
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr()), img.getWidth(), img.getHeight());
 
+	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.GRENADE);
 	}
 }

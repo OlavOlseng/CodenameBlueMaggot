@@ -1,24 +1,29 @@
 package entity;
 
 import sound.SoundEffect;
+import entity.weapon.*;
 import gfx.ResourceManager;
-import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import level.BasicLevel;
 
-public class ScoreBubble extends Entity {
+public class Package extends Entity {
+	
+	enum Gun {
+		ROCKETLAUNCHER(2), MINELAUNCHER(3);
+		private int i;
+		private Gun(int i){
+			this.i = i;
+		}
+	}
 
+	Gun wep;
 	PixelHitbox hitbox;
-	private int scoreAmount;
-
-	public ScoreBubble(FloatingPoint point, int size, BasicLevel level, double speedPercent, int angle, int scoreAmount) {
-		super(point.getX(), point.getY(), size, size, level);
-		this.angle = angle;
-		this.dx = (speedPercent * Math.cos(angle % 360 * 2 * Math.PI / 360));
-		this.dy = (speedPercent * -Math.sin(angle % 360 * 2 * Math.PI / 360));
+	
+	public Package(FloatingPoint point, BasicLevel level) {
+		super(point.getX(), point.getY(), 6, 6, level);
+		fillCrate();
 		this.hitbox = new PixelHitbox();
-		this.scoreAmount = scoreAmount;
 		init();
 	}
 
@@ -75,14 +80,25 @@ public class ScoreBubble extends Entity {
 			setLocation(x, y - dy);
 			setSpeed(dx * 0.6, -dy * 0.5);
 		}
+	}
 
+	private void fillCrate() {
+		int gun = rand.nextInt(2);
+		switch (gun) {
+		case 0:
+			this.wep = Gun.ROCKETLAUNCHER;
+			break;
+		case 1:
+			this.wep = Gun.MINELAUNCHER;
+			break;
+		}
 	}
 
 	public void handlePlayerIntersections() {
 		for (Tank player : level.getPlayers()) {
 			if (intersectsEntity(player)) {
-				player.addScore(scoreAmount);
-				SoundEffect.BUBBLE.play();
+				player.getWeaponList().get(wep.i).addAmmo();
+				SoundEffect.RELOAD.play();
 				remove();
 			}
 		}
@@ -97,14 +113,14 @@ public class ScoreBubble extends Entity {
 	@Override
 	public void render(Renderer renderer) {
 		// TODO Auto-generated method stub
-		RGBImage img = ResourceManager.SCOREBUBBLE;
-		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - 2*getYr()), img.getWidth(), img.getHeight());
+		RGBImage img = ResourceManager.PACKAGE;
+		renderer.DrawImage(img, -1, (int) (x - 7), (int) (y - 14), img.getWidth(), img.getHeight());
 	}
 
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
-		setNetworkObjectType(NetworkObjectType.SCORE_BUBBLE);
+		
 	}
 
 }

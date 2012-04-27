@@ -3,10 +3,12 @@ package entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
 import entity.weapon.GrenadeGun;
+import entity.weapon.MineLauncher;
 import entity.weapon.Rocketlauncher;
 import entity.weapon.ShellGun;
 import entity.weapon.Weapon;
@@ -110,6 +112,7 @@ public class Tank extends Entity {
 		 * for(int ii = 0;ii<yr-2;ii++){ boxLeft.addPoint(new FloatingPoint(0,
 		 * ii)); }
 		 */
+	
 
 	}
 	public void initInventory(){
@@ -117,6 +120,7 @@ public class Tank extends Entity {
 		weaponList.add(new ShellGun());
 		weaponList.add(new GrenadeGun());
 		weaponList.add(new Rocketlauncher());
+		weaponList.add(new MineLauncher());
 	}
 	
 	public void setMuzzleAngle(double degrees) {
@@ -221,8 +225,14 @@ public class Tank extends Entity {
 		currentWeapon++;
 		if (currentWeapon >= weaponList.size())
 			currentWeapon = 0;
+		if(weaponList.get(currentWeapon).getAmmo() == 0)
+			toggleWeapon();
 	}
-
+	
+	public ArrayList<Weapon> getWeaponList() {
+		return weaponList;
+	}
+	
 	private void player1Input() {
 		if (input.up1.down)
 			jetPack();
@@ -333,6 +343,9 @@ public class Tank extends Entity {
 		handleTerrainIntersection();
 		applyFriction();
 		tickWeapons(dt);
+		if(this.y < -500)
+			remove();
+			
 	}
 
 	@Override
@@ -353,5 +366,12 @@ public class Tank extends Entity {
 				(int) (getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(),
 				crossHair.getHeight());
 
+	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.TANK);
+		
 	}
 }
