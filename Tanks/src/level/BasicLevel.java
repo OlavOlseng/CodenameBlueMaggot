@@ -15,7 +15,7 @@ import baseGame.animations.AnimationFactory;
 
 import entity.*;
 
-public class BasicLevel {
+public abstract class BasicLevel {
 
 	protected boolean gameOver = false;
 	protected List<Entity> entities;
@@ -24,26 +24,42 @@ public class BasicLevel {
 	protected BaseGame game;
 	protected Terrain terrain;
 	private Random rand = new Random();
-
+	protected List<FloatingPoint> playerSpawns;
+	protected List<FloatingPoint> bubbleSpawns;
+	
+	
 	public BasicLevel(BaseGame game, InputHandler handler) {
 		this.game = game;
 		this.handler = handler;
 		players = new ArrayList<Tank>();
 		initLevel();
 		SoundEffect.init();
+		
 	}
 
 	public Terrain getTerrain() {
 		return terrain;
 	}
-
+	
 	public void initLevel() {
 		entities = new ArrayList<Entity>();
 		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion1.png"), Animations.EXPLOSIONS, 50, 50);
 		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion2.png"), Animations.EXPLOSIONS2, 100,
 				100);
+		playerSpawns = new ArrayList<FloatingPoint>();
+		bubbleSpawns = new ArrayList<FloatingPoint>();
 	}
-
+	
+//	requires you to init bubbleSpawns and playerSpawns
+	abstract public void initSpawn();
+	
+	public List<FloatingPoint> getPlayerSpawns(){
+		return playerSpawns;
+	}
+	public List<FloatingPoint> getBubbleSpawns(){
+		return bubbleSpawns;
+	}
+	
 	public void addEntity(Entity ent) {
 		entities.add(ent);
 	}

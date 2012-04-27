@@ -46,6 +46,10 @@ public abstract class Entity implements NetworkObject {
 		this.x = x;
 		this.y = y;
 	}
+	public void setLocation(FloatingPoint point) {
+		this.x = point.getX();
+		this.y = point.getY();
+	}
 
 	public double[] getLocation() {
 		double[] location = { x, y };

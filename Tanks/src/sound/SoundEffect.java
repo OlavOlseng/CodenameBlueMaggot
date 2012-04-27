@@ -14,8 +14,9 @@ import javax.sound.sampled.*;
  * 4. You can use the static variable SoundEffect.volume to mute the sound.
  */
 public enum SoundEffect {
-//   GONG("gong.wav"),         // gong
-   SHOOT("XF_SnrLayer01.wav");       // bullet
+   SHOOT("XF_SnrLayer01.wav"),      // bullet
+   BUBBLE("Bubble.wav"),
+   SPAWN("Spawn.wav");
    
    // Nested class for specifying volume
    public static enum Volume {
