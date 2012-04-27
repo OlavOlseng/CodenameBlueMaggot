@@ -5,7 +5,7 @@ import level.BasicLevel;
 
 public class MineLauncher implements Weapon {
 
-	private int ammo = 0;
+	private int ammo = 10;
 	private double currentCooldown = 0;
 	private int cooldownTime = 30;
 
