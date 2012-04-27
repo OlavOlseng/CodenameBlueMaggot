@@ -25,7 +25,7 @@ public class MenuOptions extends Menu {
 	public MenuOptions(Game game) {
 		super();
 
-		// setVisible(false);
+		 setVisible(false);
 		super.border = 5;
 
 		fieldIp = new MenuField(20);
