@@ -7,18 +7,19 @@ import baseGame.Rendering.Renderer;
 import level.BasicLevel;
 
 public class Package extends Entity {
-	
+
 	enum Gun {
 		ROCKETLAUNCHER(2), MINELAUNCHER(3);
 		private int i;
-		private Gun(int i){
+
+		private Gun(int i) {
 			this.i = i;
 		}
 	}
 
 	Gun wep;
 	PixelHitbox hitbox;
-	
+
 	public Package(FloatingPoint point, BasicLevel level) {
 		super(point.getX(), point.getY(), 6, 6, level);
 		fillCrate();
@@ -120,7 +121,7 @@ public class Package extends Entity {
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

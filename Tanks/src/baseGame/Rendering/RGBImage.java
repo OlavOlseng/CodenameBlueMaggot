@@ -132,14 +132,16 @@ public class RGBImage {
 		}
 		return img;
 	}
-	public void replaceColors(int originalColor,int newColor){
-		for(int i = 0;i<rgbPixels.length;i++){
+
+	public void replaceColors(int originalColor, int newColor) {
+		for (int i = 0; i < rgbPixels.length; i++) {
 			int color = rgbPixels[i];
-			if(color == originalColor){
+			if (color == originalColor) {
 				rgbPixels[i] = newColor;
 			}
 		}
 	}
+
 	public void setPixel(int color, int x, int y) {
 		if (x >= 0 && y >= 0 && y <= canvasHeight && x <= canvasWidth) {
 			rgbPixels[canvasWidth * y + x] = color;

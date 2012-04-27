@@ -17,34 +17,40 @@ public abstract class Entity implements NetworkObject {
 	private int id;
 	private boolean isOnlineClient;
 	private NetworkObjectType type;
+
 	@Override
 	public int getId() {
 		return id;
 	}
+
 	public abstract void initNetworkValues();
+
 	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	@Override
-	public void setIsOnlineGameClient(boolean isClient){
+	public void setIsOnlineGameClient(boolean isClient) {
 		this.isOnlineClient = isClient;
 	}
+
 	@Override
-	public boolean getIsIsOnlineGameClient(){
+	public boolean getIsIsOnlineGameClient() {
 		return isOnlineClient;
 	}
 
 	@Override
-	public void setNetworkObjectType(NetworkObjectType type){
+	public void setNetworkObjectType(NetworkObjectType type) {
 		this.type = type;
 	}
+
 	@Override
-	public NetworkObjectType getNetworkObjectType(){
+	public NetworkObjectType getNetworkObjectType() {
 		return type;
-		
+
 	}
-	
+
 	protected final Random rand = new Random();
 	protected double x, y;
 	protected double xr, yr;
@@ -69,6 +75,7 @@ public abstract class Entity implements NetworkObject {
 		this.x = x;
 		this.y = y;
 	}
+
 	public void setLocation(FloatingPoint point) {
 		this.x = point.getX();
 		this.y = point.getY();
@@ -113,7 +120,8 @@ public abstract class Entity implements NetworkObject {
 
 	@Override
 	public String getObject() {
-		return "'" + to5DigitString(getId())+ "'" +type + "'" + to5DigitString(x) + "'" + to5DigitString(y) + "'" + to5DigitString(dx) + "'" + to5DigitString(dy);
+		return "'" + to5DigitString(getId()) + "'" + type + "'" + to5DigitString(x) + "'" + to5DigitString(y) + "'" + to5DigitString(dx) + "'"
+				+ to5DigitString(dy);
 
 	}
 
@@ -145,7 +153,7 @@ public abstract class Entity implements NetworkObject {
 		if (x > Game.WIDTH + 100 || x < -100 || y > Game.HEIGHT + 100 || y < -1000)
 			remove();
 	}
-	
+
 	public abstract void render(Renderer renderer);
 
 	public void remove() {

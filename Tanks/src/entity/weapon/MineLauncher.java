@@ -4,7 +4,6 @@ import entity.Mine;
 import level.BasicLevel;
 
 public class MineLauncher implements Weapon {
-	
 
 	private int ammo = 0;
 	private double currentCooldown = 0;
@@ -31,7 +30,7 @@ public class MineLauncher implements Weapon {
 			level.addEntity(new Mine(x, y, level, angle));
 			currentCooldown = cooldownTime;
 		}
-		ammo --;
+		ammo--;
 	}
 
 	@Override

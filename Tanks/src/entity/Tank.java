@@ -74,7 +74,7 @@ public class Tank extends Entity {
 		 */
 
 	}
-	
+
 	public Tank(FloatingPoint point, int playerNumber, InputHandler input, BasicLevel level) {
 		super(point.getX(), point.getY(), 11, 6, level);
 		this.level.getPlayers().add(this);
@@ -108,17 +108,17 @@ public class Tank extends Entity {
 		 * for(int ii = 0;ii<yr-2;ii++){ boxLeft.addPoint(new FloatingPoint(0,
 		 * ii)); }
 		 */
-	
 
 	}
-	public void initInventory(){
+
+	public void initInventory() {
 		weaponList = new ArrayList<Weapon>();
 		weaponList.add(new ShellGun());
 		weaponList.add(new GrenadeGun());
 		weaponList.add(new Rocketlauncher());
 		weaponList.add(new MineLauncher());
 	}
-	
+
 	public void setMuzzleAngle(double degrees) {
 		this.muzzleAngle = degrees;
 	}
@@ -138,16 +138,14 @@ public class Tank extends Entity {
 	}
 
 	public FloatingPoint getCrosshairLocation() {
-		return (new FloatingPoint(x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)), y - muzzleLength
-				* Math.sin(Math.toRadians(muzzleAngle))));
+		return (new FloatingPoint(x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)), y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle))));
 	}
 
 	public void fire(double speedPercent) {
 		if (speedPercent < 0.2)
 			speedPercent = 0.2;
 		weaponList.get(currentWeapon).fire(this.x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)),
-				this.y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle)), this.level, speedPercent,
-				this.muzzleAngle - 4);
+				this.y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle)), this.level, speedPercent, this.muzzleAngle - 4);
 	}
 
 	public void handleTerrainIntersection() {
@@ -210,7 +208,7 @@ public class Tank extends Entity {
 	}
 
 	public void jetPack() {
-		double fuelTick = 13*dt;
+		double fuelTick = 13 * dt;
 		if (jetPackFuel >= fuelTick) {
 			accelerate(0, -0.45);
 			jetPackFuel -= fuelTick;
@@ -221,14 +219,14 @@ public class Tank extends Entity {
 		currentWeapon++;
 		if (currentWeapon >= weaponList.size())
 			currentWeapon = 0;
-		if(weaponList.get(currentWeapon).getAmmo() == 0)
+		if (weaponList.get(currentWeapon).getAmmo() == 0)
 			toggleWeapon();
 	}
-	
+
 	public ArrayList<Weapon> getWeaponList() {
 		return weaponList;
 	}
-	
+
 	private void player1Input() {
 		if (input.up1.down)
 			jetPack();
@@ -299,7 +297,7 @@ public class Tank extends Entity {
 		if (!canGoDown)
 			accelerate(-dx * frictionConstant, 0);
 	}
-	
+
 	@Override
 	public void remove() {
 		if (--life == 0) {
@@ -319,8 +317,6 @@ public class Tank extends Entity {
 		initInventory();
 		currentWeapon = 0;
 	}
-	
-
 
 	@Override
 	public void tick(double dt) {
@@ -340,9 +336,9 @@ public class Tank extends Entity {
 		handleTerrainIntersection();
 		applyFriction();
 		tickWeapons(dt);
-		if(this.y < -500)
+		if (this.y < -500)
 			remove();
-			
+
 	}
 
 	@Override
@@ -360,8 +356,7 @@ public class Tank extends Entity {
 
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr() + 1), img.getWidth(), img.getHeight());
 		renderer.DrawImage(crossHair, -1, (int) (getCrosshairLocation().getX() - crossHair.getWidth() / 2),
-				(int) (getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(),
-				crossHair.getHeight());
+				(int) (getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(), crossHair.getHeight());
 
 	}
 
@@ -369,6 +364,6 @@ public class Tank extends Entity {
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
 		setNetworkObjectType(NetworkObjectType.TANK);
-		
+
 	}
 }

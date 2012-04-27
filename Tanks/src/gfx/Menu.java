@@ -16,7 +16,7 @@ public abstract class Menu extends Panel {
 
 	protected int border;
 	protected Color menuBg;
-	
+
 	private int width = 500;
 	private int height = 300;
 
@@ -27,13 +27,12 @@ public abstract class Menu extends Panel {
 		setBackground(MenuTitle.MENU_BG);
 	}
 
-
 	@Override
 	public void paint(Graphics g) {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.setColor(MenuTitle.MENU_BG);
-		g.fillRect(border, border, getWidth()-border*2, getHeight()-border*2);
+		g.fillRect(border, border, getWidth() - border * 2, getHeight() - border * 2);
 		super.paint(g);
 	}
 

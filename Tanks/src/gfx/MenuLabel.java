@@ -22,12 +22,12 @@ public class MenuLabel extends Label {
 	public MenuLabel(String label, Dimension size) {
 		this.label = label;
 		super.setPreferredSize(size);
-		
+
 		setUp();
 	}
 
 	public void setUp() {
-		setPreferredSize(new Dimension(170,13));
+		setPreferredSize(new Dimension(170, 13));
 		File img = new File("./res/titleMenu/" + label + ".png");
 		try {
 			lblImage = ImageIO.read(img);

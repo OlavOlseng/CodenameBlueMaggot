@@ -26,7 +26,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public boolean didTick = false;
 	public static int ALPHA_MASK = -1;
 	public static boolean PAUSED = false;
-	
+
 	// network stuff
 	public boolean online = false;
 	public ArrayList<byte[]> keyStrokes;
@@ -44,7 +44,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public String nickPlayerOne;
 	public String nickPlayerTwo;
 	public boolean isHost = false;
-
 
 	public Game() {
 		handler = new InputHandler();
@@ -74,7 +73,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public void onDraw(Renderer renderer) {
 		renderer.clearAllPixelData(Color.WHITE.getRGB());
 		level.onDraw(renderer);
-		
+
 	}
 
 	// public byte[] parseKeyStrokes() {

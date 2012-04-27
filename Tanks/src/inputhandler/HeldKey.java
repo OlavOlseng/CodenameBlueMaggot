@@ -14,7 +14,7 @@ public class HeldKey extends Key {
 	@Override
 	public void toggle(boolean pressed) {
 		super.toggle(pressed);
-		if(pressed)
+		if (pressed)
 			ticksHeld = 0;
 	}
 

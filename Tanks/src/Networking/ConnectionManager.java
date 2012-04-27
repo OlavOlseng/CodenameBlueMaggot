@@ -113,7 +113,7 @@ public class ConnectionManager {
 	}
 
 	private void startListenerThread() {
-		
+
 		readThread = new Thread() {
 			@Override
 			public void run() {
@@ -134,27 +134,27 @@ public class ConnectionManager {
 								continue;
 							}
 						}
-					
+
 						while (remaining > 0) {
 							remaining -= in.read(header, offset, header.length - offset);
-							
-							offset = header.length-remaining;
+
+							offset = header.length - remaining;
 						}
-						
+
 						String head = new String(header);
-					
+
 						double len = Double.parseDouble((head.substring(1, 6)));
-						byte[] data = new byte[(int)len];
+						byte[] data = new byte[(int) len];
 						offset = 0;
-						
+
 						remaining = data.length;
-						
-							while (remaining > 0) {
+
+						while (remaining > 0) {
 							remaining -= in.read(data, offset, data.length - offset);
-							offset = header.length-remaining;
-							
-								}
-							synchronized (delegate) {
+							offset = header.length - remaining;
+
+						}
+						synchronized (delegate) {
 							delegate.readData(data);
 						}
 

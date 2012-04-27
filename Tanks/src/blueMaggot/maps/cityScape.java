@@ -30,14 +30,15 @@ public class cityScape extends BasicLevel {
 		ResourceManager.setTerrain(terrain);
 
 		ResourceManager.setBackGround(new RGBImage(new File("./res/Cityscape_background.png")));
-		
+
 		SoundEffect.SPAWN.play();
 	}
-	public void  init(){
+
+	public void init() {
 
 		ResourceManager.setBackGround(new RGBImage(new File("./res/Cityscape_background2.png")));
 		initSpawn();
-		
+
 		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this));
 		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this));
 
@@ -60,8 +61,7 @@ public class cityScape extends BasicLevel {
 	}
 
 	public void spawnBubble() {
-		this.addEntity(new ScoreBubble(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), 4, this, 0.5, rand
-				.nextInt(360), 100));
+		this.addEntity(new ScoreBubble(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), 4, this, 0.5, rand.nextInt(360), 100));
 		SoundEffect.SPAWN.play();
 	}
 

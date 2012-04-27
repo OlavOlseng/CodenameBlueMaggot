@@ -15,13 +15,13 @@ import javax.swing.JPanel;
  */
 public class BlueMaggot extends JFrame implements Runnable {
 
-//	InputHandlerMenu input = new InputHandlerMenu(this);
+	// InputHandlerMenu input = new InputHandlerMenu(this);
 	public InputHandler inputReal = new InputHandler();
-	
+
 	private JLayeredPane layeredPane = new JLayeredPane();
 	private MenuTitle menuTitle;
 	public MenuOptions menuOptions;
-	
+
 	JPanel gamePanel = new JPanel();
 	Game game;
 
@@ -34,11 +34,11 @@ public class BlueMaggot extends JFrame implements Runnable {
 		layeredPane.setOpaque(false);
 
 		game = new blueMaggot.Game(this);
-		menuTitle = new MenuTitle(game,this);
+		menuTitle = new MenuTitle(game, this);
 		menuOptions = new MenuOptions(game);
-		
+
 		layeredPane.add(gamePanel, new Integer(0));
-//		layeredPane.add(ui, new Integer(1));
+		// layeredPane.add(ui, new Integer(1));
 		layeredPane.add(menuTitle, new Integer(10));
 		layeredPane.add(menuOptions, new Integer(11));
 

@@ -21,12 +21,12 @@ public class ShellGun implements Weapon {
 	@Override
 	public void setAmmo() {
 	}
-	
+
 	@Override
 	public int getAmmo() {
 		return 1;
 	}
-	
+
 	@Override
 	public void addAmmo() {
 	}

@@ -20,7 +20,7 @@ public class Shell extends Projectile {
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
-		
+
 	}
 
 	@Override
@@ -77,6 +77,6 @@ public class Shell extends Projectile {
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
 		setNetworkObjectType(NetworkObjectType.SHELL);
-		
+
 	}
 }
