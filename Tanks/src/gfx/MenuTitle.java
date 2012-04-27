@@ -1,41 +1,52 @@
 package gfx;
 
 import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.util.ArrayList;
 
+import blueMaggot.BlueMaggot;
 import blueMaggot.Game;
 
 public class MenuTitle extends Menu {
+	private ArrayList<MenuButton> ButtonArr = new ArrayList<MenuButton>();
+	private GridBagConstraints c = new GridBagConstraints();
 
-	private int width = 500;
-	private int height = 300;
-	public MenuButton btnExit;
-	
-	private MenuButton btnReturn;
-	private MenuButton btnNewGame;
-	private MenuButton btnNewOnlineGame;
-	private MenuButton btnOptions;
-
-	public MenuTitle(Game game) {
+	public MenuTitle(Game game, BlueMaggot blueMaggot) {
 		super();
 
-		super.putCenter(this, width, height);
 		super.border = 5;
 		super.menuBg = new Color(153, 210, 228);
-		
-		btnReturn = new MenuButton("Return!", "return", this, game);
-		btnNewGame = new MenuButton("New Game!", "newGame", this, game);
-		btnNewOnlineGame = new MenuButton("New Online Game!", "newLanGame", this, game);
-		btnOptions = new MenuButton("Conn False!", "options", this, game);
-		btnExit = new MenuButton("Exit!", "exit", this, null);
+
+		MenuButton btnReturn = new MenuButton("return", this, game);
+		MenuButton btnNewGame = new MenuButton("newGame", this, game);
+		MenuButton btnNewOnlineGame = new MenuButton("newLanGame", this, game);
+		MenuButton btnOptions = new MenuButton("options", this, game);
+		MenuButton btnExit = new MenuButton("exit", this, null);
 
 		// add buttons for title menu here
-		super.ButtonArr.add(btnReturn);
-		super.ButtonArr.add(btnNewGame);
-		super.ButtonArr.add(btnNewOnlineGame);
-		super.ButtonArr.add(btnOptions);
-		super.ButtonArr.add(btnExit);
+		ButtonArr.add(btnReturn);
+		ButtonArr.add(btnNewGame);
+		ButtonArr.add(btnNewOnlineGame);
+		ButtonArr.add(btnOptions);
+		ButtonArr.add(btnExit);
 
-		super.setUpLayout();
+		c.gridheight = 1;
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 1;
+		c.ipady = 5;
+		c.ipadx = 200;
+		c.insets = new Insets(10, 0, 10, 0);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridy++;
+
+		for (MenuButton button : ButtonArr) {
+			add(button, c);
+			c.gridy++;
+			System.out.println("adding button");
+		}
+		validate();
+		repaint();
 	}
 }

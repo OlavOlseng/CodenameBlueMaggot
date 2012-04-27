@@ -1,6 +1,7 @@
 package blueMaggot;
 
 import gfx.Menu;
+import gfx.MenuOptions;
 import gfx.MenuTitle;
 import inputhandler.InputHandler;
 import inputhandler.InputHandlerMenu;
@@ -16,10 +17,13 @@ import javax.swing.JPanel;
  */
 public class BlueMaggot extends JFrame implements Runnable {
 
-	InputHandlerMenu input = new InputHandlerMenu(this);
+//	InputHandlerMenu input = new InputHandlerMenu(this);
 	public InputHandler inputReal = new InputHandler();
+	
 	private JLayeredPane layeredPane = new JLayeredPane();
-	public MenuTitle menuTitle;
+	private MenuTitle menuTitle;
+	public MenuOptions menuOptions;
+	
 	JPanel gamePanel = new JPanel();
 	Game game;
 
@@ -32,9 +36,13 @@ public class BlueMaggot extends JFrame implements Runnable {
 		layeredPane.setOpaque(false);
 
 		game = new blueMaggot.Game(this);
-		menuTitle = new MenuTitle(game);
+		menuTitle = new MenuTitle(game,this);
+		menuOptions = new MenuOptions(game);
+		
 		layeredPane.add(gamePanel, new Integer(0));
-		layeredPane.add(menuTitle, new Integer(100));
+//		layeredPane.add(ui, new Integer(1));
+		layeredPane.add(menuTitle, new Integer(10));
+		layeredPane.add(menuOptions, new Integer(11));
 
 		add(layeredPane);
 		pack();
@@ -50,18 +58,9 @@ public class BlueMaggot extends JFrame implements Runnable {
 		gamePanel.add(game);
 	}
 
-	private void startGame() {
-//		game.setVisible(false);
-//		game.startReuglarGame();
-	}
-
 	@Override
 	public void run() {
 		setUpGame();
-		startGame();
-		validate();
-		repaint();
-//		game.requestFocus();
 	}
 
 	public static void main(String[] args) {
@@ -71,14 +70,11 @@ public class BlueMaggot extends JFrame implements Runnable {
 	public void tick() {
 		// game.requestFocus();
 		if (inputReal.menu.clicked) {
-			System.out.println("dsicks");
 			inputReal.menu.clicked = false;
-			System.out.println(inputReal.menu.presses);
 			inputReal.releaseAll();
 			if (!menuTitle.isVisible()) {
 				menuTitle.setVisible(true);
 				Game.PAUSED = true;
-				System.out.println("dicks");
 			}
 		}
 	}
