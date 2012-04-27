@@ -3,6 +3,7 @@ package entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
@@ -110,6 +111,7 @@ public class Tank extends Entity {
 		 * for(int ii = 0;ii<yr-2;ii++){ boxLeft.addPoint(new FloatingPoint(0,
 		 * ii)); }
 		 */
+	
 
 	}
 	public void initInventory(){
@@ -353,5 +355,12 @@ public class Tank extends Entity {
 				(int) (getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(),
 				crossHair.getHeight());
 
+	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.TANK);
+		
 	}
 }

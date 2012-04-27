@@ -1,5 +1,6 @@
 package entity;
 
+import Networking.NetworkObjectType;
 import baseGame.Rendering.Renderer;
 import baseGame.animations.Animation;
 import baseGame.animations.AnimationFactory;
@@ -49,5 +50,11 @@ public class Explosion extends Entity {
 	public void render(Renderer renderer) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.EXPLOSION);
 	}
 }

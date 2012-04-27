@@ -9,21 +9,37 @@ import java.util.Random;
 import level.BasicLevel;
 
 import Networking.NetworkObject;
+import Networking.NetworkObjectType;
 import baseGame.Rendering.Renderer;
 import blueMaggot.Game;
 
 public abstract class Entity implements NetworkObject {
 
 	private int id;
-
+	private boolean isOnlineClient;
+	private NetworkObjectType type;
 	public int getId() {
 		return id;
 	}
-
+	public abstract void initNetworkValues();
 	public void setId(int id) {
 		this.id = id;
 	}
+	public void setIsOnlineGameClient(boolean isClient){
+		this.isOnlineClient = isClient;
+	}
+	public boolean getIsIsOnlineGameClient(){
+		return isOnlineClient;
+	}
 
+	public void setNetworkObjectType(NetworkObjectType type){
+		this.type = type;
+	}
+	public NetworkObjectType getNetworkObjectType(){
+		return type;
+		
+	}
+	
 	protected final Random rand = new Random();
 	protected double x, y;
 	protected double xr, yr;
@@ -40,6 +56,7 @@ public abstract class Entity implements NetworkObject {
 		setLocation(x, y);
 		this.xr = xr;
 		this.yr = yr;
+		initNetworkValues();
 	}
 
 	public void setLocation(double x, double y) {
@@ -87,7 +104,7 @@ public abstract class Entity implements NetworkObject {
 	}
 
 	public String getObject() {
-		return "'" + to5DigitString(getId()) + "'" + to5DigitString(x) + "'" + to5DigitString(y) + "'" + to5DigitString(dx) + "'" + to5DigitString(dy);
+		return "'" + to5DigitString(getId())+ "'" +type + "'" + to5DigitString(x) + "'" + to5DigitString(y) + "'" + to5DigitString(dx) + "'" + to5DigitString(dy);
 
 	}
 

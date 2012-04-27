@@ -4,6 +4,7 @@ import gfx.ResourceManager;
 
 import java.awt.Point;
 
+import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
@@ -21,6 +22,7 @@ public class Shell extends Projectile {
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
+		
 	}
 
 	@Override
@@ -70,5 +72,12 @@ public class Shell extends Projectile {
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr()), img.getWidth(), img.getHeight());
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.SHELL);
+		
 	}
 }

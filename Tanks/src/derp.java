@@ -1,3 +1,5 @@
+
+
 import javax.swing.JFrame;
 
 import blueMaggot.Game;
@@ -9,6 +11,7 @@ public class derp extends JFrame {
 		setVisible(true);
 		game = new Game();
 		add(game);
+	
 	}
 
 	public void init() {

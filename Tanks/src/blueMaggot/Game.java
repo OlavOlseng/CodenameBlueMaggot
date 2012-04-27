@@ -11,7 +11,8 @@ import java.util.List;
 import Networking.ConnectionDelegate;
 import Networking.ConnectionManager;
 import Networking.NetworkObject;
-import Networking.OnlineLevel;
+import Networking.OnlineCityScape;
+
 import baseGame.BaseGame;
 import baseGame.Rendering.Renderer;
 import blueMaggot.maps.cityScape;
@@ -23,7 +24,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public static int WIDTH = 1024;
 	public static int HEIGHT = 768;
 	public static Dimension DIMENSION = new Dimension(WIDTH, HEIGHT);
-
+	public boolean didTick = false;
 	public static int ALPHA_MASK = -1;
 
 	// network stuff
@@ -31,7 +32,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public ArrayList<byte[]> keyStrokes;
 	public byte[] keyStrokestoDo;
 	public boolean isHost = false;
-	private OnlineLevel onlineLevel;
+	private OnlineCityScape onlineLevel;
 	private ConnectionManager connection;
 
 	public BlueMaggot blueMaggot;
@@ -55,11 +56,13 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public void onUpdate(double deltaTime) {
 		if (blueMaggot != null)
 			blueMaggot.tick();
-
+		
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
-		if (!PAUSED)
+		if (!PAUSED){
 			level.tick(deltaTime);
+			didTick = true;
+		}
 	}
 
 	@Override
@@ -82,7 +85,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	
 	public void startReuglarGame() {
 		level = new cityScape(this, handler);
-
+		level.init();
 		init(WIDTH, HEIGHT, 60);
 		
 	}
@@ -135,17 +138,20 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	
 	@Override
 	public boolean shouldRead() {
-		return true;
+		return !isHost;
 	}
 
 	@Override
 	public boolean shouldWrite() {
-		return isHost && (onlineLevel != null);
+		boolean temp = didTick;
+		didTick = false;
+		return isHost && (onlineLevel != null) && temp;
 	}
 
 	@Override
 	public void startOnlineGame() {
-		onlineLevel = new OnlineLevel(this, handler);
+		onlineLevel = new OnlineCityScape(this, handler);
+		onlineLevel.init();
 		level = onlineLevel;
 		init(WIDTH, HEIGHT, 60);
 	}

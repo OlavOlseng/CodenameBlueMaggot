@@ -24,8 +24,8 @@ public abstract class BasicLevel {
 	protected BaseGame game;
 	protected Terrain terrain;
 	private Random rand = new Random();
-	protected List<FloatingPoint> playerSpawns;
-	protected List<FloatingPoint> bubbleSpawns;
+	public List<FloatingPoint> playerSpawns;
+	public List<FloatingPoint> bubbleSpawns;
 	
 	
 	public BasicLevel(BaseGame game, InputHandler handler) {
@@ -108,7 +108,10 @@ public abstract class BasicLevel {
 		// ticks all the ents
 		for (int i = 0; i < entities.size(); i++) {
 			Entity ent = entities.get(i);
-			ent.tick(dt);
+			
+			if(!ent.getIsIsOnlineGameClient()){
+				ent.tick(dt);
+			}
 			if (ent.removed) {
 				removeEntity(ent);
 				i--;

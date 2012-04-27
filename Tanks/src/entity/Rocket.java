@@ -1,6 +1,7 @@
 package entity;
 
 import gfx.ResourceManager;
+import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import level.BasicLevel;
@@ -91,6 +92,13 @@ public class Rocket extends Projectile {
 		
 		RGBImage img = rocketSheet.getSubImage(14*subimageIndex, 0, 14, 14);
 		renderer.DrawImage(img ,-1, (int) (x - getXr()),(int) (y - getYr()), img.getWidth(), img.getHeight());
+		
+	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.ROCKET);
 		
 	}
 

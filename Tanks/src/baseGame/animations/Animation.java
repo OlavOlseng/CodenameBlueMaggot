@@ -3,6 +3,7 @@ package baseGame.animations;
 import level.BasicLevel;
 import entity.Entity;
 import gfx.ResourceManager;
+import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
@@ -47,5 +48,12 @@ public class Animation extends Entity {
 		RGBImage img = nextFrame();
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr()), img.getWidth(), img.getHeight());
 
+	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.ANIMATION);
+		
 	}
 }

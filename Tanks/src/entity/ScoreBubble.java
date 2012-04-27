@@ -2,6 +2,7 @@ package entity;
 
 import sound.SoundEffect;
 import gfx.ResourceManager;
+import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import level.BasicLevel;
@@ -98,6 +99,12 @@ public class ScoreBubble extends Entity {
 		// TODO Auto-generated method stub
 		RGBImage img = ResourceManager.SCOREBUBBLE;
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - 2*getYr()), img.getWidth(), img.getHeight());
+	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.SCORE_BUBBLE);
 	}
 
 }
