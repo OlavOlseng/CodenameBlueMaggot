@@ -106,13 +106,16 @@ public abstract class BasicLevel {
 			}
 		}
 		// ticks all the ents
-		for (int i = 0; i < entities.size(); i++) {
+		
+		
+		for (int i = 0; i <entities.size(); i++) {
 			Entity ent = entities.get(i);
 			
-			if(!ent.getIsIsOnlineGameClient()){
+			if(!ent.IsOnlineGameClient()){
 				ent.tick(dt);
 			}
 			if (ent.removed) {
+				System.out.println("remove");
 				removeEntity(ent);
 				i--;
 				continue;

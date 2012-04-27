@@ -17,7 +17,7 @@ public class Grenade extends Projectile {
 	double explosionPower = 150;
 
 	public Grenade(double x, double y, BasicLevel level, double speedPercent, double angle) {
-		super(x , y, 4, 4, level, speedPercent, angle);
+		super(x, y, 4, 4, level, speedPercent, angle);
 		this.maxSpeed = 12;
 		this.frictionConstant = 0.0002;
 		this.angle = angle;
@@ -61,31 +61,30 @@ public class Grenade extends Projectile {
 		}
 
 		if (up && down && left && right) {
-			liveTime +=dt*5;
-			setLocation(x - dx*2, y- dy*2);
-			setSpeed(-dx*0.5, -dy*0.5);
+			liveTime += dt * 5;
+			setLocation(x - dx * 2, y - dy * 2);
+			setSpeed(-dx * 0.5, -dy * 0.5);
 		} else if (up && down && left) {
 			setLocation(x - dx, y);
-			setSpeed(-dx*0.4, dy*0.8);
+			setSpeed(-dx * 0.4, dy * 0.8);
 		} else if (up && down && right) {
 			setLocation(x - dx, y);
-			setSpeed(-dx*0.4 , dy*0.8);
+			setSpeed(-dx * 0.4, dy * 0.8);
 		} else if (up && left && right) {
 			setLocation(x, y - dy);
-			setSpeed(dx*0.7, -dy*0.8);
+			setSpeed(dx * 0.7, -dy * 0.8);
 		} else if (down && left && right) {
 			setLocation(x, y - dy);
-			setSpeed(dx*0.5, -dy*0.4);
+			setSpeed(dx * 0.5, -dy * 0.4);
 		} else if (right || left) {
 			setLocation(x - dx, y);
-			setSpeed(-dx*0.5 , dy);
+			setSpeed(-dx * 0.5, dy);
 		} else if (down || up) {
 			setLocation(x, y - dy);
-			setSpeed( dx*0.5, -dy*0.5);
+			setSpeed(dx * 0.5, -dy * 0.5);
 		}
 
 	}
-	
 
 	public void tick(double dt) {
 		this.dt = dt;
@@ -93,7 +92,7 @@ public class Grenade extends Projectile {
 		gravitate();
 		if (x > Game.WIDTH + 100 || x < -100 || y > Game.HEIGHT + 100 || y < -1000)
 			remove();
-		
+
 		handleIntersects();
 		applyFriction();
 		liveTime += dt;

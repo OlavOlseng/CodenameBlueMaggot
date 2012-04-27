@@ -21,14 +21,15 @@ public abstract class Entity implements NetworkObject {
 	public int getId() {
 		return id;
 	}
-	public abstract void initNetworkValues();
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public void setIsOnlineGameClient(boolean isClient){
 		this.isOnlineClient = isClient;
 	}
-	public boolean getIsIsOnlineGameClient(){
+	public boolean IsOnlineGameClient(){
 		return isOnlineClient;
 	}
 
@@ -57,8 +58,22 @@ public abstract class Entity implements NetworkObject {
 		this.xr = xr;
 		this.yr = yr;
 		initNetworkValues();
-	}
+		
+		
+	
 
+	}
+	public void handleMessage(String[] message){
+		
+		//x
+		double x = Double.parseDouble(message[4]);
+		//y
+		double y = Double.parseDouble(message[5]);
+		//dx
+		
+		setLocation(x , y);
+		setSpeed(dx, dy);
+	}
 	public void setLocation(double x, double y) {
 		this.x = x;
 		this.y = y;
@@ -104,14 +119,22 @@ public abstract class Entity implements NetworkObject {
 	}
 
 	public String getObject() {
-		return "'" + to5DigitString(getId())+ "'" +type + "'" + to5DigitString(x) + "'" + to5DigitString(y) + "'" + to5DigitString(dx) + "'" + to5DigitString(dy);
-
+		
+		if(type !=null && !isOnlineClient)
+		return "'" + to5DigitString(getId())+ "'" +type + "'"  + removed + "'"+ to5DigitString(x) + "'" + to5DigitString(y);
+		else
+		return "";
+		
 	}
 
-	private String to5DigitString(double x) {
+	protected String to5DigitString(double x) {
 		String part1 = String.format("%.0f", x);
 		String part2 = String.format("%." + (5 - part1.length()) + "f", x - (int) x).substring(1);
 		return part1 + part2;
+	}
+	
+	public boolean isRemoved() {
+		return removed;
 	}
 
 	public boolean intersectsEntity(Entity ent) {

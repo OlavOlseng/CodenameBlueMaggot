@@ -44,6 +44,10 @@ public abstract class Projectile extends Entity {
 //	}
 	
 	@Override
+	public void handleMessage(String[] msg){
+		super.handleMessage(msg);
+	}
+	@Override
 	public void tick(double dt) {
 		if(level.getTerrain().hitTestpoint((int)(x), (int)(y))){
 			while(level.getTerrain().hitTestpoint((int)(x), (int)(y))){

@@ -37,15 +37,16 @@ public class cityScape extends BasicLevel {
 
 		ResourceManager.setBackGround(new RGBImage(new File("./res/Cityscape_background2.png")));
 		initSpawn();
-		
-		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this));
-		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this));
-
+		addPlayers();
 		SoundEffect.SPAWN.play();
 		addEntity(new Package(bubbleSpawns.get(1), this));
 
 	}
+	public void addPlayers(){
+		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this));
+		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this));
 
+	}
 	public void initSpawn() {
 		playerSpawns.add(new FloatingPoint(30, 10));
 		playerSpawns.add(new FloatingPoint(180, 10));
@@ -66,12 +67,14 @@ public class cityScape extends BasicLevel {
 
 	public void tick(double dt) {
 		super.tick(dt);
-		int ticket = rand.nextInt(200);
-		if (ticket == 5) {
+		if(shouldSpawnBubble()){
 			spawnBubble();
 		}
 	}
-
+	protected boolean shouldSpawnBubble(){
+		int ticket = rand.nextInt(200);
+		return ticket == 5;
+	}
 	public void onDraw(Renderer renderer) {
 		// draws backgorund recursively
 		renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, Game.WIDTH, Game.HEIGHT);

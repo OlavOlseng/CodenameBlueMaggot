@@ -3,12 +3,12 @@ package Networking;
 import baseGame.animations.Animation;
 
 public enum NetworkObjectType {
-	TANK(0),GRENADE(1),ROCKET(2),SCORE_BUBBLE(3),SHELL(4),EXPLOSION(5),ANIMATION(6);
+	TANK(0),GRENADE(1),ROCKET(2),SCORE_BUBBLE(3),SHELL(4),EXPLOSION(5),ANIMATION(6),MINE(7),PACKAGE(8),NO_SYNC(9);
 	
 	private final int type;
 	
 	public String toString(){
-		String res = "00";
+		String res = "-1";
 		switch (this) {
 		case TANK: res = "00";
 		break;
@@ -23,6 +23,12 @@ public enum NetworkObjectType {
 		case EXPLOSION:res = "05";
 		break;
 		case ANIMATION:res = "06";
+		break;
+		case MINE:res = "07";
+		break;
+		case PACKAGE:res = "08";
+		break;
+		case NO_SYNC:res = "09";
 		break;
 		}
 	return res;	

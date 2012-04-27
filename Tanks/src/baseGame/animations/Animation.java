@@ -49,11 +49,22 @@ public class Animation extends Entity {
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr()), img.getWidth(), img.getHeight());
 
 	}
+	@Override
+	public String getObject() {
+		
+		return null;
 
+	}
+	@Override
+	public void handleMessage(String[] msg){
+		double x = Double.parseDouble(msg[2]);
+		double y = Double.parseDouble(msg[3]);
+		setLocation(x, y);
+	}
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
-		setNetworkObjectType(NetworkObjectType.ANIMATION);
+		setNetworkObjectType(NetworkObjectType.NO_SYNC);
 		
 	}
 }

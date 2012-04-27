@@ -3,6 +3,7 @@ package entity;
 import sound.SoundEffect;
 import entity.weapon.*;
 import gfx.ResourceManager;
+import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import level.BasicLevel;
@@ -115,6 +116,12 @@ public class Package extends Entity {
 		// TODO Auto-generated method stub
 		RGBImage img = ResourceManager.PACKAGE;
 		renderer.DrawImage(img, -1, (int) (x - 7), (int) (y - 14), img.getWidth(), img.getHeight());
+	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.PACKAGE);
 	}
 
 }
