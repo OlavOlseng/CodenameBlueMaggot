@@ -18,8 +18,8 @@ public class derp extends JFrame {
 	public void init() {
 
 		
-//	game.initConnection(true);playerNumber =1;
-	game.initConnection(false);playerNumber = 2;
+	game.initConnection(true);playerNumber =1;
+//	game.initConnection(false);playerNumber = 2;
 //		
 
 
