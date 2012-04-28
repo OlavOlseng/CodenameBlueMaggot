@@ -6,6 +6,7 @@ public enum NetworkObjectType {
 	
 	private final int type;
 	
+	@Override
 	public String toString(){
 		String res = "-1";
 		switch (this) {

@@ -1,6 +1,5 @@
 package blueMaggot.maps;
 
-import java.io.File;
 import java.util.Random;
 
 import sound.SoundEffect;

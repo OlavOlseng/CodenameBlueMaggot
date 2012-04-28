@@ -7,7 +7,6 @@ import java.awt.Dimension;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 
 import Networking.ConnectionDelegate;
@@ -18,8 +17,6 @@ import Networking.OnlineCityScape;
 import baseGame.BaseGame;
 import baseGame.Rendering.Renderer;
 import blueMaggot.maps.cityScape;
-
-import entity.Entity;
 
 public class Game extends BaseGame implements ConnectionDelegate {
 

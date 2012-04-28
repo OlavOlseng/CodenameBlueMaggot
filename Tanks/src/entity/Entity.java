@@ -24,6 +24,7 @@ public abstract class Entity implements NetworkObject {
 	}
 
 
+	@Override
 	public abstract void initNetworkValues();
 
 	@Override
@@ -33,6 +34,7 @@ public abstract class Entity implements NetworkObject {
 	}
 
 
+	@Override
 	public void setIsOnlineGameClient(boolean isClient){
 		this.isOnlineClient = isClient;
 	}
@@ -78,6 +80,7 @@ public abstract class Entity implements NetworkObject {
 
 
 	}
+	@Override
 	public void handleMessage(String[] message){
 		
 		//x
@@ -155,6 +158,7 @@ public abstract class Entity implements NetworkObject {
 		return part1 + part2;
 	}
 	
+	@Override
 	public boolean isRemoved() {
 		return removed;
 	}
@@ -184,6 +188,7 @@ public abstract class Entity implements NetworkObject {
 
 	public abstract void render(Renderer renderer);
 
+	@Override
 	public void remove() {
 		this.removed = true;
 	}
