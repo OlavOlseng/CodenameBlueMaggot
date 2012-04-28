@@ -320,15 +320,8 @@ public class Tank extends Entity {
 	public void remove() {
 		if (--life == 0) {
 			super.remove();
-			int scoreWon = 1000;
-			for (Tank player : level.getPlayers()) {
-				if (player == this)
-					continue;
-				scoreWon -= 250;
-			}
-			this.score += scoreWon;
 			return;
-		}
+			}
 		setLocation(level.getPlayerSpawns().get(rand.nextInt(level.getPlayerSpawns().size())));
 		setSpeed(0, -1);
 		damageTaken = 1;
