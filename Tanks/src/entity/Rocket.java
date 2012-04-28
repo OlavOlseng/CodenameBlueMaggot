@@ -62,7 +62,7 @@ public class Rocket extends Projectile {
 		this.angle = (Math.toDegrees(Math.atan2(-dy, dx)) + 360) % 360;
 		if (intersectsTerrain() || handleIntersections()) {
 			explode();
-			remove();
+			super.remove();
 		}
 
 		burnTime += dt;
@@ -92,10 +92,27 @@ public class Rocket extends Projectile {
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr()), img.getWidth(), img.getHeight());
 
 	}
-
+	@Override
+	public void remove(){
+		super.remove();
+		explode();
+	}
+	@Override
+	public String getObject(){
+		return super.getObject()+ "'" + to5DigitString(angle);
+	}
+	
+	@Override
+	public void handleMessage(String[] msg){
+		super.handleMessage(msg);
+		double angle = Double.parseDouble(msg[6]);
+		this.angle = angle;
+	}
+	
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
+		
 		setNetworkObjectType(NetworkObjectType.ROCKET);
 
 	}

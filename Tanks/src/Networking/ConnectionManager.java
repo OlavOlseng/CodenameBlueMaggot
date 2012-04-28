@@ -18,7 +18,7 @@ public class ConnectionManager {
 	private int messageHeader = 7;
 	private Thread readThread;
 	private Thread writeThread;
-
+	private long sleepTime = 15;
 	// private int numPlayers = 2;
 
 	public ConnectionManager(ConnectionDelegate delegate) {
@@ -118,7 +118,7 @@ public class ConnectionManager {
 			public void run() {
 				while (true) {
 					try {
-						Thread.sleep(2);
+						Thread.sleep(sleepTime);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -178,7 +178,7 @@ public class ConnectionManager {
 			public void run() {
 				while (true) {
 					try {
-						Thread.sleep(2);
+						Thread.sleep(sleepTime);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

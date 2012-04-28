@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import entity.Entity;
+import entity.FloatingPoint;
+import entity.Grenade;
+import entity.Mine;
+import entity.Rocket;
+import entity.ScoreBubble;
 import entity.Shell;
 import entity.Tank;
 import inputhandler.InputHandler;
@@ -126,21 +131,17 @@ public void addEntity(Entity ent,Integer id){
 			
 			int id = (int)Double.parseDouble(move[1]);
 			int type  = (int)Double.parseDouble(move[2]);
-		
-		
 			
 			if((obj = networkObjects.get(id)) != null){
-//				if(obj.getNetworkObjectType() == NetworkObjectType.TANK){
-//					System.out.println(move[4]);
-//					System.out.println(move[5]);
-//				}
-				boolean didDie = Boolean.parseBoolean(move[3]);
+
+				
+
 				obj.handleMessage(move);
-				if(didDie){
+				if(obj.isRemoved()){
 					
 					networkObjects.remove(obj);
 					entities.remove(obj);
-					obj.remove();
+				
 				}
 					
 				}else{
@@ -151,26 +152,23 @@ public void addEntity(Entity ent,Integer id){
 						if(NetworkObjectType.SHELL.equals(type))
 							 ent = new Shell(0, 0, this, 0, 0);
 							
-							
-
-					/*else
-						if(NetworkObjectType.SCORE_BUBBLE.equals(type))
-							ent = new ScoreBubble(new FloatingPoint(0, 0), 4,this, 0.5, 0, 0);
-								
 						else
-							if(NetworkObjectType.EXPLOSION.equals(type))
-								ent = new Explosion(0,0,0,this,0);
+							if(NetworkObjectType.SCORE_BUBBLE.equals(type))
+								ent  = new ScoreBubble(new FloatingPoint(0.0,0.0),4,this,0,0,0);
 							else
-								if(NetworkObjectType.PACKAGE.equals(type))
-									ent = new Package(new FloatingPoint(0, 0),(BasicLevel)this);*/
-						
-					
+								if(NetworkObjectType.GRENADE.equals(type))
+									ent  = new Grenade(0,0,this,0,0);
+								else
+									if(NetworkObjectType.ROCKET.equals(type))
+										ent = new Rocket(0, 0, this, 0, 0);
+							
+									else
+										if(NetworkObjectType.MINE.equals(type))
+											ent = new Mine(0,0,this,0);
+										
 					if(ent != null){
-					System.out.println("new");
 					ent.handleMessage(move);
 					addEntity((Entity)ent, id);
-					
-
 					}
 				}
 

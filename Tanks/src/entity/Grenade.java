@@ -97,10 +97,15 @@ public class Grenade extends Projectile {
 		liveTime += dt;
 		if (liveTime >= explosionTime) {
 			explode();
-			remove();
+			super.remove();
 		}
 	}
 
+	@Override
+	public void remove(){
+		super.remove();
+		explode();
+	}
 	@Override
 	public void render(Renderer renderer) {
 		RGBImage img = ResourceManager.GRENADE;

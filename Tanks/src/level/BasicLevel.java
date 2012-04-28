@@ -118,6 +118,7 @@ public abstract class BasicLevel {
 
 				ent.tick(dt);
 			}
+			
 			if (ent.removed) {
 			
 				removeEntity(ent);

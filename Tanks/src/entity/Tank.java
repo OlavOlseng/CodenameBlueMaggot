@@ -360,10 +360,17 @@ public class Tank extends Entity {
 
 	}
 
+	@Override
+	public String getObject(){
+		return super.getObject() + "'" + to5DigitString(this.muzzleAngle);
+	}
 	
 	@Override
 	public void handleMessage(String[] msg){
 		super.handleMessage(msg);
+		double muzzleAngle = Double.parseDouble(msg[6]);
+		setMuzzleAngle(muzzleAngle);
+		
 	}
 	@Override
 	public void initNetworkValues() {

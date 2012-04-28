@@ -1,6 +1,7 @@
 package entity;
 
 import gfx.ResourceManager;
+import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import level.BasicLevel;
@@ -48,7 +49,7 @@ public class Mine extends Projectile {
 	public void explode() {
 		level.addEntity(new Explosion(x, y, explosionRadius, level, explosionPower));
 		level.getTerrain().addExplosion((int) (x - explosionRadius), (int) (y - explosionRadius), explosionRadius);
-		this.remove();
+		super.remove();
 	}
 
 	@Override
@@ -65,6 +66,23 @@ public class Mine extends Projectile {
 	public void gravitate() {
 	}
 
+	@Override
+	public String getObject(){
+		//index 6 = armed
+		String msg = super.getObject() + "'" + armed;
+		System.out.println(msg);
+		return msg;
+	}
+	public void handleMessage(String[] msg){
+		super.handleMessage(msg);
+		boolean armed = Boolean.parseBoolean(msg[6]);
+		this.armed = true;
+	}
+	@Override
+	public void remove(){
+		super.remove();
+		explode();
+	}
 	@Override
 	public void tick(double dt) {
 		super.tick(dt);
@@ -84,6 +102,7 @@ public class Mine extends Projectile {
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.MINE);
 
 	}
 }

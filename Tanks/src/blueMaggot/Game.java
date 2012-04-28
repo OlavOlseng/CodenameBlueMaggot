@@ -58,6 +58,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	public Game() {
 		handler = new InputHandler();
+		System.out.println(to5DigitString(-5));
 		addKeyListener(handler);
 		
 	}
@@ -144,6 +145,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		synchronized (objects) {
 			
 		for ( NetworkObject obj:objects) {
+			synchronized (obj) {
+				
 			
 			String objectString = obj.getObject();
 			
@@ -157,7 +160,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			
 				
 		}
-		
+		}
 		for(Integer key:deadKeys){
 			onlineLevel.getNetworkObjects().remove(key);
 		}
