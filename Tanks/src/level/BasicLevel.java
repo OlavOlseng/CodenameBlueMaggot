@@ -88,11 +88,12 @@ public abstract class BasicLevel {
 			if (!player.removed)
 				playerAliveCount++;
 		}
-		if (playerAliveCount <= 1)
+		if (playerAliveCount <= 1){
 			gameOver = true;
 		for (Tank player : players) {
 			if (!player.removed)
 				player.addScore(1000);
+		}
 		}
 	}
 

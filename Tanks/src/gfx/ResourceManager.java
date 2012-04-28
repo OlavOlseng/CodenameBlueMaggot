@@ -24,6 +24,7 @@ public class ResourceManager {
 	public static final RGBImage PACKAGE = new RGBImage(new File("./res/graphics/Package.png"));
 	public static final RGBImage BUBBLEHEARTH = new RGBImage(new File("./res/graphics/BubbleHearth.png"));
 	public static final RGBImage AIRSTRIKEBEACON = new RGBImage(new File("./res/graphics/AirStrikeBeacon.png"));
+	public static final RGBImage BULLET = new RGBImage(new File("./res/graphics/Bullet.png"));
 	public static final Color COLORMASK = new Color(0x00FAE1);
 	
 	private static Terrain terrain;

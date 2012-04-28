@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.ObjectInputStream.GetField;
+
 import networking.NetworkObjectType;
 import sound.SoundEffect;
 import gfx.ResourceManager;
@@ -83,6 +85,13 @@ public class AirStrikeBeacon extends Projectile {
 		
 		
 	}
+	
+	/*@Override
+	public String getObject(){
+		return super.getObject() + triggered;
+	}
+	@Override
+	public */
 	@Override
 	public void render(Renderer renderer) {
 		int subimageIndex = 0;
