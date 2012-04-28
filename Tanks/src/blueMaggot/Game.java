@@ -4,6 +4,7 @@ import inputhandler.InputHandler;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,10 +41,21 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	private cityScape level;
 
 	// customizable player variables!
-	public String hostIp;
-	public String nickPlayerOne;
-	public String nickPlayerTwo;
+	public static String HOSTIP;
+	public static String NICK_PLAYER_ONE = "carl";
+	public static String NICK_PLAYER_TWO = "biker bob";
 	public boolean isHost = false;
+	public static File SELECTED_LEVEL_TERRAIN = new File("./lvl/Cityscape_terrain.png");
+	public static File SELECTED_LEVEL_BACKGROUND = new File("./lvl/Cityscape_background.png");
+	public static boolean running = false;
+
+	// ui elements
+	public int playerOneScore;
+	public int playerTwoScore;
+	public int playerOneLife;
+	public int playerTwoLife;
+	public int playerOneSelectedWeapon;
+	public int playerTwoSelectedWeapon;
 
 	public Game() {
 		handler = new InputHandler();
@@ -73,7 +85,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public void onDraw(Renderer renderer) {
 		renderer.clearAllPixelData(Color.WHITE.getRGB());
 		level.onDraw(renderer);
-
 	}
 
 	// public byte[] parseKeyStrokes() {
@@ -89,8 +100,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	// }
 
 	public void startReuglarGame() {
+		System.out.println("starting level: " + Game.SELECTED_LEVEL_BACKGROUND.getName().split("_")[0]);
 		level = new cityScape(this, handler);
 		level.init();
+		running = true;
 		init(WIDTH, HEIGHT, 60);
 
 	}

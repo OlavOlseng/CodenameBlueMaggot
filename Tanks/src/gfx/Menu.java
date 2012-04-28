@@ -14,11 +14,11 @@ public abstract class Menu extends Panel {
 	protected Panel buttonPanel;
 	protected JLayeredPane layeredPane;
 
-	protected int border;
 	protected Color menuBg;
 
 	private int width = 500;
-	private int height = 300;
+	private int height = 314;
+	private int border = 5;
 
 	public Menu() {
 		putCenter(this, width, height);

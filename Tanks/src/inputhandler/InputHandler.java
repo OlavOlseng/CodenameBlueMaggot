@@ -11,6 +11,7 @@ public class InputHandler implements KeyListener {
 
 	public Key menu = new Key(keys);
 	public Key menuOff = new Key(keys);
+	public Key tab = new Key(keys);
 
 	public Key up1 = new Key(keys);
 	public Key down1 = new Key(keys);
@@ -57,6 +58,9 @@ public class InputHandler implements KeyListener {
 			menu.toggle(pressed);
 		if (e.getKeyCode() == KeyEvent.VK_2)
 			menuOff.toggle(pressed);
+
+		if (e.getKeyCode() == KeyEvent.VK_SHIFT)
+			tab.toggle(pressed);
 
 		if (e.getKeyCode() == KeyEvent.VK_0)
 			grenadeSpam.toggle(pressed);

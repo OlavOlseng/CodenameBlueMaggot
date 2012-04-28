@@ -26,17 +26,17 @@ public class cityScape extends BasicLevel {
 
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
-		terrain = new Terrain(new File("./res/Cityscape_terrain.png"));
+		terrain = new Terrain(Game.SELECTED_LEVEL_TERRAIN);
 		ResourceManager.setTerrain(terrain);
 
-		ResourceManager.setBackGround(new RGBImage(new File("./res/Cityscape_background.png")));
+		ResourceManager.setBackGround(new RGBImage(Game.SELECTED_LEVEL_BACKGROUND));
 
 		SoundEffect.SPAWN.play();
 	}
 
 	public void init() {
 
-		ResourceManager.setBackGround(new RGBImage(new File("./res/Cityscape_background2.png")));
+		ResourceManager.setBackGround(new RGBImage(Game.SELECTED_LEVEL_BACKGROUND));
 		initSpawn();
 
 		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this));

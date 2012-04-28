@@ -7,11 +7,12 @@ public class GBC extends GridBagConstraints {
 	public GBC(int gridx, int gridy, String align) {
 		this.gridx = gridx;
 		this.gridy = gridy;
-		if (align.equals("left"))
-			setInsets(5, 5, 5, 60);
-		else if (align.equals("right"))
-			setInsets(5, 60, 5, 5);
-		setWeight(0.1, 0);
+		if (align != null) {
+			if (align.equals("left"))
+				setInsets(5, 5, 5, 60);
+			else if (align.equals("right"))
+				setInsets(5, 60, 5, 5);
+		}
 		setFill(HORIZONTAL);
 	}
 

@@ -1,7 +1,10 @@
 package blueMaggot;
 
+import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
 import gfx.MenuTitle;
+import gfx.UIElement;
+import gfx.uiScoreBoard;
 import inputhandler.InputHandler;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -15,15 +18,21 @@ import javax.swing.JPanel;
  */
 public class BlueMaggot extends JFrame implements Runnable {
 
-	// InputHandlerMenu input = new InputHandlerMenu(this);
 	public InputHandler inputReal = new InputHandler();
 
 	private JLayeredPane layeredPane = new JLayeredPane();
 	private MenuTitle menuTitle;
+	private uiScoreBoard uiScoreBoard;
+	private JPanel gamePanel;
+	public MenuLevelSelect menuLevelSelect;
 	public MenuOptions menuOptions;
 
-	JPanel gamePanel = new JPanel();
+	private UIElement ui;
+
 	Game game;
+
+	private UIElement ui2;
+
 
 	public BlueMaggot() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,11 +45,20 @@ public class BlueMaggot extends JFrame implements Runnable {
 		game = new blueMaggot.Game(this);
 		menuTitle = new MenuTitle(game, this);
 		menuOptions = new MenuOptions(game);
+		uiScoreBoard = new uiScoreBoard();
+		menuLevelSelect = new MenuLevelSelect(game);
+		gamePanel = new JPanel();
+		
+		ui2 = new UIElement(0,0,100,40,2);
+//		ui2 = new UIElement(Game.WIDTH-100,0,100,40,2);
 
 		layeredPane.add(gamePanel, new Integer(0));
-		// layeredPane.add(ui, new Integer(1));
+//		layeredPane.add(ui, new Integer(1));
+//		layeredPane.add(ui2, new Integer(1));
 		layeredPane.add(menuTitle, new Integer(10));
 		layeredPane.add(menuOptions, new Integer(11));
+		layeredPane.add(menuLevelSelect, new Integer(11));
+//		layeredPane.add(uiScoreBoard, new Integer(2));
 
 		add(layeredPane);
 		pack();
@@ -75,5 +93,9 @@ public class BlueMaggot extends JFrame implements Runnable {
 				Game.PAUSED = true;
 			}
 		}
+		if (inputReal.tab.down) {
+			uiScoreBoard.setVisible(true);
+		} else
+			uiScoreBoard.setVisible(false);
 	}
 }

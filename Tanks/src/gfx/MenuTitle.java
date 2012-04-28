@@ -11,23 +11,23 @@ import blueMaggot.Game;
 public class MenuTitle extends Menu {
 	private ArrayList<MenuButton> ButtonArr = new ArrayList<MenuButton>();
 	private GridBagConstraints c = new GridBagConstraints();
-	static Color MENU_BG = new Color(153, 210, 228);
+	public static Color MENU_BG = new Color(153, 210, 228);
 
 	public MenuTitle(Game game, BlueMaggot blueMaggot) {
 		super();
-
-		super.border = 5;
 
 		MenuButton btnReturn = new MenuButton("return", this, game);
 		MenuButton btnNewGame = new MenuButton("newGame", this, game);
 		MenuButton btnNewOnlineGame = new MenuButton("newLanGame", this, game);
 		MenuButton btnOptions = new MenuButton("options", this, game);
 		MenuButton btnExit = new MenuButton("exit", this, null);
+		MenuButton btnLvls = new MenuButton("lvls", this, game);
 
 		// add buttons for title menu here
 		ButtonArr.add(btnReturn);
 		ButtonArr.add(btnNewGame);
 		ButtonArr.add(btnNewOnlineGame);
+		ButtonArr.add(btnLvls);
 		ButtonArr.add(btnOptions);
 		ButtonArr.add(btnExit);
 
