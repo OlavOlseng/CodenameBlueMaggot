@@ -174,7 +174,9 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	private String to5DigitString(double x) {
 		String part1 = String.format("%.0f", x);
-		String part2 = String.format("%." + (5 - part1.length()) + "f", x - (int) x).substring(1);
+		String part2 = String.format(".%." + (5 - part1.length()) + "f", x - (int) x).substring(2);
+		System.out.println(part1);
+		System.out.println(part2);
 		return part1 + part2;
 	}
 
