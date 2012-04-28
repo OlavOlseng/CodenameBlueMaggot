@@ -2,7 +2,7 @@ package entity;
 
 import java.util.ArrayList;
 
-import networking.NetworkObjectType;
+import networking.*;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
