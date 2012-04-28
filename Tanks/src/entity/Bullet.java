@@ -8,12 +8,12 @@ import level.BasicLevel;
 public class Bullet extends Projectile {
 	
 	int explosionRadius = 10;
-	int explosionPower = 50;
+	int explosionPower = 30;
 	
 	public Bullet(double x, double y, BasicLevel level, double angle) {
 		super(x, y, 2, 2, level, 1, angle);
-		this.maxSpeed = 10;
-		this.frictionConstant = 0.00005;
+		this.maxSpeed = 13;
+		this.frictionConstant = 0.000005;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
@@ -40,11 +40,8 @@ public class Bullet extends Projectile {
 	}
 	
 	public boolean handleIntersections() {
-		for (int i = 0; i < level.getEntities().size(); i++) {
-			Entity ent = level.getEntities().get(i);
-			if (ent == this)
-				continue;
-			if (intersectsEntity(level.getEntities().get(i)))
+		for (int i = 0; i < level.getPlayers().size(); i++) {
+			if (intersectsEntity(level.getPlayers().get(i)))
 				return true;
 		}
 
@@ -62,8 +59,8 @@ public class Bullet extends Projectile {
 	
 	@Override
 	public void render(Renderer renderer) {
-		RGBImage img = ResourceManager.SHELL;
-		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr()), img.getWidth(), img.getHeight());
+		RGBImage img = ResourceManager.BULLET;
+		renderer.DrawImage(img, -1, (int) (x - 1), (int) (y - 1), img.getWidth(), img.getHeight());
 	}
 	
 

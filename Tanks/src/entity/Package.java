@@ -10,7 +10,7 @@ import level.BasicLevel;
 public class Package extends Entity {
 
 	enum Gun {
-		ROCKETLAUNCHER(2), MINELAUNCHER(3), AIRSTRIKE(4);
+		ROCKETLAUNCHER(2), MINELAUNCHER(3), AIRSTRIKE(4), MINIGUN(5);
 		private int i;
 
 		private Gun(int i) {
@@ -84,7 +84,7 @@ public class Package extends Entity {
 	}
 
 	private void fillCrate() {
-		int gun = rand.nextInt(3);
+		int gun = rand.nextInt(4);
 		switch (gun) {
 		case 0:
 			this.wep = Gun.ROCKETLAUNCHER;
@@ -94,6 +94,9 @@ public class Package extends Entity {
 			break;
 		case 2:
 			this.wep = Gun.AIRSTRIKE;
+			break;
+		case 3:
+			this.wep = Gun.MINIGUN;
 			break;
 		}
 	}

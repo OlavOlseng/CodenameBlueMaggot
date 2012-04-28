@@ -1,5 +1,7 @@
 package entity.weapon;
 
+import java.util.Random;
+
 import sound.SoundEffect;
 import entity.Bullet;
 import entity.Shell;
@@ -9,14 +11,14 @@ import level.BasicLevel;
 public class Minigun implements Weapon{
 	
 	public boolean firing = false;
-	int bulletsToFire = 20;
+	int bulletsToFire = 100;
 	int bulletsFired = 0;
 	double currentCooldown = 0;
 	double cooldownTime = 120;
 	int ammo = 5;
 	Tank owner;
 	BasicLevel level;
-	
+	Random rand = new Random();
 	public Minigun(Tank tank){
 		this.owner = tank;
 	}
@@ -47,7 +49,8 @@ public class Minigun implements Weapon{
 	}
 	
 	public void fireEvent(){
-		level.addEntity(new Bullet(owner.getX(), owner.getY(), level, owner.getAngle()));
+		level.addEntity(new Bullet(owner.getCrosshairLocation().getX(), owner.getCrosshairLocation().getY(), level, owner.getMuzzleAngle() + 3 * rand.nextDouble() - 3*rand.nextDouble()));
+		SoundEffect.EXPLOSION1.play();
 	}
 
 	@Override
@@ -57,6 +60,8 @@ public class Minigun implements Weapon{
 		if(firing){
 			fireEvent();
 			bulletsFired++;
+			if(bulletsFired >= bulletsToFire)
+				firing = false;
 		}
 	}
 }
