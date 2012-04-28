@@ -4,10 +4,9 @@ import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
 import gfx.MenuTitle;
 import gfx.UIElement;
-import gfx.uiScoreBoard;
+import gfx.UIScoreBoard;
 import inputhandler.InputHandler;
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -23,7 +22,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 	private JLayeredPane layeredPane = new JLayeredPane();
 	private MenuTitle menuTitle;
-	private uiScoreBoard uiScoreBoard;
+	private UIScoreBoard uiScoreBoard;
 	private JPanel gamePanel;
 	public MenuLevelSelect menuLevelSelect;
 	public MenuOptions menuOptions;
@@ -47,7 +46,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		game = new blueMaggot.Game(this);
 		menuTitle = new MenuTitle(game, this);
 		menuOptions = new MenuOptions(game);
-		uiScoreBoard = new uiScoreBoard();
+		uiScoreBoard = new UIScoreBoard(game);
 		menuLevelSelect = new MenuLevelSelect(game);
 		menuBackground = new MenuBackground(menuTitle);
 		gamePanel = new JPanel();
@@ -62,7 +61,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		layeredPane.add(menuTitle, new Integer(10));
 		layeredPane.add(menuOptions, new Integer(11));
 		layeredPane.add(menuLevelSelect, new Integer(11));
-		// layeredPane.add(uiScoreBoard, new Integer(2));
+		layeredPane.add(uiScoreBoard, new Integer(2));
 
 		add(layeredPane);
 		pack();
@@ -103,5 +102,8 @@ public class BlueMaggot extends JFrame implements Runnable {
 			uiScoreBoard.setVisible(true);
 		} else
 			uiScoreBoard.setVisible(false);
+		if(game.gameOver()){
+			uiScoreBoard.setVisible(true);
+		}
 	}
 }

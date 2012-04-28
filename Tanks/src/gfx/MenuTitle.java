@@ -1,6 +1,5 @@
 package gfx;
 
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.util.ArrayList;
