@@ -22,8 +22,7 @@ public class derp extends JFrame {
 	game.initConnection(false);playerNumber = 2;
 //		
 
-		// while (true)
-		// System.out.println(Thread.currentThread().getThreadGroup().activeCount());
+
 	}
 
 	public static void main(String[] args) {

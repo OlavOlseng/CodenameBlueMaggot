@@ -1,5 +1,6 @@
 package Networking;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Stack;
@@ -23,7 +24,8 @@ public class OnlineCityScape extends cityScape {
 	private int objectCount = 0;
 
 	private HashMap<Integer,NetworkObject> networkObjects;
-	private Stack<String[]> movementsToDo;
+	private ArrayList<String[]> movementsToDo;
+	
 
 	
 
@@ -31,7 +33,7 @@ public class OnlineCityScape extends cityScape {
 	private boolean isClient;
 
 	public OnlineCityScape(BaseGame game, InputHandler handler) {
-
+		
 		super(game, handler);
 
 		if(derp.playerNumber != 1)
@@ -45,13 +47,12 @@ public class OnlineCityScape extends cityScape {
 	public void init(){
 		
 		networkObjects= new HashMap<Integer, NetworkObject>();
-		movementsToDo = new Stack<String[]>();
+		movementsToDo = new ArrayList<String[]>();
 		lastTime = System.currentTimeMillis();
-
+		super.init();
 	
 	}
 	@Override
-
 	public void addPlayers(){
 		Random rand = new Random();
 		
@@ -69,10 +70,6 @@ public class OnlineCityScape extends cityScape {
 	public void addEntity(Entity entity) {
 		if(entity.getNetworkObjectType() != NetworkObjectType.NO_SYNC){
 		networkObjects.put(new Integer(objectCount), entity);
-
-
-		networkObjects.put(new Integer(objectCount), entity);
-
 
 		entity.setId(objectCount);
 		objectCount++;
@@ -95,9 +92,14 @@ public void addEntity(Entity ent,Integer id){
 		
 		for (int i = 1;i<objects.length;i++){
 			String[] properties = objects[i].split("\\'");	
-			movementsToDo.add(properties);
+			synchronized (movementsToDo) {
+				movementsToDo.add(properties);
+				
+			}
+		
 			
 	}
+		
 	}
 
 	
@@ -127,10 +129,9 @@ public void addEntity(Entity ent,Integer id){
 			
 				dt = time;
 			
-			while(movementsToDo.size()>0){
-				
-			String[] move = movementsToDo.pop();
-			
+			for(int i = 0;i<movementsToDo.size();i++){
+
+			String[] move = movementsToDo.get(i);
 			
 			int id = (int)Double.parseDouble(move[1]);
 			int type  = (int)Double.parseDouble(move[2]);
@@ -138,7 +139,10 @@ public void addEntity(Entity ent,Integer id){
 		
 			
 			if((obj = networkObjects.get(id)) != null){
-				
+//				if(obj.getNetworkObjectType() == NetworkObjectType.TANK){
+//					System.out.println(move[4]);
+//					System.out.println(move[5]);
+//				}
 				boolean didDie = Boolean.parseBoolean(move[3]);
 				obj.handleMessage(move);
 				if(didDie){
@@ -179,12 +183,14 @@ public void addEntity(Entity ent,Integer id){
 					}
 				}
 
-				super.tick(time);
+				
 
-				lastTime = System.currentTimeMillis();
-
-				return;
+				
 			}
+			super.tick(time);
+			movementsToDo = new ArrayList<String[]>();
+			lastTime = System.currentTimeMillis();
+			return;
 		}
 
 		super.tick(dt);

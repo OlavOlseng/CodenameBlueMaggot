@@ -152,10 +152,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			onlineLevel.getNetworkObjects().remove(key);
 		}
 
-
-	
-		
-
 		String msgHeader = "1" + to5DigitString(msgBody.length());
 
 		return (msgHeader + msgBody).getBytes();

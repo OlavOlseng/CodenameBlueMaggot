@@ -122,7 +122,7 @@ public class Package extends Entity {
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
-
+		setNetworkObjectType(NetworkObjectType.PACKAGE);
 	}
 
 }
