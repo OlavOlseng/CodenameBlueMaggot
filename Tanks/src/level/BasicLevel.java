@@ -115,13 +115,11 @@ public abstract class BasicLevel {
 		for (int i = 0; i < entities.size(); i++) {
 			Entity ent = entities.get(i);
 
-			if (derp.playerNumber == 1) {
-
+			if (!ent.IsOnlineGameClient()) {
 				ent.tick(dt);
 			}
 
 			if (ent.removed) {
-
 				removeEntity(ent);
 				i--;
 				continue;

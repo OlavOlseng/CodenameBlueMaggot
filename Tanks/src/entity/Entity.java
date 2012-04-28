@@ -3,6 +3,7 @@
 
 package entity;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 import networking.NetworkObject;
@@ -18,8 +19,12 @@ public abstract class Entity implements NetworkObject {
 	private int id;
 	private boolean isOnlineClient;
 	private NetworkObjectType type;
-
+	public DecimalFormat formater;
+	
 	public Entity(double x, double y, double xr, double yr, BasicLevel level) {
+		
+		formater = new DecimalFormat("#00000");
+		
 		this.level = level;
 		setLocation(x, y);
 		this.xr = xr;
@@ -151,11 +156,11 @@ public abstract class Entity implements NetworkObject {
 	}
 
 	protected String to5DigitString(double x) {
-		int part1 =(int)Math.floor(x);
-		double part2 =x-part1;
-		String stringPart1 = String.format("%d", part1);
-		String stringPart2 = String.format("%."+(5-stringPart1.length() -1) + "f",part2).substring(2);
-		return stringPart1+stringPart2;
+		if(x>=0){
+			return formater.format(x);
+		}else{
+			return"-" +formater.format(Math.abs(x)).substring(1);
+		}
 	}
 	
 	@Override
