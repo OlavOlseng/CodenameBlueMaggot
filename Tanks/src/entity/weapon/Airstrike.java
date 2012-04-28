@@ -1,40 +1,47 @@
 package entity.weapon;
 
 import sound.SoundEffect;
+import entity.AirStrikeBeacon;
+import entity.Shell;
 import level.BasicLevel;
-import entity.Grenade;
 
-public class GrenadeGun implements Weapon {
-
-	private int cooldownTime = 45;
-	private int currentCooldown = 0;
-
+public class Airstrike implements Weapon{
+	
+	int ammo = 5;
+	int cooldownTime = 30;
+	int currentCooldown = 0;
+	
 	@Override
 	public void fire(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		if (currentCooldown <= 0) {
-			level.addEntity(new Grenade(x, y, level, speedPercent, angle));
+			level.addEntity(new AirStrikeBeacon(x, y, level, speedPercent, angle));
 			currentCooldown = cooldownTime;
 			SoundEffect.SHOOT.play();
+			ammo --;
 		}
 	}
-
-	@Override
-	public void setAmmo() {
-	}
-
-	@Override
-	public int getAmmo() {
-		return 1;
-	}
-
+	
 	@Override
 	public void addAmmo() {
+		ammo += 1;
+		
 	}
-
+	
+	@Override
+	public int getAmmo() {
+		return ammo;
+	}
+	
+	@Override
+	public void setAmmo() {
+		ammo += 1;
+	}
+	
 	@Override
 	public void tick(double dt) {
 		if (currentCooldown > 0)
 			currentCooldown -= dt;
 	}
+	
 
 }

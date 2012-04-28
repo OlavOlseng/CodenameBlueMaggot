@@ -26,8 +26,6 @@ public class Shell extends Projectile {
 
 	@Override
 	public void explode() {
-		if(derp.playerNumber != 1)
-		System.out.println("Boom");
 		level.getTerrain().addExplosion((int) (x - explosionRadius), (int) (y - explosionRadius), explosionRadius);
 		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, explosionPower));
 	}

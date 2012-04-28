@@ -15,7 +15,7 @@ import javax.sound.sampled.*;
 public enum SoundEffect {
 	SHOOT("Shot.wav"), // bullet
 	BUBBLE("Bubble.wav"), RELOAD("Reload.wav"), SPAWN("Spawn.wav"), ROCKETLAUNCH("RocketLaunch.wav"), EXPLOSION1("ExplosionSmall.wav"), EXPLOSION2(
-			"ExplosionBig.wav");
+			"ExplosionBig.wav"), MINEARMED("MineArmed.wav"), HEALTHUP("HealthUp.wav");
 
 	// Nested class for specifying volume
 	public static enum Volume {
@@ -32,7 +32,7 @@ public enum SoundEffect {
 	SoundEffect(String soundFileName) {
 		try {
 			// Use URL (instead of File) to read from disk and JAR.
-			File file = new File("./res/" + soundFileName);
+			File file = new File("./res/sound/" + soundFileName);
 			// Set up an audio input stream piped from the sound file.
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
 			// Get a clip resource.
