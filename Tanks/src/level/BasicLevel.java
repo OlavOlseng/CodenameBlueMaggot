@@ -18,7 +18,7 @@ import entity.*;
 
 public abstract class BasicLevel {
 
-	protected boolean gameOver = false;
+	public boolean gameOver = false;
 	protected List<Entity> entities;
 	protected ArrayList<Tank> players;
 	protected InputHandler handler;
@@ -81,7 +81,6 @@ public abstract class BasicLevel {
 		for (Tank player : players) {
 			if (!player.removed)
 				playerAliveCount++;
-
 		}
 		if (playerAliveCount <= 1)
 			gameOver = true;
@@ -106,25 +105,23 @@ public abstract class BasicLevel {
 			}
 		}
 		// ticks all the ents
-		
-		
-		for (int i = 0; i <entities.size(); i++) {
+
+		for (int i = 0; i < entities.size(); i++) {
 			Entity ent = entities.get(i);
 
+			if (derp.playerNumber == 1) {
 
-			
-			if (derp.playerNumber==1) {
-				
 				ent.tick(dt);
 			}
-			
+
 			if (ent.removed) {
-			
+
 				removeEntity(ent);
 				i--;
 				continue;
 			}
-		
-		checkGameOver();
+
+			checkGameOver();
+		}
 	}
-}}
+}

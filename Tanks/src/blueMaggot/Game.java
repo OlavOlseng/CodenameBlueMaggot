@@ -5,7 +5,6 @@ import inputhandler.InputHandler;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.io.File;
-import java.net.DatagramPacket;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -14,7 +13,6 @@ import networking.ConnectionDelegate;
 import networking.ConnectionManager;
 import networking.NetworkObject;
 import networking.OnlineCityScape;
-
 
 import baseGame.BaseGame;
 import baseGame.Rendering.Renderer;
@@ -60,9 +58,9 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	public Game() {
 		handler = new InputHandler();
-		
+
 		addKeyListener(handler);
-		//DatagramPacket e; 
+		// DatagramPacket e;
 	}
 
 	public Game(BlueMaggot blueMaggot) {
@@ -78,7 +76,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
-		if (!PAUSED) {
+		System.out.println(!gameOver());
+		if (!PAUSED || !gameOver()) {
 			level.tick(deltaTime);
 			didTick = true;
 		}
@@ -111,6 +110,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	}
 
+	public boolean gameOver() {
+		return level.gameOver;
+	}
+
 	/* network stuff */
 	public void initConnection(boolean isHost) {
 		connection = new ConnectionManager(this);
@@ -123,11 +126,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		}
 	}
 
-	
 	@Override
 	public void connectionFailed(String message) {
 		System.out.println(message);
 	}
+
 	@Override
 	public void readData(byte[] data) {
 		if (data.length > 0) {
@@ -140,47 +143,42 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public byte[] onWrite() {
 		String msgBody = "";
 
-		
 		Collection<NetworkObject> objects = onlineLevel.getNetworkObjects().values();
-		
+
 		List<Integer> deadKeys = new ArrayList<Integer>();
 		synchronized (objects) {
-			
-		for ( NetworkObject obj:objects) {
-			synchronized (obj) {
-				
-			
-			String objectString = obj.getObject();
-			
-			if(objectString !=null)
-			msgBody += "?"+ objectString;
-			
-			
-			if(obj.isRemoved()){
-				deadKeys.add(obj.getId());
-			}	
-			
-				
-		}
-		}
-		for(Integer key:deadKeys){
-			onlineLevel.getNetworkObjects().remove(key);
+
+			for (NetworkObject obj : objects) {
+				synchronized (obj) {
+
+					String objectString = obj.getObject();
+
+					if (objectString != null)
+						msgBody += "?" + objectString;
+
+					if (obj.isRemoved()) {
+						deadKeys.add(obj.getId());
+					}
+
+				}
+			}
+			for (Integer key : deadKeys) {
+				onlineLevel.getNetworkObjects().remove(key);
+			}
+
+			String msgHeader = "1" + to5DigitString(msgBody.length());
+
+			return (msgHeader + msgBody).getBytes();
 		}
 
-		String msgHeader = "1" + to5DigitString(msgBody.length());
-		
-
-		return (msgHeader + msgBody).getBytes();
-		}
-		
 	}
 
 	private String to5DigitString(double x) {
-		int part1 =(int)Math.floor(x);
-		double part2 =x-part1;
+		int part1 = (int) Math.floor(x);
+		double part2 = x - part1;
 		String stringPart1 = String.format("%d", part1);
-		String stringPart2 = String.format("%."+(5-stringPart1.length() -1) + "f",part2).substring(2);
-		return stringPart1+stringPart2;
+		String stringPart2 = String.format("%." + (5 - stringPart1.length() - 1) + "f", part2).substring(2);
+		return stringPart1 + stringPart2;
 	}
 
 	@Override
@@ -192,7 +190,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public boolean shouldWrite() {
 		boolean temp = didTick;
 		didTick = false;
-		return isHost && (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size()>0;
+		return isHost && (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size() > 0;
 	}
 
 	@Override
