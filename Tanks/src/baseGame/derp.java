@@ -1,3 +1,4 @@
+package baseGame;
 
 import javax.swing.JFrame;
 
@@ -5,6 +6,7 @@ import blueMaggot.Game;
 
 public class derp extends JFrame {
 	Game game;
+	public static int playerNumber;
 
 	public derp() {
 		setVisible(true);
@@ -14,11 +16,13 @@ public class derp extends JFrame {
 	}
 
 	public void init() {
-		// game.initConnection(true);
-		game.initConnection(false);
 
-		// while (true)
-		// System.out.println(Thread.currentThread().getThreadGroup().activeCount());
+		
+//	game.initConnection(true);playerNumber =1;
+	game.initConnection(false);playerNumber = 2;
+//		
+
+
 	}
 
 	public static void main(String[] args) {

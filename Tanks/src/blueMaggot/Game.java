@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import Networking.ConnectionDelegate;
@@ -60,6 +62,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public Game() {
 		handler = new InputHandler();
 		addKeyListener(handler);
+		
 	}
 
 	public Game(BlueMaggot blueMaggot) {
@@ -137,15 +140,36 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public byte[] onWrite() {
 		String msgBody = "";
 
-		List<Entity> objects = onlineLevel.getEntities();
-		for (int i = 0; i < objects.size(); i++) {
-			NetworkObject obj = objects.get(i);
-			msgBody += "?" + obj.getObject();
+		
+		Collection<NetworkObject> objects = onlineLevel.getNetworkObjects().values();
+		
+		List<Integer> deadKeys = new ArrayList<Integer>();
+		synchronized (objects) {
+			
+		for ( NetworkObject obj:objects) {
+			
+			String objectString = obj.getObject();
+			
+			if(objectString !=null)
+			msgBody += "?"+ objectString;
+			
+			
+			if(obj.isRemoved()){
+				deadKeys.add(obj.getId());
+			}	
+			
+				
+		}
+		
+		for(Integer key:deadKeys){
+			onlineLevel.getNetworkObjects().remove(key);
 		}
 
 		String msgHeader = "1" + to5DigitString(msgBody.length());
 
 		return (msgHeader + msgBody).getBytes();
+		}
+		
 	}
 
 	private String to5DigitString(double x) {
@@ -163,7 +187,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public boolean shouldWrite() {
 		boolean temp = didTick;
 		didTick = false;
-		return isHost && (onlineLevel != null) && temp;
+		return isHost && (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size()>0;
 	}
 
 	@Override

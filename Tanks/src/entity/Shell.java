@@ -3,6 +3,7 @@ package entity;
 import gfx.ResourceManager;
 
 import Networking.NetworkObjectType;
+import baseGame.derp;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
@@ -25,6 +26,8 @@ public class Shell extends Projectile {
 
 	@Override
 	public void explode() {
+		if(derp.playerNumber != 1)
+		System.out.println("Boom");
 		level.getTerrain().addExplosion((int) (x - explosionRadius), (int) (y - explosionRadius), explosionRadius);
 		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, explosionPower));
 	}
@@ -53,18 +56,26 @@ public class Shell extends Projectile {
 		return false;
 	}
 
+
 	@Override
 	public void tick(double dt) {
 		super.tick(dt);
 		applyFriction();
 		if (intersectsTerrain() || handleIntersections()) {
 			explode();
-			remove();
+			super.remove();
 		}
 		gravitate();
 
 	}
 
+	@Override
+	public void remove(){
+		explode();
+		super.remove();
+		
+	}
+		
 	@Override
 	public void render(Renderer renderer) {
 		RGBImage img = ResourceManager.SHELL;
@@ -72,7 +83,7 @@ public class Shell extends Projectile {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub

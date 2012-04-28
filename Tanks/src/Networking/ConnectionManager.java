@@ -37,17 +37,16 @@ public class ConnectionManager {
 		TimerTask acceptLoop = new TimerTask() {
 			@Override
 			public void run() {
-				System.out.println("hay");
+				
 				try {
 					client = listener.accept();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					System.out.println("fack");
+					
 					delegate.connectionFailed(e.getLocalizedMessage());
 					this.cancel();
 					return;
 				}
-				System.out.println("hay");
+				
 				this.cancel();
 				init();
 				// TODO Auto-generated method stub

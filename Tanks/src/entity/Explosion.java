@@ -14,9 +14,9 @@ public class Explosion extends Entity {
 
 	public Explosion(double x, double y, double radius, BasicLevel level, double explosionPower) {
 		super(x, y, radius, radius, level);
-
+	
 		this.explosionPower = explosionPower;
-		if (radius <= 40) {
+		if (radius < 40) {
 			SoundEffect.EXPLOSION1.play();
 
 			ani = new Animation(AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS, Animations.SMALLEXPLOSION), 18, 0, x, y, level);
@@ -56,6 +56,6 @@ public class Explosion extends Entity {
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
-		setNetworkObjectType(NetworkObjectType.EXPLOSION);
+		setNetworkObjectType(NetworkObjectType.NO_SYNC);
 	}
 }

@@ -10,6 +10,11 @@ public interface NetworkObject {
 
 	public NetworkObjectType getNetworkObjectType();
 
+	public void handleMessage(String[] message);
+	public void initNetworkValues();	
+	public void remove();
+	public boolean isRemoved();
+
 	public void setId(int value);
 
 	public void setSpeed(double dx, double dy);
@@ -20,6 +25,6 @@ public interface NetworkObject {
 
 	public void setIsOnlineGameClient(boolean isClient);
 
-	public boolean getIsIsOnlineGameClient();
+	public boolean IsOnlineGameClient();
 
 }

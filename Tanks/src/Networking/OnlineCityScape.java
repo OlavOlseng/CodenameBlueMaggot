@@ -1,127 +1,201 @@
 package Networking;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Stack;
+
+import java.util.concurrent.locks.ReentrantLock;
+import entity.Package;
+import level.BasicLevel;
+
 import entity.Entity;
+import entity.Explosion;
+import entity.FloatingPoint;
+import entity.ScoreBubble;
 import entity.Shell;
+import entity.Tank;
 import inputhandler.InputHandler;
 import baseGame.BaseGame;
+import baseGame.derp;
 import blueMaggot.maps.cityScape;
 
 public class OnlineCityScape extends cityScape {
 	private int objectCount = 0;
-	private HashMap<Integer, NetworkObject> networkObjects;
-	private Stack<double[]> movementsToDo;
+
+	private HashMap<Integer,NetworkObject> networkObjects;
+	private ArrayList<String[]> movementsToDo;
+	
+
+	
+
 	private long lastTime;
+	private boolean isClient;
 
 	public OnlineCityScape(BaseGame game, InputHandler handler) {
-
+		
 		super(game, handler);
 
+		if(derp.playerNumber != 1)
+			isClient = true;
+
+
 	}
 
 	@Override
-	public void init() {
-		networkObjects = new HashMap<Integer, NetworkObject>();
-		movementsToDo = new Stack<double[]>();
+
+	public void init(){
+		
+		networkObjects= new HashMap<Integer, NetworkObject>();
+		movementsToDo = new ArrayList<String[]>();
 		lastTime = System.currentTimeMillis();
-
 		super.init();
+	
 	}
-
+	@Override
+	public void addPlayers(){
+		Random rand = new Random();
+		
+		Tank player1 = new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this);
+		Tank player2 = new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this);
+		player1.setIsOnlineGameClient(isClient);
+		player2.setIsOnlineGameClient(isClient);
+		
+		addEntity(player1);
+		addEntity(player2);
+		
+	}
+	
 	@Override
 	public void addEntity(Entity entity) {
-
+		if(entity.getNetworkObjectType() != NetworkObjectType.NO_SYNC){
 		networkObjects.put(new Integer(objectCount), entity);
 
 		entity.setId(objectCount);
 		objectCount++;
+		}
+		
 		super.addEntity(entity);
-
-	}
-
-	public void catchResponse(String entityData) {
-		System.out.println(entityData);
-		String[] objects = entityData.split("\\?");
-
-		for (int i = 1; i < objects.length; i++) {
-			String[] properties = objects[i].split("\\'");
-
-			double[] instructions = new double[6];
-			// id
-			instructions[0] = Double.parseDouble(properties[1]);
-			// type
-			instructions[1] = Double.parseDouble(properties[2]);
-			// x
-			instructions[2] = Double.parseDouble(properties[3]);
-			// y
-			instructions[3] = Double.parseDouble(properties[4]);
-			// dx
-			instructions[4] = Double.parseDouble(properties[5]);
-			// dy
-			instructions[5] = Double.parseDouble(properties[6]);
-
-			synchronized (movementsToDo) {
-				movementsToDo.add(instructions);
-			}
 
 		}
 
+public void addEntity(Entity ent,Integer id){
+	ent.setIsOnlineGameClient(true);
+	networkObjects.put(id, ent);
+	objectCount++;
+	super.addEntity(ent);
 	}
+
+	public void catchResponse(String entityData){
+		
+		String[] objects = entityData.split("\\?");
+		
+		for (int i = 1;i<objects.length;i++){
+			String[] properties = objects[i].split("\\'");	
+			synchronized (movementsToDo) {
+				movementsToDo.add(properties);
+				
+			}
+		
+			
+	}
+		
+	}
+
+	
+
+	public HashMap<Integer,NetworkObject> getNetworkObjects(){
+		return networkObjects;
+	}
+	@Override 
+	protected boolean shouldSpawnBubble() {
+		if(isClient)
+			return false;
+		else
+		return super.shouldSpawnBubble();
+	}
+
+
 
 	@Override
 	public void tick(double dt) {
 		NetworkObject obj;
 		double time;
-		synchronized (movementsToDo) {
 
-			if (movementsToDo.size() > 0) {
-				time = (System.currentTimeMillis() - lastTime) * 0.0625;
-
+		
+		synchronized (movementsToDo) {	
+			if(movementsToDo.size()>0){
+				time = ( System.currentTimeMillis() -lastTime)*0.0625;
+			
 				dt = time;
-				while (movementsToDo.size() > 0) {
+			
+			for(int i = 0;i<movementsToDo.size();i++){
 
-					double[] move = movementsToDo.pop();
+			String[] move = movementsToDo.get(i);
+			
+			int id = (int)Double.parseDouble(move[1]);
+			int type  = (int)Double.parseDouble(move[2]);
+		
+		
+			
+			if((obj = networkObjects.get(id)) != null){
+//				if(obj.getNetworkObjectType() == NetworkObjectType.TANK){
+//					System.out.println(move[4]);
+//					System.out.println(move[5]);
+//				}
+				boolean didDie = Boolean.parseBoolean(move[3]);
+				obj.handleMessage(move);
+				if(didDie){
+					
+					networkObjects.remove(obj);
+					entities.remove(obj);
+					obj.remove();
+				}
+					
+				}else{
+					NetworkObject ent = null;
+					if(NetworkObjectType.TANK.equals(type))
+						return;
+					else
+						if(NetworkObjectType.SHELL.equals(type))
+							 ent = new Shell(0, 0, this, 0, 0);
+							
+							
 
-					int type = (int) move[1];
-					double x = move[2];
-					double y = move[3];
-					double dx = move[4];
-					double dy = move[5];
+					/*else
+						if(NetworkObjectType.SCORE_BUBBLE.equals(type))
+							ent = new ScoreBubble(new FloatingPoint(0, 0), 4,this, 0.5, 0, 0);
+								
+						else
+							if(NetworkObjectType.EXPLOSION.equals(type))
+								ent = new Explosion(0,0,0,this,0);
+							else
+								if(NetworkObjectType.PACKAGE.equals(type))
+									ent = new Package(new FloatingPoint(0, 0),(BasicLevel)this);*/
+						
+					
+					if(ent != null){
+					System.out.println("new");
+					ent.handleMessage(move);
+					addEntity((Entity)ent, id);
+					
 
-					if ((obj = networkObjects.get((int) move[0])) != null) {
-						obj.setLocation(x, y);
-						obj.setSpeed(dx, dy);
-						obj.setIsOnlineGameClient(true);
-
-					} else {
-						if (NetworkObjectType.TANK.equals(type)) {
-
-						} else {
-							if (NetworkObjectType.SHELL.equals(type)) {
-								NetworkObject ent = new Shell(x, y, this, 0, 0);
-								addEntity((Entity) ent);
-								networkObjects.put(objectCount, ent);
-								ent.setId(objectCount);
-								objectCount++;
-
-								ent.setIsOnlineGameClient(true);
-
-							}
-						}
 					}
 				}
 
-				super.tick(time);
+				
 
-				lastTime = System.currentTimeMillis();
-
-				return;
+				
 			}
+			super.tick(time);
+			movementsToDo = new ArrayList<String[]>();
+			lastTime = System.currentTimeMillis();
+			return;
 		}
 
 		super.tick(dt);
 
 	}
 
-}
+	}
+	}

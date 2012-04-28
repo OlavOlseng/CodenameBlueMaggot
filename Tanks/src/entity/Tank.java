@@ -360,6 +360,11 @@ public class Tank extends Entity {
 
 	}
 
+	
+	@Override
+	public void handleMessage(String[] msg){
+		super.handleMessage(msg);
+	}
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub

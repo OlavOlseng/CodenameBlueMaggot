@@ -28,7 +28,6 @@ public class cityScape extends BasicLevel {
 		super(game, handler);
 		terrain = new Terrain(Game.SELECTED_LEVEL_TERRAIN);
 		ResourceManager.setTerrain(terrain);
-
 		ResourceManager.setBackGround(new RGBImage(Game.SELECTED_LEVEL_BACKGROUND));
 
 		SoundEffect.SPAWN.play();
@@ -36,14 +35,18 @@ public class cityScape extends BasicLevel {
 
 	public void init() {
 
-		ResourceManager.setBackGround(new RGBImage(Game.SELECTED_LEVEL_BACKGROUND));
 		initSpawn();
 
-		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this));
-		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this));
+		addPlayers();
 
 		SoundEffect.SPAWN.play();
 		addEntity(new Package(bubbleSpawns.get(1), this));
+
+	}
+
+	public void addPlayers() {
+		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this));
+		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this));
 
 	}
 
@@ -68,10 +71,14 @@ public class cityScape extends BasicLevel {
 	@Override
 	public void tick(double dt) {
 		super.tick(dt);
-		int ticket = rand.nextInt(200);
-		if (ticket == 5) {
+		if (shouldSpawnBubble()) {
 			spawnBubble();
 		}
+	}
+
+	protected boolean shouldSpawnBubble() {
+		int ticket = rand.nextInt(200);
+		return ticket == 5;
 	}
 
 	public void onDraw(Renderer renderer) {

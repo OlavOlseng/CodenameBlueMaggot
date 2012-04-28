@@ -102,6 +102,8 @@ public class ScoreBubble extends Entity {
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - 2 * getYr()), img.getWidth(), img.getHeight());
 	}
 
+	
+	
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub

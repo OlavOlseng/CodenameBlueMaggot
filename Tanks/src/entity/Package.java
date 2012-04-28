@@ -2,6 +2,7 @@ package entity;
 
 import sound.SoundEffect;
 import gfx.ResourceManager;
+import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import level.BasicLevel;
@@ -98,6 +99,7 @@ public class Package extends Entity {
 		for (Tank player : level.getPlayers()) {
 			if (intersectsEntity(player)) {
 				player.getWeaponList().get(wep.i).addAmmo();
+				System.out.println(wep);
 				SoundEffect.RELOAD.play();
 				remove();
 			}
@@ -121,7 +123,7 @@ public class Package extends Entity {
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
-
+		setNetworkObjectType(NetworkObjectType.PACKAGE);
 	}
 
 }
