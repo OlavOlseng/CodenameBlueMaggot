@@ -141,7 +141,8 @@ public class ConnectionManager {
 						}
 
 						String head = new String(header);
-					
+						
+						System.out.println(head.length()!= 6);
 						double len = Double.parseDouble((head.substring(1, 6)));
 						byte[] data = new byte[(int) len];
 						offset = 0;

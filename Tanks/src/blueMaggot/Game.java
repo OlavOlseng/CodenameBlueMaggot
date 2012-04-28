@@ -5,6 +5,8 @@ import inputhandler.InputHandler;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.io.File;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -37,6 +39,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public BlueMaggot blueMaggot;
 	private InputHandler handler = new InputHandler();
 
+	public DecimalFormat formater;
 	private cityScape level;
 
 	// customizable player variables!
@@ -58,7 +61,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	public Game() {
 		handler = new InputHandler();
-
+		formater = new DecimalFormat("#00000");
+		
 		addKeyListener(handler);
 		// DatagramPacket e;
 	}
@@ -76,7 +80,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
-		System.out.println(!gameOver());
+	
 		if (!PAUSED || !gameOver()) {
 			level.tick(deltaTime);
 			didTick = true;
@@ -133,21 +137,21 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void readData(byte[] data) {
+		
 		if (data.length > 0) {
+			System.out.println(new String(data));
 			onlineLevel.catchResponse(new String(data));
-
+			
 		}
+		
 	}
 
 	@Override
 	public byte[] onWrite() {
 		String msgBody = "";
-
 		Collection<NetworkObject> objects = onlineLevel.getNetworkObjects().values();
-
 		List<Integer> deadKeys = new ArrayList<Integer>();
 		synchronized (objects) {
-
 			for (NetworkObject obj : objects) {
 				synchronized (obj) {
 
@@ -167,19 +171,20 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			}
 
 			String msgHeader = "1" + to5DigitString(msgBody.length());
-
+			
 			return (msgHeader + msgBody).getBytes();
 		}
 
 	}
 
 	private String to5DigitString(double x) {
-
-		String part1 =String.format("%d",(int)Math.floor(x));
-		while(5-part1.length() >0){
-			part1 = "0" + part1;
+		
+		if(x>=0){
+			return formater.format(x);
+		}else{
+			return"-" +formater.format(Math.abs(x)).substring(1);
 		}
-		return part1;	
+	
 	}
 
 	@Override
