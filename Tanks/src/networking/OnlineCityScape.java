@@ -56,6 +56,7 @@ public class OnlineCityScape extends cityScape {
 	public boolean shouldSpawnCrate(){
 		return !isClient;
 	}
+	@Override
 	public boolean shouldSpawnBubbleHearth(){
 		return !isClient;
 	}

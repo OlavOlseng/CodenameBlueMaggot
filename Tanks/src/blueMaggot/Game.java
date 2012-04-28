@@ -5,7 +5,6 @@ import inputhandler.InputHandler;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.io.File;
-import java.net.DatagramPacket;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -14,7 +13,6 @@ import networking.ConnectionDelegate;
 import networking.ConnectionManager;
 import networking.NetworkObject;
 import networking.OnlineCityScape;
-
 
 import baseGame.BaseGame;
 import baseGame.Rendering.Renderer;
@@ -60,14 +58,9 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	public Game() {
 		handler = new InputHandler();
-<<<<<<< HEAD
-		addKeyListener(handler);
 
-=======
-		
 		addKeyListener(handler);
-		//DatagramPacket e; 
->>>>>>> 731bf0859d6e4ccd8cc844850f8328016e53c4f5
+		// DatagramPacket e;
 	}
 
 	public Game(BlueMaggot blueMaggot) {
@@ -133,11 +126,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		}
 	}
 
-	
 	@Override
 	public void connectionFailed(String message) {
 		System.out.println(message);
 	}
+
 	@Override
 	public void readData(byte[] data) {
 		if (data.length > 0) {
@@ -154,47 +147,21 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		List<Integer> deadKeys = new ArrayList<Integer>();
 		synchronized (objects) {
-<<<<<<< HEAD
 
 			for (NetworkObject obj : objects) {
+				synchronized (obj) {
 
-				String objectString = obj.getObject();
-=======
-			
-		for ( NetworkObject obj:objects) {
-			synchronized (obj) {
-				
-			
-			String objectString = obj.getObject();
-			
-			if(objectString !=null)
-			msgBody += "?"+ objectString;
-			
-			
-			if(obj.isRemoved()){
-				deadKeys.add(obj.getId());
-			}	
-			
-				
-		}
-		}
-		for(Integer key:deadKeys){
-			onlineLevel.getNetworkObjects().remove(key);
-		}
+					String objectString = obj.getObject();
 
-		String msgHeader = "1" + to5DigitString(msgBody.length());
-		
->>>>>>> 731bf0859d6e4ccd8cc844850f8328016e53c4f5
+					if (objectString != null)
+						msgBody += "?" + objectString;
 
-				if (objectString != null)
-					msgBody += "?" + objectString;
+					if (obj.isRemoved()) {
+						deadKeys.add(obj.getId());
+					}
 
-				if (obj.isRemoved()) {
-					deadKeys.add(obj.getId());
 				}
-
 			}
-
 			for (Integer key : deadKeys) {
 				onlineLevel.getNetworkObjects().remove(key);
 			}
@@ -207,11 +174,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	}
 
 	private String to5DigitString(double x) {
-		int part1 =(int)Math.floor(x);
-		double part2 =x-part1;
+		int part1 = (int) Math.floor(x);
+		double part2 = x - part1;
 		String stringPart1 = String.format("%d", part1);
-		String stringPart2 = String.format("%."+(5-stringPart1.length() -1) + "f",part2).substring(2);
-		return stringPart1+stringPart2;
+		String stringPart2 = String.format("%." + (5 - stringPart1.length() - 1) + "f", part2).substring(2);
+		return stringPart1 + stringPart2;
 	}
 
 	@Override

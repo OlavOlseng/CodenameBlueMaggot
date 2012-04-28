@@ -79,6 +79,7 @@ public class Mine extends Projectile {
 		System.out.println(msg);
 		return msg;
 	}
+	@Override
 	public void handleMessage(String[] msg){
 		super.handleMessage(msg);
 		boolean armed = Boolean.parseBoolean(msg[6]);

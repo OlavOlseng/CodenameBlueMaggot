@@ -59,6 +59,7 @@ public class AirStrikeBeacon extends Projectile {
 		SoundEffect.CALLDOWN2.play();
 	}
 
+	@Override
 	public void tick(double dt) {
 		super.tick(dt);
 		handleIntersections();

@@ -20,6 +20,7 @@ public class MenuBackground extends Menu {
 		putCenter(this, width, height);
 	}
 
+	@Override
 	public void paint(Graphics g) {
 		setVisible(menuTitle.isVisible());
 	}

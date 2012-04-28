@@ -2,7 +2,6 @@ package entity.weapon;
 
 import sound.SoundEffect;
 import entity.AirStrikeBeacon;
-import entity.Shell;
 import level.BasicLevel;
 
 public class Airstrike implements Weapon{

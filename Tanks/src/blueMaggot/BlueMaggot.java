@@ -7,7 +7,6 @@ import gfx.UIElement;
 import gfx.UIScoreBoard;
 import inputhandler.InputHandler;
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
