@@ -1,6 +1,8 @@
 package sound;
 
 import java.io.*;
+import java.net.URL;
+
 import javax.sound.sampled.*;
 
 /**
@@ -32,9 +34,9 @@ public enum SoundEffect {
 	SoundEffect(String soundFileName) {
 		try {
 			// Use URL (instead of File) to read from disk and JAR.
-			File file = new File("./res/sound/" + soundFileName);
+			URL url = getClass().getResource(soundFileName);
 			// Set up an audio input stream piped from the sound file.
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
 			// Get a clip resource.
 			clip = AudioSystem.getClip();
 			// Open audio clip and load samples from the audio input stream.
