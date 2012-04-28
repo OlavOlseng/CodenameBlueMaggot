@@ -41,8 +41,6 @@ public class cityScape extends BasicLevel {
 
 		SoundEffect.SPAWN.play();
 
-		addEntity(new BubbleHearth(bubbleSpawns.get(1), this));
-		addEntity(new Package(bubbleSpawns.get(2), this));
 
 	}
 	
@@ -69,6 +67,14 @@ public class cityScape extends BasicLevel {
 		this.addEntity(new ScoreBubble(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), this, 0.5, rand.nextInt(360), 100));
 		SoundEffect.SPAWN.play();
 	}
+	public void spawnBubbleHearth() {
+		this.addEntity(new BubbleHearth(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), this));
+		SoundEffect.SPAWN.play();
+	}
+	public void spawnCrate() {
+		this.addEntity(new Package(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), this));
+		SoundEffect.SPAWN.play();
+	}
 
 	@Override
 	public void tick(double dt) {
@@ -76,17 +82,25 @@ public class cityScape extends BasicLevel {
 		if (shouldSpawnBubble()) {
 			spawnBubble();
 		}
+		if (shouldSpawnCrate()) {
+			spawnCrate();
+		}
+		if (shouldSpawnBubbleHearth()) {
+			spawnBubbleHearth();
+		}
 	}
 
 	protected boolean shouldSpawnBubble() {
-		int ticket = rand.nextInt(200);
+		int ticket = rand.nextInt(300);
 		return ticket == 5;
 	}
 	protected boolean shouldSpawnCrate() {
-		return true;
+		int ticket = rand.nextInt(500);
+		return ticket == 10;
 	}
 	protected boolean shouldSpawnBubbleHearth() {
-		return true;
+		int ticket = rand.nextInt(800);
+		return ticket == 100;
 	}
 	public void onDraw(Renderer renderer) {
 		// draws backgorund recursively

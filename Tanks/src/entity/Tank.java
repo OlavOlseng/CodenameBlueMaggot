@@ -151,7 +151,6 @@ public class Tank extends Entity {
 	}
 
 	public int getScore() {
-		System.out.println("Score: " + score);
 		return score;
 	}
 
@@ -318,6 +317,7 @@ public class Tank extends Entity {
 
 	@Override
 	public void remove() {
+		score -= 100;
 		if (--life == 0) {
 			super.remove();
 			return;

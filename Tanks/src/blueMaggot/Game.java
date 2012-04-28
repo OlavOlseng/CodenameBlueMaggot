@@ -22,8 +22,8 @@ import blueMaggot.maps.cityScape;
 
 public class Game extends BaseGame implements ConnectionDelegate {
 
-	public static int WIDTH = 1024;
-	public static int HEIGHT = 768;
+	public static int WIDTH = 1280;
+	public static int HEIGHT = 720;
 	public static Dimension DIMENSION = new Dimension(WIDTH, HEIGHT);
 	public boolean didTick = false;
 	public static int ALPHA_MASK = -1;
@@ -44,11 +44,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	// customizable player variables!
 	public String hostIp;
-	public String nickPlayerOne = "carl";
+	public String nickPlayerOne = "seaman carl";
 	public String nickPlayerTwo = "biker bob";
 	public boolean isHost = false;
 	public static File SELECTED_LEVEL_TERRAIN = new File("./lvl/Cityscape_terrain.png");
-	public static File SELECTED_LEVEL_BACKGROUND = new File("./lvl/Cityscape_background.png");
+	public static File SELECTED_LEVEL_BACKGROUND = new File("./lvl/Cityscape2_background.png");
 	public static boolean running = false;
 
 	// ui elements

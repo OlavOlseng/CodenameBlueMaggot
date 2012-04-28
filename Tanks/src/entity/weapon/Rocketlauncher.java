@@ -6,9 +6,9 @@ import level.BasicLevel;
 
 public class Rocketlauncher implements Weapon {
 
-	int cooldownTime = 240;
+	int cooldownTime = 120;
 	int currentCooldown = 0;
-	private int ammo = 3;
+	private int ammo = 4;
 
 	@Override
 	public void fire(double x, double y, BasicLevel level, double speedPercent, double angle) {
@@ -22,7 +22,7 @@ public class Rocketlauncher implements Weapon {
 
 	@Override
 	public void setAmmo() {
-		ammo += 3;
+		ammo += 4;
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class Rocketlauncher implements Weapon {
 
 	@Override
 	public void addAmmo() {
-		ammo += 3;
+		ammo += 4;
 	}
 
 	@Override

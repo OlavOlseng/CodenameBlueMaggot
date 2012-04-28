@@ -15,7 +15,7 @@ public class Minigun implements Weapon{
 	int bulletsFired = 0;
 	double currentCooldown = 0;
 	double cooldownTime = 120;
-	int ammo = 5;
+	int ammo = 0;
 	Tank owner;
 	BasicLevel level;
 	Random rand = new Random();
@@ -27,6 +27,7 @@ public class Minigun implements Weapon{
 	public void fire(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		this.level = level; 
 		if (currentCooldown <= 0 && ammo > 0) {
+			ammo--;
 			firing = true;
 			bulletsFired = 0;
 			currentCooldown = cooldownTime;
@@ -50,7 +51,7 @@ public class Minigun implements Weapon{
 	
 	public void fireEvent(){
 		level.addEntity(new Bullet(owner.getCrosshairLocation().getX(), owner.getCrosshairLocation().getY(), level, owner.getMuzzleAngle() + 3 * rand.nextDouble() - 3*rand.nextDouble()));
-		SoundEffect.EXPLOSION1.play();
+//		SoundEffect.EXPLOSION1.play();
 	}
 
 	@Override

@@ -6,7 +6,7 @@ import level.BasicLevel;
 
 public class Airstrike implements Weapon{
 	
-	int ammo = 5;
+	int ammo = 0;
 	int cooldownTime = 30;
 	int currentCooldown = 0;
 	
@@ -23,7 +23,7 @@ public class Airstrike implements Weapon{
 	
 	@Override
 	public void addAmmo() {
-		ammo += 1;
+		ammo += 3;
 		
 	}
 	
