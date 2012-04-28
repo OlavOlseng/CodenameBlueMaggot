@@ -59,8 +59,8 @@ public class MenuOptions extends Menu {
 
 	public void apply(Game game) {
 		game.isHost = boxIsHost.getState();
-		Game.NICK_PLAYER_ONE = fieldPlayerOne.msg;
-		Game.NICK_PLAYER_TWO = fieldPlayerTwo.msg;
-		Game.HOSTIP = fieldIp.msg;
+		game.nickPlayerOne = fieldPlayerOne.msg;
+		game.nickPlayerTwo = fieldPlayerTwo.msg;
+		game.hostIp = fieldIp.msg;
 	}
 }

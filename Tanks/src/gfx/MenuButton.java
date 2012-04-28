@@ -65,7 +65,7 @@ public class MenuButton extends Button {
 					menu.repaint();
 					game.requestFocus();
 				} else if (label.equals("newGame")) {
-					if (Game.NICK_PLAYER_ONE == null || Game.NICK_PLAYER_TWO == null)
+					if (game.nickPlayerOne == null || game.nickPlayerTwo == null)
 						return;
 					try {
 						game.runLoop.stop();
@@ -98,8 +98,8 @@ public class MenuButton extends Button {
 				} else if (label.endsWith("lvls"))
 					game.blueMaggot.menuLevelSelect.setVisible(true);
 
-				System.out.println("Player One: " + Game.NICK_PLAYER_ONE + " - Player Two: " + Game.NICK_PLAYER_TWO + " - Is Host: " + game.isHost
-						+ " - Host IP: " + Game.HOSTIP);
+				System.out.println("Player One: " + game.nickPlayerOne + " - Player Two: " + game.nickPlayerTwo + " - Is Host: " + game.isHost
+						+ " - Host IP: " + game.hostIp);
 				repaint();
 			}
 

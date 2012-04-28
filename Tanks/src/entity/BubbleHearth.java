@@ -104,7 +104,5 @@ public class BubbleHearth extends Entity {
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
 		setNetworkObjectType(NetworkObjectType.BUBBLE_HEARTH);
-		
 	}
-
 }

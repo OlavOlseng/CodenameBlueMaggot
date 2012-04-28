@@ -17,7 +17,7 @@ public abstract class Menu extends Panel {
 
 	protected int width = 490;
 	protected int height = 304;
-	protected int border = 5;
+	public int border = 5;
 
 	public static Color green = new Color(137, 255, 172);
 	public static Color blue = new Color(153, 210, 228);

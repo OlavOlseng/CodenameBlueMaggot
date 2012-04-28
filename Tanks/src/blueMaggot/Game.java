@@ -37,12 +37,12 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public BlueMaggot blueMaggot;
 	private InputHandler handler = new InputHandler();
 
-	private cityScape level;
+	public cityScape level;
 
 	// customizable player variables!
-	public static String HOSTIP;
-	public static String NICK_PLAYER_ONE = "carl";
-	public static String NICK_PLAYER_TWO = "biker bob";
+	public String hostIp;
+	public String nickPlayerOne = "carl";
+	public String nickPlayerTwo = "biker bob";
 	public boolean isHost = false;
 	public static File SELECTED_LEVEL_TERRAIN = new File("./lvl/Cityscape_terrain.png");
 	public static File SELECTED_LEVEL_BACKGROUND = new File("./lvl/Cityscape_background.png");
@@ -114,7 +114,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	}
 
 	/* network stuff */
-	public void initConnection(boolean isHost,String addr) {
+	public void initConnection(boolean isHost, String addr) {
 		connection = new ConnectionManager(this);
 		if (isHost) {
 			connection.becomeHost();
@@ -174,11 +174,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	private String to5DigitString(double x) {
 
-		String part1 =String.format("%d",(int)Math.floor(x));
-		while(5-part1.length() >0){
+		String part1 = String.format("%d", (int) Math.floor(x));
+		while (5 - part1.length() > 0) {
 			part1 = "0" + part1;
 		}
-		return part1;	
+		return part1;
 	}
 
 	@Override

@@ -80,7 +80,7 @@ public class Tank extends Entity {
 	public Tank(FloatingPoint point, int playerNumber, InputHandler input, BasicLevel level) {
 		super(point.getX(), point.getY(), 11, 6, level);
 		this.level.getPlayers().add(this);
-		muzzleAngle = 0;
+		muzzleAngle = 90;
 		muzzleLength = 20;
 		this.playerNumber = playerNumber;
 		this.input = input;
@@ -141,6 +141,7 @@ public class Tank extends Entity {
 	}
 
 	public int getScore() {
+		System.out.println("Score: " + score);
 		return score;
 	}
 
@@ -368,17 +369,18 @@ public class Tank extends Entity {
 	}
 
 	@Override
-	public String getObject(){
+	public String getObject() {
 		return super.getObject() + "'" + to5DigitString(this.muzzleAngle);
 	}
-	
+
 	@Override
-	public void handleMessage(String[] msg){
+	public void handleMessage(String[] msg) {
 		super.handleMessage(msg);
 		double muzzleAngle = Double.parseDouble(msg[6]);
 		setMuzzleAngle(muzzleAngle);
-		
+
 	}
+
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
