@@ -6,7 +6,7 @@ import entity.Shell;
 
 public class ShellGun implements Weapon {
 
-	int cooldownTime = 25;
+	int cooldownTime = 30;
 	int currentCooldown = 0;
 
 	@Override
