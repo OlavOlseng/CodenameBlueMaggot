@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +24,7 @@ public class MenuButton extends Button {
 
 	private Menu menu;
 	private MenuButton menuButton;
+	private Color btnColor = Menu.pink;
 
 	public MenuButton(String label, Menu menu, Game game, Dimension size) {
 		menuButton = this;
@@ -47,11 +50,11 @@ public class MenuButton extends Button {
 			e.printStackTrace();
 		}
 
-		addActionListener(new ActionListener() {
+		addMouseListener(new MouseListener() {
 
-			@SuppressWarnings("deprecation")
 			@Override
-			public void actionPerformed(ActionEvent event) {
+			public void mouseReleased(MouseEvent arg0) {
+				btnColor = Menu.pinkDark;
 				System.out.println("Clicked: " + label);
 				if (label.equals("exit"))
 					System.exit(1);
@@ -61,6 +64,7 @@ public class MenuButton extends Button {
 					if (!game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible())
 						Game.PAUSED = false;
 					menu.setVisible(false);
+					menu.repaint();
 					game.requestFocus();
 				} else if (label.equals("newGame")) {
 					if (Game.NICK_PLAYER_ONE == null || Game.NICK_PLAYER_TWO == null)
@@ -72,6 +76,7 @@ public class MenuButton extends Button {
 					}
 					Game.PAUSED = false;
 					menu.setVisible(false);
+					menu.repaint();
 					game.startReuglarGame();
 					game.requestFocus();
 				} else if (label.equals("newOnlineGame")) {
@@ -80,6 +85,7 @@ public class MenuButton extends Button {
 					} catch (Exception e) {
 					}
 					menu.setVisible(false);
+					menu.repaint();
 					game.startOnlineGame();
 					game.requestFocus();
 				} else if (label.equals("options"))
@@ -90,12 +96,39 @@ public class MenuButton extends Button {
 					else if (menu instanceof MenuOptions)
 						game.blueMaggot.menuOptions.apply(game);
 					menu.setVisible(false);
+					menu.repaint();
 				} else if (label.endsWith("lvls"))
 					game.blueMaggot.menuLevelSelect.setVisible(true);
 
 				System.out.println("Player One: " + Game.NICK_PLAYER_ONE + " - Player Two: " + Game.NICK_PLAYER_TWO + " - Is Host: " + game.isHost
 						+ " - Host IP: " + Game.HOSTIP);
+				validate();
 				repaint();
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				btnColor = Menu.green;
+				validate();
+				repaint();
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				btnColor = Menu.pink;
+				validate();
+				repaint();
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				btnColor = Menu.pinkDark;
+				validate();
+				repaint();
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
 			}
 		});
 	}
@@ -103,7 +136,7 @@ public class MenuButton extends Button {
 	// paint images maybe
 	@Override
 	public void paint(Graphics g) {
-		setForeground(Menu.pink);
+		setForeground(btnColor);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(bgImage, (getWidth() - bgImage.getWidth()) / 2, (getHeight() - bgImage.getHeight()) / 2, null);
 	}

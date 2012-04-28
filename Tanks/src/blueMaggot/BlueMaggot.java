@@ -7,6 +7,7 @@ import gfx.UIElement;
 import gfx.uiScoreBoard;
 import inputhandler.InputHandler;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -33,6 +34,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 	private UIElement ui2;
 
+	private MenuBackground menuBackground;
 
 	public BlueMaggot() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,24 +49,26 @@ public class BlueMaggot extends JFrame implements Runnable {
 		menuOptions = new MenuOptions(game);
 		uiScoreBoard = new uiScoreBoard();
 		menuLevelSelect = new MenuLevelSelect(game);
+		menuBackground = new MenuBackground(menuTitle);
 		gamePanel = new JPanel();
-		
-		ui2 = new UIElement(0,0,100,40,2);
-//		ui2 = new UIElement(Game.WIDTH-100,0,100,40,2);
+
+		ui2 = new UIElement(0, 0, 100, 40, 2);
+		// ui2 = new UIElement(Game.WIDTH-100,0,100,40,2);
 
 		layeredPane.add(gamePanel, new Integer(0));
-//		layeredPane.add(ui, new Integer(1));
-//		layeredPane.add(ui2, new Integer(1));
+		// layeredPane.add(ui, new Integer(1));
+		// layeredPane.add(ui2, new Integer(1));
+		layeredPane.add(menuBackground, new Integer(9));
 		layeredPane.add(menuTitle, new Integer(10));
 		layeredPane.add(menuOptions, new Integer(11));
 		layeredPane.add(menuLevelSelect, new Integer(11));
-//		layeredPane.add(uiScoreBoard, new Integer(2));
+		// layeredPane.add(uiScoreBoard, new Integer(2));
 
 		add(layeredPane);
 		pack();
-		repaint();
 		setLocationRelativeTo(null);
 		setVisible(true);
+		repaint();
 	}
 
 	private void setUpGame() {
@@ -90,6 +94,8 @@ public class BlueMaggot extends JFrame implements Runnable {
 			inputReal.releaseAll();
 			if (!menuTitle.isVisible()) {
 				menuTitle.setVisible(true);
+				menuBackground.setVisible(true);
+				menuTitle.repaint();
 				Game.PAUSED = true;
 			}
 		}

@@ -16,28 +16,20 @@ public abstract class Menu extends Panel {
 
 	protected Color menuBg;
 
-	private int width = 500;
-	private int height = 314;
-	private int border = 5;
+	protected int width = 490;
+	protected int height = 304;
+	protected int border = 5;
 
 	public static Color green = new Color(137, 255, 172);
 	public static Color blue = new Color(153, 210, 228);
+	public static Color blueDark = new Color(108, 209, 234);
 	public static Color pink = new Color(255, 212, 218);
+	public static Color pinkDark = new Color(254, 186, 197);
 
 	public Menu() {
 		putCenter(this, width, height);
 		setLayout(new GridBagLayout());
-		repaint();
 		setBackground(Menu.blue);
-	}
-
-	@Override
-	public void paint(Graphics g) {
-		g.setColor(Color.black);
-		g.fillRect(0, 0, getWidth(), getHeight());
-		g.setColor(Menu.blue);
-		g.fillRect(border, border, getWidth() - border * 2, getHeight() - border * 2);
-		super.paint(g);
 	}
 
 	public void putCenter(Component c, int width, int height) {
