@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -20,6 +22,10 @@ public class MenuLevelButton extends Button {
 	private int height = 80;
 	private File lvlTerrain;
 	private File lvlBackground;
+	private int border = 2;
+	private Color btnColor = Color.black;
+	private boolean isSelected = false;
+	private boolean isHover = false;
 
 	public MenuLevelButton(final File lvl, final MenuLevelSelect menuLevelSelect) {
 		lvlTerrain = new File(lvl.getParent() + "\\" + lvl.getName().split("_")[0] + "_terrain.png");
@@ -36,21 +42,63 @@ public class MenuLevelButton extends Button {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		addActionListener(new ActionListener() {
+		addMouseListener(new MouseListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void mouseReleased(MouseEvent arg0) {
+				// btnColor = Menu.pinkDark;
+				repaint();
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				btnColor = Menu.green;
 				menuLevelSelect.selectedLevelTerrain = lvlTerrain;
 				menuLevelSelect.selectedLevelBackground = lvlBackground;
+				for (MenuLevelButton btn : menuLevelSelect.lvlBtns) {
+					btn.isSelected = false;
+					btn.repaint();
+				}
+				isSelected = true;
+				isHover = false;
+				repaint();
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				isHover = false;
+				repaint();
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				isHover = true;
+				repaint();
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
 			}
 		});
 	}
 
 	@Override
 	public void paint(Graphics g) {
-		g.setColor(Color.white);
+		if (isHover)
+			btnColor = Menu.pinkDark;
+		else {
+			if (isSelected)
+				btnColor = Menu.green;
+			else
+				btnColor = Color.black;
+		}
+		g.setColor(btnColor);
 		g.fillRect(0, 0, width, height);
 		g.drawImage(thumbBg, 0, 0, null);
 		g.drawImage(thumb, 0, 0, null);
+		g.fillRect(0, 0, border, height);
+		g.fillRect(width - border, 0, border, height);
+		g.fillRect(0, 0, width, border);
+		g.fillRect(0, height - border, width, border);
 	}
 }
