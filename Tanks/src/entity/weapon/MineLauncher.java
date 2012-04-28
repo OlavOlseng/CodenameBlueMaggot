@@ -5,18 +5,18 @@ import level.BasicLevel;
 
 public class MineLauncher implements Weapon {
 
-	private int ammo = 10;
+	private int ammo = 2;
 	private double currentCooldown = 0;
-	private int cooldownTime = 30;
+	private int cooldownTime = 40;
 
 	@Override
 	public void addAmmo() {
-		ammo += 2;
+		ammo += 4;
 	}
 
 	@Override
 	public void setAmmo() {
-		ammo = 2;
+		ammo = 4;
 	}
 
 	@Override
@@ -29,8 +29,8 @@ public class MineLauncher implements Weapon {
 		if (currentCooldown <= 0 && ammo > 0) {
 			level.addEntity(new Mine(x, y, level, angle));
 			currentCooldown = cooldownTime;
+			ammo--;
 		}
-		ammo--;
 	}
 
 	@Override
