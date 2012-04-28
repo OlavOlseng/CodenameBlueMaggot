@@ -24,6 +24,10 @@ public class MenuLevelButton extends Button {
 	public MenuLevelButton(final File lvl, final MenuLevelSelect menuLevelSelect) {
 		lvlTerrain = new File(lvl.getParent() + "\\" + lvl.getName().split("_")[0] + "_terrain.png");
 		lvlBackground = new File(lvl.getParent() + "\\" + lvl.getName().split("_")[0] + "_background.png");
+
+		if (!lvlBackground.exists())
+			lvlBackground = new File("./lvl/default_background.png");
+
 		setPreferredSize(new Dimension(width, height));
 		try {
 			thumb = ImageIO.read(lvlTerrain).getScaledInstance(width, height, Image.SCALE_FAST);

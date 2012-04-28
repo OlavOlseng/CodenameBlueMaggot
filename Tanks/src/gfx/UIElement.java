@@ -21,7 +21,7 @@ public class UIElement extends Panel {
 
 	@Override
 	public void paint(Graphics g) {
-		g.setColor(MenuTitle.MENU_BG);
+		g.setColor(Menu.blue);
 		g.fillRect(0, 0, width ,height);
 		if (player == 1) {
 			g.drawString("WATTUP", 10, 10);

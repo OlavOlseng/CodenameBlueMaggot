@@ -35,12 +35,12 @@ public class MenuLabel extends Label {
 			e.printStackTrace();
 		}
 		setText(label);
-		setBackground(MenuTitle.MENU_BG);
+		setBackground(Menu.blue);
 	}
 
 	@Override
 	public void paint(Graphics g) {
-		g.setColor(MenuTitle.MENU_BG);
+		g.setColor(Menu.blue);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(lblImage, 0, (getHeight() - lblImage.getHeight()) / 2, null);
 	}

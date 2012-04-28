@@ -56,7 +56,7 @@ public class MenuButton extends Button {
 				if (label.equals("exit"))
 					System.exit(1);
 				else if (label.equals("return")) {
-					if (!Game.running)
+					if (!Game.running && !game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible())
 						return;
 					if (!game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible())
 						Game.PAUSED = false;
@@ -103,7 +103,7 @@ public class MenuButton extends Button {
 	// paint images maybe
 	@Override
 	public void paint(Graphics g) {
-		setForeground(new Color(255, 212, 218));
+		setForeground(Menu.pink);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(bgImage, (getWidth() - bgImage.getWidth()) / 2, (getHeight() - bgImage.getHeight()) / 2, null);
 	}

@@ -1,7 +1,7 @@
 package Networking;
 
-import inputhandler.InputHandlerMenu;
+import inputhandler.InputHandler;
 
-public class NetworkInputHandler extends InputHandlerMenu {
+public class NetworkInputHandler extends InputHandler {
 
 }

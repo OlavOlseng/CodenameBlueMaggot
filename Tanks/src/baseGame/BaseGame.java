@@ -78,7 +78,6 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			while (deltaTime < msDelay) {
 
 				try {
-
 					Thread.sleep(msDelay - deltaTime);
 				} catch (InterruptedException e) {
 					e.printStackTrace();

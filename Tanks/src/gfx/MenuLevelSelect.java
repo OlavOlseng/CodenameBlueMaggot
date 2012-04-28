@@ -19,14 +19,16 @@ public class MenuLevelSelect extends Menu {
 		setVisible(false);
 		int gridx = 0;
 		int gridy = 0;
+		System.out.println(path.listFiles());
 		for (File lvl : path.listFiles()) {
-			if (!lvl.getName().contains("background"))
-				if (gridx < 4) {
+			if (lvl.getName().contains("terrain"))
+				if (gridx <= 3) {
 					add(new MenuLevelButton(lvl, this), new GBC(gridx, gridy, null).setInsets(10, 10, 10, 10));
-					gridx++;
+					++gridx;
 				} else {
 					gridx = 0;
-					gridy++;
+					++gridy;
+					add(new MenuLevelButton(lvl, this), new GBC(gridx, gridy, null).setInsets(10, 10, 10, 10));
 				}
 		}
 		add(new MenuButton("apply", this, game), new GBC(0, ++gridy, "left").setInsets(10, 10, 10, 10).setSpan(2, 1));

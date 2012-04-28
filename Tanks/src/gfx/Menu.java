@@ -20,18 +20,22 @@ public abstract class Menu extends Panel {
 	private int height = 314;
 	private int border = 5;
 
+	public static Color green = new Color(137, 255, 172);
+	public static Color blue = new Color(153, 210, 228);
+	public static Color pink = new Color(255, 212, 218);
+
 	public Menu() {
 		putCenter(this, width, height);
 		setLayout(new GridBagLayout());
 		repaint();
-		setBackground(MenuTitle.MENU_BG);
+		setBackground(Menu.blue);
 	}
 
 	@Override
 	public void paint(Graphics g) {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, getWidth(), getHeight());
-		g.setColor(MenuTitle.MENU_BG);
+		g.setColor(Menu.blue);
 		g.fillRect(border, border, getWidth() - border * 2, getHeight() - border * 2);
 		super.paint(g);
 	}

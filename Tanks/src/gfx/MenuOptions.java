@@ -27,9 +27,9 @@ public class MenuOptions extends Menu {
 
 		setVisible(false);
 
-		fieldIp = new MenuField(20);
-		fieldPlayerOne = new MenuField(20);
-		fieldPlayerTwo = new MenuField(20);
+		fieldIp = new MenuField(20,"ip");
+		fieldPlayerOne = new MenuField(20,"text");
+		fieldPlayerTwo = new MenuField(20,"text");
 
 		btnApply = new MenuButton("apply", this, game, btnSize);
 		btnReturn = new MenuButton("return", this, game, btnSize);
