@@ -43,9 +43,10 @@ public class MenuButton extends Button {
 	}
 
 	public void setUp() {
-		File img = new File("./res/titleMenu/" + label + ".png");
+		String img = "/titleMenu/" + label + ".png";
 		try {
-			bgImage = ImageIO.read(img);
+			System.out.println(img.toString());
+			bgImage = ImageIO.read(getClass().getResourceAsStream(img.toString()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -102,28 +103,24 @@ public class MenuButton extends Button {
 
 				System.out.println("Player One: " + Game.NICK_PLAYER_ONE + " - Player Two: " + Game.NICK_PLAYER_TWO + " - Is Host: " + game.isHost
 						+ " - Host IP: " + Game.HOSTIP);
-				validate();
 				repaint();
 			}
 
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				btnColor = Menu.green;
-				validate();
 				repaint();
 			}
 
 			@Override
 			public void mouseExited(MouseEvent arg0) {
 				btnColor = Menu.pink;
-				validate();
 				repaint();
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				btnColor = Menu.pinkDark;
-				validate();
 				repaint();
 			}
 
