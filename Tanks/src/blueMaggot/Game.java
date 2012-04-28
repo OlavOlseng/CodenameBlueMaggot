@@ -62,7 +62,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public Game() {
 		handler = new InputHandler();
 		formater = new DecimalFormat("#00000");
-		
+
 		addKeyListener(handler);
 		// DatagramPacket e;
 	}
@@ -119,7 +119,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	}
 
 	/* network stuff */
-	public void initConnection(boolean isHost,String addr) {
+	public void initConnection(boolean isHost, String addr) {
 		connection = new ConnectionManager(this);
 		if (isHost) {
 			connection.becomeHost();
@@ -137,17 +137,18 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void readData(byte[] data) {
-		
+
 		if (data.length > 0) {
-			System.out.println(new String(data));
-			onlineLevel.catchResponse(new String(data));
 			
+			onlineLevel.catchResponse(new String(data));
+
 		}
-		
+
 	}
 
 	@Override
 	public byte[] onWrite() {
+		
 		String msgBody = "";
 		Collection<NetworkObject> objects = onlineLevel.getNetworkObjects().values();
 		List<Integer> deadKeys = new ArrayList<Integer>();
@@ -170,21 +171,23 @@ public class Game extends BaseGame implements ConnectionDelegate {
 				onlineLevel.getNetworkObjects().remove(key);
 			}
 
-			String msgHeader = "1" + to5DigitString(msgBody.length());
 			
+
+			String msgHeader = "1" + to5DigitString(msgBody.length());
+		
 			return (msgHeader + msgBody).getBytes();
 		}
 
 	}
 
 	private String to5DigitString(double x) {
-		
-		if(x>=0){
+
+		if (x >= 0) {
 			return formater.format(x);
-		}else{
-			return"-" +formater.format(Math.abs(x)).substring(1);
+		} else {
+			return "-" + formater.format(Math.abs(x)).substring(1);
 		}
-	
+
 	}
 
 	@Override

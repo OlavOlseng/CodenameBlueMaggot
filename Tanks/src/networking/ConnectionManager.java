@@ -15,7 +15,7 @@ public class ConnectionManager {
 	private OutputStream out;
 	private InputStream in;
 	private ConnectionDelegate delegate;
-	private int messageHeader = 7;
+	private int messageHeader = 6;
 	private Thread readThread;
 	private Thread writeThread;
 	private long sleepTime = 15;
@@ -142,18 +142,22 @@ public class ConnectionManager {
 
 						String head = new String(header);
 						
-						System.out.println(head.length()!= 6);
 						double len = Double.parseDouble((head.substring(1, 6)));
+						
+					//	System.out.println(len);
 						byte[] data = new byte[(int) len];
 						offset = 0;
-
+						System.out.println(len);
 						remaining = data.length;
-
+				
+						
 						while (remaining > 0) {
 							remaining -= in.read(data, offset, data.length - offset);
 							offset = header.length - remaining;
 
 						}
+					
+
 						synchronized (delegate) {
 							delegate.readData(data);
 						}
@@ -188,6 +192,7 @@ public class ConnectionManager {
 					try {
 						synchronized (delegate) {
 							if (delegate.shouldWrite()) {
+
 								out.write(delegate.onWrite());
 
 							}
