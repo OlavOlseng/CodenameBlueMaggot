@@ -2,7 +2,7 @@ package entity;
 
 import java.util.ArrayList;
 
-import networking.NetworkObjectType;
+import networking.*;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
@@ -111,6 +111,10 @@ public class Tank extends Entity {
 		 * ii)); }
 		 */
 
+	}
+
+	public int getCurrentWeapon() {
+		return currentWeapon;
 	}
 
 	public void initInventory() {

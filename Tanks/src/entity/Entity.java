@@ -151,9 +151,11 @@ public abstract class Entity implements NetworkObject {
 	}
 
 	protected String to5DigitString(double x) {
-		String part1 = String.format("%.0f", x);
-		String part2 = String.format("%." + (5 - part1.length()) + "f" , x - (int) x).substring(3);
-		return part1 +"."+ part2;
+		int part1 =(int)Math.floor(x);
+		double part2 =x-part1;
+		String stringPart1 = String.format("%d", part1);
+		String stringPart2 = String.format("%."+(5-stringPart1.length() -1) + "f",part2).substring(2);
+		return stringPart1+stringPart2;
 	}
 	
 	@Override

@@ -114,13 +114,13 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	}
 
 	/* network stuff */
-	public void initConnection(boolean isHost) {
+	public void initConnection(boolean isHost,String addr) {
 		connection = new ConnectionManager(this);
 		if (isHost) {
 			connection.becomeHost();
 			this.isHost = true;
 		} else {
-			connection.joinGame("78.91.9.98");
+			connection.joinGame(addr);
 			this.isHost = false;
 		}
 	}
@@ -173,11 +173,12 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	}
 
 	private String to5DigitString(double x) {
-		int part1 = (int) Math.floor(x);
-		double part2 = x - part1;
-		String stringPart1 = String.format("%d", part1);
-		String stringPart2 = String.format("%." + (5 - stringPart1.length() - 1) + "f", part2).substring(2);
-		return stringPart1 + stringPart2;
+
+		String part1 =String.format("%d",(int)Math.floor(x));
+		while(5-part1.length() >0){
+			part1 = "0" + part1;
+		}
+		return part1;	
 	}
 
 	@Override

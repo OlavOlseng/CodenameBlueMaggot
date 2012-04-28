@@ -15,16 +15,10 @@ public class derp extends JFrame {
 	}
 
 	public void init() {
-
-//	game.initConnection(true);playerNumber =1;
-	game.initConnection(false);playerNumber = 2;
-	double x = -2;
-	
-
-	
-	
-	
-
+		double x = 4023;
+		
+	game.initConnection(true, "");playerNumber =1;
+//	game.initConnection(false,"127.0.0.1");playerNumber = 2;	
 
 	}
 
