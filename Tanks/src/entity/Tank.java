@@ -9,6 +9,7 @@ import baseGame.Rendering.Renderer;
 import entity.weapon.Airstrike;
 import entity.weapon.GrenadeGun;
 import entity.weapon.MineLauncher;
+import entity.weapon.Minigun;
 import entity.weapon.Rocketlauncher;
 import entity.weapon.ShellGun;
 import entity.weapon.Weapon;
@@ -113,6 +114,14 @@ public class Tank extends Entity {
 
 	}
 
+	public double getX(){
+		return x;
+	}
+	
+	public double getY(){
+		return y;
+	}
+	
 	public int getCurrentWeapon() {
 		return currentWeapon;
 	}
@@ -124,6 +133,7 @@ public class Tank extends Entity {
 		weaponList.add(new Rocketlauncher());
 		weaponList.add(new MineLauncher());
 		weaponList.add(new Airstrike());
+		weaponList.add(new Minigun(this));
 	}
 
 	public void setMuzzleAngle(double degrees) {
