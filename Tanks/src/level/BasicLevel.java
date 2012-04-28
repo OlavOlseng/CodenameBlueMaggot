@@ -10,6 +10,7 @@ import java.util.Random;
 import sound.SoundEffect;
 
 import baseGame.BaseGame;
+import baseGame.derp;
 import baseGame.Rendering.Renderer;
 import baseGame.animations.AnimationFactory;
 
@@ -104,14 +105,26 @@ public abstract class BasicLevel {
 			}
 		}
 		// ticks all the ents
+<<<<<<< HEAD
 
 		for (int i = 0; i < entities.size(); i++) {
 			Entity ent = entities.get(i);
 
 			if (!ent.IsOnlineGameClient()) {
+=======
+		
+		
+		for (int i = 0; i <entities.size(); i++) {
+			Entity ent = entities.get(i);
 
+>>>>>>> 731bf0859d6e4ccd8cc844850f8328016e53c4f5
+
+			
+			if (derp.playerNumber==1) {
+				
 				ent.tick(dt);
 			}
+			
 			if (ent.removed) {
 
 				removeEntity(ent);

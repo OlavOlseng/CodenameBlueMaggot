@@ -1,7 +1,7 @@
 package entity;
 
+import networking.NetworkObjectType;
 import gfx.ResourceManager;
-import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import blueMaggot.Game;
@@ -102,10 +102,15 @@ public class Grenade extends Projectile {
 		liveTime += dt;
 		if (liveTime >= explosionTime) {
 			explode();
-			remove();
+			super.remove();
 		}
 	}
 
+	@Override
+	public void remove(){
+		super.remove();
+		explode();
+	}
 	@Override
 	public void render(Renderer renderer) {
 		RGBImage img = ResourceManager.GRENADE;

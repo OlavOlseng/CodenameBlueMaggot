@@ -5,14 +5,16 @@ import inputhandler.InputHandler;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.io.File;
+import java.net.DatagramPacket;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import Networking.ConnectionDelegate;
-import Networking.ConnectionManager;
-import Networking.NetworkObject;
-import Networking.OnlineCityScape;
+import networking.ConnectionDelegate;
+import networking.ConnectionManager;
+import networking.NetworkObject;
+import networking.OnlineCityScape;
+
 
 import baseGame.BaseGame;
 import baseGame.Rendering.Renderer;
@@ -58,8 +60,14 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	public Game() {
 		handler = new InputHandler();
+<<<<<<< HEAD
 		addKeyListener(handler);
 
+=======
+		
+		addKeyListener(handler);
+		//DatagramPacket e; 
+>>>>>>> 731bf0859d6e4ccd8cc844850f8328016e53c4f5
 	}
 
 	public Game(BlueMaggot blueMaggot) {
@@ -120,16 +128,16 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			connection.becomeHost();
 			this.isHost = true;
 		} else {
-			connection.joinGame("127.0.0.1");
+			connection.joinGame("78.91.9.98");
 			this.isHost = false;
 		}
 	}
 
+	
 	@Override
 	public void connectionFailed(String message) {
 		System.out.println(message);
 	}
-
 	@Override
 	public void readData(byte[] data) {
 		if (data.length > 0) {
@@ -146,10 +154,37 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		List<Integer> deadKeys = new ArrayList<Integer>();
 		synchronized (objects) {
+<<<<<<< HEAD
 
 			for (NetworkObject obj : objects) {
 
 				String objectString = obj.getObject();
+=======
+			
+		for ( NetworkObject obj:objects) {
+			synchronized (obj) {
+				
+			
+			String objectString = obj.getObject();
+			
+			if(objectString !=null)
+			msgBody += "?"+ objectString;
+			
+			
+			if(obj.isRemoved()){
+				deadKeys.add(obj.getId());
+			}	
+			
+				
+		}
+		}
+		for(Integer key:deadKeys){
+			onlineLevel.getNetworkObjects().remove(key);
+		}
+
+		String msgHeader = "1" + to5DigitString(msgBody.length());
+		
+>>>>>>> 731bf0859d6e4ccd8cc844850f8328016e53c4f5
 
 				if (objectString != null)
 					msgBody += "?" + objectString;
@@ -172,14 +207,16 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	}
 
 	private String to5DigitString(double x) {
-		String part1 = String.format("%.0f", x);
-		String part2 = String.format("%." + (5 - part1.length()) + "f", x - (int) x).substring(1);
-		return part1 + part2;
+		int part1 =(int)Math.floor(x);
+		double part2 =x-part1;
+		String stringPart1 = String.format("%d", part1);
+		String stringPart2 = String.format("%."+(5-stringPart1.length() -1) + "f",part2).substring(2);
+		return stringPart1+stringPart2;
 	}
 
 	@Override
 	public boolean shouldRead() {
-		return !isHost;
+		return !isHost && onlineLevel != null;
 	}
 
 	@Override

@@ -1,7 +1,8 @@
 package entity;
 
 import java.util.ArrayList;
-import Networking.NetworkObjectType;
+
+import networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
@@ -362,10 +363,17 @@ public class Tank extends Entity {
 
 	}
 
+	@Override
+	public String getObject(){
+		return super.getObject() + "'" + to5DigitString(this.muzzleAngle);
+	}
 	
 	@Override
 	public void handleMessage(String[] msg){
 		super.handleMessage(msg);
+		double muzzleAngle = Double.parseDouble(msg[6]);
+		setMuzzleAngle(muzzleAngle);
+		
 	}
 	@Override
 	public void initNetworkValues() {

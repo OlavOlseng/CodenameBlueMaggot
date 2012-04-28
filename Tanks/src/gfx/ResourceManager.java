@@ -18,6 +18,7 @@ public class ResourceManager {
 	public static final RGBImage GRENADE = new RGBImage(new File("./res/graphics/Grenade_temp.png"));
 	public static final RGBImage PACKAGE = new RGBImage(new File("./res/graphics/Package.png"));
 	public static final RGBImage BUBBLEHEARTH = new RGBImage(new File("./res/graphics/BubbleHearth.png"));
+	public static final RGBImage AIRSTRIKEBEACON = new RGBImage(new File("./res/graphics/AirStrikeBeacon.png"));
 
 	private static Terrain terrain;
 	private static RGBImage backGround;

@@ -1,8 +1,8 @@
 package entity;
 
+import networking.NetworkObjectType;
 import sound.SoundEffect;
 import gfx.ResourceManager;
-import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import level.BasicLevel;
@@ -103,7 +103,13 @@ public class ScoreBubble extends Entity {
 	}
 
 	
-	
+	@Override
+	public void handleMessage(String[] msg){
+		super.handleMessage(msg);
+		boolean willDie = Boolean.parseBoolean(msg[3]);
+		if(willDie)
+			remove();
+	}
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub

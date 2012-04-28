@@ -1,8 +1,8 @@
 package entity;
 
+import networking.NetworkObjectType;
 import gfx.ResourceManager;
 
-import Networking.NetworkObjectType;
 import baseGame.derp;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
@@ -26,6 +26,7 @@ public class Shell extends Projectile {
 
 	@Override
 	public void explode() {
+
 		level.getTerrain().addExplosion((int) (x - explosionRadius), (int) (y - explosionRadius), explosionRadius);
 		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, explosionPower));
 	}
@@ -73,6 +74,8 @@ public class Shell extends Projectile {
 		super.remove();
 		
 	}
+	
+	
 		
 	@Override
 	public void render(Renderer renderer) {

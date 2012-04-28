@@ -13,11 +13,12 @@ public class Airstrike implements Weapon{
 	
 	@Override
 	public void fire(double x, double y, BasicLevel level, double speedPercent, double angle) {
-		if (currentCooldown <= 0) {
+		if (currentCooldown <= 0 && ammo > 0) {
 			level.addEntity(new AirStrikeBeacon(x, y, level, speedPercent, angle));
 			currentCooldown = cooldownTime;
 			SoundEffect.SHOOT.play();
 			ammo --;
+			
 		}
 	}
 	
@@ -34,7 +35,7 @@ public class Airstrike implements Weapon{
 	
 	@Override
 	public void setAmmo() {
-		ammo += 1;
+		ammo = 0;
 	}
 	
 	@Override
