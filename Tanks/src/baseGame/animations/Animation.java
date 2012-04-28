@@ -1,8 +1,8 @@
 package baseGame.animations;
 
+import networking.NetworkObjectType;
 import level.BasicLevel;
 import entity.Entity;
-import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 

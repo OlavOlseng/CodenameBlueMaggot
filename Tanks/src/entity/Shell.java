@@ -1,8 +1,8 @@
 package entity;
 
+import networking.NetworkObjectType;
 import gfx.ResourceManager;
 
-import Networking.NetworkObjectType;
 import baseGame.derp;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;

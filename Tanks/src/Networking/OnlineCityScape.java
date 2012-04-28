@@ -1,9 +1,10 @@
-package Networking;
+package networking;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import entity.AirStrikeBeacon;
 import entity.BubbleHearth;
 import entity.Entity;
 import entity.FloatingPoint;
@@ -76,7 +77,6 @@ public class OnlineCityScape extends cityScape {
 	public void addEntity(Entity entity) {
 		if(entity.getNetworkObjectType() != NetworkObjectType.NO_SYNC){
 		networkObjects.put(new Integer(objectCount), entity);
-
 		entity.setId(objectCount);
 		objectCount++;
 		}
@@ -178,7 +178,9 @@ public void addEntity(Entity ent,Integer id){
 											else
 												if(NetworkObjectType.BUBBLE_HEARTH.equals(type))
 													ent = new BubbleHearth(new FloatingPoint(0, 0), this);
-												
+												else
+													if(NetworkObjectType.AIR_STRIKE.equals(type))
+														ent = new AirStrikeBeacon(0, 0, this, 0, 0);
 												
 				if(ent != null){		
 					ent.handleMessage(move);

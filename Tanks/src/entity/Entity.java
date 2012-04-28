@@ -5,10 +5,11 @@ package entity;
 
 import java.util.Random;
 
+import networking.NetworkObject;
+import networking.NetworkObjectType;
+
 import level.BasicLevel;
 
-import Networking.NetworkObject;
-import Networking.NetworkObjectType;
 import baseGame.Rendering.Renderer;
 import blueMaggot.Game;
 

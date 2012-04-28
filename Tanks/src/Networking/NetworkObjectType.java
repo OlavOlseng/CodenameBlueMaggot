@@ -1,8 +1,9 @@
-package Networking;
+package networking;
 
 public enum NetworkObjectType {
 
-	TANK(0),GRENADE(1),ROCKET(2),SCORE_BUBBLE(3),SHELL(4),EXPLOSION(5),ANIMATION(6),MINE(7),PACKAGE(8),NO_SYNC(9),BUBBLE_HEARTH(10);
+	TANK(0),GRENADE(1),ROCKET(2),SCORE_BUBBLE(3),SHELL(4),EXPLOSION(5),ANIMATION(6),MINE(7),PACKAGE(8),NO_SYNC(9),BUBBLE_HEARTH(10),
+	AIR_STRIKE(11);
 	
 	private final int type;
 	
@@ -32,7 +33,8 @@ public enum NetworkObjectType {
 		break;
 		case BUBBLE_HEARTH:res ="10";
 		break;
-
+		case AIR_STRIKE:res = "11";
+		break;
 		}
 		return res;
 		}

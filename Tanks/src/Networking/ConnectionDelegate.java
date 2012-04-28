@@ -1,4 +1,4 @@
-package Networking;
+package networking;
 
 public interface ConnectionDelegate {
 	public void startOnlineGame();

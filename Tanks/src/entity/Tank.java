@@ -1,7 +1,8 @@
 package entity;
 
 import java.util.ArrayList;
-import Networking.NetworkObjectType;
+
+import networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 

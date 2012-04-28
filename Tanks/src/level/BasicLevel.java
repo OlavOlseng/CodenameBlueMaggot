@@ -10,6 +10,7 @@ import java.util.Random;
 import sound.SoundEffect;
 
 import baseGame.BaseGame;
+import baseGame.derp;
 import baseGame.Rendering.Renderer;
 import baseGame.animations.AnimationFactory;
 
@@ -111,7 +112,9 @@ public abstract class BasicLevel {
 			Entity ent = entities.get(i);
 
 
-			if (!ent.IsOnlineGameClient()) {
+			
+			if (derp.playerNumber==1) {
+				
 				ent.tick(dt);
 			}
 			

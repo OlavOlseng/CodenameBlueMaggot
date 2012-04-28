@@ -1,5 +1,6 @@
 package entity;
 
+import networking.NetworkObjectType;
 import sound.SoundEffect;
 import gfx.ResourceManager;
 import baseGame.Rendering.RGBImage;
@@ -66,13 +67,21 @@ public class AirStrikeBeacon extends Projectile {
 		}
 		if (calldownTime <= 0) {
 			explode();
-			remove();
+			super.remove();
 		}
 		if (!touchingGround) {
 			accelerate(0, 0.1);
 		}
 	}
 
+	@Override
+	public void remove(){
+		super.remove();
+		level.getTerrain().addExplosion((int) (x - explosionRadius), (int) (y - explosionRadius), explosionRadius);
+		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, explosionPower));
+		
+		
+	}
 	@Override
 	public void render(Renderer renderer) {
 		int subimageIndex = 0;
@@ -86,7 +95,7 @@ public class AirStrikeBeacon extends Projectile {
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
-
+		setNetworkObjectType(NetworkObjectType.AIR_STRIKE);
 	}
 
 }

@@ -12,15 +12,18 @@ public class derp extends JFrame {
 		setVisible(true);
 		game = new Game();
 		add(game);
-
 	}
 
 	public void init() {
 
-		
-	game.initConnection(true);playerNumber =1;
-//	game.initConnection(false);playerNumber = 2;
-//		
+//	game.initConnection(true);playerNumber =1;
+	game.initConnection(false);playerNumber = 2;
+	double x = -2;
+	
+
+	
+	
+	
 
 
 	}

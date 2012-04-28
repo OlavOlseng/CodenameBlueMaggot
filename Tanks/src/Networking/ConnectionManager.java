@@ -1,4 +1,4 @@
-package Networking;
+package networking;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -141,7 +141,6 @@ public class ConnectionManager {
 						}
 
 						String head = new String(header);
-
 					
 						double len = Double.parseDouble((head.substring(1, 6)));
 						byte[] data = new byte[(int) len];

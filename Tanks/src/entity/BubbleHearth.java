@@ -1,7 +1,7 @@
 package entity;
 
+import networking.NetworkObjectType;
 import sound.SoundEffect;
-import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import gfx.ResourceManager;

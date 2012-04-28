@@ -1,7 +1,7 @@
 package entity;
 
+import networking.NetworkObjectType;
 import gfx.ResourceManager;
-import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import blueMaggot.Game;
