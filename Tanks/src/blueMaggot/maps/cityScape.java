@@ -7,6 +7,7 @@ import sound.SoundEffect;
 import level.BasicLevel;
 import level.Terrain;
 
+import entity.BubbleHearth;
 import entity.FloatingPoint;
 import entity.Package;
 import entity.ScoreBubble;
@@ -28,8 +29,8 @@ public class cityScape extends BasicLevel {
 		terrain = new Terrain(Game.SELECTED_LEVEL_TERRAIN);
 		ResourceManager.setTerrain(terrain);
 		ResourceManager.setBackGround(new RGBImage(Game.SELECTED_LEVEL_BACKGROUND));
-
 		SoundEffect.SPAWN.play();
+
 	}
 
 	public void init() {
@@ -39,6 +40,10 @@ public class cityScape extends BasicLevel {
 		addPlayers();
 
 		SoundEffect.SPAWN.play();
+<<<<<<< HEAD
+=======
+		addEntity(new BubbleHearth(bubbleSpawns.get(1), this));
+>>>>>>> bfd204eefede85e4a5d71e3867dbef64659f6f5b
 
 	}
 	
@@ -62,7 +67,7 @@ public class cityScape extends BasicLevel {
 	}
 
 	public void spawnBubble() {
-		this.addEntity(new ScoreBubble(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), 4, this, 0.5, rand.nextInt(360), 100));
+		this.addEntity(new ScoreBubble(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), this, 0.5, rand.nextInt(360), 100));
 		SoundEffect.SPAWN.play();
 	}
 

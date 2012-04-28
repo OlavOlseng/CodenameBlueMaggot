@@ -5,6 +5,7 @@ import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
+import entity.weapon.Airstrike;
 import entity.weapon.GrenadeGun;
 import entity.weapon.MineLauncher;
 import entity.weapon.Rocketlauncher;
@@ -117,6 +118,7 @@ public class Tank extends Entity {
 		weaponList.add(new GrenadeGun());
 		weaponList.add(new Rocketlauncher());
 		weaponList.add(new MineLauncher());
+		weaponList.add(new Airstrike());
 	}
 
 	public void setMuzzleAngle(double degrees) {

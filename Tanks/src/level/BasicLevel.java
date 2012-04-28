@@ -42,8 +42,8 @@ public abstract class BasicLevel {
 
 	public void initLevel() {
 		entities = new ArrayList<Entity>();
-		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion1.png"), Animations.EXPLOSIONS, 50, 50);
-		AnimationFactory.getInstance().addSpriteSheet(new File("./res/Explosion2.png"), Animations.EXPLOSIONS2, 100, 100);
+		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion1.png"), Animations.EXPLOSIONS, 50, 50);
+		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion2.png"), Animations.EXPLOSIONS2, 100, 100);
 		playerSpawns = new ArrayList<FloatingPoint>();
 		bubbleSpawns = new ArrayList<FloatingPoint>();
 	}

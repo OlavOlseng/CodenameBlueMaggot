@@ -1,5 +1,6 @@
 package entity;
 
+import sound.SoundEffect;
 import gfx.ResourceManager;
 import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
@@ -61,7 +62,12 @@ public class Mine extends Projectile {
 		RGBImage img = mineSheet.getSubImage(14 * subimageIndex, 0, 14, 8);
 		renderer.DrawImage(img, -1, (int) (x - 7), (int) (y - 4), img.getWidth(), img.getHeight());
 	}
-
+	
+	private void arm(){
+		armed = true;
+		SoundEffect.MINEARMED.play();
+	}
+	
 	@Override
 	public void gravitate() {
 	}
@@ -90,8 +96,9 @@ public class Mine extends Projectile {
 		handleIntersections();
 		if (liveTime < armTime) {
 			liveTime += dt;
-		} else if (!armed)
-			armed = true;
+		} else if (!armed){
+			arm();
+		}
 		if (explode && !triggered)
 			explode();
 		if (!touchingGround) {

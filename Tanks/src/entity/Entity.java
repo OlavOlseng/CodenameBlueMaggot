@@ -18,6 +18,14 @@ public abstract class Entity implements NetworkObject {
 	private boolean isOnlineClient;
 	private NetworkObjectType type;
 
+	public Entity(double x, double y, double xr, double yr, BasicLevel level) {
+		this.level = level;
+		setLocation(x, y);
+		this.xr = xr;
+		this.yr = yr;
+		initNetworkValues();
+	}
+	
 	@Override
 	public int getId() {
 		return id;
@@ -68,18 +76,7 @@ public abstract class Entity implements NetworkObject {
 	public boolean removed = false;
 	public double damageTaken = 1;
 
-	public Entity(double x, double y, double xr, double yr, BasicLevel level) {
-		this.level = level;
-		setLocation(x, y);
-		this.xr = xr;
-		this.yr = yr;
-		initNetworkValues();
-		
-		
-	
 
-
-	}
 	@Override
 	public void handleMessage(String[] message){
 		

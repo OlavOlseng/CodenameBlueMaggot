@@ -1,24 +1,19 @@
 package entity;
 
 import sound.SoundEffect;
-import gfx.ResourceManager;
-import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
+import gfx.ResourceManager;
 import level.BasicLevel;
 
-public class ScoreBubble extends Entity {
+public class BubbleHearth extends Entity {
 
+	private double healthContained = -2;
 	PixelHitbox hitbox;
-	private int scoreAmount;
 
-	public ScoreBubble(FloatingPoint point, BasicLevel level, double speedPercent, int angle, int scoreAmount) {
-		super(point.getX(), point.getY(), 4, 4, level);
-		this.angle = angle;
-		this.dx = (speedPercent * Math.cos(angle % 360 * 2 * Math.PI / 360));
-		this.dy = (speedPercent * -Math.sin(angle % 360 * 2 * Math.PI / 360));
+	public BubbleHearth(FloatingPoint point, BasicLevel level) {
+		super(point.getX(), point.getY(), 9, 9, level);
 		this.hitbox = new PixelHitbox();
-		this.scoreAmount = scoreAmount;
 		init();
 	}
 
@@ -75,14 +70,16 @@ public class ScoreBubble extends Entity {
 			setLocation(x, y - dy);
 			setSpeed(dx * 0.6, -dy * 0.5);
 		}
-
 	}
 
 	public void handlePlayerIntersections() {
 		for (Tank player : level.getPlayers()) {
 			if (intersectsEntity(player)) {
-				player.addScore(scoreAmount);
-				SoundEffect.BUBBLE.play();
+				SoundEffect.HEALTHUP.play();
+				if (player.damageTaken < 2) {
+					player.damageTaken = 0;
+				} else
+					player.takeDamage(healthContained);
 				remove();
 			}
 		}
@@ -98,22 +95,14 @@ public class ScoreBubble extends Entity {
 	@Override
 	public void render(Renderer renderer) {
 		// TODO Auto-generated method stub
-		RGBImage img = ResourceManager.SCOREBUBBLE;
-		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - 2 * getYr()), img.getWidth(), img.getHeight());
+		RGBImage img = ResourceManager.BUBBLEHEARTH;
+		renderer.DrawImage(img, -1, (int) (x - 9), (int) (y - 19), img.getWidth(), img.getHeight());
 	}
 
-	
-	@Override
-	public void handleMessage(String[] msg){
-		super.handleMessage(msg);
-		boolean willDie = Boolean.parseBoolean(msg[3]);
-		if(willDie)
-			remove();
-	}
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
-		setNetworkObjectType(NetworkObjectType.SCORE_BUBBLE);
+		
 	}
 
 }

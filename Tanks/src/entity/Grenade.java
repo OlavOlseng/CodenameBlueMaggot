@@ -17,7 +17,7 @@ public class Grenade extends Projectile {
 	public Grenade(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		super(x, y, 4, 4, level, speedPercent, angle);
 		this.maxSpeed = 12;
-		this.frictionConstant = 0.0002;
+		this.frictionConstant = 0.0004;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
@@ -32,7 +32,7 @@ public class Grenade extends Projectile {
 	}
 
 	public void applyFriction() {
-		accelerate(-dx * frictionConstant, -dy * frictionConstant);
+		accelerate(-dx * frictionConstant, -dy * frictionConstant/2);
 	}
 
 	public void handleIntersects() {
@@ -79,9 +79,14 @@ public class Grenade extends Projectile {
 			setSpeed(-dx * 0.5, dy);
 		} else if (down || up) {
 			setLocation(x, y - dy);
-			setSpeed(dx * 0.5, -dy * 0.5);
+			setSpeed(dx * 0.4, -dy * 0.4);
 		}
 
+	}
+	
+	@Override
+	public void gravitate() {
+		accelerate(0, 0.14);
 	}
 
 	@Override

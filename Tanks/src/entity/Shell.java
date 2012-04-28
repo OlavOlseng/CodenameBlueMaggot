@@ -26,7 +26,10 @@ public class Shell extends Projectile {
 
 	@Override
 	public void explode() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> bfd204eefede85e4a5d71e3867dbef64659f6f5b
 		level.getTerrain().addExplosion((int) (x - explosionRadius), (int) (y - explosionRadius), explosionRadius);
 		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, explosionPower));
 	}
