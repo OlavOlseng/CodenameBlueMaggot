@@ -1,6 +1,7 @@
 package entity;
 
 import sound.SoundEffect;
+import Networking.NetworkObjectType;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 import gfx.ResourceManager;
@@ -102,6 +103,7 @@ public class BubbleHearth extends Entity {
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.BUBBLE_HEARTH);
 		
 	}
 

@@ -40,10 +40,9 @@ public class cityScape extends BasicLevel {
 		addPlayers();
 
 		SoundEffect.SPAWN.play();
-<<<<<<< HEAD
-=======
+
 		addEntity(new BubbleHearth(bubbleSpawns.get(1), this));
->>>>>>> bfd204eefede85e4a5d71e3867dbef64659f6f5b
+		addEntity(new Package(bubbleSpawns.get(2), this));
 
 	}
 	
@@ -83,7 +82,12 @@ public class cityScape extends BasicLevel {
 		int ticket = rand.nextInt(200);
 		return ticket == 5;
 	}
-
+	protected boolean shouldSpawnCrate() {
+		return true;
+	}
+	protected boolean shouldSpawnBubbleHearth() {
+		return true;
+	}
 	public void onDraw(Renderer renderer) {
 		// draws backgorund recursively
 		renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, Game.WIDTH, Game.HEIGHT);

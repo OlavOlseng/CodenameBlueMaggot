@@ -115,7 +115,6 @@ public abstract class BasicLevel {
 
 
 			if (!ent.IsOnlineGameClient()) {
-
 				ent.tick(dt);
 			}
 			

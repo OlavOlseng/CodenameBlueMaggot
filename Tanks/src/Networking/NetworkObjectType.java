@@ -2,7 +2,7 @@ package Networking;
 
 public enum NetworkObjectType {
 
-	TANK(0),GRENADE(1),ROCKET(2),SCORE_BUBBLE(3),SHELL(4),EXPLOSION(5),ANIMATION(6),MINE(7),PACKAGE(8),NO_SYNC(9);
+	TANK(0),GRENADE(1),ROCKET(2),SCORE_BUBBLE(3),SHELL(4),EXPLOSION(5),ANIMATION(6),MINE(7),PACKAGE(8),NO_SYNC(9),BUBBLE_HEARTH(10);
 	
 	private final int type;
 	
@@ -29,6 +29,8 @@ public enum NetworkObjectType {
 		case PACKAGE:res = "08";
 		break;
 		case NO_SYNC:res = "09";
+		break;
+		case BUBBLE_HEARTH:res ="10";
 		break;
 
 		}

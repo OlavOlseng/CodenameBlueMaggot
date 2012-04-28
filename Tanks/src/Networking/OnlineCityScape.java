@@ -3,10 +3,13 @@ package Networking;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+
+import entity.BubbleHearth;
 import entity.Entity;
 import entity.FloatingPoint;
 import entity.Grenade;
 import entity.Mine;
+import entity.Package;
 import entity.Rocket;
 import entity.ScoreBubble;
 import entity.Shell;
@@ -47,6 +50,13 @@ public class OnlineCityScape extends cityScape {
 		lastTime = System.currentTimeMillis();
 		super.init();
 	
+	}
+	@Override
+	public boolean shouldSpawnCrate(){
+		return !isClient;
+	}
+	public boolean shouldSpawnBubbleHearth(){
+		return !isClient;
 	}
 	@Override
 	public void addPlayers(){
@@ -133,9 +143,6 @@ public void addEntity(Entity ent,Integer id){
 			int type  = (int)Double.parseDouble(move[2]);
 			
 			if((obj = networkObjects.get(id)) != null){
-
-				
-
 				obj.handleMessage(move);
 				if(obj.isRemoved()){
 					
@@ -154,7 +161,7 @@ public void addEntity(Entity ent,Integer id){
 							
 						else
 							if(NetworkObjectType.SCORE_BUBBLE.equals(type))
-								ent  = new ScoreBubble(new FloatingPoint(0.0,0.0),4,this,0,0,0);
+								ent  = new ScoreBubble(new FloatingPoint(0.0,0.0),this,0,0,0);
 							else
 								if(NetworkObjectType.GRENADE.equals(type))
 									ent  = new Grenade(0,0,this,0,0);
@@ -165,8 +172,15 @@ public void addEntity(Entity ent,Integer id){
 									else
 										if(NetworkObjectType.MINE.equals(type))
 											ent = new Mine(0,0,this,0);
-										
-					if(ent != null){
+										else
+											if(NetworkObjectType.PACKAGE.equals(type))
+												ent = new Package(new FloatingPoint(0.0, 0.0), this);
+											else
+												if(NetworkObjectType.BUBBLE_HEARTH.equals(type))
+													ent = new BubbleHearth(new FloatingPoint(0, 0), this);
+												
+												
+				if(ent != null){		
 					ent.handleMessage(move);
 					addEntity((Entity)ent, id);
 					}

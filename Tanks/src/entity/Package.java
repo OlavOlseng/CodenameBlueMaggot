@@ -113,6 +113,7 @@ public class Package extends Entity {
 		handlePlayerIntersections();
 	}
 
+	
 	@Override
 	public void render(Renderer renderer) {
 		// TODO Auto-generated method stub
