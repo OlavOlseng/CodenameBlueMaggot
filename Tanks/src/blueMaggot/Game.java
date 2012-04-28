@@ -59,7 +59,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public Game() {
 		handler = new InputHandler();
 		addKeyListener(handler);
-		
+
 	}
 
 	public Game(BlueMaggot blueMaggot) {
@@ -75,7 +75,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
-		if (!PAUSED) {
+		System.out.println(!gameOver());
+		if (!PAUSED || !gameOver()) {
 			level.tick(deltaTime);
 			didTick = true;
 		}
@@ -108,6 +109,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	}
 
+	public boolean gameOver() {
+		return level.gameOver;
+	}
+
 	/* network stuff */
 	public void initConnection(boolean isHost) {
 		connection = new ConnectionManager(this);
@@ -137,36 +142,33 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public byte[] onWrite() {
 		String msgBody = "";
 
-		
 		Collection<NetworkObject> objects = onlineLevel.getNetworkObjects().values();
-		
+
 		List<Integer> deadKeys = new ArrayList<Integer>();
 		synchronized (objects) {
-			
-		for ( NetworkObject obj:objects) {
-			
-			String objectString = obj.getObject();
-			
-			if(objectString !=null)
-			msgBody += "?"+ objectString;
-			
-			
-			if(obj.isRemoved()){
-				deadKeys.add(obj.getId());
-			}	
-			
-				
-		}
-		
-		for(Integer key:deadKeys){
-			onlineLevel.getNetworkObjects().remove(key);
+
+			for (NetworkObject obj : objects) {
+
+				String objectString = obj.getObject();
+
+				if (objectString != null)
+					msgBody += "?" + objectString;
+
+				if (obj.isRemoved()) {
+					deadKeys.add(obj.getId());
+				}
+
+			}
+
+			for (Integer key : deadKeys) {
+				onlineLevel.getNetworkObjects().remove(key);
+			}
+
+			String msgHeader = "1" + to5DigitString(msgBody.length());
+
+			return (msgHeader + msgBody).getBytes();
 		}
 
-		String msgHeader = "1" + to5DigitString(msgBody.length());
-
-		return (msgHeader + msgBody).getBytes();
-		}
-		
 	}
 
 	private String to5DigitString(double x) {
@@ -184,7 +186,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public boolean shouldWrite() {
 		boolean temp = didTick;
 		didTick = false;
-		return isHost && (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size()>0;
+		return isHost && (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size() > 0;
 	}
 
 	@Override
