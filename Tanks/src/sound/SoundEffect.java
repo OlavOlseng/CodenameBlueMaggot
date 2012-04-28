@@ -15,7 +15,7 @@ import javax.sound.sampled.*;
 public enum SoundEffect {
 	SHOOT("Shot.wav"), // bullet
 	BUBBLE("Bubble.wav"), RELOAD("Reload.wav"), SPAWN("Spawn.wav"), ROCKETLAUNCH("RocketLaunch.wav"), EXPLOSION1("ExplosionSmall.wav"), EXPLOSION2(
-			"ExplosionBig.wav"), MINEARMED("MineArmed.wav"), HEALTHUP("HealthUp.wav");
+			"ExplosionBig.wav"), MINEARMED("MineArmed.wav"), HEALTHUP("HealthUp.wav"), CALLDOWN1("Calldown1.wav"), CALLDOWN2("Calldown2.wav");
 
 	// Nested class for specifying volume
 	public static enum Volume {
