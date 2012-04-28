@@ -113,6 +113,10 @@ public class Tank extends Entity {
 
 	}
 
+	public int getCurrentWeapon() {
+		return currentWeapon;
+	}
+
 	public void initInventory() {
 		weaponList = new ArrayList<Weapon>();
 		weaponList.add(new ShellGun());

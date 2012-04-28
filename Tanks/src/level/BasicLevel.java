@@ -1,7 +1,10 @@
 package level;
 
+import gfx.Menu;
+import gfx.ResourceManager;
 import inputhandler.InputHandler;
 
+import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +37,10 @@ public abstract class BasicLevel {
 		players = new ArrayList<Tank>();
 		initLevel();
 		SoundEffect.init();
-
+		ResourceManager.TANK1.replaceColors(0x00FAE1, Menu.pinkDark.getRGB());
+		ResourceManager.CROSSHAIR1.replaceColors(0x00FAE1, 0xFF2121);
+		ResourceManager.TANK2.replaceColors(0x00FAE1, 0x87FF54);
+		ResourceManager.CROSSHAIR2.replaceColors(0x00FAE1, 0xFF2121);
 	}
 
 	public Terrain getTerrain() {
@@ -109,13 +115,11 @@ public abstract class BasicLevel {
 		for (int i = 0; i < entities.size(); i++) {
 			Entity ent = entities.get(i);
 
-			if (derp.playerNumber == 1) {
-
+			if (!ent.IsOnlineGameClient()) {
 				ent.tick(dt);
 			}
 
 			if (ent.removed) {
-
 				removeEntity(ent);
 				i--;
 				continue;

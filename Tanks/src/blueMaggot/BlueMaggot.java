@@ -95,7 +95,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 				menuTitle.setVisible(true);
 				menuBackground.setVisible(true);
 				menuTitle.repaint();
-				Game.PAUSED = true;
+//				Game.PAUSED = true;
 			}
 		}
 		if (inputReal.tab.down) {

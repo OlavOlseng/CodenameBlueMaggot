@@ -80,7 +80,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
-	
+
 		if (!PAUSED || !gameOver()) {
 			level.tick(deltaTime);
 			didTick = true;
