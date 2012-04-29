@@ -1,11 +1,12 @@
 package blueMaggot;
 
 import entity.Tank;
+import gfx.MenuBackground;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
 import gfx.MenuTitle;
 import gfx.UIElement;
-import gfx.UIScoreBoard;
+import gfx.MenuScoreBoard;
 import inputhandler.InputHandler;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -23,16 +24,14 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 	private JLayeredPane layeredPane = new JLayeredPane();
 	private MenuTitle menuTitle;
-	private UIScoreBoard uiScoreBoard;
 	private JPanel gamePanel;
+
+	public MenuScoreBoard uiScoreBoard;
 	public MenuLevelSelect menuLevelSelect;
 	public MenuOptions menuOptions;
-
-	private UIElement ui;
+	public UIElement ui;
 
 	Game game;
-
-	private UIElement ui2;
 
 	private MenuBackground menuBackground;
 
@@ -48,12 +47,12 @@ public class BlueMaggot extends JFrame implements Runnable {
 		game = new blueMaggot.Game(this);
 		menuTitle = new MenuTitle(game, this);
 		menuOptions = new MenuOptions(game);
-		uiScoreBoard = new UIScoreBoard(game);
+		uiScoreBoard = new MenuScoreBoard(game);
 		menuLevelSelect = new MenuLevelSelect(game);
 		menuBackground = new MenuBackground(menuTitle);
 		gamePanel = new JPanel();
 
-		ui = new UIElement(0, 0, 200, 40, menuTitle.border, game);
+		ui = new UIElement(0, 0, 700, 45, menuTitle.border, game);
 
 		layeredPane.add(gamePanel, new Integer(0));
 		layeredPane.add(ui, new Integer(1));
@@ -61,7 +60,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		layeredPane.add(menuTitle, new Integer(10));
 		layeredPane.add(menuOptions, new Integer(11));
 		layeredPane.add(menuLevelSelect, new Integer(11));
-		layeredPane.add(uiScoreBoard, new Integer(2));
+		layeredPane.add(uiScoreBoard, new Integer(12));
 
 		add(layeredPane);
 		pack();
@@ -87,7 +86,11 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	public void tick() {
-		// game.requestFocus();
+		for (Tank tank : GameState.getInstance().players) {
+			if (tank.getNick() == null)
+				tank.setNick("Player");
+		}
+
 		if (inputReal.menu.clicked) {
 			inputReal.menu.clicked = false;
 			inputReal.releaseAll();
@@ -95,25 +98,35 @@ public class BlueMaggot extends JFrame implements Runnable {
 				menuTitle.setVisible(true);
 				menuBackground.setVisible(true);
 				menuTitle.repaint();
-				// Game.PAUSED = true;
+				GameState.getInstance().setPaused(true);
 			}
 		}
-		if (GameState.getInstance().running) {
+		if (GameState.getInstance().isRunning()) {
 			ui.setVisible(true);
-		}
-		if (inputReal.tab.down) {
-			uiScoreBoard.setVisible(true);
 		} else
-			uiScoreBoard.setVisible(false);
-		if (game.gameOver()) {
+			ui.setVisible(false);
+		// TODO: Implement scoreboard
+		// if (inputReal.tab.down) {
+		// uiScoreBoard.setVisible(true);
+		// } else
+		// uiScoreBoard.setVisible(false);
+		if (GameState.getInstance().isGameOver()) {
+			menuTitle.setVisible(true);
 			uiScoreBoard.setVisible(true);
+			GameState.getInstance().setPaused(true);
+			GameState.getInstance().setRunning(false);
+			menuBackground.setVisible(true);
+			menuTitle.repaint();
 		}
 		for (Tank tank : GameState.getInstance().players) {
 			if (tank.getScore() != tank.getOldScore()) {
 				tank.setOldScore(tank.getScore());
-				System.out.println(tank.getScore() + " " + tank.getOldScore());
 				ui.repaint();
+				System.out.println("p" + tank.getId() + ": " + tank.getScore());
 			}
+		}
+		if (inputReal.down1.clicked || inputReal.down2.clicked) {
+			ui.repaint();
 		}
 	}
 }

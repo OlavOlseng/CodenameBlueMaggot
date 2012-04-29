@@ -26,7 +26,7 @@ public class Tank extends Entity {
 	private int score = 0;
 	private int oldScore = 0;
 	private int life = 5;
-	private String nick = "jesus per";
+	private String nick;
 
 	private InputHandler input;
 	private double muzzleAngle;
@@ -241,9 +241,7 @@ public class Tank extends Entity {
 	}
 
 	public void toggleWeapon() {
-		System.out.println("current wep: " + currentWeapon);
 		currentWeapon = Gun.values()[(currentWeapon.ordinal()+1)%Gun.values().length];
-		System.out.println("next wep: " + currentWeapon);
 		if (currentWeapon.ordinal() >= weaponList.size())
 			currentWeapon = Gun.SHELLGUN;
 		if (weaponList.get(currentWeapon.ordinal()).getAmmo() == 0)
@@ -403,6 +401,7 @@ public class Tank extends Entity {
 		return nick;
 	}
 
+	@Override
 	public String toString() {
 		return "Nick: " + nick + " - Score: " + score + " - Life: " + " - Weapon: " + currentWeapon;
 	}
@@ -417,5 +416,12 @@ public class Tank extends Entity {
 
 	public void setNick(String nick) {
 		this.nick = nick;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public String getCurrentWeaponName(){
+		return this.currentWeapon.name();
 	}
 }

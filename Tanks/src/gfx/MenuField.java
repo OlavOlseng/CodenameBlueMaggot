@@ -13,13 +13,12 @@ public class MenuField extends TextField {
 		addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-				System.out.println(ae.getActionCommand());
 				String tmpMsg = ae.getActionCommand();
 				if (type.equals("ip")
 						&& tmpMsg.matches("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$")) {
 					msg = ae.getActionCommand();
 					setBackground(Menu.green);
-				} else if (type.equals("text")) {
+				} else if (type.equals("text") && tmpMsg.matches("[A-Za-z0-9]{1,9}")) {
 					msg = ae.getActionCommand();
 					setBackground(Menu.green);
 				} else

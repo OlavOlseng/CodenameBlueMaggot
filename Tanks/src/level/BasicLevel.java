@@ -14,12 +14,12 @@ import sound.SoundEffect;
 import baseGame.BaseGame;
 import baseGame.Rendering.Renderer;
 import baseGame.animations.AnimationFactory;
+import blueMaggot.GameState;
 
 import entity.*;
 
 public abstract class BasicLevel {
 
-	public boolean gameOver = false;
 	protected List<Entity> entities;
 	protected ArrayList<Tank> players;
 	protected InputHandler handler;
@@ -91,7 +91,7 @@ public abstract class BasicLevel {
 				playerAliveCount++;
 		}
 		if (playerAliveCount <= 1) {
-			gameOver = true;
+			GameState.getInstance().setGameOver(true);
 		}
 	}
 

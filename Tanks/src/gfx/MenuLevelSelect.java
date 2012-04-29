@@ -21,7 +21,6 @@ public class MenuLevelSelect extends Menu {
 		setVisible(false);
 		int gridx = 0;
 		int gridy = 0;
-		System.out.println(path.listFiles());
 		for (File lvl : path.listFiles()) {
 			if (lvl.getName().contains("terrain")) {
 				MenuLevelButton btnLvl = new MenuLevelButton(lvl, this);
@@ -46,9 +45,5 @@ public class MenuLevelSelect extends Menu {
 		GameState.getInstance().selectedLevelBackground = selectedLevelBackground;
 		System.out.println("selected level: " + GameState.getInstance().selectedLevelTerrain);
 		System.out.println("selected level background: " + GameState.getInstance().selectedLevelBackground);
-	}
-
-	public void cacheThumb() {
-
 	}
 }

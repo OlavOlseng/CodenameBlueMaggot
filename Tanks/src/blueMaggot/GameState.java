@@ -8,10 +8,11 @@ import entity.Tank;
 
 public class GameState {
 
-	public boolean PAUSED = false;
+	private boolean paused = false;
+	private boolean gameOver = false;
+	private boolean running = false;
 
 	public boolean isHost = false;
-	public boolean running = false;
 	public File selectedLevelTerrain = new File("./lvl/Cityscape_terrain.png");
 	public File selectedLevelBackground = new File("./lvl/Cityscape2_background.png");
 
@@ -34,5 +35,29 @@ public class GameState {
 	}
 
 	private GameState() {
+	}
+
+	public void setGameOver(boolean gameOver) {
+		this.gameOver = gameOver;
+	}
+
+	public boolean isGameOver() {
+		return gameOver;
+	}
+
+	public boolean isPaused() {
+		return paused;
+	}
+
+	public void setPaused(boolean paused) {
+		this.paused = paused;
+	}
+
+	public boolean isRunning() {
+		return running;
+	}
+
+	public void setRunning(boolean running) {
+		this.running = running;
 	}
 }

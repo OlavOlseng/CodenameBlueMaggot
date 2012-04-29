@@ -57,7 +57,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
 
-		if (!GameState.getInstance().PAUSED || !gameOver()) {
+		if (!GameState.getInstance().isPaused()){// || !GameState.getInstance().isRunning()) {
 			level.tick(deltaTime);
 			didTick = true;
 		}
@@ -86,11 +86,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		level = new cityScape(this, handler);
 		level.init();
 		init(GameState.getInstance().width, GameState.getInstance().height, 60);
-		GameState.getInstance().running = true;
-	}
-
-	public boolean gameOver() {
-		return level.gameOver;
+		GameState.getInstance().setRunning(true);
 	}
 
 	/* network stuff */

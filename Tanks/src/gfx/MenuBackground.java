@@ -1,11 +1,9 @@
-package blueMaggot;
+package gfx;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-import gfx.Menu;
-import gfx.MenuTitle;
 
 public class MenuBackground extends Menu {
 	
@@ -23,5 +21,6 @@ public class MenuBackground extends Menu {
 	@Override
 	public void paint(Graphics g) {
 		setVisible(menuTitle.isVisible());
+		System.out.println("painting");
 	}
 }

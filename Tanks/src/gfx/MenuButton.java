@@ -56,28 +56,31 @@ public class MenuButton extends Button {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				btnColor = Menu.pinkDark;
-				System.out.println("Clicked: " + label);
 				if (label.equals("exit"))
 					System.exit(1);
 				else if (label.equals("return")) {
-					if (!GameState.getInstance().running && !game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible())
+					if (!GameState.getInstance().isRunning() && !game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible() && !GameState.getInstance().isGameOver())
 						return;
-					if (!game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible())
-						GameState.getInstance().PAUSED = false;
+					if (!game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible() && !game.blueMaggot.uiScoreBoard.isVisible())
+						GameState.getInstance().setPaused(false);
 					menu.setVisible(false);
+					if (menu instanceof MenuScoreBoard) {
+						GameState.getInstance().setGameOver(false);
+					}
 					menu.repaint();
 					game.requestFocus();
 				} else if (label.equals("newGame")) {
 					for (Tank tank : GameState.getInstance().players) {
 						if (tank.getNick() == null)
 							return;
+						tank.setScore(0);
 					}
 					try {
 						game.runLoop.stop();
 					} catch (Exception e) {
 						// e.printStackTrace();
 					}
-					GameState.getInstance().PAUSED = false;
+					GameState.getInstance().setPaused(false);
 					menu.setVisible(false);
 					menu.repaint();
 					game.startReuglarGame();

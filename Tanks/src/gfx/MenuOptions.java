@@ -1,12 +1,10 @@
 package gfx;
 
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
 import blueMaggot.Game;
 import blueMaggot.GameState;
 
 public class MenuOptions extends Menu {
-	private GridBagConstraints c = new GridBagConstraints();
 	private Dimension btnSize = new Dimension(200, 20);
 
 	private MenuField fieldPlayerTwo;
@@ -60,8 +58,11 @@ public class MenuOptions extends Menu {
 
 	public void apply(Game game) {
 		GameState.getInstance().isHost = boxIsHost.getState();
-		GameState.getInstance().players.get(0).setNick(fieldPlayerOne.msg);
-		GameState.getInstance().players.get(1).setNick(fieldPlayerTwo.msg);
+		if (fieldPlayerOne.msg != null)
+			GameState.getInstance().players.get(0).setNick(fieldPlayerOne.msg);
+		if (fieldPlayerTwo.msg != null)
+			GameState.getInstance().players.get(1).setNick(fieldPlayerTwo.msg);
 		GameState.getInstance().hostIp = fieldIp.msg;
+		game.blueMaggot.ui.repaint();
 	}
 }

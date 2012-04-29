@@ -34,4 +34,8 @@ public abstract class Menu extends Panel {
 	public void putCenter(Component c, int width, int height) {
 		c.setBounds(GameState.getInstance().width / 2 - width / 2, GameState.getInstance().height / 2 - height / 2, width, height);
 	}
+	
+	public void tick(Menu menu){
+		menu.repaint();
+	}
 }
