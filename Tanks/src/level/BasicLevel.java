@@ -39,7 +39,7 @@ public abstract class BasicLevel {
 		ResourceManager.CROSSHAIR1.replaceColors(0x00FAE1, 0xFF2121);
 		ResourceManager.TANK2.replaceColors(0x00FAE1, 0x87FF54);
 		ResourceManager.CROSSHAIR2.replaceColors(0x00FAE1, 0xFF2121);
-		
+
 		entities = new ArrayList<Entity>();
 		playerSpawns = new ArrayList<FloatingPoint>();
 		bubbleSpawns = new ArrayList<FloatingPoint>();
@@ -50,18 +50,11 @@ public abstract class BasicLevel {
 	}
 
 	public void initLevel() {
-<<<<<<< HEAD
+		entities = new ArrayList<Entity>();
 		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion1.png"), Animations.EXPLOSIONS, 50, 50);
 		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion2.png"), Animations.EXPLOSIONS2, 100, 100);
-=======
-		entities = new ArrayList<Entity>();
-		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion1.png"), Animations.EXPLOSIONS,
-				50, 50);
-		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion2.png"),
-				Animations.EXPLOSIONS2, 100, 100);
 		playerSpawns = new ArrayList<FloatingPoint>();
 		bubbleSpawns = new ArrayList<FloatingPoint>();
->>>>>>> 9051e7f39b2aaf39404344734cfcfc0a5dbabc87
 	}
 
 	// requires you to init bubbleSpawns and playerSpawns

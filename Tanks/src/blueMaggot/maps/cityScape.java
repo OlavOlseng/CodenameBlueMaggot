@@ -37,13 +37,6 @@ public class cityScape extends BasicLevel {
 		addPlayers();
 
 		SoundEffect.SPAWN.play();
-
-<<<<<<< HEAD
-		addEntity(new BubbleHearth(bubbleSpawns.get(1), this));
-		addEntity(new Package(bubbleSpawns.get(2), this));
-=======
-
->>>>>>> 9051e7f39b2aaf39404344734cfcfc0a5dbabc87
 	}
 
 	public void addPlayers() {
