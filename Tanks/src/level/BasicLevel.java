@@ -116,7 +116,7 @@ public abstract class BasicLevel {
 		for (int i = 0; i < entities.size(); i++) {
 			Entity ent = entities.get(i);
 
-			if (!ent.IsOnlineGameClient()) {
+			if (ent.shouldTick()) {
 				ent.tick(dt);
 			}
 

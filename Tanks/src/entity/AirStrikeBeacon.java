@@ -86,12 +86,16 @@ public class AirStrikeBeacon extends Projectile {
 		
 	}
 	
-	/*@Override
-	public String getObject(){
-		return super.getObject() + triggered;
-	}
 	@Override
-	public */
+	public String getObject(){
+		return super.getObject() + "'" +triggered;
+	}
+	
+	public void handleMessage(String[] msg){
+		super.handleMessage(msg);
+		boolean triggered = Boolean.parseBoolean(msg[5]);
+		this.triggered = triggered;
+	}
 	@Override
 	public void render(Renderer renderer) {
 		int subimageIndex = 0;

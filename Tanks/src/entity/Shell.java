@@ -36,8 +36,13 @@ public class Shell extends Projectile {
 
 	public boolean intersectsTerrain() {
 		for (FloatingPoint point : hitbox) {
-			if (level.getTerrain().hitTestpoint((int) (x + point.getX()), (int) (y + point.getY())))
+			if (level.getTerrain().hitTestpoint((int) (x + point.getX()), (int) (y + point.getY()))){
+				while(level.getTerrain().hitTestpoint((int) (x + point.getX()), (int) (y + point.getY()))){
+					setLocation(x-dx/3, y-dy/3);
+				}
 				return true;
+			}
+				
 		}
 		return false;
 	}

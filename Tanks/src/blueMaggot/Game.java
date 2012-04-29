@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import entity.Entity;
+
 import networking.ConnectionDelegate;
 import networking.ConnectionManager;
 import networking.NetworkObject;
@@ -139,7 +141,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public void readData(byte[] data) {
 
 		if (data.length > 0) {
-			
+
 			onlineLevel.catchResponse(new String(data));
 
 		}
@@ -148,35 +150,36 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public byte[] onWrite() {
-		
+
 		String msgBody = "";
-		Collection<NetworkObject> objects = onlineLevel.getNetworkObjects().values();
+		List<NetworkObject> objects = onlineLevel.getNetworkObjectList();
 		List<Integer> deadKeys = new ArrayList<Integer>();
-		synchronized (objects) {
-			for (NetworkObject obj : objects) {
-				synchronized (obj) {
 
-					String objectString = obj.getObject();
-
-					if (objectString != null)
-						msgBody += "?" + objectString;
-
-					if (obj.isRemoved()) {
-						deadKeys.add(obj.getId());
-					}
-
-				}
-			}
-			for (Integer key : deadKeys) {
-				onlineLevel.getNetworkObjects().remove(key);
-			}
-
+		for (int i = 0; i < objects.size(); i++) {
 			
+			NetworkObject obj = objects.get(i);
+			if(obj.shouldBeSent()){
+			String objectString = obj.getObject();
+			
+			if (objectString != null)
+				msgBody += "?" + objectString;
 
-			String msgHeader = "1" + to5DigitString(msgBody.length());
-		
-			return (msgHeader + msgBody).getBytes();
+			if (obj.isRemoved()) {
+				deadKeys.add(obj.getId());
+				onlineLevel.getNetworkObjectList().remove(i);
+				i--;
+			}
+			}
+
 		}
+		for (Integer key : deadKeys) {
+			onlineLevel.getNetworkObjects().remove(key);
+
+		}
+
+		String msgHeader = "1" + to5DigitString(msgBody.length());
+
+		return (msgHeader + msgBody).getBytes();
 
 	}
 
@@ -192,14 +195,14 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public boolean shouldRead() {
-		return !isHost && onlineLevel != null;
+		return onlineLevel != null;
 	}
 
 	@Override
 	public boolean shouldWrite() {
 		boolean temp = didTick;
 		didTick = false;
-		return isHost && (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size() > 0;
+		return (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size() > 0;
 	}
 
 	@Override

@@ -26,13 +26,17 @@ public class Tank extends Entity {
 	private int score = 0;
 	private int life = 5;
 
-	private int playerNumber;
-	private double jetPackFuel = 100;
-	private double cannonCharge = 0;
+	protected int playerNumber;
+	
+	public void setPlayerNumber(int playerNumber) {
+		this.playerNumber = playerNumber;
+	}
+	protected double jetPackFuel = 100;
+	protected double cannonCharge = 0;
 	private boolean canGoLeft = true;
 	private boolean canGoRight = true;
 	private boolean canGoDown = true;
-	private boolean chargingCannon = false;
+	protected boolean chargingCannon = false;
 	private int currentWeapon = 0;
 	private double torque = 0.15;
 
@@ -44,6 +48,7 @@ public class Tank extends Entity {
 
 	public Tank(double x, double y, int playerNumber, InputHandler input, BasicLevel level) {
 		super(x, y, 11, 6, level);
+	
 		this.level.getPlayers().add(this);
 		muzzleAngle = 0;
 		muzzleLength = 20;
@@ -113,7 +118,9 @@ public class Tank extends Entity {
 		 */
 
 	}
-
+	public int getPlayerNumber() {
+		return playerNumber;
+	}
 	public double getX(){
 		return x;
 	}
@@ -218,7 +225,7 @@ public class Tank extends Entity {
 		return false;
 	}
 
-	private void tickWeapons(double dt) {
+	protected void tickWeapons(double dt) {
 		for (Weapon wep : weaponList) {
 			wep.tick(dt);
 		}
@@ -244,7 +251,7 @@ public class Tank extends Entity {
 		return weaponList;
 	}
 
-	private void player1Input() {
+	protected void player1Input() {
 		if (input.up1.down)
 			jetPack();
 		if (input.down1.clicked)
@@ -273,7 +280,8 @@ public class Tank extends Entity {
 			incrementMuzzleAngle(-3);
 	}
 
-	private void player2Input() {
+	protected void player2Input() {
+	
 		if (input.up2.down)
 			jetPack();
 		if (input.down2.clicked)
@@ -338,6 +346,7 @@ public class Tank extends Entity {
 	@Override
 	public void tick(double dt) {
 		super.tick(dt);
+		//System.out.println("TankTick!");
 		if (playerNumber == 1)
 			player1Input();
 		if (playerNumber == 2)
@@ -353,6 +362,7 @@ public class Tank extends Entity {
 		handleTerrainIntersection();
 		applyFriction();
 		tickWeapons(dt);
+		
 		if (this.y < -500)
 			remove();
 
@@ -379,7 +389,8 @@ public class Tank extends Entity {
 
 	@Override
 	public String getObject(){
-		return super.getObject() + "'" + to5DigitString(this.muzzleAngle);
+	
+		return super.getObject() + "'" + to5DigitString(this.muzzleAngle) + "'" + getPlayerNumber();
 	}
 	
 	@Override

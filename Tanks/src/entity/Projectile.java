@@ -1,5 +1,6 @@
 package entity;
 
+import baseGame.derp;
 import level.BasicLevel;
 
 public abstract class Projectile extends Entity {
@@ -36,6 +37,8 @@ public abstract class Projectile extends Entity {
 	// super.tick();
 	// while(level.getTerrain().hitTestpoint(x, y))
 	// }
+
+	
 
 	
 	@Override

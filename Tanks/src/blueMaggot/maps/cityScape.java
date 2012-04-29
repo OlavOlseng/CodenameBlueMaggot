@@ -36,17 +36,17 @@ public class cityScape extends BasicLevel {
 	public void init() {
 
 		initSpawn();
-
 		addPlayers();
-
 		SoundEffect.SPAWN.play();
-
+		if(shouldSpawnBubbleHearth())
 		addEntity(new BubbleHearth(bubbleSpawns.get(1), this));
+		if(shouldSpawnCrate())
 		addEntity(new Package(bubbleSpawns.get(2), this));
 
 	}
 	
 	public void addPlayers() {
+	
 		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this));
 		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this));
 

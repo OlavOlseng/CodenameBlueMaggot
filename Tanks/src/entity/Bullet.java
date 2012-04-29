@@ -1,5 +1,6 @@
 package entity;
 
+import networking.NetworkObjectType;
 import gfx.ResourceManager;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
@@ -25,12 +26,6 @@ public class Bullet extends Projectile {
 		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, explosionPower));
 	}
 
-	@Override
-	public void initNetworkValues() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public boolean intersectsTerrain() {
 		for (FloatingPoint point : hitbox) {
 			if (level.getTerrain().hitTestpoint((int) (x + point.getX()), (int) (y + point.getY())))
@@ -53,15 +48,28 @@ public class Bullet extends Projectile {
 		super.tick(dt);
 		if(intersectsTerrain() || handleIntersections()){
 			explode();
-			remove();
+			super.remove();
 		}
 	}
 	
+	@Override
+	public void remove(){
+		super.remove();
+		explode();
+	}
 	@Override
 	public void render(Renderer renderer) {
 		RGBImage img = ResourceManager.BULLET;
 		renderer.DrawImage(img, -1, (int) (x - 1), (int) (y - 1), img.getWidth(), img.getHeight());
 	}
+
+	@Override
+	public void initNetworkValues() {
+		// TODO Auto-generated method stub
+		setNetworkObjectType(NetworkObjectType.BULLET);
+		
+	}
+
 	
 
 }

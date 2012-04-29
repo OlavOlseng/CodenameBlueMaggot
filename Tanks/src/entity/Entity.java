@@ -17,7 +17,8 @@ import blueMaggot.Game;
 public abstract class Entity implements NetworkObject {
 
 	private int id;
-	private boolean isOnlineClient;
+	private boolean doSend = false;
+	private boolean doTick = true;
 	private NetworkObjectType type;
 	public DecimalFormat formater;
 	
@@ -37,7 +38,12 @@ public abstract class Entity implements NetworkObject {
 		return id;
 	}
 
-
+	public boolean shouldTick(){
+		return doTick;
+	}
+	public void setSouldTick(boolean doTick){
+		this.doTick = doTick;
+	}
 	@Override
 	public abstract void initNetworkValues();
 
@@ -47,17 +53,11 @@ public abstract class Entity implements NetworkObject {
 		this.id = id;
 	}
 
-
-	@Override
-	public void setIsOnlineGameClient(boolean isClient){
-		this.isOnlineClient = isClient;
+	public void setShouldBeSent(boolean shouldBesent){
+		this.doSend= shouldBesent;
 	}
-	
-
-	@Override
-	public boolean IsOnlineGameClient() {
-
-		return isOnlineClient;
+	public boolean shouldBeSent(){
+		return doSend;
 	}
 
 	@Override
@@ -74,6 +74,7 @@ public abstract class Entity implements NetworkObject {
 	protected final Random rand = new Random();
 	protected double x, y;
 	protected double xr, yr;
+
 	protected BasicLevel level;
 	protected double angle = 0;
 	protected double dx = 0, dy = 0;
@@ -149,7 +150,7 @@ public abstract class Entity implements NetworkObject {
 	public String getObject() {
 
 		
-		if(type !=null && !isOnlineClient)
+		if(type !=null && doSend)
 		return "'" + to5DigitString(getId())+ "'" +type + "'"  + removed + "'"+ to5DigitString(x) + "'" + to5DigitString(y);
 		else
 		return "";

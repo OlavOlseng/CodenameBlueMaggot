@@ -24,7 +24,6 @@ public class ConnectionManager {
 	public ConnectionManager(ConnectionDelegate delegate) {
 		this.delegate = delegate;
 	}
-
 	public void becomeHost() {
 		try {
 			listener = new ServerSocket(7227, 2);
@@ -33,7 +32,6 @@ public class ConnectionManager {
 			delegate.connectionFailed(e.getLocalizedMessage());
 			return;
 		}
-
 		TimerTask acceptLoop = new TimerTask() {
 			@Override
 			public void run() {
@@ -147,7 +145,7 @@ public class ConnectionManager {
 					//	System.out.println(len);
 						byte[] data = new byte[(int) len];
 						offset = 0;
-						System.out.println(len);
+						
 						remaining = data.length;
 				
 						

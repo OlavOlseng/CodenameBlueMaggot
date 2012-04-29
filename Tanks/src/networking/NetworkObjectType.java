@@ -3,13 +3,13 @@ package networking;
 public enum NetworkObjectType {
 
 	TANK(0),GRENADE(1),ROCKET(2),SCORE_BUBBLE(3),SHELL(4),EXPLOSION(5),ANIMATION(6),MINE(7),PACKAGE(8),NO_SYNC(9),BUBBLE_HEARTH(10),
-	AIR_STRIKE(11);
+	AIR_STRIKE(11),BULLET(12);
 	
 	private final int type;
 	
 	@Override
 	public String toString(){
-		String res = "-1";
+		String res = "error";
 		switch (this) {
 		case TANK: res = "00";
 		break;
@@ -34,6 +34,8 @@ public enum NetworkObjectType {
 		case BUBBLE_HEARTH:res ="10";
 		break;
 		case AIR_STRIKE:res = "11";
+		break;
+		case BULLET:res = "12";
 		break;
 		}
 		return res;

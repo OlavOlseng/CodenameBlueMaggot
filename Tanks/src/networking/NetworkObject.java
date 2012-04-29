@@ -14,7 +14,9 @@ public interface NetworkObject {
 	public void setSpeed(double dx, double dy);
 	public void setLocation(double x, double y);
 	public void move(double dt);
-	public void setIsOnlineGameClient(boolean isClient);
-	public boolean IsOnlineGameClient();
+	public void setShouldBeSent(boolean isClient);
+	public boolean shouldBeSent();
+	public boolean shouldTick();
+	public void setSouldTick(boolean doTick);
 
 }

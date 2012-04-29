@@ -7,11 +7,12 @@ import baseGame.Rendering.RGBImage;
 public class AnimationFactory {
 
 	private HashMap<String, SpriteSheet> spriteSheets;
-
+	
+	
+	
 	private AnimationFactory() {
 		spriteSheets = new HashMap<String, SpriteSheet>();
 	}
-
 	public void addSpriteSheet(File path, String name, int spriteWidth, int spriteHeight) {
 		spriteSheets.put(name, new SpriteSheet(path, spriteWidth, spriteHeight));
 	}

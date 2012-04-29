@@ -99,7 +99,13 @@ public class BubbleHearth extends Entity {
 		RGBImage img = ResourceManager.BUBBLEHEARTH;
 		renderer.DrawImage(img, -1, (int) (x - 9), (int) (y - 19), img.getWidth(), img.getHeight());
 	}
-
+	@Override
+	public void handleMessage(String[] msg){
+		super.handleMessage(msg);
+		boolean willDie = Boolean.parseBoolean(msg[3]);
+		if(willDie)
+			remove();
+	}
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub

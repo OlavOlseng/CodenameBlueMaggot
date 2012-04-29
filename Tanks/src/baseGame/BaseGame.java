@@ -87,8 +87,10 @@ public abstract class BaseGame extends Canvas implements Runnable {
 
 			// System.out.println(deltaTime);
 			lastTime = System.currentTimeMillis();
-
+		
 			onUpdate(deltaTime);
+	
+			
 			Renderer renderer = new Renderer(pixels, backgroundColor, canvasWidth, canvasHeight);
 
 			onDraw(renderer);

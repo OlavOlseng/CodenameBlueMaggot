@@ -119,6 +119,11 @@ public class Package extends Entity {
 		handlePlayerIntersections();
 	}
 
+	@Override
+	public void remove(){
+		System.out.println("packRemoved");
+		super.remove();
+	}
 	
 	@Override
 	public void render(Renderer renderer) {
@@ -126,7 +131,13 @@ public class Package extends Entity {
 		RGBImage img = ResourceManager.PACKAGE;
 		renderer.DrawImage(img, -1, (int) (x - 7), (int) (y - 14), img.getWidth(), img.getHeight());
 	}
-
+	@Override
+	public void handleMessage(String[] msg){
+		super.handleMessage(msg);
+		boolean willDie = Boolean.parseBoolean(msg[3]);
+		if(willDie)
+			remove();
+	}
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
