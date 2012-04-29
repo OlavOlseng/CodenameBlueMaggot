@@ -4,7 +4,7 @@ import networking.NetworkObjectType;
 import gfx.ResourceManager;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
-import blueMaggot.Game;
+import blueMaggot.GameState;
 import level.BasicLevel;
 
 public class Grenade extends Projectile {
@@ -94,7 +94,7 @@ public class Grenade extends Projectile {
 		this.dt = dt;
 		super.move(dt);
 		gravitate();
-		if (x > Game.WIDTH + 100 || x < -100 || y > Game.HEIGHT + 100 || y < -1000)
+		if (x > GameState.getInstance().width + 100 || x < -100 || y > GameState.getInstance().height + 100 || y < -1000)
 			remove();
 
 		handleIntersects();

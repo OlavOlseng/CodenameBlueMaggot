@@ -4,7 +4,6 @@ import gfx.Menu;
 import gfx.ResourceManager;
 import inputhandler.InputHandler;
 
-import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +12,14 @@ import java.util.Random;
 import sound.SoundEffect;
 
 import baseGame.BaseGame;
-import baseGame.derp;
 import baseGame.Rendering.Renderer;
 import baseGame.animations.AnimationFactory;
+import blueMaggot.GameState;
 
 import entity.*;
 
 public abstract class BasicLevel {
 
-	public boolean gameOver = false;
 	protected List<Entity> entities;
 	protected ArrayList<Tank> players;
 	protected InputHandler handler;
@@ -41,6 +39,10 @@ public abstract class BasicLevel {
 		ResourceManager.CROSSHAIR1.replaceColors(0x00FAE1, 0xFF2121);
 		ResourceManager.TANK2.replaceColors(0x00FAE1, 0x87FF54);
 		ResourceManager.CROSSHAIR2.replaceColors(0x00FAE1, 0xFF2121);
+
+		entities = new ArrayList<Entity>();
+		playerSpawns = new ArrayList<FloatingPoint>();
+		bubbleSpawns = new ArrayList<FloatingPoint>();
 	}
 
 	public Terrain getTerrain() {
@@ -88,12 +90,8 @@ public abstract class BasicLevel {
 			if (!player.removed)
 				playerAliveCount++;
 		}
-		if (playerAliveCount <= 1){
-			gameOver = true;
-		for (Tank player : players) {
-			if (!player.removed)
-				player.addScore(1000);
-		}
+		if (playerAliveCount <= 1) {
+			GameState.getInstance().setGameOver(true);
 		}
 	}
 

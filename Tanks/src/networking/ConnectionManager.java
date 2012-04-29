@@ -118,7 +118,6 @@ public class ConnectionManager {
 					try {
 						Thread.sleep(sleepTime);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					int offset = 0;
@@ -142,7 +141,6 @@ public class ConnectionManager {
 						
 						double len = Double.parseDouble((head.substring(1, 6)));
 						
-					//	System.out.println(len);
 						byte[] data = new byte[(int) len];
 						offset = 0;
 						

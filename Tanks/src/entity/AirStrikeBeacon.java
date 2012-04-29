@@ -1,7 +1,5 @@
 package entity;
 
-import java.io.ObjectInputStream.GetField;
-
 import networking.NetworkObjectType;
 import sound.SoundEffect;
 import gfx.ResourceManager;

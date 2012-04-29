@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import networking.*;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
+import blueMaggot.GameState;
 
 import entity.weapon.Airstrike;
 import entity.weapon.GrenadeGun;
+import entity.weapon.Gun;
 import entity.weapon.MineLauncher;
 import entity.weapon.Minigun;
 import entity.weapon.Rocketlauncher;
@@ -20,11 +22,16 @@ import inputhandler.InputHandler;
 
 public class Tank extends Entity {
 
+	// player variables
+	private int score = 0;
+	private int oldScore = 0;
+	private int life = 5;
+	private String nick;
+
 	private InputHandler input;
 	private double muzzleAngle;
 	private int muzzleLength = 16;
-	private int score = 0;
-	private int life = 5;
+
 
 	protected int playerNumber;
 	
@@ -37,7 +44,8 @@ public class Tank extends Entity {
 	private boolean canGoRight = true;
 	private boolean canGoDown = true;
 	protected boolean chargingCannon = false;
-	private int currentWeapon = 0;
+
+	private Gun currentWeapon = Gun.GRENADE;
 	private double torque = 0.15;
 
 	private ArrayList<Weapon> weaponList;
@@ -86,7 +94,8 @@ public class Tank extends Entity {
 	public Tank(FloatingPoint point, int playerNumber, InputHandler input, BasicLevel level) {
 		super(point.getX(), point.getY(), 11, 6, level);
 		this.level.getPlayers().add(this);
-		muzzleAngle = 0;
+		GameState.getInstance().players.add(this);
+		muzzleAngle = 90;
 		muzzleLength = 20;
 		this.playerNumber = playerNumber;
 		this.input = input;
@@ -118,19 +127,23 @@ public class Tank extends Entity {
 		 */
 
 	}
+
 	public int getPlayerNumber() {
 		return playerNumber;
 	}
-	public double getX(){
+
+
+	public double getX() {
+
 		return x;
 	}
-	
-	public double getY(){
+
+	public double getY() {
 		return y;
 	}
-	
+
 	public int getCurrentWeapon() {
-		return currentWeapon;
+		return currentWeapon.ordinal();
 	}
 
 	public void initInventory() {
@@ -168,7 +181,7 @@ public class Tank extends Entity {
 	public void fire(double speedPercent) {
 		if (speedPercent < 0.2)
 			speedPercent = 0.2;
-		weaponList.get(currentWeapon).fire(this.x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)),
+		weaponList.get(currentWeapon.ordinal()).fire(this.x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)),
 				this.y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle)), this.level, speedPercent, this.muzzleAngle - 4);
 	}
 
@@ -240,10 +253,10 @@ public class Tank extends Entity {
 	}
 
 	public void toggleWeapon() {
-		currentWeapon++;
-		if (currentWeapon >= weaponList.size())
-			currentWeapon = 0;
-		if (weaponList.get(currentWeapon).getAmmo() == 0)
+		currentWeapon = Gun.values()[(currentWeapon.ordinal()+1)%Gun.values().length];
+		if (currentWeapon.ordinal() >= weaponList.size())
+			currentWeapon = Gun.SHELLGUN;
+		if (weaponList.get(currentWeapon.ordinal()).getAmmo() == 0)
 			toggleWeapon();
 	}
 
@@ -286,11 +299,9 @@ public class Tank extends Entity {
 			jetPack();
 		if (input.down2.clicked)
 			toggleWeapon();
-		if (input.right2.down && canGoRight) {
-
+		if (input.right2.down && canGoRight)
 			if (dx < 2)
 				accelerate(torque, 0);
-		}
 		if (input.left2.down && canGoLeft) {
 			if (dx > -2)
 				accelerate(-torque, 0);
@@ -325,22 +336,16 @@ public class Tank extends Entity {
 
 	@Override
 	public void remove() {
+		score -= 100;
 		if (--life == 0) {
 			super.remove();
-			int scoreWon = 1000;
-			for (Tank player : level.getPlayers()) {
-				if (player == this)
-					continue;
-				scoreWon -= 250;
-			}
-			this.score += scoreWon;
 			return;
 		}
 		setLocation(level.getPlayerSpawns().get(rand.nextInt(level.getPlayerSpawns().size())));
 		setSpeed(0, -1);
 		damageTaken = 1;
 		initInventory();
-		currentWeapon = 0;
+		currentWeapon = Gun.SHELLGUN;
 	}
 
 	@Override
@@ -365,7 +370,6 @@ public class Tank extends Entity {
 		
 		if (this.y < -500)
 			remove();
-
 	}
 
 	@Override
@@ -384,26 +388,59 @@ public class Tank extends Entity {
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr() + 1), img.getWidth(), img.getHeight());
 		renderer.DrawImage(crossHair, -1, (int) (getCrosshairLocation().getX() - crossHair.getWidth() / 2),
 				(int) (getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(), crossHair.getHeight());
-
 	}
 
 	@Override
+
 	public String getObject(){
 	
 		return super.getObject() + "'" + to5DigitString(this.muzzleAngle) + "'" + getPlayerNumber();
+
+
 	}
-	
+
 	@Override
-	public void handleMessage(String[] msg){
+	public void handleMessage(String[] msg) {
 		super.handleMessage(msg);
 		double muzzleAngle = Double.parseDouble(msg[6]);
 		setMuzzleAngle(muzzleAngle);
-		
 	}
+
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
 		setNetworkObjectType(NetworkObjectType.TANK);
+	}
 
+	public int getLife() {
+		return life;
+	}
+
+	public String getNick() {
+		return nick;
+	}
+
+	@Override
+	public String toString() {
+		return "Nick: " + nick + " - Score: " + score + " - Life: " + " - Weapon: " + currentWeapon;
+	}
+
+	public int getOldScore() {
+		return oldScore;
+	}
+
+	public void setOldScore(int oldScore) {
+		this.oldScore = oldScore;
+	}
+
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public String getCurrentWeaponName(){
+		return this.currentWeapon.name();
 	}
 }

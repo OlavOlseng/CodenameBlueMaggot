@@ -10,7 +10,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import entity.Tank;
+
 import blueMaggot.Game;
+import blueMaggot.GameState;
 
 public class MenuButton extends Button {
 
@@ -53,26 +56,31 @@ public class MenuButton extends Button {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				btnColor = Menu.pinkDark;
-				System.out.println("Clicked: " + label);
 				if (label.equals("exit"))
 					System.exit(1);
 				else if (label.equals("return")) {
-					if (!Game.running && !game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible())
+					if (!GameState.getInstance().isRunning() && !game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible() && !GameState.getInstance().isGameOver())
 						return;
-					if (!game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible())
-						Game.PAUSED = false;
+					if (!game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible() && !game.blueMaggot.uiScoreBoard.isVisible())
+						GameState.getInstance().setPaused(false);
 					menu.setVisible(false);
+					if (menu instanceof MenuScoreBoard) {
+						GameState.getInstance().setGameOver(false);
+					}
 					menu.repaint();
 					game.requestFocus();
 				} else if (label.equals("newGame")) {
-					if (Game.NICK_PLAYER_ONE == null || Game.NICK_PLAYER_TWO == null)
-						return;
+					for (Tank tank : GameState.getInstance().players) {
+						if (tank.getNick() == null)
+							return;
+						tank.setScore(0);
+					}
 					try {
 						game.runLoop.stop();
 					} catch (Exception e) {
 						// e.printStackTrace();
 					}
-					Game.PAUSED = false;
+					GameState.getInstance().setPaused(false);
 					menu.setVisible(false);
 					menu.repaint();
 					game.startReuglarGame();
@@ -84,8 +92,9 @@ public class MenuButton extends Button {
 					}
 					menu.setVisible(false);
 					menu.repaint();
-					game.startOnlineGame();
+					game.initConnection(GameState.getInstance().isHost, GameState.getInstance().hostIp);
 					game.requestFocus();
+					
 				} else if (label.equals("options"))
 					game.blueMaggot.menuOptions.setVisible(true);
 				else if (label.equals("apply")) {
@@ -98,8 +107,6 @@ public class MenuButton extends Button {
 				} else if (label.endsWith("lvls"))
 					game.blueMaggot.menuLevelSelect.setVisible(true);
 
-				System.out.println("Player One: " + Game.NICK_PLAYER_ONE + " - Player Two: " + Game.NICK_PLAYER_TWO + " - Is Host: " + game.isHost
-						+ " - Host IP: " + Game.HOSTIP);
 				repaint();
 			}
 

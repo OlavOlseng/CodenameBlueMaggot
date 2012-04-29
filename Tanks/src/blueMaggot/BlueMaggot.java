@@ -1,10 +1,12 @@
 package blueMaggot;
 
+import entity.Tank;
+import gfx.MenuBackground;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
 import gfx.MenuTitle;
 import gfx.UIElement;
-import gfx.UIScoreBoard;
+import gfx.MenuScoreBoard;
 import inputhandler.InputHandler;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -22,46 +24,43 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 	private JLayeredPane layeredPane = new JLayeredPane();
 	private MenuTitle menuTitle;
-	private UIScoreBoard uiScoreBoard;
 	private JPanel gamePanel;
+
+	public MenuScoreBoard uiScoreBoard;
 	public MenuLevelSelect menuLevelSelect;
 	public MenuOptions menuOptions;
-
-	private UIElement ui;
+	public UIElement ui;
 
 	Game game;
-
-	private UIElement ui2;
 
 	private MenuBackground menuBackground;
 
 	public BlueMaggot() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
+		setPreferredSize(new Dimension(GameState.getInstance().width, GameState.getInstance().height));
 		setFocusable(true);
+		setResizable(false);
 
-		layeredPane.setBounds(0, 0, Game.WIDTH, Game.HEIGHT);
+		layeredPane.setBounds(0, 0, GameState.getInstance().width, GameState.getInstance().height);
 		layeredPane.setOpaque(false);
 
 		game = new blueMaggot.Game(this);
 		menuTitle = new MenuTitle(game, this);
 		menuOptions = new MenuOptions(game);
-		uiScoreBoard = new UIScoreBoard(game);
+		uiScoreBoard = new MenuScoreBoard(game);
 		menuLevelSelect = new MenuLevelSelect(game);
 		menuBackground = new MenuBackground(menuTitle);
 		gamePanel = new JPanel();
 
-		ui2 = new UIElement(0, 0, 100, 40, 2);
-		// ui2 = new UIElement(Game.WIDTH-100,0,100,40,2);
+		ui = new UIElement(0, 0, 700, 45, menuTitle.border, game);
 
 		layeredPane.add(gamePanel, new Integer(0));
-		// layeredPane.add(ui, new Integer(1));
-		// layeredPane.add(ui2, new Integer(1));
+		layeredPane.add(ui, new Integer(1));
 		layeredPane.add(menuBackground, new Integer(9));
 		layeredPane.add(menuTitle, new Integer(10));
 		layeredPane.add(menuOptions, new Integer(11));
 		layeredPane.add(menuLevelSelect, new Integer(11));
-		layeredPane.add(uiScoreBoard, new Integer(2));
+		layeredPane.add(uiScoreBoard, new Integer(12));
 
 		add(layeredPane);
 		pack();
@@ -71,9 +70,9 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	private void setUpGame() {
-		game.setPreferredSize(Game.DIMENSION);
+		game.setPreferredSize(GameState.getInstance().dimension);
 		gamePanel.setLayout(new BorderLayout());
-		gamePanel.setBounds(0, 0, Game.WIDTH, Game.HEIGHT);
+		gamePanel.setBounds(0, 0, GameState.getInstance().width, GameState.getInstance().height);
 		gamePanel.add(game);
 	}
 
@@ -87,7 +86,11 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	public void tick() {
-		// game.requestFocus();
+		for (Tank tank : GameState.getInstance().players) {
+			if (tank.getNick() == null)
+				tank.setNick("Player");
+		}
+
 		if (inputReal.menu.clicked) {
 			inputReal.menu.clicked = false;
 			inputReal.releaseAll();
@@ -95,15 +98,35 @@ public class BlueMaggot extends JFrame implements Runnable {
 				menuTitle.setVisible(true);
 				menuBackground.setVisible(true);
 				menuTitle.repaint();
-//				Game.PAUSED = true;
+				GameState.getInstance().setPaused(true);
 			}
 		}
-		if (inputReal.tab.down) {
-			uiScoreBoard.setVisible(true);
+		if (GameState.getInstance().isRunning()) {
+			ui.setVisible(true);
 		} else
-			uiScoreBoard.setVisible(false);
-		if(game.gameOver()){
+			ui.setVisible(false);
+		// TODO: Implement scoreboard
+		// if (inputReal.tab.down) {
+		// uiScoreBoard.setVisible(true);
+		// } else
+		// uiScoreBoard.setVisible(false);
+		if (GameState.getInstance().isGameOver()) {
+			menuTitle.setVisible(true);
 			uiScoreBoard.setVisible(true);
+			GameState.getInstance().setPaused(true);
+			GameState.getInstance().setRunning(false);
+			menuBackground.setVisible(true);
+			menuTitle.repaint();
+		}
+		for (Tank tank : GameState.getInstance().players) {
+			if (tank.getScore() != tank.getOldScore()) {
+				tank.setOldScore(tank.getScore());
+				ui.repaint();
+				System.out.println("p" + tank.getId() + ": " + tank.getScore());
+			}
+		}
+		if (inputReal.down1.clicked || inputReal.down2.clicked) {
+			ui.repaint();
 		}
 	}
 }

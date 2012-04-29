@@ -1,11 +1,10 @@
 package gfx;
 
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
 import blueMaggot.Game;
+import blueMaggot.GameState;
 
 public class MenuOptions extends Menu {
-	private GridBagConstraints c = new GridBagConstraints();
 	private Dimension btnSize = new Dimension(200, 20);
 
 	private MenuField fieldPlayerTwo;
@@ -27,9 +26,9 @@ public class MenuOptions extends Menu {
 
 		setVisible(false);
 
-		fieldIp = new MenuField(20,"ip");
-		fieldPlayerOne = new MenuField(20,"text");
-		fieldPlayerTwo = new MenuField(20,"text");
+		fieldIp = new MenuField(20, "ip");
+		fieldPlayerOne = new MenuField(20, "text");
+		fieldPlayerTwo = new MenuField(20, "text");
 
 		btnApply = new MenuButton("apply", this, game, btnSize);
 		btnReturn = new MenuButton("return", this, game, btnSize);
@@ -58,9 +57,12 @@ public class MenuOptions extends Menu {
 	}
 
 	public void apply(Game game) {
-		game.isHost = boxIsHost.getState();
-		Game.NICK_PLAYER_ONE = fieldPlayerOne.msg;
-		Game.NICK_PLAYER_TWO = fieldPlayerTwo.msg;
-		Game.HOSTIP = fieldIp.msg;
+		GameState.getInstance().isHost = boxIsHost.getState();
+		if (fieldPlayerOne.msg != null)
+			GameState.getInstance().players.get(0).setNick(fieldPlayerOne.msg);
+		if (fieldPlayerTwo.msg != null)
+			GameState.getInstance().players.get(1).setNick(fieldPlayerTwo.msg);
+		GameState.getInstance().hostIp = fieldIp.msg;
+		game.blueMaggot.ui.repaint();
 	}
 }

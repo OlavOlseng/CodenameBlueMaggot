@@ -42,7 +42,6 @@ public class MenuTitle extends Menu {
 		for (MenuButton button : ButtonArr) {
 			add(button, c);
 			c.gridy++;
-			System.out.println("adding button");
 		}
 		validate();
 		repaint();

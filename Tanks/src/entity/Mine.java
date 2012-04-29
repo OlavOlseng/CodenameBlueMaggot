@@ -74,9 +74,7 @@ public class Mine extends Projectile {
 
 	@Override
 	public String getObject(){
-		//index 6 = armed
 		String msg = super.getObject() + "'" + armed;
-		System.out.println(msg);
 		return msg;
 	}
 	@Override

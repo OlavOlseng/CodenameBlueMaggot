@@ -3,10 +3,7 @@ package blueMaggot;
 import inputhandler.InputHandler;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.io.File;
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -24,12 +21,8 @@ import blueMaggot.maps.cityScape;
 
 public class Game extends BaseGame implements ConnectionDelegate {
 
-	public static int WIDTH = 1024;
-	public static int HEIGHT = 768;
-	public static Dimension DIMENSION = new Dimension(WIDTH, HEIGHT);
 	public boolean didTick = false;
 	public static int ALPHA_MASK = -1;
-	public static boolean PAUSED = false;
 
 	// network stuff
 	public boolean online = false;
@@ -42,24 +35,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	private InputHandler handler = new InputHandler();
 
 	public DecimalFormat formater;
-	private cityScape level;
-
-	// customizable player variables!
-	public static String HOSTIP;
-	public static String NICK_PLAYER_ONE = "carl";
-	public static String NICK_PLAYER_TWO = "biker bob";
-	public boolean isHost = false;
-	public static File SELECTED_LEVEL_TERRAIN = new File("./lvl/Cityscape_terrain.png");
-	public static File SELECTED_LEVEL_BACKGROUND = new File("./lvl/Cityscape_background.png");
-	public static boolean running = false;
-
-	// ui elements
-	public int playerOneScore;
-	public int playerTwoScore;
-	public int playerOneLife;
-	public int playerTwoLife;
-	public int playerOneSelectedWeapon;
-	public int playerTwoSelectedWeapon;
+	public cityScape level;
 
 	public Game() {
 		handler = new InputHandler();
@@ -83,7 +59,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
 
-		if (!PAUSED || !gameOver()) {
+		if (!GameState.getInstance().isPaused()){// || !GameState.getInstance().isRunning()) {
 			level.tick(deltaTime);
 			didTick = true;
 		}
@@ -108,16 +84,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	// }
 
 	public void startReuglarGame() {
-		System.out.println("starting level: " + Game.SELECTED_LEVEL_BACKGROUND.getName().split("_")[0]);
+		System.out.println("starting level: " + GameState.getInstance().selectedLevelBackground.getName().split("_")[0]);
 		level = new cityScape(this, handler);
 		level.init();
-		running = true;
-		init(WIDTH, HEIGHT, 60);
-
-	}
-
-	public boolean gameOver() {
-		return level.gameOver;
+		init(GameState.getInstance().width, GameState.getInstance().height, 60);
+		GameState.getInstance().setRunning(true);
 	}
 
 	/* network stuff */
@@ -125,10 +96,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		connection = new ConnectionManager(this);
 		if (isHost) {
 			connection.becomeHost();
-			this.isHost = true;
+			GameState.getInstance().isHost = true;
 		} else {
 			connection.joinGame(addr);
-			this.isHost = false;
+			GameState.getInstance().isHost = false;
 		}
 	}
 
@@ -190,19 +161,23 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		} else {
 			return "-" + formater.format(Math.abs(x)).substring(1);
 		}
-
 	}
 
 	@Override
 	public boolean shouldRead() {
-		return onlineLevel != null;
+
+		return  onlineLevel != null;
+
 	}
 
 	@Override
 	public boolean shouldWrite() {
 		boolean temp = didTick;
 		didTick = false;
-		return (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size() > 0;
+
+
+		return  (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size() > 0;
+
 	}
 
 	@Override
@@ -210,6 +185,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		onlineLevel = new OnlineCityScape(this, handler);
 		onlineLevel.init();
 		level = onlineLevel;
-		init(WIDTH, HEIGHT, 60);
+		init(GameState.getInstance().width, GameState.getInstance().height, 60);
 	}
 }

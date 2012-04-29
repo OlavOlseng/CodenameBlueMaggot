@@ -1,5 +1,6 @@
 package entity;
 
+import entity.weapon.Gun;
 import networking.NetworkObjectType;
 import sound.SoundEffect;
 import gfx.ResourceManager;
@@ -9,15 +10,7 @@ import level.BasicLevel;
 
 public class Package extends Entity {
 
-	enum Gun {
-		ROCKETLAUNCHER(2), MINELAUNCHER(3), AIRSTRIKE(4), MINIGUN(5);
-		private int i;
-
-		private Gun(int i) {
-			this.i = i;
-		}
-	}
-
+	
 	Gun wep;
 	PixelHitbox hitbox;
 
@@ -104,8 +97,7 @@ public class Package extends Entity {
 	public void handlePlayerIntersections() {
 		for (Tank player : level.getPlayers()) {
 			if (intersectsEntity(player)) {
-				player.getWeaponList().get(wep.i).addAmmo();
-				System.out.println(wep);
+				player.getWeaponList().get(wep.ordinal()).addAmmo();
 				SoundEffect.RELOAD.play();
 				remove();
 			}
