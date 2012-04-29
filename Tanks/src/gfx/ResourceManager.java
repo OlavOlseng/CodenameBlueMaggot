@@ -34,7 +34,7 @@ public class ResourceManager {
 	public static RGBImage TANK2;
 	public static RGBImage TANK1;
 
-	public void initResources() {
+	/*public void initResources() {
 		try {
 			TANK1 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
 			TANK2 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
@@ -58,7 +58,7 @@ public class ResourceManager {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
 
 	private static ResourceManager instance = null;
 

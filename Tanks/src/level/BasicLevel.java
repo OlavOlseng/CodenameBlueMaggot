@@ -4,10 +4,14 @@ import gfx.Menu;
 import gfx.ResourceManager;
 import inputhandler.InputHandler;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 
 import sound.SoundEffect;
 
@@ -51,8 +55,16 @@ public abstract class BasicLevel {
 
 	public void initLevel() {
 		entities = new ArrayList<Entity>();
-		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion1.png"), Animations.EXPLOSIONS, 50, 50);
-		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion2.png"), Animations.EXPLOSIONS2, 100, 100);
+		try {
+			BufferedImage img1 = ImageIO.read(getClass().getResourceAsStream("/graphics/Explosion1.png"));
+			BufferedImage img2 = ImageIO.read(getClass().getResourceAsStream("/graphics/Explosion2.png"));
+			
+			AnimationFactory.getInstance().addSpriteSheet(img1, Animations.EXPLOSIONS, 50, 50);
+			AnimationFactory.getInstance().addSpriteSheet(img2, Animations.EXPLOSIONS2, 100, 100);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	
 		playerSpawns = new ArrayList<FloatingPoint>();
 		bubbleSpawns = new ArrayList<FloatingPoint>();
 	}

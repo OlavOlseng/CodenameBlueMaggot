@@ -9,7 +9,7 @@ import blueMaggot.GameState;
 
 public class MenuLevelSelect extends Menu {
 
-	public File path = new File("./lvl");
+	public File path = new File("./lvl/");
 
 	private ArrayList<BufferedImage> lvls = new ArrayList<BufferedImage>();
 	public ArrayList<MenuLevelButton> lvlBtns = new ArrayList<MenuLevelButton>();
@@ -21,6 +21,7 @@ public class MenuLevelSelect extends Menu {
 		setVisible(false);
 		int gridx = 0;
 		int gridy = 0;
+		
 		for (File lvl : path.listFiles()) {
 			if (lvl.getName().contains("terrain")) {
 				MenuLevelButton btnLvl = new MenuLevelButton(lvl, this);
@@ -36,6 +37,7 @@ public class MenuLevelSelect extends Menu {
 				}
 			}
 		}
+		
 		add(new MenuButton("apply", this, game), new GBC(0, ++gridy, "left").setInsets(10, 10, 10, 10).setSpan(2, 1));
 		add(new MenuButton("return", this, game), new GBC(2, gridy, "left").setInsets(10, 10, 10, 10).setSpan(2, 1));
 	}
