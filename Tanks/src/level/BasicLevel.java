@@ -50,8 +50,18 @@ public abstract class BasicLevel {
 	}
 
 	public void initLevel() {
+<<<<<<< HEAD
 		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion1.png"), Animations.EXPLOSIONS, 50, 50);
 		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion2.png"), Animations.EXPLOSIONS2, 100, 100);
+=======
+		entities = new ArrayList<Entity>();
+		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion1.png"), Animations.EXPLOSIONS,
+				50, 50);
+		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion2.png"),
+				Animations.EXPLOSIONS2, 100, 100);
+		playerSpawns = new ArrayList<FloatingPoint>();
+		bubbleSpawns = new ArrayList<FloatingPoint>();
+>>>>>>> 9051e7f39b2aaf39404344734cfcfc0a5dbabc87
 	}
 
 	// requires you to init bubbleSpawns and playerSpawns
@@ -87,14 +97,8 @@ public abstract class BasicLevel {
 			if (!player.removed)
 				playerAliveCount++;
 		}
-		if (playerAliveCount <= 1 ) {
+		if (playerAliveCount <= 1) {
 			gameOver = true;
-			for (Tank player : players) {
-				if (!player.removed) {
-					player.remove();
-					player.addScore(1000);
-				}
-			}
 		}
 	}
 
