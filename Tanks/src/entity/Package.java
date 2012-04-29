@@ -1,5 +1,6 @@
 package entity;
 
+import entity.weapon.Gun;
 import networking.NetworkObjectType;
 import sound.SoundEffect;
 import gfx.ResourceManager;
