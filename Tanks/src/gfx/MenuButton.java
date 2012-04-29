@@ -59,7 +59,8 @@ public class MenuButton extends Button {
 				if (label.equals("exit"))
 					System.exit(1);
 				else if (label.equals("return")) {
-					if (!GameState.getInstance().isRunning() && !game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible() && !GameState.getInstance().isGameOver())
+					if (!GameState.getInstance().isRunning() && !game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible()
+							&& !GameState.getInstance().isGameOver())
 						return;
 					if (!game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible() && !game.blueMaggot.uiScoreBoard.isVisible())
 						GameState.getInstance().setPaused(false);
@@ -96,7 +97,7 @@ public class MenuButton extends Button {
 					menu.repaint();
 					game.initConnection(GameState.getInstance().isHost, GameState.getInstance().hostIp);
 					game.requestFocus();
-					
+
 				} else if (label.equals("options"))
 					game.blueMaggot.menuOptions.setVisible(true);
 				else if (label.equals("apply")) {
@@ -139,8 +140,8 @@ public class MenuButton extends Button {
 	// paint images maybe
 	@Override
 	public void paint(Graphics g) {
-		setForeground(btnColor);
-		g.fillRect(0, 0, getWidth(), getHeight());
-		g.drawImage(bgImage, (getWidth() - bgImage.getWidth()) / 2, (getHeight() - bgImage.getHeight()) / 2, null);
+			setForeground(btnColor);
+			g.fillRect(0, 0, getWidth(), getHeight());
+			g.drawImage(bgImage, (getWidth() - bgImage.getWidth()) / 2, (getHeight() - bgImage.getHeight()) / 2, null);
 	}
 }
