@@ -71,7 +71,7 @@ public class OnlineTank extends Tank {
 	public String getObject(){
 		
 		String msg = super.getObject();
-		if(shouldTick() && derp.playerNumber == 2 && playerNumber == 1){
+		if(shouldTick() && GameState.getInstance().getPlayerNumber() == 2 && playerNumber == 1){
 			setSouldTick(false);
 			setShouldBeSent(false);
 		}

@@ -46,6 +46,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	}
 
 	public Game(BlueMaggot blueMaggot) {
+		formater = new DecimalFormat("#00000");
 		this.blueMaggot = blueMaggot;
 		blueMaggot.inputReal = handler;
 		addKeyListener(handler);
@@ -53,16 +54,21 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void onUpdate(double deltaTime) {
+	
 		if (blueMaggot != null)
 			blueMaggot.tick();
-
+		
+	
+		
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
+	
 
 		if (!GameState.getInstance().isPaused()){// || !GameState.getInstance().isRunning()) {
 			level.tick(deltaTime);
 			didTick = true;
 		}
+
 	}
 
 	@Override
@@ -96,9 +102,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		System.out.println("hey");
 		connection = new ConnectionManager(this);
 		if (isHost) {
+			GameState.getInstance().setPlayerNumber(2);
 			connection.becomeHost();
 			GameState.getInstance().isHost = true;
 		} else {
+			GameState.getInstance().setPlayerNumber(1);
 			connection.joinGame(addr);
 			GameState.getInstance().isHost = false;
 		}
@@ -185,9 +193,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void startOnlineGame() {
+	
 		onlineLevel = new OnlineCityScape(this, handler);
 		onlineLevel.init();
 		level = onlineLevel;
 		init(GameState.getInstance().width, GameState.getInstance().height, 60);
+		GameState.getInstance().setRunning(true);
 	}
 }

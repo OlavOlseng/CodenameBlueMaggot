@@ -78,7 +78,7 @@ public class MenuButton extends Button {
 					try {
 						game.runLoop.stop();
 					} catch (Exception e) {
-						// e.printStackTrace();
+						 e.printStackTrace();
 					}
 					GameState.getInstance().setPaused(false);
 					menu.setVisible(false);
@@ -86,12 +86,17 @@ public class MenuButton extends Button {
 					game.startReuglarGame();
 					game.requestFocus();
 				} else if (label.equals("newLanGame")) {
-					System.out.println("Lan");
+					for (Tank tank : GameState.getInstance().players) {
+						if (tank.getNick() == null)
+							return;
+						tank.setScore(0);
+					}
 					try {
 						game.runLoop.stop();
 					} catch (Exception e) {
+						e.printStackTrace();
 					}
-				
+					GameState.getInstance().setPaused(false);
 					menu.setVisible(false);
 					menu.repaint();
 					game.initConnection(GameState.getInstance().isHost, GameState.getInstance().hostIp);
