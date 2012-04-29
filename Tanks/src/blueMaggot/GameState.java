@@ -10,10 +10,10 @@ public class GameState {
 	public boolean isHost = false;
 	public boolean running = false;
 	public File selectedLevelTerrain = new File("./lvl/Cityscape_terrain.png");
-	public File selectedLevelBackground = new File("./lvl/Cityscape_background.png");
+	public File selectedLevelBackground = new File("./lvl/Cityscape2_background.png");
 
-	public int width = 1024;
-	public int height = 768;
+	public int width = 1280;
+	public int height = 720;
 	public Dimension dimension = new Dimension(width, height);
 
 	// customizable player variables!
