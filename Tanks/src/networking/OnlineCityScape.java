@@ -223,7 +223,6 @@ public class OnlineCityScape extends cityScape {
 
 						}
 					}
-
 				}
 
 				movementsToDo = new ArrayList<String[]>();

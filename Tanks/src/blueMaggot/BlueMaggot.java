@@ -5,6 +5,7 @@ import gfx.MenuBackground;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
 import gfx.MenuTitle;
+import gfx.ResourceManager;
 import gfx.UIElement;
 import gfx.MenuScoreBoard;
 import inputhandler.InputHandler;
@@ -71,6 +72,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 	private void setUpGame() {
 		game.setPreferredSize(GameState.getInstance().dimension);
+		ResourceManager.getInstance().initResources();
 		gamePanel.setLayout(new BorderLayout());
 		gamePanel.setBounds(0, 0, GameState.getInstance().width, GameState.getInstance().height);
 		gamePanel.add(game);
