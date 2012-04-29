@@ -48,6 +48,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public Game(BlueMaggot blueMaggot) {
 		this.blueMaggot = blueMaggot;
 		blueMaggot.inputReal = handler;
+		formater = new DecimalFormat("#00000");
 		addKeyListener(handler);
 	}
 

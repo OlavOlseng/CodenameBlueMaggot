@@ -90,6 +90,7 @@ public class MenuButton extends Button {
 						game.runLoop.stop();
 					} catch (Exception e) {
 					}
+					GameState.getInstance().setPaused(false);
 					menu.setVisible(false);
 					menu.repaint();
 					game.initConnection(GameState.getInstance().isHost, GameState.getInstance().hostIp);

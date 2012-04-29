@@ -2,48 +2,90 @@ package gfx;
 
 import java.awt.Color;
 import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import level.Terrain;
 
 import baseGame.Rendering.RGBImage;
 
 public class ResourceManager {
-	public static final RGBImage TANK1 = new RGBImage(new File("./res/graphics/Tank2.png"));
-	public static final RGBImage TANK2 = new RGBImage(new File("./res/graphics/Tank2.png"));
-	public static final RGBImage TANK3 = new RGBImage(new File("./res/graphics/Tank2.png"));
-	public static final RGBImage TANK4 = new RGBImage(new File("./res/graphics/Tank2.png"));
-	public static final RGBImage SHELL = new RGBImage(new File("./res/graphics/Shell_temp.png"));
-	public static final RGBImage SCOREBUBBLE = new RGBImage(new File("./res/graphics/Scorebubble.png"));
-	public static final RGBImage CROSSHAIR1 = new RGBImage(new File("./res/graphics/Crosshair.png"));
-	public static final RGBImage CROSSHAIR2 = new RGBImage(new File("./res/graphics/Crosshair.png"));
-	public static final RGBImage CROSSHAIR3 = new RGBImage(new File("./res/graphics/Crosshair.png"));
-	public static final RGBImage CROSSHAIR4 = new RGBImage(new File("./res/graphics/Crosshair.png"));
-	public static final RGBImage ROCKET = new RGBImage(new File("./res/graphics/Rocket_sheet.png"));
-	public static final RGBImage MINE = new RGBImage(new File("./res/graphics/Mine_sheet.png"));
-	public static final RGBImage GRENADE = new RGBImage(new File("./res/graphics/Grenade_temp.png"));
-	public static final RGBImage PACKAGE = new RGBImage(new File("./res/graphics/Package.png"));
-	public static final RGBImage BUBBLEHEARTH = new RGBImage(new File("./res/graphics/BubbleHearth.png"));
-	public static final RGBImage AIRSTRIKEBEACON = new RGBImage(new File("./res/graphics/AirStrikeBeacon.png"));
-	public static final RGBImage BULLET = new RGBImage(new File("./res/graphics/Bullet.png"));
-	public static final Color COLORMASK = new Color(0x00FAE1);
-	
-	private static Terrain terrain;
-	private static RGBImage backGround;
+
+	private static Terrain TERRAIN;
+	private static RGBImage BACKGROUND;
+
+	public static Color COLORMASK;
+	public static RGBImage BULLET;
+	public static RGBImage AIRSTRIKEBEACON;
+	public static RGBImage BUBBLEHEARTH;
+	public static RGBImage PACKAGE;
+	public static RGBImage GRENADE;
+	public static RGBImage MINE;
+	public static RGBImage ROCKET;
+	public static RGBImage CROSSHAIR4;
+	public static RGBImage CROSSHAIR3;
+	public static RGBImage CROSSHAIR2;
+	public static RGBImage CROSSHAIR1;
+	public static RGBImage SCOREBUBBLE;
+	public static RGBImage SHELL;
+	public static RGBImage TANK4;
+	public static RGBImage TANK3;
+	public static RGBImage TANK2;
+	public static RGBImage TANK1;
+
+	public void initResources() {
+		try {
+			TANK1 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
+			TANK2 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
+			TANK3 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
+			TANK4 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
+			SHELL = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Shell_temp.png")));
+			SCOREBUBBLE = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Scorebubble.png")));
+			CROSSHAIR1 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Crosshair.png")));
+			CROSSHAIR2 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Crosshair.png")));
+			CROSSHAIR3 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Crosshair.png")));
+			CROSSHAIR4 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Crosshair.png")));
+			ROCKET = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Rocket_sheet.png")));
+			MINE = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Mine_sheet.png")));
+			GRENADE = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Grenade_temp.png")));
+			PACKAGE = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Package.png")));
+			BUBBLEHEARTH = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/BubbleHearth.png")));
+			AIRSTRIKEBEACON = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/AirStrikeBeacon.png")));
+			BULLET = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Bullet.png")));
+			COLORMASK = new Color(0x00FAE1);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private static ResourceManager instance = null;
+
+	public static ResourceManager getInstance() {
+		if (instance == null)
+			instance = new ResourceManager();
+		return instance;
+	}
+
+	private ResourceManager() {
+
+	}
 
 	public static Terrain getTerrain() {
-		return terrain;
+		return TERRAIN;
 	}
 
 	public static void setTerrain(Terrain terrain) {
-		ResourceManager.terrain = terrain;
+		ResourceManager.TERRAIN = terrain;
 	}
 
 	public static RGBImage getBackGround() {
-		return backGround;
+		return BACKGROUND;
 	}
 
 	public static void setBackGround(RGBImage backGround) {
-		ResourceManager.backGround = backGround;
+		ResourceManager.BACKGROUND = backGround;
 	}
 
 }
