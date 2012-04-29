@@ -10,6 +10,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import entity.Tank;
+
 import blueMaggot.Game;
 import blueMaggot.GameState;
 
@@ -66,8 +68,10 @@ public class MenuButton extends Button {
 					menu.repaint();
 					game.requestFocus();
 				} else if (label.equals("newGame")) {
-					if (GameState.getInstance().nickPlayerOne == null || GameState.getInstance().nickPlayerTwo == null)
-						return;
+					for (Tank tank : GameState.getInstance().players) {
+						if (tank.getNick() == null)
+							return;
+					}
 					try {
 						game.runLoop.stop();
 					} catch (Exception e) {
@@ -99,8 +103,6 @@ public class MenuButton extends Button {
 				} else if (label.endsWith("lvls"))
 					game.blueMaggot.menuLevelSelect.setVisible(true);
 
-				System.out.println("Player One: " + GameState.getInstance().nickPlayerOne + " - Player Two: " + GameState.getInstance().nickPlayerTwo + " - Is Host: " + GameState.getInstance().isHost
-						+ " - Host IP: " + GameState.getInstance().hostIp);
 				repaint();
 			}
 

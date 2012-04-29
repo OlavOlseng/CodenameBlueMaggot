@@ -2,6 +2,9 @@ package blueMaggot;
 
 import java.awt.Dimension;
 import java.io.File;
+import java.util.ArrayList;
+
+import entity.Tank;
 
 public class GameState {
 
@@ -10,32 +13,14 @@ public class GameState {
 	public boolean isHost = false;
 	public boolean running = false;
 	public File selectedLevelTerrain = new File("./lvl/Cityscape_terrain.png");
-	public File selectedLevelBackground = new File("./lvl/Cityscape_background.png");
+	public File selectedLevelBackground = new File("./lvl/Cityscape2_background.png");
 
-	public int width = 1024;
-	public int height = 768;
+	public int width = 1280;
+	public int height = 720;
 	public Dimension dimension = new Dimension(width, height);
 
 	// customizable player variables!
-	public int playerOneScore = 0;
-	public int playerTwoScore = 0;
-	public int playerTreeScore = 0;
-	public int playerFourScore = 0;
-	
-	public int playerOneLife = 5;
-	public int playerTwoLife = 5;
-	public int playerTreeLife = 5;
-	public int playerFourLife = 5;
-	
-	public int playerOneSelectedWeapon;
-	public int playerTwoSelectedWeapon;
-	public int playerTreeSelectedWeapon;
-	public int playerFourSelectedWeapon;
-	
-	public String nickPlayerOne = "carl";
-	public String nickPlayerTwo = "biker bob";
-	public String nickPlayerTree = "jesus per";
-	public String nickPlayerFoud = "fyrste tom";
+	public ArrayList<Tank> players = new ArrayList<Tank>();
 	
 	public String hostIp;
 

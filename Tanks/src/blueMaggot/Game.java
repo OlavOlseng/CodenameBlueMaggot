@@ -86,7 +86,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		level = new cityScape(this, handler);
 		level.init();
 		init(GameState.getInstance().width, GameState.getInstance().height, 60);
-
+		GameState.getInstance().running = true;
 	}
 
 	public boolean gameOver() {

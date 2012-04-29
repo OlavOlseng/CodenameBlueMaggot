@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import networking.*;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
+import blueMaggot.GameState;
 
 import entity.weapon.Airstrike;
 import entity.weapon.GrenadeGun;
@@ -20,15 +21,20 @@ import inputhandler.InputHandler;
 
 public class Tank extends Entity {
 
+	// player variables
+	private int score = 0;
+	private int oldScore = 0;
+	private int life = 5;
+	private String nick = "jesus per";
+
 	private InputHandler input;
 	private double muzzleAngle;
 	private int muzzleLength = 16;
-	private int score = 0;
-	private int life = 5;
 
 	private int playerNumber;
 	private double jetPackFuel = 100;
 	private double cannonCharge = 0;
+
 	private boolean canGoLeft = true;
 	private boolean canGoRight = true;
 	private boolean canGoDown = true;
@@ -81,6 +87,7 @@ public class Tank extends Entity {
 	public Tank(FloatingPoint point, int playerNumber, InputHandler input, BasicLevel level) {
 		super(point.getX(), point.getY(), 11, 6, level);
 		this.level.getPlayers().add(this);
+		GameState.getInstance().players.add(this);
 		muzzleAngle = 90;
 		muzzleLength = 20;
 		this.playerNumber = playerNumber;
@@ -114,14 +121,14 @@ public class Tank extends Entity {
 
 	}
 
-	public double getX(){
+	public double getX() {
 		return x;
 	}
-	
-	public double getY(){
+
+	public double getY() {
 		return y;
 	}
-	
+
 	public int getCurrentWeapon() {
 		return currentWeapon;
 	}
@@ -278,11 +285,9 @@ public class Tank extends Entity {
 			jetPack();
 		if (input.down2.clicked)
 			toggleWeapon();
-		if (input.right2.down && canGoRight) {
-
+		if (input.right2.down && canGoRight)
 			if (dx < 2)
 				accelerate(torque, 0);
-		}
 		if (input.left2.down && canGoLeft) {
 			if (dx > -2)
 				accelerate(-torque, 0);
@@ -321,7 +326,7 @@ public class Tank extends Entity {
 		if (--life == 0) {
 			super.remove();
 			return;
-			}
+		}
 		setLocation(level.getPlayerSpawns().get(rand.nextInt(level.getPlayerSpawns().size())));
 		setSpeed(0, -1);
 		damageTaken = 1;
@@ -349,7 +354,6 @@ public class Tank extends Entity {
 		tickWeapons(dt);
 		if (this.y < -500)
 			remove();
-
 	}
 
 	@Override
@@ -368,7 +372,6 @@ public class Tank extends Entity {
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr() + 1), img.getWidth(), img.getHeight());
 		renderer.DrawImage(crossHair, -1, (int) (getCrosshairLocation().getX() - crossHair.getWidth() / 2),
 				(int) (getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(), crossHair.getHeight());
-
 	}
 
 	@Override
@@ -381,13 +384,35 @@ public class Tank extends Entity {
 		super.handleMessage(msg);
 		double muzzleAngle = Double.parseDouble(msg[6]);
 		setMuzzleAngle(muzzleAngle);
-
 	}
 
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
 		setNetworkObjectType(NetworkObjectType.TANK);
+	}
 
+	public int getLife() {
+		return life;
+	}
+
+	public String getNick() {
+		return nick;
+	}
+
+	public String toString() {
+		return "Nick: " + nick + " - Score: " + score + " - Life: " + " - Weapon: " + currentWeapon;
+	}
+
+	public int getOldScore() {
+		return oldScore;
+	}
+
+	public void setOldScore(int oldScore) {
+		this.oldScore = oldScore;
+	}
+
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 }

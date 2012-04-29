@@ -1,5 +1,6 @@
 package blueMaggot;
 
+import entity.Tank;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
 import gfx.MenuTitle;
@@ -39,6 +40,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setPreferredSize(new Dimension(GameState.getInstance().width, GameState.getInstance().height));
 		setFocusable(true);
+		setResizable(false);
 
 		layeredPane.setBounds(0, 0, GameState.getInstance().width, GameState.getInstance().height);
 		layeredPane.setOpaque(false);
@@ -96,6 +98,9 @@ public class BlueMaggot extends JFrame implements Runnable {
 				// Game.PAUSED = true;
 			}
 		}
+		if (GameState.getInstance().running) {
+			ui.setVisible(true);
+		}
 		if (inputReal.tab.down) {
 			uiScoreBoard.setVisible(true);
 		} else
@@ -103,9 +108,12 @@ public class BlueMaggot extends JFrame implements Runnable {
 		if (game.gameOver()) {
 			uiScoreBoard.setVisible(true);
 		}
-		if (ui.scoreOldOne != ui.getScore(0)){
-			ui.repaint();
-			System.out.println("PAINTING BRO");
+		for (Tank tank : GameState.getInstance().players) {
+			if (tank.getScore() != tank.getOldScore()) {
+				tank.setOldScore(tank.getScore());
+				System.out.println(tank.getScore() + " " + tank.getOldScore());
+				ui.repaint();
+			}
 		}
 	}
 }

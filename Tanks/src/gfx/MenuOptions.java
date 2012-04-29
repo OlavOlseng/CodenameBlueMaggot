@@ -28,9 +28,9 @@ public class MenuOptions extends Menu {
 
 		setVisible(false);
 
-		fieldIp = new MenuField(20,"ip");
-		fieldPlayerOne = new MenuField(20,"text");
-		fieldPlayerTwo = new MenuField(20,"text");
+		fieldIp = new MenuField(20, "ip");
+		fieldPlayerOne = new MenuField(20, "text");
+		fieldPlayerTwo = new MenuField(20, "text");
 
 		btnApply = new MenuButton("apply", this, game, btnSize);
 		btnReturn = new MenuButton("return", this, game, btnSize);
@@ -60,8 +60,8 @@ public class MenuOptions extends Menu {
 
 	public void apply(Game game) {
 		GameState.getInstance().isHost = boxIsHost.getState();
-		GameState.getInstance().nickPlayerOne = fieldPlayerOne.msg;
-		GameState.getInstance().nickPlayerTwo = fieldPlayerTwo.msg;
+		GameState.getInstance().players.get(0).setNick(fieldPlayerOne.msg);
+		GameState.getInstance().players.get(1).setNick(fieldPlayerTwo.msg);
 		GameState.getInstance().hostIp = fieldIp.msg;
 	}
 }
