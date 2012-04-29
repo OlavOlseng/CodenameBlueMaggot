@@ -2,6 +2,7 @@ package networking;
 
 import baseGame.derp;
 import blueMaggot.Game;
+import blueMaggot.GameState;
 import inputhandler.InputHandler;
 import level.BasicLevel;
 import entity.FloatingPoint;
@@ -40,6 +41,8 @@ public class OnlineTank extends Tank {
 			
 		
 		if(!shouldTick() && getPlayerNumber() == 1){
+			if (x > GameState.getInstance().width + 100 || x < -100 || y > GameState.getInstance().height + 100 || y < -1000)
+				remove();
 			this.dt = dt;
 			gravitate();
 			player2Input();
@@ -55,6 +58,9 @@ public class OnlineTank extends Tank {
 			
 			applyFriction();
 			tickWeapons(dt);
+			
+			if (this.y < -500)
+				remove();
 			
 		}
 	}

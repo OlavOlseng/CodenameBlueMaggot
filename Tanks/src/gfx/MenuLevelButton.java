@@ -26,15 +26,16 @@ public class MenuLevelButton extends Button {
 	private boolean isHover = false;
 
 	public MenuLevelButton(final File lvl, final MenuLevelSelect menuLevelSelect) {
-		
-		lvlTerrain = new File(lvl.getParent() + "\\" + lvl.getName().split("_")[0] + "_terrain.png");
-		lvlBackground = new File(lvl.getParent() + "\\" + lvl.getName().split("_")[0] + "_background.png");
-		System.out.println(lvlTerrain.getAbsolutePath());
+
+		lvlTerrain = new File(lvl.getAbsolutePath().split("_")[lvl.getAbsolutePath().split("_").length - 2] + "_terrain.png");
+		lvlBackground = new File(lvl.getAbsolutePath().split("_")[lvl.getAbsolutePath().split("_").length - 2] + "_background.png");
 		if (!lvlBackground.exists())
 			lvlBackground = new File("./lvl/default_background.png");
+		System.out.println("terrain: " + lvlTerrain + " exist: " + lvlTerrain.exists());
+		System.out.println("background: " + lvlBackground + " exist: " + lvlBackground.exists());
 
 		setPreferredSize(new Dimension(width, height));
-		
+
 		try {
 			thumb = ImageIO.read(lvlTerrain).getScaledInstance(width, height, Image.SCALE_FAST);
 			thumbBg = ImageIO.read(lvlBackground).getScaledInstance(width, height, Image.SCALE_FAST);
