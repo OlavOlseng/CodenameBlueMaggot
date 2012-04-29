@@ -12,7 +12,7 @@ import networking.NetworkObjectType;
 import level.BasicLevel;
 
 import baseGame.Rendering.Renderer;
-import blueMaggot.Game;
+import blueMaggot.GameState;
 
 public abstract class Entity implements NetworkObject {
 
@@ -187,7 +187,7 @@ public abstract class Entity implements NetworkObject {
 		this.dt = dt;
 		move(dt);
 		gravitate();
-		if (x > Game.WIDTH + 100 || x < -100 || y > Game.HEIGHT + 100 || y < -1000)
+		if (x > GameState.getInstance().width + 100 || x < -100 || y > GameState.getInstance().height + 100 || y < -1000)
 			remove();
 	}
 

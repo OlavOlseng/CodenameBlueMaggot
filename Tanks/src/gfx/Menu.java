@@ -1,6 +1,6 @@
 package gfx;
 
-import blueMaggot.Game;
+import blueMaggot.GameState;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -32,6 +32,6 @@ public abstract class Menu extends Panel {
 	}
 
 	public void putCenter(Component c, int width, int height) {
-		c.setBounds(Game.WIDTH / 2 - width / 2, Game.HEIGHT / 2 - height / 2, width, height);
+		c.setBounds(GameState.getInstance().width / 2 - width / 2, GameState.getInstance().height / 2 - height / 2, width, height);
 	}
 }

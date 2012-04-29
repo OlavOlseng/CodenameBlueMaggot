@@ -104,6 +104,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		}
 	}
 
+	// old school shit bra' NO TOUCH
 	private boolean onScreen(int x, int y, int width, int height) {
 		Rectangle rect = new Rectangle(x, y, width, height);
 		return gameRect.intersects(rect);
