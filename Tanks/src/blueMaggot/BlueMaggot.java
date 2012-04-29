@@ -4,12 +4,11 @@ import entity.Tank;
 import gfx.MenuBackground;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
-import gfx.MenuScoreBoard;
 import gfx.MenuTitle;
 import gfx.ResourceManager;
 import gfx.UIElement;
+import gfx.MenuScoreBoard;
 import inputhandler.InputHandler;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -38,6 +37,9 @@ public class BlueMaggot extends JFrame implements Runnable {
 	private MenuBackground menuBackground;
 
 	public BlueMaggot() {
+		long time = System.currentTimeMillis();
+		ResourceManager.getInstance().initResources();
+		System.out.println(System.currentTimeMillis()-time);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setPreferredSize(new Dimension(GameState.getInstance().width, GameState.getInstance().height));
 		setFocusable(true);
@@ -56,7 +58,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 		ui = new UIElement(0, 0, 700, 45, menuTitle.border, game);
 
-		layeredPane.add(gamePanel, new Integer(0));
+		layeredPane.add(gamePanel, new Integer(20));
 		layeredPane.add(ui, new Integer(1));
 		layeredPane.add(menuBackground, new Integer(9));
 		layeredPane.add(menuTitle, new Integer(10));
@@ -73,10 +75,12 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 	private void setUpGame() {
 		game.setPreferredSize(GameState.getInstance().dimension);
-		ResourceManager.getInstance().initResources();
+		
 		gamePanel.setLayout(new BorderLayout());
 		gamePanel.setBounds(0, 0, GameState.getInstance().width, GameState.getInstance().height);
+		
 		gamePanel.add(game);
+
 	}
 
 	@Override

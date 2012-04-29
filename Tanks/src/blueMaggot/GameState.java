@@ -11,6 +11,7 @@ public class GameState {
 	private boolean paused = false;
 	private boolean gameOver = false;
 	private boolean running = false;
+	private int playerNumber;
 
 	public boolean isHost = false;
 	public File selectedLevelTerrain = new File("./lvl/Cityscape_terrain.png");
@@ -59,5 +60,13 @@ public class GameState {
 
 	public void setRunning(boolean running) {
 		this.running = running;
+	}
+
+	public int getPlayerNumber() {
+		return playerNumber;
+	}
+
+	public void setPlayerNumber(int playerNumber) {
+		this.playerNumber = playerNumber;
 	}
 }

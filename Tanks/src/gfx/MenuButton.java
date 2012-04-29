@@ -87,10 +87,15 @@ public class MenuButton extends Button {
 					game.startReuglarGame();
 					game.requestFocus();
 				} else if (label.equals("newLanGame")) {
-					System.out.println("Lan");
+					for (Tank tank : GameState.getInstance().players) {
+						if (tank.getNick() == null)
+							return;
+						tank.setScore(0);
+					}
 					try {
 						game.runLoop.stop();
 					} catch (Exception e) {
+						e.printStackTrace();
 					}
 					GameState.getInstance().setPaused(false);
 					menu.setVisible(false);

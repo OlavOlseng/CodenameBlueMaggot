@@ -64,7 +64,7 @@ public class Shell extends Projectile {
 	@Override
 	public void tick(double dt) {
 		super.tick(dt);
-		System.out.println("player: " + derp.playerNumber);
+
 		applyFriction();
 		if (intersectsTerrain() || handleIntersections()) {
 			explode();

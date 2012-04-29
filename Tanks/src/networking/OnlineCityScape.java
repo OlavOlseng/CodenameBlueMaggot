@@ -20,6 +20,7 @@ import entity.Tank;
 import inputhandler.InputHandler;
 import baseGame.BaseGame;
 import baseGame.derp;
+import blueMaggot.GameState;
 import blueMaggot.maps.cityScape;
 
 public class OnlineCityScape extends cityScape {
@@ -38,7 +39,7 @@ public class OnlineCityScape extends cityScape {
 
 		super(game, handler);
 
-		if (derp.playerNumber != 2) {
+		if (GameState.getInstance().getPlayerNumber() != 2) {
 			isClient = true;
 			System.out.println("true");
 			objectCount++;
@@ -147,6 +148,7 @@ public class OnlineCityScape extends cityScape {
 
 	@Override
 	public void tick(double dt) {
+
 		NetworkObject obj;
 		double time;
 
@@ -186,11 +188,11 @@ public class OnlineCityScape extends cityScape {
 						if (NetworkObjectType.TANK.equals(type)) {
 							ent = new OnlineTank(0, 0, 0, handler, this, move);
 
-							if (Integer.parseInt(move[7]) == derp.playerNumber) {
+							if (Integer.parseInt(move[7]) == GameState.getInstance().getPlayerNumber()) {
 								player1 = (OnlineTank) ent;
 								doSend = true;
 							
-								System.out.println("new tank" + derp.playerNumber + ": " + move[7]);
+								
 							}
 
 						} else if (NetworkObjectType.SHELL.equals(type))

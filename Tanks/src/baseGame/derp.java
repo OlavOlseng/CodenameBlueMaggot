@@ -1,5 +1,7 @@
 package baseGame;
 
+import gfx.ResourceManager;
+
 import java.io.File;
 
 import javax.swing.JFrame;
@@ -21,12 +23,14 @@ public class derp extends JFrame {
 
 	public void init() {
 
-	
-
 //	game.initConnection(true,"");playerNumber =2;
-	game.initConnection(false,"169.254.202.27");GameState.getInstance().setPlayerNumber(1);	
+//	game.initConnection(false,"169.254.202.27");GameState.getInstance().setPlayerNumber(1);	
+//	game.initConnection(true,"");playerNumber =2;
+//	game.initConnection(false, "127.0.0.1");
+//	game.initConnection(false,"169.254.202.27");playerNumber = 1;	
 //	game.initConnection(false, "78.91.9.98");
-
+		
+	game.startReuglarGame();
 	
 //		
 
@@ -34,6 +38,7 @@ public class derp extends JFrame {
 	}
 
 	public static void main(String[] args) {
+		ResourceManager.getInstance().initResources();
 		new derp().init();
 	
 
