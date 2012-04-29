@@ -9,6 +9,7 @@ import blueMaggot.GameState;
 
 import entity.weapon.Airstrike;
 import entity.weapon.GrenadeGun;
+import entity.weapon.Gun;
 import entity.weapon.MineLauncher;
 import entity.weapon.Minigun;
 import entity.weapon.Rocketlauncher;
@@ -39,7 +40,7 @@ public class Tank extends Entity {
 	private boolean canGoRight = true;
 	private boolean canGoDown = true;
 	private boolean chargingCannon = false;
-	private int currentWeapon = 0;
+	private Gun currentWeapon = Gun.GRENADE;
 	private double torque = 0.15;
 
 	private ArrayList<Weapon> weaponList;
@@ -130,7 +131,7 @@ public class Tank extends Entity {
 	}
 
 	public int getCurrentWeapon() {
-		return currentWeapon;
+		return currentWeapon.ordinal();
 	}
 
 	public void initInventory() {
@@ -168,7 +169,7 @@ public class Tank extends Entity {
 	public void fire(double speedPercent) {
 		if (speedPercent < 0.2)
 			speedPercent = 0.2;
-		weaponList.get(currentWeapon).fire(this.x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)),
+		weaponList.get(currentWeapon.ordinal()).fire(this.x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)),
 				this.y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle)), this.level, speedPercent, this.muzzleAngle - 4);
 	}
 
@@ -240,10 +241,12 @@ public class Tank extends Entity {
 	}
 
 	public void toggleWeapon() {
-		currentWeapon++;
-		if (currentWeapon >= weaponList.size())
-			currentWeapon = 0;
-		if (weaponList.get(currentWeapon).getAmmo() == 0)
+		System.out.println("current wep: " + currentWeapon);
+		currentWeapon = Gun.values()[(currentWeapon.ordinal()+1)%Gun.values().length];
+		System.out.println("next wep: " + currentWeapon);
+		if (currentWeapon.ordinal() >= weaponList.size())
+			currentWeapon = Gun.SHELLGUN;
+		if (weaponList.get(currentWeapon.ordinal()).getAmmo() == 0)
 			toggleWeapon();
 	}
 
@@ -331,7 +334,7 @@ public class Tank extends Entity {
 		setSpeed(0, -1);
 		damageTaken = 1;
 		initInventory();
-		currentWeapon = 0;
+		currentWeapon = Gun.SHELLGUN;
 	}
 
 	@Override
