@@ -1,5 +1,6 @@
 package entity;
 
+import entity.weapon.Gun;
 import networking.NetworkObjectType;
 import sound.SoundEffect;
 import gfx.ResourceManager;
@@ -9,15 +10,7 @@ import level.BasicLevel;
 
 public class Package extends Entity {
 
-	enum Gun {
-		ROCKETLAUNCHER(2), MINELAUNCHER(3), AIRSTRIKE(4), MINIGUN(5);
-		private int i;
-
-		private Gun(int i) {
-			this.i = i;
-		}
-	}
-
+	
 	Gun wep;
 	PixelHitbox hitbox;
 
