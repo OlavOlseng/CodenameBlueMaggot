@@ -94,6 +94,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	/* network stuff */
 	public void initConnection(boolean isHost, String addr) {
+		System.out.println("hey");
 		connection = new ConnectionManager(this);
 		if (isHost) {
 			connection.becomeHost();
