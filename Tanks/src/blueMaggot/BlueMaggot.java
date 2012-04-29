@@ -81,7 +81,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		System.out.println(bytes.size());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		setPreferredSize(new Dimension(GameState.getInstance().width, GameState.getInstance().height));
+		setPreferredSize(new Dimension(GameState.getInstance().width, GameState.getInstance().height + 28));
 		setFocusable(true);
 		setResizable(false);
 
