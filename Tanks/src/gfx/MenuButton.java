@@ -85,11 +85,13 @@ public class MenuButton extends Button {
 					menu.repaint();
 					game.startReuglarGame();
 					game.requestFocus();
-				} else if (label.equals("newOnlineGame")) {
+				} else if (label.equals("newLanGame")) {
+					System.out.println("Lan");
 					try {
 						game.runLoop.stop();
 					} catch (Exception e) {
 					}
+				
 					menu.setVisible(false);
 					menu.repaint();
 					game.initConnection(GameState.getInstance().isHost, GameState.getInstance().hostIp);

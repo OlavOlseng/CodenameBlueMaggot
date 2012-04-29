@@ -21,6 +21,6 @@ public class MenuBackground extends Menu {
 	@Override
 	public void paint(Graphics g) {
 		setVisible(menuTitle.isVisible());
-		System.out.println("painting");
+	
 	}
 }
