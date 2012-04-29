@@ -227,6 +227,7 @@ public class OnlineCityScape extends cityScape {
 
 				movementsToDo = new ArrayList<String[]>();
 				lastTime = System.currentTimeMillis();
+				
 			}
 			if (isClient && player1 != null)
 				player1.tick(dt);

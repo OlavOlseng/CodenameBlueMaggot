@@ -75,11 +75,11 @@ public class MenuButton extends Button {
 							return;
 						tank.setScore(0);
 					}
-					try {
+					/*try {
 						game.runLoop.stop();
 					} catch (Exception e) {
 						 e.printStackTrace();
-					}
+					}*/
 					GameState.getInstance().setPaused(false);
 					menu.setVisible(false);
 					menu.repaint();

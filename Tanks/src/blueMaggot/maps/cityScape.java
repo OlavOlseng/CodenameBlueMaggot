@@ -26,10 +26,12 @@ public class cityScape extends BasicLevel {
 
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
+		
 		terrain = new Terrain(GameState.getInstance().selectedLevelTerrain);
 		ResourceManager.setTerrain(terrain);
 		ResourceManager.setBackGround(new RGBImage(GameState.getInstance().selectedLevelBackground));
 		SoundEffect.SPAWN.play();
+		
 	}
 
 	public void init() {
@@ -79,6 +81,7 @@ public class cityScape extends BasicLevel {
 
 	@Override
 	public void tick(double dt) {
+
 		super.tick(dt);
 		if (shouldSpawnBubble()) {
 			spawnBubble();
@@ -108,6 +111,7 @@ public class cityScape extends BasicLevel {
 
 	public void onDraw(Renderer renderer) {
 		// draws backgorund recursively
+		
 		renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, GameState.getInstance().width, GameState.getInstance().height);
 		renderer.DrawImage(ResourceManager.getTerrain(), -1, 0, 0, terrain.getWidth(), terrain.getHeight());
 		super.render(renderer);
