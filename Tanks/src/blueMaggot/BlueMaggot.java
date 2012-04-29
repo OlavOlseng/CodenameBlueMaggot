@@ -4,10 +4,11 @@ import entity.Tank;
 import gfx.MenuBackground;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
+import gfx.MenuScoreBoard;
 import gfx.MenuTitle;
 import gfx.UIElement;
-import gfx.MenuScoreBoard;
 import inputhandler.InputHandler;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 

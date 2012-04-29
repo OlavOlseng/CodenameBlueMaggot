@@ -23,7 +23,7 @@ public class derp extends JFrame {
 	
 
 //	game.initConnection(true,"");playerNumber =2;
-	game.initConnection(false,"127.0.0.1");playerNumber = 1;	
+	game.initConnection(false,"169.254.202.27");playerNumber = 1;	
 //	game.initConnection(false, "78.91.9.98");
 
 	
