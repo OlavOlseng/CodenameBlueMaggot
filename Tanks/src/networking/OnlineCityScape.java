@@ -24,7 +24,8 @@ import blueMaggot.maps.cityScape;
 
 public class OnlineCityScape extends cityScape {
 	private int objectCount;
-
+	private int multiple = 2;
+		
 	private HashMap<Integer, NetworkObject> networkObjects;
 	private ArrayList<NetworkObject> networkObjectList;
 	private ArrayList<String[]> movementsToDo;
@@ -40,6 +41,8 @@ public class OnlineCityScape extends cityScape {
 		if (derp.playerNumber != 2) {
 			isClient = true;
 			System.out.println("true");
+			objectCount++;
+			
 		}
 
 	}
@@ -94,7 +97,7 @@ public class OnlineCityScape extends cityScape {
 			networkObjectList.add(entity);
 			entity.setShouldBeSent(true);
 			entity.setId(objectCount);
-			objectCount++;
+			objectCount+= multiple;
 
 		}
 
@@ -108,7 +111,7 @@ public class OnlineCityScape extends cityScape {
 		ent.setId(id);
 		ent.setSouldTick(doTick);
 		networkObjects.put(id, ent);
-		objectCount++;
+		objectCount += multiple;
 		super.addEntity(ent);
 	}
 
@@ -155,12 +158,16 @@ public class OnlineCityScape extends cityScape {
 
 				for (int i = 0; i < movementsToDo.size(); i++) {
 
+					
 					String[] move = movementsToDo.get(i);
 
 					int id = (int) Double.parseDouble(move[1]);
 					int type = (int) Double.parseDouble(move[2]);
-
+					
 					if ((obj = networkObjects.get(id)) != null) {
+						if(!obj.getNetworkObjectType().equals(type)){
+							System.out.println("Overlap");
+						}
 						obj.handleMessage(move);
 						if (obj.isRemoved()) {
 							networkObjects.remove(obj);
@@ -174,6 +181,7 @@ public class OnlineCityScape extends cityScape {
 
 						boolean doSend = false;
 						boolean doTick = false;
+					
 
 						if (NetworkObjectType.TANK.equals(type)) {
 							ent = new OnlineTank(0, 0, 0, handler, this, move);
@@ -181,7 +189,7 @@ public class OnlineCityScape extends cityScape {
 							if (Integer.parseInt(move[7]) == derp.playerNumber) {
 								player1 = (OnlineTank) ent;
 								doSend = true;
-
+							
 								System.out.println("new tank" + derp.playerNumber + ": " + move[7]);
 							}
 
@@ -218,16 +226,11 @@ public class OnlineCityScape extends cityScape {
 
 				movementsToDo = new ArrayList<String[]>();
 				lastTime = System.currentTimeMillis();
-				/*
-				 * if(isClient &&player1 != null){ player1.tick(time); return;
-				 * 
-				 * }
-				 */
 			}
-
-			super.tick(dt);
 			if (isClient && player1 != null)
 				player1.tick(dt);
+			super.tick(dt);
+			
 
 		}
 

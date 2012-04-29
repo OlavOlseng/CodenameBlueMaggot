@@ -3,6 +3,7 @@ package entity;
 import networking.NetworkObjectType;
 import gfx.ResourceManager;
 
+import baseGame.derp;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
 
@@ -38,7 +39,7 @@ public class Shell extends Projectile {
 		for (FloatingPoint point : hitbox) {
 			if (level.getTerrain().hitTestpoint((int) (x + point.getX()), (int) (y + point.getY()))){
 				while(level.getTerrain().hitTestpoint((int) (x + point.getX()), (int) (y + point.getY()))){
-					setLocation(x-dx/3, y-dy/3);
+					setLocation(x-dx/4, y-dy/4);
 				}
 				return true;
 			}
@@ -63,6 +64,7 @@ public class Shell extends Projectile {
 	@Override
 	public void tick(double dt) {
 		super.tick(dt);
+		System.out.println("player: " + derp.playerNumber);
 		applyFriction();
 		if (intersectsTerrain() || handleIntersections()) {
 			explode();

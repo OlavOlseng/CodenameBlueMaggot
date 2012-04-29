@@ -54,6 +54,7 @@ public class OnlineTank extends Tank {
 			else
 				jetPackFuel += 2 * dt;
 			
+		
 			handleTerrainIntersection();
 			
 			applyFriction();

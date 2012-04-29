@@ -28,8 +28,12 @@ public class Bullet extends Projectile {
 
 	public boolean intersectsTerrain() {
 		for (FloatingPoint point : hitbox) {
-			if (level.getTerrain().hitTestpoint((int) (x + point.getX()), (int) (y + point.getY())))
+			if (level.getTerrain().hitTestpoint((int) (x + point.getX()), (int) (y + point.getY()))){
+				while(level.getTerrain().hitTestpoint((int) (x + point.getX()), (int) (y + point.getY()))){
+					setLocation(x-dx/4, y-dy/4);
+				}
 				return true;
+			}
 		}
 		return false;
 	}

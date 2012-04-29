@@ -248,6 +248,7 @@ public class Tank extends Entity {
 		double fuelTick = 13 * dt;
 		if (jetPackFuel >= fuelTick) {
 			accelerate(0, -0.45);
+			System.out.println(dy);
 			jetPackFuel -= fuelTick;
 		}
 	}
@@ -394,7 +395,7 @@ public class Tank extends Entity {
 
 	public String getObject(){
 	
-		return super.getObject() + "'" + to5DigitString(this.muzzleAngle) + "'" + getPlayerNumber();
+		return super.getObject() + "'" + encodeToDouble(this.muzzleAngle) + "'" + getPlayerNumber();
 
 
 	}
@@ -402,7 +403,7 @@ public class Tank extends Entity {
 	@Override
 	public void handleMessage(String[] msg) {
 		super.handleMessage(msg);
-		double muzzleAngle = Double.parseDouble(msg[6]);
+		double muzzleAngle = decodeToDouble(Integer.parseInt(msg[6]));
 		setMuzzleAngle(muzzleAngle);
 	}
 

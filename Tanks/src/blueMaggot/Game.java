@@ -132,7 +132,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			if(obj.shouldBeSent()){
 			String objectString = obj.getObject();
 			
-			if (objectString != null)
+			if (objectString != null && !objectString.equals(""));
 				msgBody += "?" + objectString;
 
 			if (obj.isRemoved()) {
@@ -156,6 +156,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	private String to5DigitString(double x) {
 
+
 		if (x >= 0) {
 			return formater.format(x);
 		} else {
@@ -163,6 +164,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		}
 	}
 
+	
 	@Override
 	public boolean shouldRead() {
 

@@ -88,9 +88,9 @@ public abstract class Entity implements NetworkObject {
 	public void handleMessage(String[] message){
 		
 		//x
-		double x = Double.parseDouble(message[4]);
+		double x = decodeToDouble(Integer.parseInt(message[4]));
 		//y
-		double y = Double.parseDouble(message[5]);
+		double y =	decodeToDouble(Integer.parseInt(message[5]));
 		//dx
 		
 		setLocation(x , y);
@@ -146,12 +146,19 @@ public abstract class Entity implements NetworkObject {
 		this.setLocation((this.x + this.dx * dt), (this.y + this.dy * dt));
 	}
 
+	protected  int encodeToDouble(double x){
+		int num = (int)(x*100);
+		return num;
+	}
+	protected double decodeToDouble(int x){
+		return (double)x/100.0;
+	}
 	@Override
 	public String getObject() {
 
 		
-		if(type !=null && doSend)
-		return "'" + to5DigitString(getId())+ "'" +type + "'"  + removed + "'"+ to5DigitString(x) + "'" + to5DigitString(y);
+		if(type !=null)
+		return "'" + encodeToDouble(getId())+ "'" +type + "'"  + removed + "'"+ encodeToDouble(x) + "'" + encodeToDouble(y);
 		else
 		return "";
 	}

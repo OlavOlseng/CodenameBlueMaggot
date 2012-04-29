@@ -99,13 +99,13 @@ public class Rocket extends Projectile {
 	}
 	@Override
 	public String getObject(){
-		return super.getObject()+ "'" + to5DigitString(angle);
+		return super.getObject()+ "'" + encodeToDouble(angle);
 	}
 	
 	@Override
 	public void handleMessage(String[] msg){
 		super.handleMessage(msg);
-		double angle = Double.parseDouble(msg[6]);
+		double angle = decodeToDouble(Integer.parseInt(msg[6]));
 		this.angle = angle;
 	}
 	
