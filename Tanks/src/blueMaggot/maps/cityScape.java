@@ -18,7 +18,7 @@ import inputhandler.InputHandler;
 import baseGame.BaseGame;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
-import blueMaggot.Game;
+import blueMaggot.GameState;
 
 public class cityScape extends BasicLevel {
 
@@ -26,28 +26,22 @@ public class cityScape extends BasicLevel {
 
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
-		terrain = new Terrain(Game.SELECTED_LEVEL_TERRAIN);
+		terrain = new Terrain(GameState.getInstance().selectedLevelTerrain);
 		ResourceManager.setTerrain(terrain);
-		ResourceManager.setBackGround(new RGBImage(Game.SELECTED_LEVEL_BACKGROUND));
+		ResourceManager.setBackGround(new RGBImage(GameState.getInstance().selectedLevelBackground));
 		SoundEffect.SPAWN.play();
-
 	}
 
 	public void init() {
-
 		initSpawn();
-
 		addPlayers();
 
 		SoundEffect.SPAWN.play();
-
-
 	}
-	
+
 	public void addPlayers() {
 		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this));
 		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this));
-
 	}
 
 	@Override
@@ -94,17 +88,20 @@ public class cityScape extends BasicLevel {
 		int ticket = rand.nextInt(300);
 		return ticket == 5;
 	}
+
 	protected boolean shouldSpawnCrate() {
 		int ticket = rand.nextInt(500);
 		return ticket == 10;
 	}
+
 	protected boolean shouldSpawnBubbleHearth() {
 		int ticket = rand.nextInt(800);
 		return ticket == 100;
 	}
+
 	public void onDraw(Renderer renderer) {
 		// draws backgorund recursively
-		renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, Game.WIDTH, Game.HEIGHT);
+		renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, GameState.getInstance().width, GameState.getInstance().height);
 		renderer.DrawImage(ResourceManager.getTerrain(), -1, 0, 0, terrain.getWidth(), terrain.getHeight());
 		super.render(renderer);
 	}

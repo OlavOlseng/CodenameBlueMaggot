@@ -3,6 +3,7 @@ package gfx;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import blueMaggot.Game;
+import blueMaggot.GameState;
 
 public class MenuOptions extends Menu {
 	private GridBagConstraints c = new GridBagConstraints();
@@ -58,9 +59,9 @@ public class MenuOptions extends Menu {
 	}
 
 	public void apply(Game game) {
-		game.isHost = boxIsHost.getState();
-		game.nickPlayerOne = fieldPlayerOne.msg;
-		game.nickPlayerTwo = fieldPlayerTwo.msg;
-		game.hostIp = fieldIp.msg;
+		GameState.getInstance().isHost = boxIsHost.getState();
+		GameState.getInstance().nickPlayerOne = fieldPlayerOne.msg;
+		GameState.getInstance().nickPlayerTwo = fieldPlayerTwo.msg;
+		GameState.getInstance().hostIp = fieldIp.msg;
 	}
 }

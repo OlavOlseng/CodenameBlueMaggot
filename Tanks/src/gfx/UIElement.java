@@ -5,9 +5,8 @@ import java.awt.Graphics;
 import java.awt.Panel;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.concurrent.ArrayBlockingQueue;
-
 import blueMaggot.Game;
+import blueMaggot.GameState;
 
 public class UIElement extends Panel {
 
@@ -15,6 +14,8 @@ public class UIElement extends Panel {
 	private int border = 5;
 	private ArrayList<BufferedImage> wepArr = new ArrayList<BufferedImage>();
 	Game game;
+	public int scoreOldOne;
+	public int scoreOldTwo;
 
 	public UIElement(int x, int y, int width, int height, int border, Game game) {
 		this.border = border;
@@ -23,7 +24,7 @@ public class UIElement extends Panel {
 		this.y = y;
 		this.x = x;
 		this.game = game;
-		setBounds(Game.WIDTH / 2 - width / 2, 0, width, height);
+		setBounds(GameState.getInstance().width / 2 - width / 2, 0, width, height);
 		System.out.println("Creating ui element");
 	}
 
@@ -37,11 +38,25 @@ public class UIElement extends Panel {
 		g.fillRect(0, 0, border, height);
 		g.fillRect(0, height - border, width, border);
 		// g.drawImage(selectedWep, 0, 0, null);
-		try {
-			g.drawString(game.nickPlayerOne + ": " + Integer.toString(game.level.getPlayers().get(0).getScore()), 10, 20);
-			g.drawString(game.nickPlayerTwo + ": " + Integer.toString(game.level.getPlayers().get(1).getScore()), width / 2, 20);
-		} catch (Exception e) {
-			System.out.println("score null");
+		g.drawString(GameState.getInstance().nickPlayerOne + ": " + getScore(0), 10, 20);
+		g.drawString(GameState.getInstance().nickPlayerTwo + ": " + getScore(1), width / 2, 20);
+		scoreOldOne = getScore(0);
+		scoreOldTwo = getScore(1);
+
+	}
+
+	public int getScore(int player) {
+		switch (player) {
+		case 0:
+			return GameState.getInstance().playerOneScore;
+		case 1:
+			return GameState.getInstance().playerTwoScore;
+		case 2:
+			return GameState.getInstance().playerTreeScore;
+		case 3:
+			return GameState.getInstance().playerFourScore;
+		default:
+			return 0;
 		}
 	}
 }

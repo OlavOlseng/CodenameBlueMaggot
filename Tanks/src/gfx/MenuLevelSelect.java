@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import blueMaggot.Game;
+import blueMaggot.GameState;
 
 public class MenuLevelSelect extends Menu {
 
@@ -41,10 +42,10 @@ public class MenuLevelSelect extends Menu {
 	}
 
 	public void apply() {
-		Game.SELECTED_LEVEL_TERRAIN = selectedLevelTerrain;
-		Game.SELECTED_LEVEL_BACKGROUND = selectedLevelBackground;
-		System.out.println("selected level: " + Game.SELECTED_LEVEL_TERRAIN);
-		System.out.println("selected level background: " + Game.SELECTED_LEVEL_BACKGROUND);
+		GameState.getInstance().selectedLevelTerrain = selectedLevelTerrain;
+		GameState.getInstance().selectedLevelBackground = selectedLevelBackground;
+		System.out.println("selected level: " + GameState.getInstance().selectedLevelTerrain);
+		System.out.println("selected level background: " + GameState.getInstance().selectedLevelBackground);
 	}
 
 	public void cacheThumb() {

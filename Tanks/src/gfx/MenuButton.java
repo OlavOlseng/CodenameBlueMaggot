@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import blueMaggot.Game;
+import blueMaggot.GameState;
 
 public class MenuButton extends Button {
 
@@ -57,22 +58,22 @@ public class MenuButton extends Button {
 				if (label.equals("exit"))
 					System.exit(1);
 				else if (label.equals("return")) {
-					if (!Game.running && !game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible())
+					if (!GameState.getInstance().running && !game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible())
 						return;
 					if (!game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible())
-						Game.PAUSED = false;
+						GameState.getInstance().PAUSED = false;
 					menu.setVisible(false);
 					menu.repaint();
 					game.requestFocus();
 				} else if (label.equals("newGame")) {
-					if (game.nickPlayerOne == null || game.nickPlayerTwo == null)
+					if (GameState.getInstance().nickPlayerOne == null || GameState.getInstance().nickPlayerTwo == null)
 						return;
 					try {
 						game.runLoop.stop();
 					} catch (Exception e) {
 						// e.printStackTrace();
 					}
-					Game.PAUSED = false;
+					GameState.getInstance().PAUSED = false;
 					menu.setVisible(false);
 					menu.repaint();
 					game.startReuglarGame();
@@ -98,8 +99,8 @@ public class MenuButton extends Button {
 				} else if (label.endsWith("lvls"))
 					game.blueMaggot.menuLevelSelect.setVisible(true);
 
-				System.out.println("Player One: " + game.nickPlayerOne + " - Player Two: " + game.nickPlayerTwo + " - Is Host: " + game.isHost
-						+ " - Host IP: " + game.hostIp);
+				System.out.println("Player One: " + GameState.getInstance().nickPlayerOne + " - Player Two: " + GameState.getInstance().nickPlayerTwo + " - Is Host: " + GameState.getInstance().isHost
+						+ " - Host IP: " + GameState.getInstance().hostIp);
 				repaint();
 			}
 

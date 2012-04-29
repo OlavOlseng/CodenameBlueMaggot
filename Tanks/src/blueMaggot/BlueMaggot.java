@@ -37,10 +37,10 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 	public BlueMaggot() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
+		setPreferredSize(new Dimension(GameState.getInstance().width, GameState.getInstance().height));
 		setFocusable(true);
 
-		layeredPane.setBounds(0, 0, Game.WIDTH, Game.HEIGHT);
+		layeredPane.setBounds(0, 0, GameState.getInstance().width, GameState.getInstance().height);
 		layeredPane.setOpaque(false);
 
 		game = new blueMaggot.Game(this);
@@ -69,9 +69,9 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	private void setUpGame() {
-		game.setPreferredSize(Game.DIMENSION);
+		game.setPreferredSize(GameState.getInstance().dimension);
 		gamePanel.setLayout(new BorderLayout());
-		gamePanel.setBounds(0, 0, Game.WIDTH, Game.HEIGHT);
+		gamePanel.setBounds(0, 0, GameState.getInstance().width, GameState.getInstance().height);
 		gamePanel.add(game);
 	}
 
@@ -103,6 +103,9 @@ public class BlueMaggot extends JFrame implements Runnable {
 		if (game.gameOver()) {
 			uiScoreBoard.setVisible(true);
 		}
-		ui.repaint();
+		if (ui.scoreOldOne != ui.getScore(0)){
+			ui.repaint();
+			System.out.println("PAINTING BRO");
+		}
 	}
 }
