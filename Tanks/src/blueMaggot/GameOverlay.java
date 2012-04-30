@@ -37,6 +37,7 @@ public class GameOverlay {
 		if (GameState.getInstance().isRunning() &&(player1Score!= score1 || player2Score !=score2 || player1Wep != wep1 || player2Wep != wep2)) {
 			playerOne = GameState.getInstance().players.get(0);
 			playerTwo = GameState.getInstance().players.get(1);
+			System.out.println(playerOne.getScore());
 			g.setFont(font);
 			String statsOne = playerOne.getCurrentWeaponName() + "|" + playerOne.getScore() + "|" + playerOne.getNick();
 			g.setColor(Menu.pink);

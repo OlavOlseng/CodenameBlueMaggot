@@ -60,6 +60,7 @@ public class Tank extends Entity {
 	
 		GameState.getInstance().players.add(this);
 		this.level.getPlayers().add(this);
+		
 		muzzleAngle = 0;
 		muzzleLength = 21;
 		this.playerNumber = playerNumber;
@@ -91,6 +92,10 @@ public class Tank extends Entity {
 		 * ii)); }
 		 */
 
+	}
+
+	public void setCurrentWeapon(Gun currentWeapon) {
+		this.currentWeapon = currentWeapon;
 	}
 
 	public void setLife(int life) {

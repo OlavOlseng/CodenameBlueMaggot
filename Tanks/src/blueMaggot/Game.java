@@ -143,6 +143,9 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		String gameState = parts[0];
 		String[] properties = gameState.split("\\'");
 		System.out.println(gameState);
+		Tank player1;
+		Tank player2 ;
+	
 		if(!GameState.getInstance().isHost&& level != null &&level.getPlayers().size()> 1){
 			int score1 = Integer.parseInt(properties[0]);
 
@@ -151,21 +154,26 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			int life2= Integer.parseInt(properties[3]);	
 			Gun gun1 = Gun.valueOf(properties[4]);
 			Gun gun2 = Gun.valueOf(properties[5]);
-			Tank player1 ;
-			Tank player2 ;
-		 player1 = level.getPlayers().get(0);
-		player2 = level.getPlayers().get(1);
+			
+		player1 = level.getPlayers().get(1);
+		player2 = level.getPlayers().get(0);
 		player1.setScore(score1);
 		player1.setLife(life1);
+		player1.setCurrentWeapon(gun1);
+		player2.setCurrentWeapon(gun2);
 		player2.setScore(score2);
 		player2.setLife(life2);
 		
 		GameState state = GameState.getInstance();
+		
 		state.players = level.getPlayers();
 		
 		}
 		else{
 			Gun gun1 = Gun.valueOf(properties[4]);
+			
+			level.getPlayers().get(0).setCurrentWeapon(gun1);
+			
 		}
 		if (data.length > 0) {
 
