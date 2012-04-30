@@ -52,14 +52,24 @@ public class RGBImage {
 
 	}
 
-	public RGBImage(File file) {
+	public RGBImage(String path) {
 
+		BufferedImage img = null;
+
+		try {
+			img = ImageIO.read(getClass().getResourceAsStream(path));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		setBufferedImage(img);
+	}
+
+	public RGBImage(File file) {
 		BufferedImage img = null;
 
 		try {
 			img = ImageIO.read(file);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		setBufferedImage(img);
