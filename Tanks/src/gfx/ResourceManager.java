@@ -29,6 +29,7 @@ public class ResourceManager {
 	public static RGBImage CROSSHAIR1;
 	public static RGBImage SCOREBUBBLE;
 	public static RGBImage SHELL;
+	public static RGBImage HEART;
 	public static RGBImage TANK4;
 	public static RGBImage TANK3;
 	public static RGBImage TANK2;
@@ -54,6 +55,7 @@ public class ResourceManager {
 			BUBBLEHEARTH = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/BubbleHearth.png")));
 			AIRSTRIKEBEACON = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/AirStrikeBeacon.png")));
 			BULLET = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Bullet.png")));
+			HEART = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Heart.png")));
 			COLORMASK = new Color(0x00FAE1);
 			
 			System.out.println("tiss");

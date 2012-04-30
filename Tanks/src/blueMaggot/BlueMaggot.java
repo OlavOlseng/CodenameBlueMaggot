@@ -49,7 +49,8 @@ public class BlueMaggot extends JFrame implements Runnable {
 		setPreferredSize(new Dimension(GameState.getInstance().width, GameState.getInstance().height + 28));
 		setFocusable(true);
 		setResizable(false);
-
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		layeredPane.setBounds(0, 0, GameState.getInstance().width, GameState.getInstance().height);
 		layeredPane.setOpaque(false);
 
@@ -62,10 +63,8 @@ public class BlueMaggot extends JFrame implements Runnable {
 		menuBackground = new MenuBackground(menuTitle);
 		gamePanel = new JPanel();
 
-	//	ui = new UIElement(0, 0, 700, 45, menuTitle.border, game);
 
 		layeredPane.add(gamePanel, new Integer(0));
-		//layeredPane.add(ui, new Integer(1));
 		layeredPane.add(menuBackground, new Integer(9));
 		layeredPane.add(menuTitle, new Integer(10));
 		layeredPane.add(menuOptions, new Integer(11));
@@ -113,15 +112,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 			}
 		}
 
-		/*if (GameState.getInstance().isRunning() && !ui.isVisible()) {
-			ui.setVisible(true);
-
-		}*/
 		// TODO: Implement scoreboard
-		// if (inputReal.tab.down) {
-		// uiScoreBoard.setVisible(true);
-		// } else
-		// uiScoreBoard.setVisible(false);
 		if (GameState.getInstance().isGameOver()) {
 			menuTitle.setVisible(true);
 			uiScoreBoard.setVisible(true);
@@ -135,15 +126,13 @@ public class BlueMaggot extends JFrame implements Runnable {
 			if (tank.getScore() != tank.getOldScore()) {
 
 				tank.setOldScore(tank.getScore());
+
 			//	ui.repaint();
+
 				System.out.println("p" + tank.getId() + ": " + tank.getScore());
 			}
 		}
 
-	/*	if (inputReal.down1.clicked || inputReal.down2.clicked) {
-
-			ui.repaint();
-		}*/
 	}
 
 	public void initResources() {
