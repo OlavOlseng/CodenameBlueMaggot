@@ -126,7 +126,7 @@ public class OnlineCityScape extends cityScape {
 		for (int i = 1; i < objects.length; i++) {
 			String[] properties = objects[i].split("\\'");
 			synchronized (movementsToDo) {
-				System.out.println(objects[i]);
+
 
 				movementsToDo.add(properties);
 

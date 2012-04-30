@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.net.ssl.HostnameVerifier;
+
 import entity.Entity;
 import entity.Tank;
 
@@ -135,30 +137,28 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public void readData(byte[] data) {
 
 		String gameData = new String(data);
-		System.out.println(gameData);
 		String[] parts = gameData.split("\\@");
-		System.out.println(parts[0]);
-		System.out.println(parts.length);
+	
 		String gameState = parts[1];
-
 		String[] properties = gameState.split("\\'");
 		int score1 = Integer.parseInt(properties[1]);
 
-		int score2= Integer.parseInt(properties[1]);
-		int life1= Integer.parseInt(properties[1]);
-		int life2= Integer.parseInt(properties[1]);	
+		int score2= Integer.parseInt(properties[2]);
+		int life1= Integer.parseInt(properties[2]);
+		int life2= Integer.parseInt(properties[3]);	
 		Tank player1 ;
 		Tank player2 ;
-		if(level != null &&level.getPlayers().size()> 1){
+		if(!GameState.getInstance().isHost&& level != null &&level.getPlayers().size()> 1){
 		 player1 = level.getPlayers().get(0);
 		player2 = level.getPlayers().get(1);
 		
-		
+
 		player1.setScore(score1);
 		player1.setLife(life1);
 		player2.setScore(score2);
 		player2.setLife(life2);
-
+		GameState state = GameState.getInstance();
+		
 		}
 		if (data.length > 0) {
 
@@ -175,10 +175,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		if(GameState.getInstance().isHost)
 			gameState= level.getPlayers().get(0).getScore() + "'"+ level.getPlayers().get(0).getLife()+ "'" + level.getPlayers().get(0).getScore()+ "'" + level.getPlayers().get(0).getLife();
 		
-			gameState += "@";
+		gameState += "@";
 
 
 		String msgBody = "";
+		
 		List<NetworkObject> objects = onlineLevel.getNetworkObjectList();
 		List<Integer> deadKeys = new ArrayList<Integer>();
 
@@ -240,11 +241,13 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void startOnlineGame() {
-
+		
 		onlineLevel = new OnlineCityScape(this, handler);
 		onlineLevel.init();
 		level = onlineLevel;
 		init(GameState.getInstance().width, GameState.getInstance().height, 60);
 		GameState.getInstance().setRunning(true);
+		GameState.getInstance().players = level.getPlayers();
+		
 	}
 }
