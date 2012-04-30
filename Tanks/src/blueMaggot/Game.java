@@ -164,7 +164,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public byte[] onWrite() {
 		String gameState ="";
 		if(GameState.getInstance().isHost)
-			gameState= "@" + "'" + level.getPlayers().get(0).getScore() + "'"+ level.getPlayers().get(0).getLife()+ "'" + level.getPlayers().get(0).getScore()  + level.getPlayers().get(0).getLife();
+			gameState= "@" + "'" + level.getPlayers().get(0).getScore() + "'"+ level.getPlayers().get(0).getLife()+ "'" + level.getPlayers().get(0).getScore()+ "'" + level.getPlayers().get(0).getLife();
 		
 		gameState = gameState + "@";
 		String msgBody = "";
