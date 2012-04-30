@@ -22,7 +22,7 @@ public class GameOverlay {
 		
 		Tank playerOne;
 		Tank playerTwo;
-		int width = 700;
+		int width = 800;
 		int height = 45;
 		int border =3;
 		

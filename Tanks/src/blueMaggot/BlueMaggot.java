@@ -44,7 +44,6 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 	public BlueMaggot() {
 
-		ResourceManager.getInstance().initResources();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setPreferredSize(new Dimension(GameState.getInstance().getWidth(), GameState.getInstance().getHeight() + 28));

@@ -14,54 +14,25 @@ public class ResourceManager {
 	private static Terrain TERRAIN;
 	private static RGBImage BACKGROUND;
 
-	public static Color COLORMASK;
-	public static RGBImage BULLET;
-	public static RGBImage AIRSTRIKEBEACON;
-	public static RGBImage BUBBLEHEARTH;
-	public static RGBImage PACKAGE;
-	public static RGBImage GRENADE;
-	public static RGBImage MINE;
-	public static RGBImage ROCKET;
-	public static RGBImage CROSSHAIR4;
-	public static RGBImage CROSSHAIR3;
-	public static RGBImage CROSSHAIR2;
-	public static RGBImage CROSSHAIR1;
-	public static RGBImage SCOREBUBBLE;
-	public static RGBImage SHELL;
-	public static RGBImage HEART;
-	public static RGBImage TANK4;
-	public static RGBImage TANK3;
-	public static RGBImage TANK2;
-	public static RGBImage TANK1;
-
-	public void initResources() {
-		try {
-			
-			TANK1 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
-			TANK2 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
-			TANK3 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
-			TANK4 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
-			SHELL = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Shell_temp.png")));
-			SCOREBUBBLE = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Scorebubble.png")));
-			CROSSHAIR1 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Crosshair.png")));
-			CROSSHAIR2 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Crosshair.png")));
-			CROSSHAIR3 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Crosshair.png")));
-			CROSSHAIR4 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Crosshair.png")));
-			ROCKET = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Rocket_sheet.png")));
-			MINE = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Mine_sheet.png")));
-			GRENADE = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Grenade_temp.png")));
-			PACKAGE = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Package.png")));
-			BUBBLEHEARTH = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/BubbleHearth.png")));
-			AIRSTRIKEBEACON = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/AirStrikeBeacon.png")));
-			BULLET = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Bullet.png")));
-			HEART = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Heart.png")));
-			COLORMASK = new Color(0x00FAE1);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
+	public static RGBImage TANK1 = new RGBImage("/graphics/Tank2.png");
+	public static RGBImage TANK2 = new RGBImage("/graphics/Tank2.png");
+	public static RGBImage TANK3 = new RGBImage("/graphics/Tank2.png");
+	public static RGBImage TANK4 = new RGBImage("/graphics/Tank2.png");
+	public static RGBImage SHELL = new RGBImage("/graphics/Shell_temp.png");
+	public static RGBImage SCOREBUBBLE = new RGBImage("/graphics/Scorebubble.png");
+	public static RGBImage CROSSHAIR1 = new RGBImage("/graphics/Crosshair.png");
+	public static RGBImage CROSSHAIR2 = new RGBImage("/graphics/Crosshair.png");
+	public static RGBImage CROSSHAIR3 = new RGBImage("/graphics/Crosshair.png");
+	public static RGBImage CROSSHAIR4 = new RGBImage("/graphics/Crosshair.png");
+	public static RGBImage ROCKET = new RGBImage("/graphics/Rocket_sheet.png");
+	public static RGBImage MINE = new RGBImage("/graphics/Mine_sheet.png");
+	public static RGBImage GRENADE = new RGBImage("/graphics/Grenade_temp.png");
+	public static RGBImage PACKAGE = new RGBImage("/graphics/Package.png");
+	public static RGBImage BUBBLEHEARTH = new RGBImage("/graphics/BubbleHearth.png");
+	public static RGBImage AIRSTRIKEBEACON = new RGBImage("/graphics/AirStrikeBeacon.png");
+	public static RGBImage BULLET = new RGBImage("/graphics/Bullet.png");
+	public static RGBImage HEART = new RGBImage("/graphics/Heart.png");
+	public static Color COLORMASK = new Color(0x00FAE1);
 
 	private static ResourceManager instance = null;
 
@@ -72,7 +43,6 @@ public class ResourceManager {
 	}
 
 	private ResourceManager() {
-
 	}
 
 	public static Terrain getTerrain() {
