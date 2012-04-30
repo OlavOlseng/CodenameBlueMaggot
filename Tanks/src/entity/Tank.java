@@ -61,7 +61,7 @@ public class Tank extends Entity {
 		GameState.getInstance().players.add(this);
 		this.level.getPlayers().add(this);
 		muzzleAngle = 0;
-		muzzleLength = 20;
+		muzzleLength = 21;
 		this.playerNumber = playerNumber;
 		this.input = input;
 		frictionConstant = 0.12;
@@ -394,8 +394,8 @@ public class Tank extends Entity {
 		}
 
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr() + 1), img.getWidth(), img.getHeight());
-		renderer.DrawImage(crossHair, -1, (int) (getCrosshairLocation().getX() - crossHair.getWidth() / 2),
-				(int) (getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(), crossHair.getHeight());
+		renderer.DrawImage(crossHair, -1, (int) (getCrosshairLocation().getX() - crossHair.getWidth()/2 + 2),
+				(int) (getCrosshairLocation().getY() - crossHair.getHeight()/2), crossHair.getWidth(), crossHair.getHeight());
 	}
 
 	@Override
