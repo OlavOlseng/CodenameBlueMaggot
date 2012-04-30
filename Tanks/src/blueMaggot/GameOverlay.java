@@ -3,6 +3,7 @@ package blueMaggot;
 import entity.Tank;
 import entity.weapon.Gun;
 import gfx.Menu;
+import gfx.ResourceManager;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -43,6 +44,14 @@ public class GameOverlay {
 			g.fillRect(width / 2 + border + 290, border, (width / 2 - border * 2) - border, (height - border * 2) - border);
 			g.setColor(Color.black);
 			g.drawString(statsOne, 15 + 290, 26);
+			
+//			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
+			for(int i = 0; i < playerOne.getLife(); i++){
+				g.drawImage(ResourceManager.getInstance().HEART.getRgbBufferedImage(), 550 + i*14, 15, null);
+			}
+			for(int i = 0; i < playerTwo.getLife(); i++){
+				g.drawImage(ResourceManager.getInstance().HEART.getRgbBufferedImage(), 720 - i*14, 15, null);
+			}
 			String statsTwo = playerTwo.getNick() + "|" + playerTwo.getScore() + "|" + playerTwo.getCurrentWeaponName();
 			g.drawString(statsTwo, width - (statsTwo.length() * 11) - 15 + 290, 26);
 			System.out.println("changing points");
