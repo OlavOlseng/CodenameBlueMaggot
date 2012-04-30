@@ -54,7 +54,7 @@ public class GameOverlay {
 			}
 			String statsTwo = playerTwo.getNick() + "|" + playerTwo.getScore() + "|" + playerTwo.getCurrentWeaponName();
 			g.drawString(statsTwo, width - (statsTwo.length() * 11) - 15 + 290, 26);
-		
+
 		}
 	}
 }
