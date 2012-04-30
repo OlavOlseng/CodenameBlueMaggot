@@ -182,7 +182,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		String gameState ="";
 		if(state.players != null)
-			gameState= state.players.get(0).getScore() + "'"+ state.players.get(1).getLife()+ "'" + state.players.get(0).getScore()+ "'" + state.players.get(1).getLife() +state.players.get(0).getCurrentWeaponName() +state.players.get(1).getCurrentWeaponName() ;
+			gameState= state.players.get(0).getScore() + "'"+ state.players.get(1).getLife()+ "'" + state.players.get(0).getScore()+ "'" + state.players.get(1).getLife()+"'" +state.players.get(0).getCurrentWeaponName()+"'" +state.players.get(1).getCurrentWeaponName() ;
 		
 		gameState += "@";
 
