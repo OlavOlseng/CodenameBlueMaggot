@@ -2,6 +2,7 @@ package blueMaggot;
 
 import entity.Tank;
 import entity.weapon.Gun;
+import gfx.Menu;
 import gfx.MenuBackground;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
@@ -12,6 +13,7 @@ import gfx.MenuScoreBoard;
 import gfx.MenuAbout;
 import inputhandler.InputHandler;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
@@ -63,6 +65,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		menuLevelSelect = new MenuLevelSelect(game);
 		menuBackground = new MenuBackground(menuTitle);
 		gamePanel = new JPanel();
+		gamePanel.setBackground(Color.DARK_GRAY);
 
 		layeredPane.add(gamePanel, new Integer(0));
 		layeredPane.add(menuBackground, new Integer(9));
