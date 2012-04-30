@@ -23,13 +23,16 @@ import blueMaggot.GameState;
 public class cityScape extends BasicLevel {
 
 	Random rand = new Random();
-
+	protected double totalElapsedTime = 0;
+	
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
+		
 		terrain = new Terrain(GameState.getInstance().selectedLevelTerrain);
 		ResourceManager.setTerrain(terrain);
 		ResourceManager.setBackGround(new RGBImage(GameState.getInstance().selectedLevelBackground));
 		SoundEffect.SPAWN.play();
+		
 	}
 
 	public void init() {
@@ -38,47 +41,52 @@ public class cityScape extends BasicLevel {
 		SoundEffect.SPAWN.play();
 
 		if(shouldSpawnBubbleHearth())
-		addEntity(new BubbleHearth(bubbleSpawns.get(1), this));
+		addEntity(new BubbleHearth(bubbleSpawns.getPoint(), this));
 		
 		if(shouldSpawnCrate())
-		addEntity(new Package(bubbleSpawns.get(2), this));
+		addEntity(new Package(bubbleSpawns.getPoint(), this));
 
 	}
 
 	public void addPlayers() {
 	
-		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this));
-		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this));
+		addEntity(new Tank(playerSpawns.getPoint(), 1, handler, this));
+		addEntity(new Tank(playerSpawns.getPoint(), 2, handler, this));
 	}
 
 	@Override
 	public void initSpawn() {
-		playerSpawns.add(new FloatingPoint(30, 10));
-		playerSpawns.add(new FloatingPoint(180, 10));
-		playerSpawns.add(new FloatingPoint(512, 10));
-		playerSpawns.add(new FloatingPoint(844, 10));
-		playerSpawns.add(new FloatingPoint(996, 10));
+		playerSpawns.addPoint(new FloatingPoint(100, 10));
+		playerSpawns.addPoint(new FloatingPoint(160, 10));
+		playerSpawns.addPoint(new FloatingPoint(530, 10));
+		playerSpawns.addPoint(new FloatingPoint(750, 10));
+		playerSpawns.addPoint(new FloatingPoint(1120, 10));
+		playerSpawns.addPoint(new FloatingPoint(1170, 10));
 
-		bubbleSpawns.add(new FloatingPoint(100, 10));
-		bubbleSpawns.add(new FloatingPoint(512, 10));
-		bubbleSpawns.add(new FloatingPoint(896, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(80, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(180, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(600, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(700, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(1100, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(1200, 10));
 	}
 
 	public void spawnBubble() {
-		this.addEntity(new ScoreBubble(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), this, 0.5, rand.nextInt(360), 100));
+		this.addEntity(new ScoreBubble(bubbleSpawns.getPoint(), this, 0.5, rand.nextInt(360), 100));
 		SoundEffect.SPAWN.play();
 	}
 	public void spawnBubbleHearth() {
-		this.addEntity(new BubbleHearth(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), this));
+		this.addEntity(new BubbleHearth(bubbleSpawns.getPoint(), this));
 		SoundEffect.SPAWN.play();
 	}
 	public void spawnCrate() {
-		this.addEntity(new Package(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), this));
+		this.addEntity(new Package(bubbleSpawns.getPoint(), this));
 		SoundEffect.SPAWN.play();
 	}
 
 	@Override
 	public void tick(double dt) {
+
 		super.tick(dt);
 		if (shouldSpawnBubble()) {
 			spawnBubble();
@@ -89,6 +97,7 @@ public class cityScape extends BasicLevel {
 		if (shouldSpawnBubbleHearth()) {
 			spawnBubbleHearth();
 		}
+		totalElapsedTime += dt;
 	}
 
 	protected boolean shouldSpawnBubble() {
@@ -97,17 +106,16 @@ public class cityScape extends BasicLevel {
 	}
 
 	protected boolean shouldSpawnCrate() {
-		int ticket = rand.nextInt(500);
-		return ticket == 10;
+		return (totalElapsedTime % 1200 < 2);
 	}
 
 	protected boolean shouldSpawnBubbleHearth() {
-		int ticket = rand.nextInt(800);
-		return ticket == 100;
+		return (totalElapsedTime % 1500 < 1);
 	}
 
 	public void onDraw(Renderer renderer) {
 		// draws backgorund recursively
+		
 		renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, GameState.getInstance().width, GameState.getInstance().height);
 		renderer.DrawImage(ResourceManager.getTerrain(), -1, 0, 0, terrain.getWidth(), terrain.getHeight());
 		super.render(renderer);

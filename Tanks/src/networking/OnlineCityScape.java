@@ -80,8 +80,8 @@ public class OnlineCityScape extends cityScape {
 
 			OnlineTank player2;
 
-			player1 = new OnlineTank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this, null);
-			player2 = new OnlineTank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this, null);
+			player1 = new OnlineTank(playerSpawns.getPoint(), 1, handler, this, null);
+			player2 = new OnlineTank(playerSpawns.getPoint(), 2, handler, this, null);
 
 			addEntity(player1, objectCount, true, true);
 
@@ -227,6 +227,7 @@ public class OnlineCityScape extends cityScape {
 
 				movementsToDo = new ArrayList<String[]>();
 				lastTime = System.currentTimeMillis();
+				
 			}
 			if (isClient && player1 != null)
 				player1.tick(dt);

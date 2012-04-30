@@ -10,7 +10,8 @@ import level.BasicLevel;
 
 public class Package extends Entity {
 
-	
+	private double lifeTime = 1000; 
+	private double timeAlive = 0;
 	Gun wep;
 	PixelHitbox hitbox;
 
@@ -109,6 +110,10 @@ public class Package extends Entity {
 		super.tick(dt);
 		handleTerrainIntersections();
 		handlePlayerIntersections();
+		if (timeAlive > lifeTime)
+			remove();
+		else
+			timeAlive += dt;
 	}
 
 	@Override

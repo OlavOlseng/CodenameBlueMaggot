@@ -79,25 +79,27 @@ public class MenuButton extends Button {
 					try {
 						game.runLoop.stop();
 					} catch (Exception e) {
-						// e.printStackTrace();
+					//	 e.printStackTrace();
 					}
+					System.out.println("startMeny");
 					GameState.getInstance().setPaused(false);
 					menu.setVisible(false);
 					menu.repaint();
 					game.startReuglarGame();
 					game.requestFocus();
+			
 				} else if (label.equals("newLanGame")) {
 					for (Tank tank : GameState.getInstance().players) {
 						if (tank.getNick() == null)
 							return;
 						tank.setScore(0);
 					}
-					try {
+					if(game.runLoop != null){
 						game.runLoop.stop();
-					} catch (Exception e) {
-						e.printStackTrace();
 					}
+					
 					GameState.getInstance().setPaused(false);
+					
 					menu.setVisible(false);
 					menu.repaint();
 					game.initConnection(GameState.getInstance().isHost, GameState.getInstance().hostIp);

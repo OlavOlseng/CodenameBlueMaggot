@@ -28,9 +28,9 @@ public class MenuLabel extends Label {
 
 	public void setUp() {
 		setPreferredSize(new Dimension(170, 13));
-		File img = new File("./res/titleMenu/" + label + ".png");
+		String img = "/titleMenu/" + label + ".png";
 		try {
-			lblImage = ImageIO.read(img);
+			lblImage = ImageIO.read(getClass().getResourceAsStream(img));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -4,10 +4,14 @@ import gfx.Menu;
 import gfx.ResourceManager;
 import inputhandler.InputHandler;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 
 import sound.SoundEffect;
 
@@ -26,9 +30,9 @@ public abstract class BasicLevel {
 	protected BaseGame game;
 	protected Terrain terrain;
 	private Random rand = new Random();
-	public List<FloatingPoint> playerSpawns;
-	public List<FloatingPoint> bubbleSpawns;
-
+	public SpawnTracker playerSpawns;
+	public SpawnTracker bubbleSpawns;
+	
 	public BasicLevel(BaseGame game, InputHandler handler) {
 		this.game = game;
 		this.handler = handler;
@@ -41,8 +45,8 @@ public abstract class BasicLevel {
 		ResourceManager.CROSSHAIR2.replaceColors(0x00FAE1, 0xFF2121);
 
 		entities = new ArrayList<Entity>();
-		playerSpawns = new ArrayList<FloatingPoint>();
-		bubbleSpawns = new ArrayList<FloatingPoint>();
+		playerSpawns = new SpawnTracker();
+		bubbleSpawns = new SpawnTracker();
 	}
 
 	public Terrain getTerrain() {
@@ -51,20 +55,25 @@ public abstract class BasicLevel {
 
 	public void initLevel() {
 		entities = new ArrayList<Entity>();
-		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion1.png"), Animations.EXPLOSIONS, 50, 50);
-		AnimationFactory.getInstance().addSpriteSheet(new File("./res/graphics/Explosion2.png"), Animations.EXPLOSIONS2, 100, 100);
-		playerSpawns = new ArrayList<FloatingPoint>();
-		bubbleSpawns = new ArrayList<FloatingPoint>();
+		try {
+			BufferedImage img1 = ImageIO.read(getClass().getResourceAsStream("/graphics/Explosion1.png"));
+			BufferedImage img2 = ImageIO.read(getClass().getResourceAsStream("/graphics/Explosion2.png"));
+			
+			AnimationFactory.getInstance().addSpriteSheet(img1, Animations.EXPLOSIONS, 50, 50);
+			AnimationFactory.getInstance().addSpriteSheet(img2, Animations.EXPLOSIONS2, 100, 100);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// requires you to init bubbleSpawns and playerSpawns
 	abstract public void initSpawn();
 
-	public List<FloatingPoint> getPlayerSpawns() {
+	public SpawnTracker getPlayerSpawns() {
 		return playerSpawns;
 	}
 
-	public List<FloatingPoint> getBubbleSpawns() {
+	public SpawnTracker getBubbleSpawns() {
 		return bubbleSpawns;
 	}
 

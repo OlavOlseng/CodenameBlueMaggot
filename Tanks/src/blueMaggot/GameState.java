@@ -51,7 +51,7 @@ public class GameState {
 	}
 
 	public void setPaused(boolean paused) {
-		this.paused = paused;
+		this.paused =paused;
 	}
 
 	public boolean isRunning() {

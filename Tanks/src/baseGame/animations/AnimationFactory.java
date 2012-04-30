@@ -1,5 +1,6 @@
 package baseGame.animations;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
 import baseGame.Rendering.RGBImage;
@@ -15,6 +16,9 @@ public class AnimationFactory {
 	}
 	public void addSpriteSheet(File path, String name, int spriteWidth, int spriteHeight) {
 		spriteSheets.put(name, new SpriteSheet(path, spriteWidth, spriteHeight));
+	}
+	public void addSpriteSheet(BufferedImage img, String name, int spriteWidth, int spriteHeight) {
+		spriteSheets.put(name, new SpriteSheet(img,spriteWidth,spriteHeight));
 	}
 
 	public RGBImage[] getAnimation(String spriteSheetName, Integer index) {

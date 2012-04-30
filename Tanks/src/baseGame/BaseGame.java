@@ -96,9 +96,9 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			onDraw(renderer);
 			
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
-			long time1= System.currentTimeMillis();
+
 			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
-			System.out.println(System.currentTimeMillis() - time1);
+
 			if (showFps)
 				DrawfpsCounter(g, deltaTime);
 		
@@ -136,6 +136,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	}
 
 	private void DrawfpsCounter(Graphics2D g, long deltaTime) {
+
 		String fpsCounter = "FPS: " + (1000 / (int) deltaTime);
 		g.setColor(Color.ORANGE);
 		g.drawChars(fpsCounter.toCharArray(), 0, fpsCounter.length(), 10, 10);

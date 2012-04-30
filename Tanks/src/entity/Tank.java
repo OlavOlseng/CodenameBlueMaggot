@@ -45,7 +45,7 @@ public class Tank extends Entity {
 	private boolean canGoDown = true;
 	protected boolean chargingCannon = false;
 
-	private Gun currentWeapon = Gun.GRENADE;
+	private Gun currentWeapon = Gun.SHELLGUN;
 	private double torque = 0.15;
 
 	private ArrayList<Weapon> weaponList;
@@ -342,8 +342,9 @@ public class Tank extends Entity {
 			super.remove();
 			return;
 		}
-		setLocation(level.getPlayerSpawns().get(rand.nextInt(level.getPlayerSpawns().size())));
+		setLocation(level.getPlayerSpawns().getPoint());
 		setSpeed(0, -1);
+		muzzleAngle = 90;
 		damageTaken = 1;
 		initInventory();
 		currentWeapon = Gun.SHELLGUN;

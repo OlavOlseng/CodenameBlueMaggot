@@ -13,8 +13,8 @@ public class Minigun implements Weapon{
 	int bulletsToFire = 100;
 	int bulletsFired = 0;
 	double currentCooldown = 0;
-	double cooldownTime = 120;
-	int ammo = 100;
+	double cooldownTime = 180;
+	int ammo = 0;
 	Tank owner;
 	BasicLevel level;
 	Random rand = new Random();
@@ -36,7 +36,7 @@ public class Minigun implements Weapon{
 	
 	@Override
 	public void addAmmo() {
-		ammo += 2;
+		ammo += 3;
 	}
 	
 	@Override
