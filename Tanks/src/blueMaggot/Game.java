@@ -142,15 +142,18 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		int score2= Integer.parseInt(properties[1]);
 		int life1= Integer.parseInt(properties[1]);
 		int life2= Integer.parseInt(properties[1]);
+		Tank player1 ;
+		Tank player2 ;
 		if(level.getPlayers() != null){
-		Tank player1 = level.getPlayers().get(0);
-		Tank player2 = level.getPlayers().get(1);
-		}
+		 player1 = level.getPlayers().get(0);
+		player2 = level.getPlayers().get(1);
+		
+		
 		player1.setScore(score1);
 		player1.setLife(life1);
 		player2.setScore(score2);
 		player2.setLife(life2);
-		
+		}
 		if (data.length > 0) {
 
 			onlineLevel.catchResponse(parts[2]);
