@@ -9,11 +9,11 @@ import level.BasicLevel;
 public class Bullet extends Projectile {
 	
 	int explosionRadius = 10;
-	int explosionPower = 30;
+	int explosionPower = 40;
 	
 	public Bullet(double x, double y, BasicLevel level, double angle) {
 		super(x, y, 2, 2, level, 1, angle);
-		this.maxSpeed = 13;
+		this.maxSpeed = 15;
 		this.frictionConstant = 0.000005;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
