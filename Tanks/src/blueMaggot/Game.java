@@ -137,6 +137,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		System.out.println(parts[0]);
 		System.out.println(parts.length);
 		String gameState = parts[1];
+
 		String[] properties = gameState.split("\\'");
 		int score1 = Integer.parseInt(properties[1]);
 		int score2= Integer.parseInt(properties[1]);
@@ -144,7 +145,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		int life2= Integer.parseInt(properties[1]);
 		Tank player1 ;
 		Tank player2 ;
-		if(level.getPlayers() != null){
+		if(level != null &&level.getPlayers().size()> 1){
 		 player1 = level.getPlayers().get(0);
 		player2 = level.getPlayers().get(1);
 		
@@ -154,6 +155,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		player2.setScore(score2);
 		player2.setLife(life2);
 		}
+		System.out.println(gameState);
+		System.out.println(parts[2]);
 		if (data.length > 0) {
 
 			onlineLevel.catchResponse(parts[2]);
@@ -167,7 +170,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public byte[] onWrite() {
 		String gameState ="";
 		if(GameState.getInstance().isHost)
-			gameState= "@" + "'" + level.getPlayers().get(0).getScore() + "'"+ level.getPlayers().get(0).getLife()+ "'" + level.getPlayers().get(0).getScore()+ "'" + level.getPlayers().get(0).getLife();
+			gameState= "@"  + level.getPlayers().get(0).getScore() + "'"+ level.getPlayers().get(0).getLife()+ "'" + level.getPlayers().get(0).getScore()+ "'" + level.getPlayers().get(0).getLife();
 		
 		gameState = gameState + "@";
 		String msgBody = "";

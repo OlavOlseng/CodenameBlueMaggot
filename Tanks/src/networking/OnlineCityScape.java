@@ -122,7 +122,8 @@ public class OnlineCityScape extends cityScape {
 
 	public void catchResponse(String entityData) {
 		String[] objects = entityData.split("\\?");
-
+		System.out.println(objects[0]);
+		System.out.println(objects[1]);
 		for (int i = 1; i < objects.length; i++) {
 			String[] properties = objects[i].split("\\'");
 			synchronized (movementsToDo) {
