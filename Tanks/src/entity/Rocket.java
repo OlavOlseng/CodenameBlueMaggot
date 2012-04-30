@@ -12,14 +12,14 @@ public class Rocket extends Projectile {
 	RGBImage rocketSheet = ResourceManager.ROCKET;
 	int explosionRadius = 45;
 	double explosionPower = 350;
-	double thrust = 0.7;
+	double thrust = 0.8;
 	double fuel = 45;
 	double burnTime = 0;
 
 	public Rocket(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		super(x, y, 4, 4, level, speedPercent, angle);
 		this.maxSpeed = 8;
-		this.frictionConstant = 0.004;
+		this.frictionConstant = 0.0002;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
@@ -31,6 +31,10 @@ public class Rocket extends Projectile {
 		level.getTerrain().addExplosion((int) (x - explosionRadius), (int) (y - explosionRadius), explosionRadius);
 		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, explosionPower));
 		SoundEffect.ROCKETLAUNCH.stop();
+	}
+	
+	public void applyFriction(){
+		accelerate(-dx*frictionConstant, -dy*frictionConstant);
 	}
 
 	public boolean intersectsTerrain() {
@@ -64,7 +68,7 @@ public class Rocket extends Projectile {
 			explode();
 			super.remove();
 		}
-
+		applyFriction();
 		burnTime += dt;
 	}
 

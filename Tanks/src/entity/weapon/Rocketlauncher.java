@@ -8,7 +8,7 @@ public class Rocketlauncher implements Weapon {
 
 	int cooldownTime = 120;
 	int currentCooldown = 0;
-	private int ammo = 4;
+	private int ammo = 0;
 
 	@Override
 	public void fire(double x, double y, BasicLevel level, double speedPercent, double angle) {
