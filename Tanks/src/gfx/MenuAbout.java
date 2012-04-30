@@ -3,8 +3,6 @@ package gfx;
 import gfx.GBC.Align;
 import gfx.Labels;
 
-import java.awt.Dimension;
-import java.awt.TextArea;
 import blueMaggot.Game;
 
 public class MenuAbout extends Menu {

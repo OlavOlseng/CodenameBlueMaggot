@@ -1,10 +1,6 @@
 package gfx;
 
 import java.awt.Color;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import level.Terrain;
 
 import baseGame.Rendering.RGBImage;

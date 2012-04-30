@@ -1,14 +1,11 @@
 package blueMaggot;
 
 import entity.Tank;
-import entity.weapon.Gun;
-import gfx.Menu;
 import gfx.MenuBackground;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
 import gfx.MenuOptionsLan;
 import gfx.MenuTitle;
-import gfx.ResourceManager;
 import gfx.MenuScoreBoard;
 import gfx.MenuAbout;
 import inputhandler.InputHandler;
