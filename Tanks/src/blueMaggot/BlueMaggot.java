@@ -1,6 +1,7 @@
 package blueMaggot;
 
 import entity.Tank;
+import entity.weapon.Gun;
 import gfx.MenuBackground;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
@@ -40,14 +41,16 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 
 	public BlueMaggot() {
+
 		ResourceManager.getInstance().initResources();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setPreferredSize(new Dimension(GameState.getInstance().getWidth(), GameState.getInstance().getHeight() + 28));
 		setFocusable(true);
 		setResizable(false);
-
+		
 		layeredPane.setBounds(0, 0, GameState.getInstance().getWidth(), GameState.getInstance().getHeight());
+		
 		layeredPane.setOpaque(false);
 
 		game = new blueMaggot.Game(this);
@@ -111,15 +114,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 			}
 		}
 
-		/*if (GameState.getInstance().isRunning() && !ui.isVisible()) {
-			ui.setVisible(true);
-
-		}*/
 		// TODO: Implement scoreboard
-		// if (inputReal.tab.down) {
-		// uiScoreBoard.setVisible(true);
-		// } else
-		// uiScoreBoard.setVisible(false);
 		if (GameState.getInstance().isGameOver()) {
 			menuTitle.setVisible(true);
 			uiScoreBoard.setVisible(true);
@@ -132,13 +127,10 @@ public class BlueMaggot extends JFrame implements Runnable {
 		for (Tank tank : GameState.getInstance().getPlayers()) {
 			if (tank.getScore() != tank.getOldScore()) {
 				tank.setOldScore(tank.getScore());
+
 			}
 		}
 
-	/*	if (inputReal.down1.clicked || inputReal.down2.clicked) {
-
-			ui.repaint();
-		}*/
 	}
 
 	public void initResources() {

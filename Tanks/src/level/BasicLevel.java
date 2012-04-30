@@ -24,7 +24,7 @@ import entity.*;
 public abstract class BasicLevel {
 
 	protected List<Entity> entities;
-	protected ArrayList<Tank> players;
+
 	protected InputHandler handler;
 	protected BaseGame game;
 	protected Terrain terrain;
@@ -91,6 +91,11 @@ public abstract class BasicLevel {
 	public ArrayList<Tank> getPlayers() {
 		return players;
 	}
+	public void setPlayers(ArrayList<Tank> players) {
+		this.players = players;
+	}
+
+	protected ArrayList<Tank> players;
 
 	public void checkGameOver() {
 		int playerAliveCount = 0;

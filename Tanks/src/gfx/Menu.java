@@ -29,6 +29,7 @@ public abstract class Menu extends Panel {
 		putCenter(this, width, height);
 		setLayout(new GridBagLayout());
 		setBackground(Menu.blue);
+		System.out.println(pinkDark.getRGB());
 	}
 
 	public void putCenter(Component c, int width, int height) {
