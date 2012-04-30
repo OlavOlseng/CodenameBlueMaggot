@@ -33,7 +33,6 @@ public class OnlineCityScape extends cityScape {
 	private OnlineTank player1;
 
 	public OnlineCityScape(BaseGame game, InputHandler handler) {
-
 		super(game, handler);
 
 		if (GameState.getInstance().getPlayerNumber() != 2) {

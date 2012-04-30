@@ -1,5 +1,6 @@
 package blueMaggot.maps;
 
+import java.io.IOException;
 import java.util.Random;
 
 import sound.SoundEffect;
@@ -18,21 +19,26 @@ import inputhandler.InputHandler;
 import baseGame.BaseGame;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
+import blueMaggot.BlueMaggot;
 import blueMaggot.GameState;
 
 public class cityScape extends BasicLevel {
 
 	Random rand = new Random();
 	protected double totalElapsedTime = 0;
-	
+
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
-		
-		terrain = new Terrain(GameState.getInstance().getSelectedLevelTerrain());
-		ResourceManager.setTerrain(terrain);
-		ResourceManager.setBackGround(new RGBImage(GameState.getInstance().getSelectedLevelBackground()));
+
+		try {
+			terrain = new Terrain(GameState.getInstance().getSelectedLevelTerrain());
+			ResourceManager.setTerrain(terrain);
+			ResourceManager.setBackGround(new RGBImage(GameState.getInstance().getSelectedLevelBackground()));
+		} catch (IOException e) {
+			BlueMaggot.e = e;
+		}
 		SoundEffect.SPAWN.play();
-		
+
 	}
 
 	public void init() {
@@ -40,16 +46,16 @@ public class cityScape extends BasicLevel {
 		addPlayers();
 		SoundEffect.SPAWN.play();
 
-		if(shouldSpawnBubbleHearth())
-		addEntity(new BubbleHearth(bubbleSpawns.getPoint(), this));
-		
-		if(shouldSpawnCrate())
-		addEntity(new Package(bubbleSpawns.getPoint(), this));
+		if (shouldSpawnBubbleHearth())
+			addEntity(new BubbleHearth(bubbleSpawns.getPoint(), this));
+
+		if (shouldSpawnCrate())
+			addEntity(new Package(bubbleSpawns.getPoint(), this));
 
 	}
 
 	public void addPlayers() {
-	
+
 		addEntity(new Tank(playerSpawns.getPoint(), 1, handler, this));
 		addEntity(new Tank(playerSpawns.getPoint(), 2, handler, this));
 	}
@@ -75,10 +81,12 @@ public class cityScape extends BasicLevel {
 		this.addEntity(new ScoreBubble(bubbleSpawns.getPoint(), this, 0.5, rand.nextInt(360), 100));
 		SoundEffect.SPAWN.play();
 	}
+
 	public void spawnBubbleHearth() {
 		this.addEntity(new BubbleHearth(bubbleSpawns.getPoint(), this));
 		SoundEffect.SPAWN.play();
 	}
+
 	public void spawnCrate() {
 		this.addEntity(new Package(bubbleSpawns.getPoint(), this));
 		SoundEffect.SPAWN.play();
@@ -115,7 +123,7 @@ public class cityScape extends BasicLevel {
 
 	public void onDraw(Renderer renderer) {
 		// draws backgorund recursively
-		
+
 		renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, GameState.getInstance().getWidth(), GameState.getInstance().getHeight());
 		renderer.DrawImage(ResourceManager.getTerrain(), -1, 0, 0, terrain.getWidth(), terrain.getHeight());
 		super.render(renderer);

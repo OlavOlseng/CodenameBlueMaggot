@@ -2,15 +2,15 @@ package level;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 import baseGame.Rendering.RGBImage;
 import blueMaggot.Game;
 
 public class Terrain extends RGBImage {
 
-	public Terrain(File file) {
+	public Terrain(File file) throws IOException  {
 		super(file);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Terrain(BufferedImage img) {

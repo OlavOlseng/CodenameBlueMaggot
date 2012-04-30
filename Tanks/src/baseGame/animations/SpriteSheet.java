@@ -11,7 +11,7 @@ public class SpriteSheet extends RGBImage {
 	private int spriteWidth;
 	private int spriteHeight;
 
-	public SpriteSheet(File file, int spriteWidth, int spriteHeigt) {
+	public SpriteSheet(File file, int spriteWidth, int spriteHeigt)   {
 		super(file);
 		this.spriteWidth = spriteWidth;
 		this.spriteHeight = spriteHeigt;

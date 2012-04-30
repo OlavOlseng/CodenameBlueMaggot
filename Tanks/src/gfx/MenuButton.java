@@ -41,7 +41,7 @@ public class MenuButton extends Button {
 		this.game = game;
 		setUp();
 	}
-
+	
 	public void setUp() {
 		String img = "/titleMenu/" + label.toString() + ".png";
 		try {
