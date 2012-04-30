@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 import entity.Entity;
+import entity.Tank;
 
 import networking.ConnectionDelegate;
 import networking.ConnectionManager;
@@ -83,9 +84,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public  void onUppdateUI(Renderer renderer){
 		GameState state = GameState.getInstance();
-		if(level != null && level.getPlayers().size()>0 && state.players.size() >0)
+		System.out.println(state.players.size());
+		if(level != null && state.players.size() >0)
 		overlay.paintOverlay(renderer.getGraphics(),level.getPlayers().get(0).getScore(),level.getPlayers().get(1).getScore(),level.getPlayers().get(0).getCurrentWeapon(),level.getPlayers().get(1).getCurrentWeapon());
 	}
+	
 	// public byte[] parseKeyStrokes() {
 	// byte[] msg = new byte[7];
 	// msg[0] = handler.left2.toByte();
@@ -128,10 +131,29 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void readData(byte[] data) {
-
+		
+		String gameData = new String(data);
+		
+		String[] parts = gameData.split("\\@");
+		
+		String gameState = parts[1];
+		String[] properties = gameState.split("\\'");
+		int score1 = Integer.parseInt(properties[1]);
+		int score2= Integer.parseInt(properties[1]);
+		int life1= Integer.parseInt(properties[1]);
+		int life2= Integer.parseInt(properties[1]);
+		
+		Tank player1 = level.getPlayers().get(0);
+		Tank player2 = level.getPlayers().get(1);
+		
+		player1.setScore(score1);
+		player1.setLife(life1);
+		player2.setScore(score2);
+		player2.setLife(life2);
+		
 		if (data.length > 0) {
 
-			onlineLevel.catchResponse(new String(data));
+			onlineLevel.catchResponse(parts[2]);
 
 		}
 
@@ -140,7 +162,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public byte[] onWrite() {
-
+		String gameState ="@";
+		if(GameState.getInstance().isHost)
+			gameState= "@" + "'" + level.getPlayers().get(0).getScore() + "'"+ level.getPlayers().get(0).getLife()+ "'" + level.getPlayers().get(0).getScore()  + level.getPlayers().get(0).getLife();
+		
 		String msgBody = "";
 		List<NetworkObject> objects = onlineLevel.getNetworkObjectList();
 		List<Integer> deadKeys = new ArrayList<Integer>();
@@ -169,7 +194,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		String msgHeader = "1" + to5DigitString(msgBody.length());
 
-		return (msgHeader + msgBody).getBytes();
+		return (msgHeader +gameState+ msgBody).getBytes();
 
 	}
 

@@ -38,6 +38,7 @@ public class GameState {
 	private GameState() {
 	}
 
+	
 	public void setGameOver(boolean gameOver) {
 		this.gameOver = gameOver;
 	}
