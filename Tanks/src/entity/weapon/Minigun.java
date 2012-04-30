@@ -36,7 +36,7 @@ public class Minigun implements Weapon{
 	
 	@Override
 	public void addAmmo() {
-		ammo += 2;
+		ammo += 3;
 	}
 	
 	@Override

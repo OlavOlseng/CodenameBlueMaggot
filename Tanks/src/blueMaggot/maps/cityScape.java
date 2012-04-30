@@ -23,7 +23,8 @@ import blueMaggot.GameState;
 public class cityScape extends BasicLevel {
 
 	Random rand = new Random();
-
+	protected double totalElapsedTime = 0;
+	
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
 		
@@ -55,16 +56,19 @@ public class cityScape extends BasicLevel {
 
 	@Override
 	public void initSpawn() {
-		playerSpawns.addPoint(new FloatingPoint(120, 10));
-		playerSpawns.addPoint(new FloatingPoint(140, 10));
+		playerSpawns.addPoint(new FloatingPoint(100, 10));
+		playerSpawns.addPoint(new FloatingPoint(160, 10));
 		playerSpawns.addPoint(new FloatingPoint(530, 10));
 		playerSpawns.addPoint(new FloatingPoint(750, 10));
-		playerSpawns.addPoint(new FloatingPoint(1140, 10));
-		playerSpawns.addPoint(new FloatingPoint(1160, 10));
+		playerSpawns.addPoint(new FloatingPoint(1120, 10));
+		playerSpawns.addPoint(new FloatingPoint(1170, 10));
 
-		bubbleSpawns.addPoint(new FloatingPoint(130, 10));
-		bubbleSpawns.addPoint(new FloatingPoint(640, 10));
-		bubbleSpawns.addPoint(new FloatingPoint(1150, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(80, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(180, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(600, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(700, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(1100, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(1200, 10));
 	}
 
 	public void spawnBubble() {
@@ -93,6 +97,7 @@ public class cityScape extends BasicLevel {
 		if (shouldSpawnBubbleHearth()) {
 			spawnBubbleHearth();
 		}
+		totalElapsedTime += dt;
 	}
 
 	protected boolean shouldSpawnBubble() {
@@ -101,13 +106,11 @@ public class cityScape extends BasicLevel {
 	}
 
 	protected boolean shouldSpawnCrate() {
-		int ticket = rand.nextInt(500);
-		return ticket == 10;
+		return (totalElapsedTime % 1200 < 2);
 	}
 
 	protected boolean shouldSpawnBubbleHearth() {
-		int ticket = rand.nextInt(800);
-		return ticket == 100;
+		return (totalElapsedTime % 1500 < 1);
 	}
 
 	public void onDraw(Renderer renderer) {
