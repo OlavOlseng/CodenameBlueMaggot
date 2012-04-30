@@ -1,0 +1,43 @@
+[33mcommit 54a451b28e00a1845437b6d408582a1bbd0787f6[m
+Author: Patrick <mail@habitats.no>
+Date:   Sun Apr 29 17:24:42 2012 +0200
+
+    still no workie
+
+:100644 100644 9c1fa00... 187854c... M	Tanks/src/baseGame/derp.java
+:100644 100644 db845e7... dc6f669... M	Tanks/src/gfx/MenuButton.java
+:100644 100644 1bede34... 0c94ca5... M	Tanks/src/gfx/ResourceManager.java
+
+[33mcommit c4098127e4066d3f7f6c49fda2c6928597e2f48a[m
+Author: Patrick <mail@habitats.no>
+Date:   Sun Apr 29 16:43:06 2012 +0200
+
+    level does not show, not sure why. changed a lot of fileIO stuff
+
+:100644 100644 cab1f5d... b2f05bb... M	Tanks/src/blueMaggot/BlueMaggot.java
+:100644 100644 a5eebf3... e823be1... M	Tanks/src/blueMaggot/Game.java
+:100644 100644 0f2df8e... ce9e7f7... M	Tanks/src/blueMaggot/GameState.java
+:100644 100644 0add6f5... 150bc35... M	Tanks/src/gfx/MenuButton.java
+:100644 100644 9716286... 1bede34... M	Tanks/src/gfx/ResourceManager.java
+:100644 100644 882718e... 55c45e8... M	Tanks/src/networking/OnlineCityScape.java
+
+[33mcommit 7787fbaf3b73b5e5b2011cb9c96f60c3f071a94f[m
+Author: Olav <olseng.o@gmail.com>
+Date:   Sun Apr 29 16:18:23 2012 +0200
+
+    readded Island level
+
+:000000 100644 0000000... f7fb80d... A	Tanks/lvl/island_background.png
+:000000 100644 0000000... 5a1eb4c... A	Tanks/lvl/island_terrain.png
+
+[33mcommit 8b900503258bfe10c7cf1029fc4822f959b0bc10[m
+Author: Eirik Jakobsen <eirikjak@gmail.com>
+Date:   Sun Apr 29 15:32:50 2012 +0200
+
+     fikset lan game knapp
+
+:100644 100644 6d84cfb... 9c1fa00... M	Tanks/src/baseGame/derp.java
+:100644 100644 a5eebf3... d311031... M	Tanks/src/blueMaggot/Game.java
+:100644 100644 0f2df8e... ce9e7f7... M	Tanks/src/blueMaggot/GameState.java
+:100644 100644 80938c5... fda4f42... M	Tanks/src/gfx/MenuBackground.java
+:100644 100644 0add6f5... 0ee1703... M	Tanks/src/gfx/MenuButton.java

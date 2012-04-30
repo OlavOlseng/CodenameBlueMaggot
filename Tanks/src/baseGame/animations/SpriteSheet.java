@@ -20,7 +20,6 @@ public class SpriteSheet extends RGBImage {
 	}
 	public SpriteSheet(BufferedImage img, int spriteWidth, int spriteHeigt) {
 		super(img);
-		
 		this.spriteWidth = spriteWidth;
 		this.spriteHeight = spriteHeigt;
 		

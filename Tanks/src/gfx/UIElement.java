@@ -35,9 +35,11 @@ public class UIElement extends Canvas {
 
 	@Override
 	public void paint(Graphics g) {
+
 		super.paint(g);
+
 		g.setColor(Menu.blue);
-		g.fillRect(0, 0, width, height);
+
 		g.setColor(Color.black);
 		g.fillRect(width - border, 0, border, height);
 		g.fillRect(0, 0, border, height);

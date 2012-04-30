@@ -1,14 +1,18 @@
 package baseGame.Rendering;
 
+import java.awt.Graphics2D;
+
 public class Renderer {
 	private int canvasWidth;
 	private int canvasHeight;
 	private int[] rgbPixels;
 	private int backgroundColor;
+	private Graphics2D g;
 
 	public native int test();
 
-	public Renderer(int[] rgbPixels, int backgroundColor, int canvasWidth, int canvasHeight) {
+	public Renderer(Graphics2D g,int[] rgbPixels, int backgroundColor, int canvasWidth, int canvasHeight) {
+		this.g = g;
 		this.rgbPixels = rgbPixels;
 		this.canvasWidth = canvasWidth;
 		this.canvasHeight = canvasHeight;
@@ -69,4 +73,9 @@ public class Renderer {
 			}
 		}
 	}
+	
+	public Graphics2D getGraphics() {
+		return g;
+	}
+
 }
