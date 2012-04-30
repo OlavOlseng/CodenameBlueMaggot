@@ -4,13 +4,20 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
 public class GBC extends GridBagConstraints {
-	public GBC(int gridx, int gridy, String align) {
+
+	public enum Align {
+		LEFT, RIGHT, MID;
+	}
+
+	public GBC(int gridx, int gridy, Align align) {
 		this.gridx = gridx;
 		this.gridy = gridy;
 		if (align != null) {
-			if (align.equals("left"))
+			if (align == Align.LEFT)
 				setInsets(5, 5, 5, 60);
-			else if (align.equals("right"))
+			else if (align == Align.MID)
+				setInsets(5, 5, 5, 5);
+			else if (align == Align.RIGHT)
 				setInsets(5, 60, 5, 5);
 		}
 		setFill(HORIZONTAL);

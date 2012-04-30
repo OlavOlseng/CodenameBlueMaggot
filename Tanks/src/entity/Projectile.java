@@ -1,6 +1,5 @@
 package entity;
 
-import baseGame.derp;
 import level.BasicLevel;
 
 public abstract class Projectile extends Entity {

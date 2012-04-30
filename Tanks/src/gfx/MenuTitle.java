@@ -14,12 +14,12 @@ public class MenuTitle extends Menu {
 	public MenuTitle(Game game, BlueMaggot blueMaggot) {
 		super();
 
-		MenuButton btnReturn = new MenuButton("return", this, game);
-		MenuButton btnNewGame = new MenuButton("newGame", this, game);
-		MenuButton btnNewOnlineGame = new MenuButton("newLanGame", this, game);
-		MenuButton btnAbout = new MenuButton("return", this, game);
-		MenuButton btnExit = new MenuButton("exit", this, null);
-		MenuButton btnLvls = new MenuButton("lvls", this, game);
+		MenuButton btnReturn = new MenuButton(Labels.RETURN, this, game);
+		MenuButton btnNewGame = new MenuButton(Labels.NEW_GAME, this, game);
+		MenuButton btnNewOnlineGame = new MenuButton(Labels.NEW_LAN_GAME, this, game);
+		MenuButton btnAbout = new MenuButton(Labels.ABOUT, this, game);
+		MenuButton btnExit = new MenuButton(Labels.EXIT, this, null);
+		MenuButton btnLvls = new MenuButton(Labels.LVL_SELECT, this, game);
 
 		// add buttons for title menu here
 		ButtonArr.add(btnReturn);
@@ -33,12 +33,13 @@ public class MenuTitle extends Menu {
 		c.gridwidth = 1;
 		c.gridx = 0;
 		c.gridy = 1;
-		c.ipady = 5;
-		c.ipadx = 200;
+		c.ipadx = 140;
 		c.insets = new Insets(10, 0, 10, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridy++;
 
+		add(new MenuLabel(Labels.LOGO), c);
+		c.gridy++;
 		for (MenuButton button : ButtonArr) {
 			add(button, c);
 			c.gridy++;

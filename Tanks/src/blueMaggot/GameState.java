@@ -13,17 +13,17 @@ public class GameState {
 	private boolean running = false;
 	private int playerNumber;
 
-	public boolean isHost = false;
-	public File selectedLevelTerrain = new File("./lvl/Cityscape_terrain.png");
-	public File selectedLevelBackground = new File("./lvl/Cityscape2_background.png");
+	private boolean isHost = false;
+	private File selectedLevelTerrain = new File("./lvl/Cityscape_terrain.png");
+	private File selectedLevelBackground = new File("./lvl/Cityscape2_background.png");
 
-	public int width = 1280;
-	public int height = 720;
+	private int width = 1280;
+	private int height = 720;
 	public Dimension dimension = new Dimension(width, height);
 
 	// customizable player variables!
-	public ArrayList<Tank> players = new ArrayList<Tank>();
-	
+	private ArrayList<Tank> players = new ArrayList<Tank>();
+
 	public String hostIp;
 
 	private static GameState instance = null;
@@ -36,6 +36,50 @@ public class GameState {
 	}
 
 	private GameState() {
+	}
+
+	public boolean isHost() {
+		return isHost;
+	}
+
+	public void setHost(boolean isHost) {
+		this.isHost = isHost;
+	}
+
+	public File getSelectedLevelTerrain() {
+		return selectedLevelTerrain;
+	}
+
+	public void setSelectedLevelTerrain(File selectedLevelTerrain) {
+		this.selectedLevelTerrain = selectedLevelTerrain;
+	}
+
+	public File getSelectedLevelBackground() {
+		return selectedLevelBackground;
+	}
+
+	public void setSelectedLevelBackground(File selectedLevelBackground) {
+		this.selectedLevelBackground = selectedLevelBackground;
+	}
+
+	public String getHostIp() {
+		return hostIp;
+	}
+
+	public void setHostIp(String hostIp) {
+		this.hostIp = hostIp;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public Dimension getDimension() {
+		return dimension;
 	}
 
 	public void setGameOver(boolean gameOver) {
@@ -51,7 +95,7 @@ public class GameState {
 	}
 
 	public void setPaused(boolean paused) {
-		this.paused =paused;
+		this.paused = paused;
 	}
 
 	public boolean isRunning() {
@@ -68,5 +112,13 @@ public class GameState {
 
 	public void setPlayerNumber(int playerNumber) {
 		this.playerNumber = playerNumber;
+	}
+
+	public ArrayList<Tank> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(ArrayList<Tank> players) {
+		this.players = players;
 	}
 }

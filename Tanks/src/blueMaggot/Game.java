@@ -1,14 +1,12 @@
 package blueMaggot;
 
+import gfx.GameOverlay;
 import inputhandler.InputHandler;
 
 import java.awt.Color;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-
-import entity.Entity;
 
 import networking.ConnectionDelegate;
 import networking.ConnectionManager;
@@ -23,7 +21,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	public boolean didTick = false;
 	public static int ALPHA_MASK = -1;
-
+	private GameOverlay overlay;
 	// network stuff
 	public boolean online = false;
 	public ArrayList<byte[]> keyStrokes;
@@ -36,6 +34,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	public DecimalFormat formater;
 	public cityScape level;
+
 	public Game() {
 		handler = new InputHandler();
 		formater = new DecimalFormat("#00000");
@@ -45,26 +44,26 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	}
 
 	public Game(BlueMaggot blueMaggot) {
+		overlay = new GameOverlay();
 		this.blueMaggot = blueMaggot;
 		blueMaggot.inputReal = handler;
-		
+
 		formater = new DecimalFormat("#00000");
 		addKeyListener(handler);
 	}
 
 	@Override
 	public void onUpdate(double deltaTime) {
-	
+
 		if (blueMaggot != null)
 			blueMaggot.tick();
-		
-	
-		
+
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
-	
 
-		if (!GameState.getInstance().isPaused()){// || !GameState.getInstance().isRunning()) {
+		if (!GameState.getInstance().isPaused()) {// ||
+													// !GameState.getInstance().isRunning())
+													// {
 			level.tick(deltaTime);
 			didTick = true;
 		}
@@ -73,8 +72,17 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void onDraw(Renderer renderer) {
+
 		renderer.clearAllPixelData(Color.WHITE.getRGB());
 		level.onDraw(renderer);
+
+	}
+
+	@Override
+	public void onUppdateUI(Renderer renderer) {
+		GameState state = GameState.getInstance();
+		if (level != null && level.getPlayers().size() > 0 && state.getPlayers().size() > 0)
+			overlay.paintOverlay(renderer.getGraphics());
 	}
 
 	// public byte[] parseKeyStrokes() {
@@ -90,31 +98,31 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	// }
 
 	public void startReuglarGame() {
-		System.out.println("starting level: " + GameState.getInstance().selectedLevelBackground.getName().split("_")[0]);
+		System.out.println("starting level: " + GameState.getInstance().getSelectedLevelBackground().getName().split("_")[0]);
 		level = new cityScape(this, handler);
 		level.init();
-		init(GameState.getInstance().width, GameState.getInstance().height, 60);
+		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 60);
 		GameState.getInstance().setRunning(true);
 	}
 
 	/* network stuff */
 	public void initConnection(boolean isHost, String addr) {
-		System.out.println("hey");
+		System.out.println("initiating connection");
 		connection = new ConnectionManager(this);
 		if (isHost) {
 			GameState.getInstance().setPlayerNumber(2);
 			connection.becomeHost();
-			GameState.getInstance().isHost = true;
+			GameState.getInstance().setHost(true);
 		} else {
 			GameState.getInstance().setPlayerNumber(1);
 			connection.joinGame(addr);
-			GameState.getInstance().isHost = false;
+			GameState.getInstance().setHost(false);
 		}
 	}
 
 	@Override
 	public void connectionFailed(String message) {
-		System.out.println(message);
+		System.out.println("connection failed: " + message);
 	}
 
 	@Override
@@ -136,19 +144,20 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		List<Integer> deadKeys = new ArrayList<Integer>();
 
 		for (int i = 0; i < objects.size(); i++) {
-			
+
 			NetworkObject obj = objects.get(i);
-			if(obj.shouldBeSent()){
-			String objectString = obj.getObject();
-			
-			if (objectString != null && !objectString.equals(""));
+			if (obj.shouldBeSent()) {
+				String objectString = obj.getObject();
+
+				if (objectString != null && !objectString.equals(""))
+					;
 				msgBody += "?" + objectString;
 
-			if (obj.isRemoved()) {
-				deadKeys.add(obj.getId());
-				onlineLevel.getNetworkObjectList().remove(i);
-				i--;
-			}
+				if (obj.isRemoved()) {
+					deadKeys.add(obj.getId());
+					onlineLevel.getNetworkObjectList().remove(i);
+					i--;
+				}
 			}
 
 		}
@@ -165,7 +174,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	private String to5DigitString(double x) {
 
-
 		if (x >= 0) {
 			return formater.format(x);
 		} else {
@@ -173,11 +181,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		}
 	}
 
-	
 	@Override
 	public boolean shouldRead() {
 
-		return  onlineLevel != null;
+		return onlineLevel != null;
 
 	}
 
@@ -186,18 +193,17 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		boolean temp = didTick;
 		didTick = false;
 
-
-		return  (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size() > 0;
+		return (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size() > 0;
 
 	}
 
 	@Override
 	public void startOnlineGame() {
-	
+
 		onlineLevel = new OnlineCityScape(this, handler);
 		onlineLevel.init();
 		level = onlineLevel;
-		init(GameState.getInstance().width, GameState.getInstance().height, 60);
+		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 60);
 		GameState.getInstance().setRunning(true);
 	}
 }

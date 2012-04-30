@@ -20,13 +20,13 @@ public class MenuButton extends Button {
 	private BufferedImage bgImage;
 
 	private Game game;
-	private String label;
+	private Labels label;
 
 	private Menu menu;
 	private MenuButton menuButton;
 	private Color btnColor = Menu.pink;
 
-	public MenuButton(String label, Menu menu, Game game, Dimension size) {
+	public MenuButton(Labels label, Menu menu, Game game, Dimension size) {
 		menuButton = this;
 
 		this.label = label;
@@ -35,7 +35,7 @@ public class MenuButton extends Button {
 		setUp();
 	}
 
-	public MenuButton(String label, Menu menu, Game game) {
+	public MenuButton(Labels label, Menu menu, Game game) {
 		this.label = label;
 		this.menu = menu;
 		this.game = game;
@@ -43,9 +43,9 @@ public class MenuButton extends Button {
 	}
 
 	public void setUp() {
-		String img = "/titleMenu/" + label + ".png";
+		String img = "/titleMenu/" + label.toString() + ".png";
 		try {
-			System.out.println(img.toString());
+			System.out.println("loading: " +img.toString());
 			bgImage = ImageIO.read(getClass().getResourceAsStream(img.toString()));
 		} catch (IOException e) {
 			System.out.println("Nope: " + img.toString());
@@ -57,27 +57,28 @@ public class MenuButton extends Button {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				btnColor = Menu.pinkDark;
-				if (label.equals("exit"))
+				if (label == Labels.EXIT)
 					System.exit(1);
-				else if (label.equals("return")) {
-					if (!GameState.getInstance().isRunning() && !game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible()
-							&& !GameState.getInstance().isGameOver() && !game.blueMaggot.menuOptionsLan.isVisible())
-						return;
-					if (!game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuOptionsLan.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible()
-							&& !game.blueMaggot.uiScoreBoard.isVisible())
-						GameState.getInstance().setPaused(false);
-					menu.setVisible(false);
+				else if (label == Labels.RETURN) {
 					if (menu instanceof MenuScoreBoard) {
 						GameState.getInstance().setGameOver(false);
+						game.blueMaggot.menuTitle.setVisible(true);
 					}
+					if (menu instanceof MenuTitle) {
+						if (!GameState.getInstance().isRunning())
+							return;
+						GameState.getInstance().setPaused(false);
+						menu.setVisible(false);
+						game.requestFocus();
+					}
+					menu.setVisible(false);
 					menu.repaint();
-					game.requestFocus();
-				} else if (label.equals("newGame"))
+				} else if (label == Labels.NEW_GAME)
 					game.blueMaggot.menuOptions.setVisible(true);
-				else if (label.equals("newLanGame"))
+				else if (label == Labels.NEW_LAN_GAME)
 					game.blueMaggot.menuOptionsLan.setVisible(true);
-				 else if (label.contains("start")) {
-					for (Tank tank : GameState.getInstance().players) {
+				else if (label == Labels.START_LAN_GAME || label == Labels.START_GAME) {
+					for (Tank tank : GameState.getInstance().getPlayers()) {
 						if (tank.getNick() == null)
 							return;
 						tank.setScore(0);
@@ -85,10 +86,10 @@ public class MenuButton extends Button {
 					if (game.runLoop != null) {
 						game.runLoop.stop();
 					}
-					if (label.equals("startLanGame")) {
+					if (label == Labels.START_LAN_GAME) {
 						game.blueMaggot.menuOptionsLan.apply(game);
-						game.initConnection(GameState.getInstance().isHost, GameState.getInstance().hostIp);
-					} else if (label.equals("startGame")) {
+						game.initConnection(GameState.getInstance().isHost(), GameState.getInstance().hostIp);
+					} else if (label == Labels.START_GAME) {
 						game.startReuglarGame();
 						game.blueMaggot.menuOptions.apply(game);
 					}
@@ -97,18 +98,22 @@ public class MenuButton extends Button {
 					game.blueMaggot.menuTitle.setVisible(false);
 					menu.repaint();
 					game.requestFocus();
+					System.out.println("starting game");
 
-				} else if (label.equals("options"))
+				} else if (label == Labels.OPTIONS)
 					game.blueMaggot.menuOptions.setVisible(true);
-				else if (label.equals("apply")) {
+				else if (label == Labels.APPLY) {
 					if (menu instanceof MenuLevelSelect)
 						game.blueMaggot.menuLevelSelect.apply();
 					else if (menu instanceof MenuOptions)
 						game.blueMaggot.menuOptions.apply(game);
 					menu.setVisible(false);
 					menu.repaint();
-				} else if (label.endsWith("lvls"))
+				} else if (label == Labels.LVL_SELECT)
 					game.blueMaggot.menuLevelSelect.setVisible(true);
+				else if (label.equals("about")) {
+					game.blueMaggot.menuAbout.setVisible(true);
+				}
 
 				repaint();
 			}

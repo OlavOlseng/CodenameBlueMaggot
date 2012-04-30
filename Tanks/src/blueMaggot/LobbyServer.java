@@ -5,7 +5,6 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.net.SocketException;
  
 public class LobbyServer {
         public static void main(String[] args) throws IOException {
@@ -21,7 +20,7 @@ public class LobbyServer {
                     socket.receive(receivePacket);
  
                     String received = new String(receivePacket.getData());
-                    System.out.println(received);
+//                    System.out.println(received);
                    
                    
                     InetAddress IPAddress = receivePacket.getAddress();

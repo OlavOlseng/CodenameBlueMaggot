@@ -7,24 +7,14 @@ import gfx.MenuOptions;
 import gfx.MenuOptionsLan;
 import gfx.MenuTitle;
 import gfx.ResourceManager;
-import gfx.UIElement;
 import gfx.MenuScoreBoard;
 import gfx.MenuAbout;
 import inputhandler.InputHandler;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Scanner;
-
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import baseGame.Rendering.*;
 
 /**
  * @author Habitats * this motherfucker starts the game
@@ -42,7 +32,6 @@ public class BlueMaggot extends JFrame implements Runnable {
 	public MenuOptionsLan menuOptionsLan;
 	public MenuAbout menuAbout;
 	public MenuTitle menuTitle;
-	public UIElement ui;
 
 	Game game;
 
@@ -54,11 +43,11 @@ public class BlueMaggot extends JFrame implements Runnable {
 		ResourceManager.getInstance().initResources();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		setPreferredSize(new Dimension(GameState.getInstance().width, GameState.getInstance().height + 28));
+		setPreferredSize(new Dimension(GameState.getInstance().getWidth(), GameState.getInstance().getHeight() + 28));
 		setFocusable(true);
 		setResizable(false);
 
-		layeredPane.setBounds(0, 0, GameState.getInstance().width, GameState.getInstance().height);
+		layeredPane.setBounds(0, 0, GameState.getInstance().getWidth(), GameState.getInstance().getHeight());
 		layeredPane.setOpaque(false);
 
 		game = new blueMaggot.Game(this);
@@ -66,16 +55,13 @@ public class BlueMaggot extends JFrame implements Runnable {
 		menuTitle = new MenuTitle(game, this);
 		menuOptions = new MenuOptions(game);
 		menuOptionsLan = new MenuOptionsLan(game);
-		menuAbout = new MenuAbout();
+		menuAbout = new MenuAbout(game);
 		uiScoreBoard = new MenuScoreBoard(game);
 		menuLevelSelect = new MenuLevelSelect(game);
 		menuBackground = new MenuBackground(menuTitle);
 		gamePanel = new JPanel();
 
-		ui = new UIElement(0, 0, 800, 45, menuTitle.border, game);
-
 		layeredPane.add(gamePanel, new Integer(0));
-		layeredPane.add(ui, new Integer(1));
 		layeredPane.add(menuBackground, new Integer(9));
 		layeredPane.add(menuTitle, new Integer(10));
 		layeredPane.add(menuOptions, new Integer(11));
@@ -94,7 +80,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 	private void setUpGame() {
 		game.setPreferredSize(GameState.getInstance().dimension);
 		gamePanel.setLayout(new BorderLayout());
-		gamePanel.setBounds(0, 0, GameState.getInstance().width, GameState.getInstance().height);
+		gamePanel.setBounds(0, 0, GameState.getInstance().getWidth(), GameState.getInstance().getHeight());
 
 		gamePanel.add(game);
 	}
@@ -109,7 +95,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 	}
 
 	public void tick() {
-		for (Tank tank : GameState.getInstance().players) {
+		for (Tank tank : GameState.getInstance().getPlayers()) {
 			if (tank.getNick() == null)
 				tank.setNick("Player");
 		}
@@ -125,10 +111,10 @@ public class BlueMaggot extends JFrame implements Runnable {
 			}
 		}
 
-		if (GameState.getInstance().isRunning() && !ui.isVisible()) {
+		/*if (GameState.getInstance().isRunning() && !ui.isVisible()) {
 			ui.setVisible(true);
 
-		}
+		}*/
 		// TODO: Implement scoreboard
 		// if (inputReal.tab.down) {
 		// uiScoreBoard.setVisible(true);
@@ -143,19 +129,16 @@ public class BlueMaggot extends JFrame implements Runnable {
 			menuTitle.repaint();
 		}
 
-		for (Tank tank : GameState.getInstance().players) {
+		for (Tank tank : GameState.getInstance().getPlayers()) {
 			if (tank.getScore() != tank.getOldScore()) {
-
 				tank.setOldScore(tank.getScore());
-				ui.repaint();
-				System.out.println("p" + tank.getId() + ": " + tank.getScore());
 			}
 		}
 
-		if (inputReal.down1.clicked || inputReal.down2.clicked) {
+	/*	if (inputReal.down1.clicked || inputReal.down2.clicked) {
 
 			ui.repaint();
-		}
+		}*/
 	}
 
 	public void initResources() {

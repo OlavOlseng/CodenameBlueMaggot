@@ -12,6 +12,7 @@ public class Package extends Entity {
 
 	private double lifeTime = 1000; 
 	private double timeAlive = 0;
+	private int owner;
 	Gun wep;
 	PixelHitbox hitbox;
 
@@ -100,6 +101,7 @@ public class Package extends Entity {
 			if (intersectsEntity(player)) {
 				player.getWeaponList().get(wep.ordinal()).addAmmo();
 				SoundEffect.RELOAD.play();
+				owner = player.playerNumber;
 				remove();
 			}
 		}
@@ -118,7 +120,6 @@ public class Package extends Entity {
 
 	@Override
 	public void remove(){
-		System.out.println("packRemoved");
 		super.remove();
 	}
 	
@@ -129,11 +130,27 @@ public class Package extends Entity {
 		renderer.DrawImage(img, -1, (int) (x - 7), (int) (y - 14), img.getWidth(), img.getHeight());
 	}
 	@Override
+	public String getObject(){
+		return super.getObject() + "'" +owner;
+	}
+	
+	@Override
 	public void handleMessage(String[] msg){
 		super.handleMessage(msg);
 		boolean willDie = Boolean.parseBoolean(msg[3]);
-		if(willDie)
+		int owner = Integer.parseInt(msg[6]);
+		if(willDie ){
+			
 			remove();
+			if(owner == 1){
+			
+				level.getPlayers().get(0).getWeaponList().get(wep.ordinal()).addAmmo();
+			}else{if(owner == 2){
+				level.getPlayers().get(1).getWeaponList().get(wep.ordinal()).addAmmo();
+				
+			}}
+			
+		}
 	}
 	@Override
 	public void initNetworkValues() {
