@@ -91,16 +91,17 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			onUpdate(deltaTime);
 			
 			
-			Renderer renderer = new Renderer(pixels, backgroundColor, canvasWidth, canvasHeight);
-			
-			onDraw(renderer);
-			
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
 
+			Renderer renderer = new Renderer(g,pixels, backgroundColor, canvasWidth, canvasHeight);
+			
+			onDraw(renderer);
+	
 			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
-
+			
 			if (showFps)
 				DrawfpsCounter(g, deltaTime);
+			onUppdateUI(renderer);
 		
 			buffer.show();
 		
@@ -145,4 +146,5 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	public abstract void onUpdate(double deltaTime);
 
 	public abstract void onDraw(Renderer renderer);
+	public  void onUppdateUI(Renderer renderer){}
 }

@@ -23,7 +23,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	public boolean didTick = false;
 	public static int ALPHA_MASK = -1;
-
+	private GameOverlay overlay;
 	// network stuff
 	public boolean online = false;
 	public ArrayList<byte[]> keyStrokes;
@@ -46,6 +46,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	}
 
 	public Game(BlueMaggot blueMaggot) {
+		overlay = new GameOverlay();
 		this.blueMaggot = blueMaggot;
 		blueMaggot.inputReal = handler;
 		
@@ -74,10 +75,16 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void onDraw(Renderer renderer) {
+		
 		renderer.clearAllPixelData(Color.WHITE.getRGB());
 		level.onDraw(renderer);
+		
 	}
-
+	@Override
+	public  void onUppdateUI(Renderer renderer){
+		GameState state = GameState.getInstance();
+		overlay.paintOverlay(renderer.getGraphics(),state.players.get(0).getScore(),state.players.get(1).getScore(),state.players.get(0).getCurrentWeapon(),state.players.get(1).getCurrentWeapon());
+	}
 	// public byte[] parseKeyStrokes() {
 	// byte[] msg = new byte[7];
 	// msg[0] = handler.left2.toByte();

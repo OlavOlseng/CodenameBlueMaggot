@@ -46,6 +46,7 @@ public class Tank extends Entity {
 	protected boolean chargingCannon = false;
 
 	private Gun currentWeapon = Gun.SHELLGUN;
+	
 	private double torque = 0.15;
 
 	private ArrayList<Weapon> weaponList;
@@ -142,8 +143,8 @@ public class Tank extends Entity {
 		return y;
 	}
 
-	public int getCurrentWeapon() {
-		return currentWeapon.ordinal();
+	public Gun getCurrentWeapon() {
+		return currentWeapon;
 	}
 
 	public void initInventory() {

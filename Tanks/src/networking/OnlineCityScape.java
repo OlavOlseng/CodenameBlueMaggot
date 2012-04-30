@@ -156,7 +156,7 @@ public class OnlineCityScape extends cityScape {
 			if (movementsToDo.size() > 0 && readyForLan) {
 				time = (System.currentTimeMillis() - lastTime) * 0.0625;
 
-				dt = time;
+				
 
 				for (int i = 0; i < movementsToDo.size(); i++) {
 
@@ -229,6 +229,7 @@ public class OnlineCityScape extends cityScape {
 				lastTime = System.currentTimeMillis();
 				
 			}
+			
 			if (isClient && player1 != null)
 				player1.tick(dt);
 			super.tick(dt);

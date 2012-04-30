@@ -62,10 +62,10 @@ public class BlueMaggot extends JFrame implements Runnable {
 		menuBackground = new MenuBackground(menuTitle);
 		gamePanel = new JPanel();
 
-		ui = new UIElement(0, 0, 700, 45, menuTitle.border, game);
+	//	ui = new UIElement(0, 0, 700, 45, menuTitle.border, game);
 
 		layeredPane.add(gamePanel, new Integer(0));
-		layeredPane.add(ui, new Integer(1));
+		//layeredPane.add(ui, new Integer(1));
 		layeredPane.add(menuBackground, new Integer(9));
 		layeredPane.add(menuTitle, new Integer(10));
 		layeredPane.add(menuOptions, new Integer(11));
@@ -113,10 +113,10 @@ public class BlueMaggot extends JFrame implements Runnable {
 			}
 		}
 
-		if (GameState.getInstance().isRunning() && !ui.isVisible()) {
+		/*if (GameState.getInstance().isRunning() && !ui.isVisible()) {
 			ui.setVisible(true);
 
-		}
+		}*/
 		// TODO: Implement scoreboard
 		// if (inputReal.tab.down) {
 		// uiScoreBoard.setVisible(true);
@@ -140,10 +140,10 @@ public class BlueMaggot extends JFrame implements Runnable {
 			}
 		}
 
-		if (inputReal.down1.clicked || inputReal.down2.clicked) {
+	/*	if (inputReal.down1.clicked || inputReal.down2.clicked) {
 
 			ui.repaint();
-		}
+		}*/
 	}
 
 	public void initResources() {

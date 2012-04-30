@@ -63,6 +63,6 @@ public class MenuOptions extends Menu {
 		if (fieldPlayerTwo.msg != null)
 			GameState.getInstance().players.get(1).setNick(fieldPlayerTwo.msg);
 		GameState.getInstance().hostIp = fieldIp.msg;
-		game.blueMaggot.ui.repaint();
+		//game.blueMaggot.ui.repaint();
 	}
 }
