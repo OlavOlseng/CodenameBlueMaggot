@@ -4,13 +4,16 @@ import entity.Tank;
 import gfx.MenuBackground;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
+import gfx.MenuOptionsLan;
 import gfx.MenuTitle;
 import gfx.ResourceManager;
 import gfx.UIElement;
 import gfx.MenuScoreBoard;
+import gfx.MenuAbout;
 import inputhandler.InputHandler;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,20 +34,25 @@ public class BlueMaggot extends JFrame implements Runnable {
 	public InputHandler inputReal = new InputHandler();
 
 	private JLayeredPane layeredPane = new JLayeredPane();
-	private MenuTitle menuTitle;
 	private JPanel gamePanel;
 
 	public MenuScoreBoard uiScoreBoard;
 	public MenuLevelSelect menuLevelSelect;
 	public MenuOptions menuOptions;
+	public MenuOptionsLan menuOptionsLan;
+	public MenuAbout menuAbout;
+	public MenuTitle menuTitle;
 	public UIElement ui;
 
 	Game game;
 
 	private MenuBackground menuBackground;
 
+
+
 	public BlueMaggot() {
 		ResourceManager.getInstance().initResources();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setPreferredSize(new Dimension(GameState.getInstance().width, GameState.getInstance().height + 28));
 		setFocusable(true);
@@ -57,19 +65,23 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 		menuTitle = new MenuTitle(game, this);
 		menuOptions = new MenuOptions(game);
+		menuOptionsLan = new MenuOptionsLan(game);
+		menuAbout = new MenuAbout();
 		uiScoreBoard = new MenuScoreBoard(game);
 		menuLevelSelect = new MenuLevelSelect(game);
 		menuBackground = new MenuBackground(menuTitle);
 		gamePanel = new JPanel();
 
-		ui = new UIElement(0, 0, 700, 45, menuTitle.border, game);
+		ui = new UIElement(0, 0, 800, 45, menuTitle.border, game);
 
 		layeredPane.add(gamePanel, new Integer(0));
 		layeredPane.add(ui, new Integer(1));
 		layeredPane.add(menuBackground, new Integer(9));
 		layeredPane.add(menuTitle, new Integer(10));
 		layeredPane.add(menuOptions, new Integer(11));
+		layeredPane.add(menuOptionsLan, new Integer(11));
 		layeredPane.add(menuLevelSelect, new Integer(11));
+		layeredPane.add(menuAbout, new Integer(11));
 		layeredPane.add(uiScoreBoard, new Integer(12));
 
 		add(layeredPane);

@@ -36,7 +36,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	public DecimalFormat formater;
 	public cityScape level;
-
 	public Game() {
 		handler = new InputHandler();
 		formater = new DecimalFormat("#00000");

@@ -17,7 +17,7 @@ public class MenuTitle extends Menu {
 		MenuButton btnReturn = new MenuButton("return", this, game);
 		MenuButton btnNewGame = new MenuButton("newGame", this, game);
 		MenuButton btnNewOnlineGame = new MenuButton("newLanGame", this, game);
-		MenuButton btnOptions = new MenuButton("options", this, game);
+		MenuButton btnAbout = new MenuButton("return", this, game);
 		MenuButton btnExit = new MenuButton("exit", this, null);
 		MenuButton btnLvls = new MenuButton("lvls", this, game);
 
@@ -26,7 +26,7 @@ public class MenuTitle extends Menu {
 		ButtonArr.add(btnNewGame);
 		ButtonArr.add(btnNewOnlineGame);
 		ButtonArr.add(btnLvls);
-		ButtonArr.add(btnOptions);
+		ButtonArr.add(btnAbout);
 		ButtonArr.add(btnExit);
 
 		c.gridheight = 1;

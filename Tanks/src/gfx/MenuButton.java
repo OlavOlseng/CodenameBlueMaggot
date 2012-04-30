@@ -48,6 +48,7 @@ public class MenuButton extends Button {
 			System.out.println(img.toString());
 			bgImage = ImageIO.read(getClass().getResourceAsStream(img.toString()));
 		} catch (IOException e) {
+			System.out.println("Nope: " + img.toString());
 			e.printStackTrace();
 		}
 
@@ -60,9 +61,10 @@ public class MenuButton extends Button {
 					System.exit(1);
 				else if (label.equals("return")) {
 					if (!GameState.getInstance().isRunning() && !game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible()
-							&& !GameState.getInstance().isGameOver())
+							&& !GameState.getInstance().isGameOver() && !game.blueMaggot.menuOptionsLan.isVisible())
 						return;
-					if (!game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible() && !game.blueMaggot.uiScoreBoard.isVisible())
+					if (!game.blueMaggot.menuOptions.isVisible() && !game.blueMaggot.menuOptionsLan.isVisible() && !game.blueMaggot.menuLevelSelect.isVisible()
+							&& !game.blueMaggot.uiScoreBoard.isVisible())
 						GameState.getInstance().setPaused(false);
 					menu.setVisible(false);
 					if (menu instanceof MenuScoreBoard) {
@@ -70,39 +72,30 @@ public class MenuButton extends Button {
 					}
 					menu.repaint();
 					game.requestFocus();
-				} else if (label.equals("newGame")) {
+				} else if (label.equals("newGame"))
+					game.blueMaggot.menuOptions.setVisible(true);
+				else if (label.equals("newLanGame"))
+					game.blueMaggot.menuOptionsLan.setVisible(true);
+				 else if (label.contains("start")) {
 					for (Tank tank : GameState.getInstance().players) {
 						if (tank.getNick() == null)
 							return;
 						tank.setScore(0);
 					}
-					try {
-						game.runLoop.stop();
-					} catch (Exception e) {
-					//	 e.printStackTrace();
-					}
-					System.out.println("startMeny");
-					GameState.getInstance().setPaused(false);
-					menu.setVisible(false);
-					menu.repaint();
-					game.startReuglarGame();
-					game.requestFocus();
-			
-				} else if (label.equals("newLanGame")) {
-					for (Tank tank : GameState.getInstance().players) {
-						if (tank.getNick() == null)
-							return;
-						tank.setScore(0);
-					}
-					if(game.runLoop != null){
+					if (game.runLoop != null) {
 						game.runLoop.stop();
 					}
-					
+					if (label.equals("startLanGame")) {
+						game.blueMaggot.menuOptionsLan.apply(game);
+						game.initConnection(GameState.getInstance().isHost, GameState.getInstance().hostIp);
+					} else if (label.equals("startGame")) {
+						game.startReuglarGame();
+						game.blueMaggot.menuOptions.apply(game);
+					}
 					GameState.getInstance().setPaused(false);
-					
 					menu.setVisible(false);
+					game.blueMaggot.menuTitle.setVisible(false);
 					menu.repaint();
-					game.initConnection(GameState.getInstance().isHost, GameState.getInstance().hostIp);
 					game.requestFocus();
 
 				} else if (label.equals("options"))
@@ -147,8 +140,8 @@ public class MenuButton extends Button {
 	// paint images maybe
 	@Override
 	public void paint(Graphics g) {
-			setForeground(btnColor);
-			g.fillRect(0, 0, getWidth(), getHeight());
-			g.drawImage(bgImage, (getWidth() - bgImage.getWidth()) / 2, (getHeight() - bgImage.getHeight()) / 2, null);
+		setForeground(btnColor);
+		g.fillRect(0, 0, getWidth(), getHeight());
+		g.drawImage(bgImage, (getWidth() - bgImage.getWidth()) / 2, (getHeight() - bgImage.getHeight()) / 2, null);
 	}
 }
