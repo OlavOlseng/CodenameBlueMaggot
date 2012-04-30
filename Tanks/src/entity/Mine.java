@@ -17,8 +17,8 @@ public class Mine extends Projectile {
 	private boolean explode = false;
 	private boolean touchingGround = false;
 
-	private int explosionPower = 150;
-	private int explosionRadius = 40;
+	private int explosionPower = 200;
+	private int explosionRadius = 50;
 	
 	public Mine(double x, double y, BasicLevel level, double angle) {
 		super(x, y, 6, 4, level, 1, angle);
