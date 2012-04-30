@@ -1,6 +1,7 @@
 package blueMaggot;
 
 import entity.Tank;
+import entity.weapon.Gun;
 import gfx.MenuBackground;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
@@ -44,6 +45,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 	private MenuBackground menuBackground;
 
 	public BlueMaggot() {
+
 		ResourceManager.getInstance().initResources();
 
 		setPreferredSize(new Dimension(GameState.getInstance().width, GameState.getInstance().height + 28));

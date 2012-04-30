@@ -12,6 +12,7 @@ import javax.net.ssl.HostnameVerifier;
 
 import entity.Entity;
 import entity.Tank;
+import entity.weapon.Gun;
 
 import networking.ConnectionDelegate;
 import networking.ConnectionManager;
@@ -141,13 +142,15 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	
 		String gameState = parts[0];
 		String[] properties = gameState.split("\\'");
-		
+		System.out.println(gameState);
 		if(!GameState.getInstance().isHost&& level != null &&level.getPlayers().size()> 1){
 			int score1 = Integer.parseInt(properties[0]);
 
 			int score2= Integer.parseInt(properties[1]);
 			int life1= Integer.parseInt(properties[2]);
 			int life2= Integer.parseInt(properties[3]);	
+			Gun gun1 = Gun.valueOf(properties[4]);
+			Gun gun2 = Gun.valueOf(properties[5]);
 			Tank player1 ;
 			Tank player2 ;
 		 player1 = level.getPlayers().get(0);
@@ -161,6 +164,9 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		GameState state = GameState.getInstance();
 		
 		}
+		else{
+			Gun gun1 = Gun.valueOf(properties[4]);
+		}
 		if (data.length > 0) {
 
 			onlineLevel.catchResponse(parts[1]);
@@ -172,9 +178,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public byte[] onWrite() {
 
+		GameState state = GameState.getInstance();
+
 		String gameState ="";
-		if(GameState.getInstance().isHost)
-			gameState= level.getPlayers().get(0).getScore() + "'"+ level.getPlayers().get(0).getLife()+ "'" + level.getPlayers().get(0).getScore()+ "'" + level.getPlayers().get(0).getLife();
+		if(state.players != null)
+			gameState= state.players.get(0).getScore() + "'"+ state.players.get(1).getLife()+ "'" + state.players.get(0).getScore()+ "'" + state.players.get(1).getLife() +state.players.get(0).getCurrentWeaponName() +state.players.get(1).getCurrentWeaponName() ;
 		
 		gameState += "@";
 
