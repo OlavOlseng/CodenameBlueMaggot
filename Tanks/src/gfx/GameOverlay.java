@@ -20,23 +20,16 @@ public class GameOverlay {
 		int width = 850;
 		int height = 45;
 		int border = 4;
-		int alignMent = (GameState.getInstance().getWidth() / 2 - width / 2);
+		int alignMent = (GameState.getInstance().getWidth() / 2 - (width) / 2);
 
 		g.setColor(Menu.blue);
 
 		if (GameState.getInstance().isRunning()) {
 			playerOne = GameState.getInstance().getPlayers().get(0);
 			playerTwo = GameState.getInstance().getPlayers().get(1);
-			String playerOneHearts = "";
-			String playerTwoHearts = "";
 
-			for (int i = 0; playerOneHearts.length() < playerOne.getLife(); i++)
-				playerOneHearts += "\u2665";
-			for (int i = 0; playerTwoHearts.length() < playerTwo.getLife(); i++)
-				playerTwoHearts += "\u2665";
-
-			String statsOne = String.format("%s|%s|%s|%s", playerOne.getNick(), playerOneHearts, playerOne.getScore(), playerOne.getCurrentWeaponName());
-			String statsTwo = String.format("%s|%s|%s|%s", playerTwo.getCurrentWeaponName(), playerTwo.getScore(), playerTwoHearts, playerTwo.getNick());
+			String statsOne = String.format("%s|%s|%s", playerOne.getNick(), playerOne.getScore(), playerOne.getCurrentWeaponName());
+			String statsTwo = String.format("%s|%s|%s", playerTwo.getCurrentWeaponName(), playerTwo.getScore(), playerTwo.getNick());
 
 			FontMetrics fm = g.getFontMetrics(font);
 
@@ -53,6 +46,12 @@ public class GameOverlay {
 			g.setColor(Color.black);
 			g.drawString(statsOne, 15 + alignMent, 26);
 			g.drawString(statsTwo, width - fm.stringWidth(statsTwo) - 15 + alignMent, 26);
+			for (int i = 0; i < playerOne.getLife(); i++) {
+				g.drawImage(ResourceManager.getInstance().HEART.getRgbBufferedImage(), GameState.getInstance().getWidth() / 2 - 20 - i * 14, 15, null);
+			}
+			for (int i = 0; i < playerTwo.getLife(); i++) {
+				g.drawImage(ResourceManager.getInstance().HEART.getRgbBufferedImage(), GameState.getInstance().getWidth() / 2 + 7+ i * 14, 15, null);
+			}
 		}
 	}
 }

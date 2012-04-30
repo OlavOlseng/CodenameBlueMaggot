@@ -114,7 +114,8 @@ public class BlueMaggot extends JFrame implements Runnable {
 				JFrame warning = new JFrame();
 				JTextArea content = new JTextArea();
 				warning.setLayout(new GridBagLayout());
-				content.append("Message:\nMake sure your \"lvl\" directory is in the same folder as your blueMaggot.jar file!\n\n");
+				content.append("FATAL MALVISIOUS ERROR!!11\n\n");
+				content.append("Protip:\nMake sure your \"lvl\" directory is in the same folder as your blueMaggot.jar file!\n\n");
 				content.append("Error:\n " + e.toString() + "\n\n");
 				content.append("StackTrace:\n");
 				for (StackTraceElement stack : e.getStackTrace()) {

@@ -3,12 +3,13 @@ package gfx;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Label;
+import java.awt.Panel;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class MenuLabel extends Label {
+public class MenuLabel extends Panel {
 
 
 	private Labels label;
@@ -21,7 +22,7 @@ public class MenuLabel extends Label {
 
 	public MenuLabel(Labels label, Dimension size) {
 		this.label = label;
-		super.setPreferredSize(size);
+		setPreferredSize(size);
 		setUp();
 	}
 
@@ -33,7 +34,7 @@ public class MenuLabel extends Label {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		setText(label.toString());
+//		setText(label.toString());
 		setBackground(Menu.blue);
 	}
 
