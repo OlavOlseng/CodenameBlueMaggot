@@ -28,9 +28,9 @@ public class cityScape extends BasicLevel {
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
 		
-		terrain = new Terrain(GameState.getInstance().selectedLevelTerrain);
+		terrain = new Terrain(GameState.getInstance().getSelectedLevelTerrain());
 		ResourceManager.setTerrain(terrain);
-		ResourceManager.setBackGround(new RGBImage(GameState.getInstance().selectedLevelBackground));
+		ResourceManager.setBackGround(new RGBImage(GameState.getInstance().getSelectedLevelBackground()));
 		SoundEffect.SPAWN.play();
 		
 	}
@@ -116,7 +116,7 @@ public class cityScape extends BasicLevel {
 	public void onDraw(Renderer renderer) {
 		// draws backgorund recursively
 		
-		renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, GameState.getInstance().width, GameState.getInstance().height);
+		renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, GameState.getInstance().getWidth(), GameState.getInstance().getHeight());
 		renderer.DrawImage(ResourceManager.getTerrain(), -1, 0, 0, terrain.getWidth(), terrain.getHeight());
 		super.render(renderer);
 	}

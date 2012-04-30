@@ -1,5 +1,7 @@
 package gfx;
 
+import gfx.GBC.Align;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -38,14 +40,14 @@ public class MenuLevelSelect extends Menu {
 			}
 		}
 		
-		add(new MenuButton("apply", this, game), new GBC(0, ++gridy, "left").setInsets(10, 10, 10, 10).setSpan(2, 1));
-		add(new MenuButton("return", this, game), new GBC(2, gridy, "left").setInsets(10, 10, 10, 10).setSpan(2, 1));
+		add(new MenuButton(Labels.APPLY, this, game), new GBC(0, ++gridy,Align.RIGHT).setInsets(10, 10, 10, 10).setSpan(2, 1));
+		add(new MenuButton(Labels.RETURN, this, game), new GBC(2, gridy, Align.LEFT).setInsets(10, 10, 10, 10).setSpan(2, 1));
 	}
 
 	public void apply() {
-		GameState.getInstance().selectedLevelTerrain = selectedLevelTerrain;
-		GameState.getInstance().selectedLevelBackground = selectedLevelBackground;
-		System.out.println("selected level: " + GameState.getInstance().selectedLevelTerrain);
-		System.out.println("selected level background: " + GameState.getInstance().selectedLevelBackground);
+		GameState.getInstance().setSelectedLevelTerrain(selectedLevelTerrain);
+		GameState.getInstance().setSelectedLevelBackground(selectedLevelBackground);
+		System.out.println("selected level: " + GameState.getInstance().getSelectedLevelTerrain());
+		System.out.println("selected level background: " + GameState.getInstance().getSelectedLevelBackground());
 	}
 }

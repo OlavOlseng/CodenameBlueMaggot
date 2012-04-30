@@ -4,22 +4,23 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Label;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 public class MenuLabel extends Label {
 
-	private String label;
-	private BufferedImage lblImage;
 
-	public MenuLabel(String label) {
-		this.label = label;
+	private Labels label;
+	private BufferedImage lblImage;
+	
+
+	public MenuLabel(Labels logo) {
+		this.label = logo;
 		setUp();
 	}
 
-	public MenuLabel(String label, Dimension size) {
+	public MenuLabel(Labels label, Dimension size) {
 		this.label = label;
 		super.setPreferredSize(size);
 
@@ -34,7 +35,7 @@ public class MenuLabel extends Label {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		setText(label);
+		setText(label.toString());
 		setBackground(Menu.blue);
 	}
 

@@ -2,7 +2,6 @@ package networking;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
 import entity.AirStrikeBeacon;
@@ -16,10 +15,8 @@ import entity.Package;
 import entity.Rocket;
 import entity.ScoreBubble;
 import entity.Shell;
-import entity.Tank;
 import inputhandler.InputHandler;
 import baseGame.BaseGame;
-import baseGame.derp;
 import blueMaggot.GameState;
 import blueMaggot.maps.cityScape;
 

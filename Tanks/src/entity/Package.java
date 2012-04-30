@@ -6,7 +6,6 @@ import sound.SoundEffect;
 import gfx.ResourceManager;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
-import blueMaggot.GameState;
 import level.BasicLevel;
 
 public class Package extends Entity {
@@ -121,7 +120,6 @@ public class Package extends Entity {
 
 	@Override
 	public void remove(){
-		System.out.println("packRemoved");
 		super.remove();
 	}
 	

@@ -94,7 +94,7 @@ public class Grenade extends Projectile {
 		this.dt = dt;
 		super.move(dt);
 		gravitate();
-		if (x > GameState.getInstance().width + 100 || x < -100 || y > GameState.getInstance().height + 100 || y < -1000)
+		if (x > GameState.getInstance().getWidth() + 100 || x < -100 || y > GameState.getInstance().getHeight() + 100 || y < -1000)
 			remove();
 
 		handleIntersects();

@@ -1,5 +1,8 @@
 package gfx;
 
+import gfx.GBC.Align;
+import gfx.Labels;
+
 import java.awt.Dimension;
 import blueMaggot.Game;
 import blueMaggot.GameState;
@@ -9,15 +12,12 @@ public class MenuOptions extends Menu {
 
 	private MenuField fieldPlayerTwo;
 	private MenuField fieldPlayerOne;
-	private MenuField fieldIp;
 
-	private MenuButton btnApply;
+	private MenuButton btnStart;
 	private MenuButton btnReturn;
 
 	private MenuLabel playerOne;
 	private MenuLabel playerTwo;
-	private MenuLabel connectIp;
-	private MenuLabel isHost;
 
 	private MenuCheckBox boxIsHost;
 
@@ -26,43 +26,34 @@ public class MenuOptions extends Menu {
 
 		setVisible(false);
 
-		fieldIp = new MenuField(20, "ip");
 		fieldPlayerOne = new MenuField(20, "text");
 		fieldPlayerTwo = new MenuField(20, "text");
 
-		btnApply = new MenuButton("apply", this, game, btnSize);
-		btnReturn = new MenuButton("return", this, game, btnSize);
+		btnStart = new MenuButton(Labels.START_GAME, this, game, btnSize);
+		btnReturn = new MenuButton(Labels.RETURN, this, game, btnSize);
 
-		playerOne = new MenuLabel("playerOne");
-		playerTwo = new MenuLabel("playerTwo");
-		connectIp = new MenuLabel("connectIp");
-		isHost = new MenuLabel("isHost");
+		playerOne = new MenuLabel(Labels.PLAYER_ONE);
+		playerTwo = new MenuLabel(Labels.PLAYER_TWO);
 
 		boxIsHost = new MenuCheckBox();
 
 		// left column
-		add(playerOne, new GBC(0, 0, "right"));
-		add(playerTwo, new GBC(0, 1, "right"));
-		add(connectIp, new GBC(0, 2, "right"));
-		add(isHost, new GBC(0, 3, "right"));
-		add(boxIsHost, new GBC(1, 3, "left"));
+		add(playerOne, new GBC(0, 0,Align.RIGHT ));
+		add(playerTwo, new GBC(0, 1, Align.RIGHT ));
 
 		// right column
-		add(fieldPlayerOne, new GBC(1, 0, "left"));
-		add(fieldPlayerTwo, new GBC(1, 1, "left"));
-		add(fieldIp, new GBC(1, 2, "left"));
+		add(fieldPlayerOne, new GBC(1, 0, Align.LEFT));
+		add(fieldPlayerTwo, new GBC(1, 1, Align.LEFT));
 
-		add(btnApply, new GBC(0, 4, "right"));
-		add(btnReturn, new GBC(1, 4, "left"));
+		add(btnStart, new GBC(0, 4, Align.RIGHT ));
+		add(btnReturn, new GBC(1, 4, Align.LEFT));
 	}
 
 	public void apply(Game game) {
-		GameState.getInstance().isHost = boxIsHost.getState();
 		if (fieldPlayerOne.msg != null)
-			GameState.getInstance().players.get(0).setNick(fieldPlayerOne.msg);
+			GameState.getInstance().getPlayers().get(0).setNick(fieldPlayerOne.msg);
 		if (fieldPlayerTwo.msg != null)
-			GameState.getInstance().players.get(1).setNick(fieldPlayerTwo.msg);
-		GameState.getInstance().hostIp = fieldIp.msg;
-		//game.blueMaggot.ui.repaint();
+			GameState.getInstance().getPlayers().get(1).setNick(fieldPlayerTwo.msg);
+//		game.blueMaggot.ui.repaint();
 	}
 }
