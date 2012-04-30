@@ -58,7 +58,7 @@ public class Tank extends Entity {
 	public Tank(double x, double y, int playerNumber, InputHandler input, BasicLevel level) {
 		super(x, y, 11, 6, level);
 	
-		GameState.getInstance().players.add(this);
+		GameState.getInstance().getPlayers().add(this);
 		this.level.getPlayers().add(this);
 		
 		muzzleAngle = 0;
@@ -105,7 +105,7 @@ public class Tank extends Entity {
 	public Tank(FloatingPoint point, int playerNumber, InputHandler input, BasicLevel level) {
 		super(point.getX(), point.getY(), 11, 6, level);
 		this.level.getPlayers().add(this);
-		GameState.getInstance().players.add(this);
+		GameState.getInstance().getPlayers().add(this);
 		muzzleAngle = 90;
 		muzzleLength = 20;
 		this.playerNumber = playerNumber;
@@ -259,7 +259,6 @@ public class Tank extends Entity {
 		double fuelTick = 13 * dt;
 		if (jetPackFuel >= fuelTick) {
 			accelerate(0, -0.45);
-			System.out.println(dy);
 			jetPackFuel -= fuelTick;
 		}
 	}
@@ -364,7 +363,6 @@ public class Tank extends Entity {
 	@Override
 	public void tick(double dt) {
 		super.tick(dt);
-		//System.out.println("TankTick!");
 		if (playerNumber == 1)
 			player1Input();
 		if (playerNumber == 2)

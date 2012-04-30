@@ -2,11 +2,7 @@ package baseGame;
 
 import gfx.ResourceManager;
 
-import java.io.File;
-
 import javax.swing.JFrame;
-
-import networking.NetworkObjectType;
 
 import blueMaggot.Game;
 import blueMaggot.GameState;

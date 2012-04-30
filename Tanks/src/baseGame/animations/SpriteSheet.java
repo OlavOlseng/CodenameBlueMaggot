@@ -2,7 +2,6 @@ package baseGame.animations;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.InputStream;
 import java.util.HashMap;
 import baseGame.Rendering.RGBImage;
 

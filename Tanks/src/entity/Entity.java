@@ -38,9 +38,11 @@ public abstract class Entity implements NetworkObject {
 		return id;
 	}
 
+	@Override
 	public boolean shouldTick(){
 		return doTick;
 	}
+	@Override
 	public void setSouldTick(boolean doTick){
 		this.doTick = doTick;
 	}
@@ -53,9 +55,11 @@ public abstract class Entity implements NetworkObject {
 		this.id = id;
 	}
 
+	@Override
 	public void setShouldBeSent(boolean shouldBesent){
 		this.doSend= shouldBesent;
 	}
+	@Override
 	public boolean shouldBeSent(){
 		return doSend;
 	}
@@ -151,7 +155,7 @@ public abstract class Entity implements NetworkObject {
 		return num;
 	}
 	protected double decodeToDouble(int x){
-		return (double)x/100.0;
+		return x/100.0;
 	}
 	@Override
 	public String getObject() {
@@ -195,7 +199,7 @@ public abstract class Entity implements NetworkObject {
 		this.dt = dt;
 		move(dt);
 		gravitate();
-		if (x > GameState.getInstance().width + 100 || x < -100 || y > GameState.getInstance().height + 100 || y < -1000)
+		if (x > GameState.getInstance().getWidth() + 100 || x < -100 || y > GameState.getInstance().getHeight() + 100 || y < -1000)
 			remove();
 	}
 

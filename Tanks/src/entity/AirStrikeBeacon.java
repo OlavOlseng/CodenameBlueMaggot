@@ -89,6 +89,7 @@ public class AirStrikeBeacon extends Projectile {
 		return super.getObject() + "'" +triggered;
 	}
 	
+	@Override
 	public void handleMessage(String[] msg){
 		super.handleMessage(msg);
 		boolean triggered = Boolean.parseBoolean(msg[6]);

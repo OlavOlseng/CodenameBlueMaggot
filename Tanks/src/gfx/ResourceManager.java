@@ -1,7 +1,6 @@
 package gfx;
 
 import java.awt.Color;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -58,7 +57,6 @@ public class ResourceManager {
 			HEART = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Heart.png")));
 			COLORMASK = new Color(0x00FAE1);
 			
-			System.out.println("tiss");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

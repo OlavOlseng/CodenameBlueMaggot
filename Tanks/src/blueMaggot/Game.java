@@ -1,16 +1,14 @@
 package blueMaggot;
 
+import gfx.GameOverlay;
 import inputhandler.InputHandler;
 
 import java.awt.Color;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-import javax.net.ssl.HostnameVerifier;
 
-import entity.Entity;
 import entity.Tank;
 import entity.weapon.Gun;
 
@@ -87,10 +85,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public void onUppdateUI(Renderer renderer) {
 		GameState state = GameState.getInstance();
-		if (level != null && state.players.size() > 0)
-			overlay.paintOverlay(renderer.getGraphics(), level.getPlayers().get(0).getScore(), level.getPlayers()
-					.get(1).getScore(), level.getPlayers().get(0).getCurrentWeapon(), level.getPlayers().get(1)
-					.getCurrentWeapon());
+		if (level != null && state.getPlayers().size() > 0)
+			overlay.paintOverlay(renderer.getGraphics());
 	}
 
 	// public byte[] parseKeyStrokes() {
@@ -106,32 +102,31 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	// }
 
 	public void startReuglarGame() {
-		System.out
-				.println("starting level: " + GameState.getInstance().selectedLevelBackground.getName().split("_")[0]);
+		System.out.println("starting level: " + GameState.getInstance().getSelectedLevelBackground().getName().split("_")[0]);
 		level = new cityScape(this, handler);
 		level.init();
-		init(GameState.getInstance().width, GameState.getInstance().height, 60);
+		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 60);
 		GameState.getInstance().setRunning(true);
 	}
 
 	/* network stuff */
 	public void initConnection(boolean isHost, String addr) {
-		System.out.println("hey");
+		System.out.println("initiating connection");
 		connection = new ConnectionManager(this);
 		if (isHost) {
 			GameState.getInstance().setPlayerNumber(2);
 			connection.becomeHost();
-			GameState.getInstance().isHost = true;
+			GameState.getInstance().setHost(true);
 		} else {
 			GameState.getInstance().setPlayerNumber(1);
 			connection.joinGame(addr);
-			GameState.getInstance().isHost = false;
+			GameState.getInstance().setHost(false);
 		}
 	}
 
 	@Override
 	public void connectionFailed(String message) {
-		System.out.println(message);
+		System.out.println("connection failed: " + message);
 	}
 
 	@Override
@@ -146,7 +141,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		Tank player1;
 		Tank player2 ;
 	
-		if(!GameState.getInstance().isHost&& level != null &&level.getPlayers().size()> 1){
+		if(!GameState.getInstance().isHost()&& level != null &&level.getPlayers().size()> 1){
 			int score1 = Integer.parseInt(properties[0]);
 
 			int score2= Integer.parseInt(properties[1]);
@@ -174,11 +169,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		
 		GameState state = GameState.getInstance();
 		
-		state.players = level.getPlayers();
+		state.setPlayers(level.getPlayers());
 		
 		}
 		else{
-			if(GameState.getInstance().isHost){
+			if(GameState.getInstance().isHost()){
 			Gun gun1 = Gun.valueOf(properties[4]);
 			if(level != null & level.getPlayers() != null)
 			level.getPlayers().get(0).setCurrentWeapon(gun1);
@@ -199,8 +194,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		GameState state = GameState.getInstance();
 
 		String gameState ="";
-		if(state.players != null)
-			gameState= state.players.get(0).getScore() + "'"+ state.players.get(1).getLife()+ "'" + state.players.get(0).getScore()+ "'" + state.players.get(1).getLife()+"'" +state.players.get(0).getCurrentWeaponName()+"'" +state.players.get(1).getCurrentWeaponName() ;
+		if(state.getPlayers() != null)
+			gameState= state.getPlayers().get(0).getScore() + "'"+ state.getPlayers().get(1).getLife()+ "'" + state.getPlayers().get(0).getScore()+ "'" + state.players.get(1).getLife()+"'" +state.players.get(0).getCurrentWeaponName()+"'" +state.players.get(1).getCurrentWeaponName() ;
 		
 		gameState += "@";
 
@@ -268,11 +263,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void startOnlineGame() {
-		
 		onlineLevel = new OnlineCityScape(this, handler);
 		onlineLevel.init();
 		level = onlineLevel;
-		init(GameState.getInstance().width, GameState.getInstance().height, 60);
+		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 60);
 		GameState.getInstance().setRunning(true);
 		GameState.getInstance().players = level.getPlayers();
 		
