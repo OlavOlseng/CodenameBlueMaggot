@@ -170,9 +170,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		
 		}
 		else{
+			if(GameState.getInstance().isHost){
 			Gun gun1 = Gun.valueOf(properties[4]);
-			
+			if(level != null & level.getPlayers() != null)
 			level.getPlayers().get(0).setCurrentWeapon(gun1);
+			}
 			
 		}
 		if (data.length > 0) {
