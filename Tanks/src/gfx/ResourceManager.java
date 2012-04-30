@@ -13,7 +13,6 @@ public class ResourceManager {
 
 	private static Terrain TERRAIN;
 	private static RGBImage BACKGROUND;
-
 	public static Color COLORMASK;
 	public static RGBImage BULLET;
 	public static RGBImage AIRSTRIKEBEACON;
