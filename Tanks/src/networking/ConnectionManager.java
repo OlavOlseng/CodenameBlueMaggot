@@ -18,11 +18,23 @@ public class ConnectionManager {
 	private int messageHeader = 6;
 	private Thread readThread;
 	private Thread writeThread;
-	private long sleepTime = 15;
+	private long sleepTime = 17;
 	// private int numPlayers = 2;
 
 	public ConnectionManager(ConnectionDelegate delegate) {
 		this.delegate = delegate;
+		
+	}
+	public void endConnection(){
+		try{
+		if(client != null)
+			client.close();
+		if(listener != null)
+			listener.close();
+	}catch (Exception e) {
+		// TODO: handle exception
+		delegate.connectionFailed(e.getLocalizedMessage());
+	}
 	}
 	public void becomeHost() {
 		try {
