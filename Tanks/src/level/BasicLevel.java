@@ -30,9 +30,9 @@ public abstract class BasicLevel {
 	protected BaseGame game;
 	protected Terrain terrain;
 	private Random rand = new Random();
-	public List<FloatingPoint> playerSpawns;
-	public List<FloatingPoint> bubbleSpawns;
-
+	public SpawnTracker playerSpawns;
+	public SpawnTracker bubbleSpawns;
+	
 	public BasicLevel(BaseGame game, InputHandler handler) {
 		this.game = game;
 		this.handler = handler;
@@ -45,8 +45,8 @@ public abstract class BasicLevel {
 		ResourceManager.CROSSHAIR2.replaceColors(0x00FAE1, 0xFF2121);
 
 		entities = new ArrayList<Entity>();
-		playerSpawns = new ArrayList<FloatingPoint>();
-		bubbleSpawns = new ArrayList<FloatingPoint>();
+		playerSpawns = new SpawnTracker();
+		bubbleSpawns = new SpawnTracker();
 	}
 
 	public Terrain getTerrain() {
@@ -64,19 +64,16 @@ public abstract class BasicLevel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	
-		playerSpawns = new ArrayList<FloatingPoint>();
-		bubbleSpawns = new ArrayList<FloatingPoint>();
 	}
 
 	// requires you to init bubbleSpawns and playerSpawns
 	abstract public void initSpawn();
 
-	public List<FloatingPoint> getPlayerSpawns() {
+	public SpawnTracker getPlayerSpawns() {
 		return playerSpawns;
 	}
 
-	public List<FloatingPoint> getBubbleSpawns() {
+	public SpawnTracker getBubbleSpawns() {
 		return bubbleSpawns;
 	}
 

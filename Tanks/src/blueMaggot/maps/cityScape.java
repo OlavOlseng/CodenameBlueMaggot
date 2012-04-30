@@ -40,42 +40,43 @@ public class cityScape extends BasicLevel {
 		SoundEffect.SPAWN.play();
 
 		if(shouldSpawnBubbleHearth())
-		addEntity(new BubbleHearth(bubbleSpawns.get(1), this));
+		addEntity(new BubbleHearth(bubbleSpawns.getPoint(), this));
 		
 		if(shouldSpawnCrate())
-		addEntity(new Package(bubbleSpawns.get(2), this));
+		addEntity(new Package(bubbleSpawns.getPoint(), this));
 
 	}
 
 	public void addPlayers() {
 	
-		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 1, handler, this));
-		addEntity(new Tank(playerSpawns.get(rand.nextInt(playerSpawns.size())), 2, handler, this));
+		addEntity(new Tank(playerSpawns.getPoint(), 1, handler, this));
+		addEntity(new Tank(playerSpawns.getPoint(), 2, handler, this));
 	}
 
 	@Override
 	public void initSpawn() {
-		playerSpawns.add(new FloatingPoint(30, 10));
-		playerSpawns.add(new FloatingPoint(180, 10));
-		playerSpawns.add(new FloatingPoint(512, 10));
-		playerSpawns.add(new FloatingPoint(844, 10));
-		playerSpawns.add(new FloatingPoint(996, 10));
+		playerSpawns.addPoint(new FloatingPoint(120, 10));
+		playerSpawns.addPoint(new FloatingPoint(140, 10));
+		playerSpawns.addPoint(new FloatingPoint(530, 10));
+		playerSpawns.addPoint(new FloatingPoint(750, 10));
+		playerSpawns.addPoint(new FloatingPoint(1140, 10));
+		playerSpawns.addPoint(new FloatingPoint(1160, 10));
 
-		bubbleSpawns.add(new FloatingPoint(100, 10));
-		bubbleSpawns.add(new FloatingPoint(512, 10));
-		bubbleSpawns.add(new FloatingPoint(896, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(130, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(640, 10));
+		bubbleSpawns.addPoint(new FloatingPoint(1150, 10));
 	}
 
 	public void spawnBubble() {
-		this.addEntity(new ScoreBubble(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), this, 0.5, rand.nextInt(360), 100));
+		this.addEntity(new ScoreBubble(bubbleSpawns.getPoint(), this, 0.5, rand.nextInt(360), 100));
 		SoundEffect.SPAWN.play();
 	}
 	public void spawnBubbleHearth() {
-		this.addEntity(new BubbleHearth(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), this));
+		this.addEntity(new BubbleHearth(bubbleSpawns.getPoint(), this));
 		SoundEffect.SPAWN.play();
 	}
 	public void spawnCrate() {
-		this.addEntity(new Package(bubbleSpawns.get(rand.nextInt(bubbleSpawns.size())), this));
+		this.addEntity(new Package(bubbleSpawns.getPoint(), this));
 		SoundEffect.SPAWN.play();
 	}
 

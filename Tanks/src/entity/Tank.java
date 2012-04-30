@@ -342,7 +342,7 @@ public class Tank extends Entity {
 			super.remove();
 			return;
 		}
-		setLocation(level.getPlayerSpawns().get(rand.nextInt(level.getPlayerSpawns().size())));
+		setLocation(level.getPlayerSpawns().getPoint());
 		setSpeed(0, -1);
 		damageTaken = 1;
 		initInventory();
