@@ -139,16 +139,17 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		String gameData = new String(data);
 		String[] parts = gameData.split("\\@");
 	
-		String gameState = parts[1];
+		String gameState = parts[0];
 		String[] properties = gameState.split("\\'");
-		int score1 = Integer.parseInt(properties[1]);
-
-		int score2= Integer.parseInt(properties[2]);
-		int life1= Integer.parseInt(properties[2]);
-		int life2= Integer.parseInt(properties[3]);	
-		Tank player1 ;
-		Tank player2 ;
+		
 		if(!GameState.getInstance().isHost&& level != null &&level.getPlayers().size()> 1){
+			int score1 = Integer.parseInt(properties[0]);
+
+			int score2= Integer.parseInt(properties[1]);
+			int life1= Integer.parseInt(properties[2]);
+			int life2= Integer.parseInt(properties[3]);	
+			Tank player1 ;
+			Tank player2 ;
 		 player1 = level.getPlayers().get(0);
 		player2 = level.getPlayers().get(1);
 		
