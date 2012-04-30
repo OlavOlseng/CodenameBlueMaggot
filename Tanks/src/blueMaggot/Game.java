@@ -50,24 +50,23 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		overlay = new GameOverlay();
 		this.blueMaggot = blueMaggot;
 		blueMaggot.inputReal = handler;
-		
+
 		formater = new DecimalFormat("#00000");
 		addKeyListener(handler);
 	}
 
 	@Override
 	public void onUpdate(double deltaTime) {
-	
+
 		if (blueMaggot != null)
 			blueMaggot.tick();
-		
-	
-		
+
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
-	
 
-		if (!GameState.getInstance().isPaused()){// || !GameState.getInstance().isRunning()) {
+		if (!GameState.getInstance().isPaused()) {// ||
+													// !GameState.getInstance().isRunning())
+													// {
 			level.tick(deltaTime);
 			didTick = true;
 		}
@@ -76,18 +75,21 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void onDraw(Renderer renderer) {
-		
+
 		renderer.clearAllPixelData(Color.WHITE.getRGB());
 		level.onDraw(renderer);
-		
+
 	}
+
 	@Override
-	public  void onUppdateUI(Renderer renderer){
+	public void onUppdateUI(Renderer renderer) {
 		GameState state = GameState.getInstance();
-		if(level != null && state.players.size() >0)
-		overlay.paintOverlay(renderer.getGraphics(),level.getPlayers().get(0).getScore(),level.getPlayers().get(1).getScore(),level.getPlayers().get(0).getCurrentWeapon(),level.getPlayers().get(1).getCurrentWeapon());
+		if (level != null && state.players.size() > 0)
+			overlay.paintOverlay(renderer.getGraphics(), level.getPlayers().get(0).getScore(), level.getPlayers()
+					.get(1).getScore(), level.getPlayers().get(0).getCurrentWeapon(), level.getPlayers().get(1)
+					.getCurrentWeapon());
 	}
-	
+
 	// public byte[] parseKeyStrokes() {
 	// byte[] msg = new byte[7];
 	// msg[0] = handler.left2.toByte();
@@ -101,7 +103,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	// }
 
 	public void startReuglarGame() {
-		System.out.println("starting level: " + GameState.getInstance().selectedLevelBackground.getName().split("_")[0]);
+		System.out
+				.println("starting level: " + GameState.getInstance().selectedLevelBackground.getName().split("_")[0]);
 		level = new cityScape(this, handler);
 		level.init();
 		init(GameState.getInstance().width, GameState.getInstance().height, 60);
@@ -130,7 +133,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void readData(byte[] data) {
-		
+
 		String gameData = new String(data);
 		System.out.println(gameData);
 		String[] parts = gameData.split("\\@");
@@ -140,20 +143,19 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		String[] properties = gameState.split("\\'");
 		int score1 = Integer.parseInt(properties[1]);
-		int score2= Integer.parseInt(properties[1]);
-		int life1= Integer.parseInt(properties[1]);
-		int life2= Integer.parseInt(properties[1]);
-		Tank player1 ;
-		Tank player2 ;
-		if(level != null &&level.getPlayers().size()> 1){
-		 player1 = level.getPlayers().get(0);
-		player2 = level.getPlayers().get(1);
-		
-		
-		player1.setScore(score1);
-		player1.setLife(life1);
-		player2.setScore(score2);
-		player2.setLife(life2);
+		int score2 = Integer.parseInt(properties[1]);
+		int life1 = Integer.parseInt(properties[1]);
+		int life2 = Integer.parseInt(properties[1]);
+		Tank player1;
+		Tank player2;
+		if (level != null && level.getPlayers().size() > 1) {
+			player1 = level.getPlayers().get(0);
+			player2 = level.getPlayers().get(1);
+
+			player1.setScore(score1);
+			player1.setLife(life1);
+			player2.setScore(score2);
+			player2.setLife(life2);
 		}
 		System.out.println(gameState);
 		System.out.println(parts[2]);
@@ -164,33 +166,33 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		}
 
 	}
-	
 
 	@Override
 	public byte[] onWrite() {
-		String gameState ="";
-		if(GameState.getInstance().isHost)
-			gameState= "@"  + level.getPlayers().get(0).getScore() + "'"+ level.getPlayers().get(0).getLife()+ "'" + level.getPlayers().get(0).getScore()+ "'" + level.getPlayers().get(0).getLife();
-		
-		gameState = gameState + "@";
+		String gameState = "";
+		if (GameState.getInstance().isHost)
+			gameState = level.getPlayers().get(0).getScore() + "'" + level.getPlayers().get(0).getLife() + "'"
+					+ level.getPlayers().get(0).getScore() + "'" + level.getPlayers().get(0).getLife();
+			gameState = gameState += "@";
 		String msgBody = "";
 		List<NetworkObject> objects = onlineLevel.getNetworkObjectList();
 		List<Integer> deadKeys = new ArrayList<Integer>();
 
 		for (int i = 0; i < objects.size(); i++) {
-			
+
 			NetworkObject obj = objects.get(i);
-			if(obj.shouldBeSent()){
-			String objectString = obj.getObject();
-			
-			if (objectString != null && !objectString.equals(""));
+			if (obj.shouldBeSent()) {
+				String objectString = obj.getObject();
+
+				if (objectString != null && !objectString.equals(""))
+					;
 				msgBody += "?" + objectString;
 
-			if (obj.isRemoved()) {
-				deadKeys.add(obj.getId());
-				onlineLevel.getNetworkObjectList().remove(i);
-				i--;
-			}
+				if (obj.isRemoved()) {
+					deadKeys.add(obj.getId());
+					onlineLevel.getNetworkObjectList().remove(i);
+					i--;
+				}
 			}
 
 		}
@@ -199,14 +201,13 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		}
 
-		String msgHeader = "1" + to5DigitString(msgBody.length());
+		String msgHeader = "1" + to5DigitString(msgBody.length() + gameState.length());
 
-		return (msgHeader +gameState+ msgBody).getBytes();
+		return (msgHeader + gameState + msgBody).getBytes();
 
 	}
 
 	private String to5DigitString(double x) {
-
 
 		if (x >= 0) {
 			return formater.format(x);
@@ -215,11 +216,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		}
 	}
 
-	
 	@Override
 	public boolean shouldRead() {
 
-		return  onlineLevel != null;
+		return onlineLevel != null;
 
 	}
 
@@ -228,14 +228,13 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		boolean temp = didTick;
 		didTick = false;
 
-
-		return  (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size() > 0;
+		return (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size() > 0;
 
 	}
 
 	@Override
 	public void startOnlineGame() {
-	
+
 		onlineLevel = new OnlineCityScape(this, handler);
 		onlineLevel.init();
 		level = onlineLevel;
