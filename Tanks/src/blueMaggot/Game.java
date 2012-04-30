@@ -155,11 +155,19 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			Gun gun1 = Gun.valueOf(properties[4]);
 			Gun gun2 = Gun.valueOf(properties[5]);
 			
-		player1 = level.getPlayers().get(1);
-		player2 = level.getPlayers().get(0);
+		Tank temp = GameState.getInstance().players.get(0);
+		if(temp.getPlayerNumber() == 1){
+			player1 = temp;
+			player2 = GameState.getInstance().players.get(1);
+		}else{
+			player2 = temp;
+			player1 = GameState.getInstance().players.get(1);
+		}
+		
 		player1.setScore(score1);
 		player1.setLife(life1);
 		player1.setCurrentWeapon(gun1);
+		
 		player2.setCurrentWeapon(gun2);
 		player2.setScore(score2);
 		player2.setLife(life2);

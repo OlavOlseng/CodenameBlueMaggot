@@ -19,6 +19,7 @@ public class OnlineTank extends Tank {
 		
 		// TODO Auto-generated constructor stub
 	}
+	
 	public OnlineTank(double x, double y, int playerNumber, InputHandler input, BasicLevel level,String[] msg) {
 		super(x,y,playerNumber,input,level);
 		if(msg !=null)
