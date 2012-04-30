@@ -14,7 +14,6 @@ public class MenuLabel extends Label {
 	private Labels label;
 	private BufferedImage lblImage;
 	
-
 	public MenuLabel(Labels logo) {
 		this.label = logo;
 		setUp();
@@ -23,7 +22,6 @@ public class MenuLabel extends Label {
 	public MenuLabel(Labels label, Dimension size) {
 		this.label = label;
 		super.setPreferredSize(size);
-
 		setUp();
 	}
 

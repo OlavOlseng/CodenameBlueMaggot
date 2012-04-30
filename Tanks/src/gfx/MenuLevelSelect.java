@@ -37,6 +37,7 @@ public class MenuLevelSelect extends Menu {
 					add(btnLvl, new GBC(gridx, gridy, null).setInsets(10, 10, 10, 10));
 					lvlBtns.add(btnLvl);
 				}
+				System.out.println("adding button");
 			}
 		}
 		

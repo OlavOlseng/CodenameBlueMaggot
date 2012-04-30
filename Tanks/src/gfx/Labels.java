@@ -26,6 +26,7 @@ public enum Labels {
 		this.fileName = fileName;
 	}
 
+	@Override
 	public String toString() {
 		return fileName;
 	}

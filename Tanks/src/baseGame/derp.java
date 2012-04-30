@@ -1,6 +1,5 @@
 package baseGame;
 
-import gfx.ResourceManager;
 
 import javax.swing.JFrame;
 
@@ -12,7 +11,6 @@ public class derp extends JFrame {
 	public static int playerNumber;
 
 	public derp() {
-		ResourceManager.getInstance().initResources();
 		setVisible(true);
 		game = new Game();
 		add(game);
@@ -33,9 +31,6 @@ public class derp extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		ResourceManager.getInstance().initResources();
 		new derp().init();
-	
-
 	}
 }
