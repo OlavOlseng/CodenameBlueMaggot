@@ -11,7 +11,9 @@ public class ScoreBubble extends Entity {
 
 	PixelHitbox hitbox;
 	private int scoreAmount;
-
+	private double lifeTime = 600; 
+	private double timeAlive = 0;
+	
 	public ScoreBubble(FloatingPoint point, BasicLevel level, double speedPercent, int angle, int scoreAmount) {
 		super(point.getX(), point.getY(), 4, 4, level);
 		this.angle = angle;
@@ -93,6 +95,11 @@ public class ScoreBubble extends Entity {
 		super.tick(dt);
 		handleTerrainIntersections();
 		handlePlayerIntersections();
+		if (timeAlive > lifeTime)
+			remove();
+		else
+			timeAlive += dt;
+		
 	}
 
 	@Override

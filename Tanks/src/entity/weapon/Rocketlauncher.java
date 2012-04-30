@@ -22,7 +22,7 @@ public class Rocketlauncher implements Weapon {
 
 	@Override
 	public void setAmmo() {
-		ammo += 4;
+		ammo = 0;
 	}
 
 	@Override

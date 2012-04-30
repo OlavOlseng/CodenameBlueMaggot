@@ -17,7 +17,7 @@ public class AirStrikeBeacon extends Projectile {
 
 	public AirStrikeBeacon(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		super(x, y, 6, 6, level, speedPercent, angle);
-		this.maxSpeed = 9;
+		this.maxSpeed = 11;
 		this.frictionConstant = 0.005;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;

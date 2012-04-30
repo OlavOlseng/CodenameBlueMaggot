@@ -7,7 +7,7 @@ import level.BasicLevel;
 public class Airstrike implements Weapon{
 	
 	int ammo = 0;
-	int cooldownTime = 30;
+	int cooldownTime = 120;
 	int currentCooldown = 0;
 	
 	@Override

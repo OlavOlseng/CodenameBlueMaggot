@@ -12,7 +12,7 @@ public class Rocket extends Projectile {
 	RGBImage rocketSheet = ResourceManager.ROCKET;
 	int explosionRadius = 45;
 	double explosionPower = 350;
-	double thrust = 0.65;
+	double thrust = 0.7;
 	double fuel = 45;
 	double burnTime = 0;
 

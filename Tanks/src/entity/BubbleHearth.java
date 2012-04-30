@@ -9,11 +9,13 @@ import level.BasicLevel;
 
 public class BubbleHearth extends Entity {
 
+	private double lifeTime = 400; 
+	private double timeAlive = 0;
 	private double healthContained = -2;
 	PixelHitbox hitbox;
 
 	public BubbleHearth(FloatingPoint point, BasicLevel level) {
-		super(point.getX(), point.getY(), 9, 9, level);
+		super(point.getX(), point.getY(), 7, 7, level);
 		this.hitbox = new PixelHitbox();
 		init();
 	}
@@ -91,6 +93,10 @@ public class BubbleHearth extends Entity {
 		super.tick(dt);
 		handleTerrainIntersections();
 		handlePlayerIntersections();
+		if(timeAlive > lifeTime)
+			remove();
+		else
+			timeAlive += dt;
 	}
 
 	@Override
