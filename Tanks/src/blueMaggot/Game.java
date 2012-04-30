@@ -84,7 +84,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public  void onUppdateUI(Renderer renderer){
 		GameState state = GameState.getInstance();
-		System.out.println(state.players.size());
 		if(level != null && state.players.size() >0)
 		overlay.paintOverlay(renderer.getGraphics(),level.getPlayers().get(0).getScore(),level.getPlayers().get(1).getScore(),level.getPlayers().get(0).getCurrentWeapon(),level.getPlayers().get(1).getCurrentWeapon());
 	}
@@ -133,9 +132,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public void readData(byte[] data) {
 		
 		String gameData = new String(data);
-		
+		System.out.println(gameData);
 		String[] parts = gameData.split("\\@");
-		
+		System.out.println(parts[0]);
+		System.out.println(parts.length);
 		String gameState = parts[1];
 		String[] properties = gameState.split("\\'");
 		int score1 = Integer.parseInt(properties[1]);
@@ -162,10 +162,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public byte[] onWrite() {
-		String gameState ="@";
+		String gameState ="";
 		if(GameState.getInstance().isHost)
 			gameState= "@" + "'" + level.getPlayers().get(0).getScore() + "'"+ level.getPlayers().get(0).getLife()+ "'" + level.getPlayers().get(0).getScore()  + level.getPlayers().get(0).getLife();
 		
+		gameState = gameState + "@";
 		String msgBody = "";
 		List<NetworkObject> objects = onlineLevel.getNetworkObjectList();
 		List<Integer> deadKeys = new ArrayList<Integer>();

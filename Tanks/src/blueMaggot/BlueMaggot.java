@@ -126,7 +126,6 @@ public class BlueMaggot extends JFrame implements Runnable {
 			if (tank.getScore() != tank.getOldScore()) {
 
 				tank.setOldScore(tank.getScore());
-
 			//	ui.repaint();
 
 				System.out.println("p" + tank.getId() + ": " + tank.getScore());
