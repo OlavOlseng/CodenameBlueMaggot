@@ -137,7 +137,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	
 		String gameState = parts[0];
 		String[] properties = gameState.split("\\'");
-		System.out.println(gameState);
+//		System.out.println("gamestate: " + gameState);
 		Tank player1;
 		Tank player2 ;
 	
