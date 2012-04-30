@@ -83,7 +83,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public  void onUppdateUI(Renderer renderer){
 		GameState state = GameState.getInstance();
-		overlay.paintOverlay(renderer.getGraphics(),state.players.get(0).getScore(),state.players.get(1).getScore(),state.players.get(0).getCurrentWeapon(),state.players.get(1).getCurrentWeapon());
+		if(level != null && level.getPlayers().size()>0 && state.players.size() >0)
+		overlay.paintOverlay(renderer.getGraphics(),level.getPlayers().get(0).getScore(),level.getPlayers().get(1).getScore(),level.getPlayers().get(0).getCurrentWeapon(),level.getPlayers().get(1).getCurrentWeapon());
 	}
 	// public byte[] parseKeyStrokes() {
 	// byte[] msg = new byte[7];
@@ -135,6 +136,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		}
 
 	}
+	
 
 	@Override
 	public byte[] onWrite() {

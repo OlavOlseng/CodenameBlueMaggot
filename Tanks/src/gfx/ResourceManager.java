@@ -36,7 +36,7 @@ public class ResourceManager {
 
 	public void initResources() {
 		try {
-			System.out.println("adasdsad");
+			
 			TANK1 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
 			TANK2 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
 			TANK3 = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
@@ -55,6 +55,7 @@ public class ResourceManager {
 			AIRSTRIKEBEACON = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/AirStrikeBeacon.png")));
 			BULLET = new RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Bullet.png")));
 			COLORMASK = new Color(0x00FAE1);
+			
 			System.out.println("tiss");
 		} catch (IOException e) {
 			e.printStackTrace();
