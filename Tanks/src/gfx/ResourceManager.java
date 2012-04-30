@@ -10,6 +10,7 @@ public class ResourceManager {
 	private static Terrain TERRAIN;
 	private static RGBImage BACKGROUND;
 
+
 	public static final RGBImage TANK1 = new RGBImage("/graphics/Tank2.png");
 	public static final RGBImage TANK2 = new RGBImage("/graphics/Tank2.png");
 	public static final RGBImage TANK3 = new RGBImage("/graphics/Tank2.png");
@@ -29,6 +30,7 @@ public class ResourceManager {
 	public static final RGBImage BULLET = new RGBImage("/graphics/Bullet.png");
 	public final RGBImage HEART = new RGBImage("/graphics/Heart.png");
 	public static final Color COLORMASK = new Color(0x00FAE1);
+
 
 	private static ResourceManager instance = null;
 

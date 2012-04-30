@@ -75,6 +75,7 @@ public class RGBImage {
 		setBufferedImage(img);
 	}
 
+	
 	public void DrawRGBImage(int[] pixels, int x, int y, int width, int height) {
 
 		int realY = y * canvasWidth;
