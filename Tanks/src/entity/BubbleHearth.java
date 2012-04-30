@@ -101,7 +101,7 @@ public class BubbleHearth extends Entity {
 
 	@Override
 	public void render(Renderer renderer) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		RGBImage img = ResourceManager.BUBBLEHEARTH;
 		renderer.DrawImage(img, -1, (int) (x - 9), (int) (y - 19), img.getWidth(), img.getHeight());
 	}

@@ -142,7 +142,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		int score1 = Integer.parseInt(properties[1]);
 		int score2= Integer.parseInt(properties[1]);
 		int life1= Integer.parseInt(properties[1]);
-		int life2= Integer.parseInt(properties[1]);
+		int life2= Integer.parseInt(properties[1]);	
 		Tank player1 ;
 		Tank player2 ;
 		if(level != null &&level.getPlayers().size()> 1){
@@ -156,10 +156,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		player2.setLife(life2);
 		}
 		System.out.println(gameState);
-		System.out.println(parts[2]);
+		
 		if (data.length > 0) {
 
-			onlineLevel.catchResponse(parts[2]);
+			onlineLevel.catchResponse(parts[1]);
 
 		}
 
@@ -170,9 +170,12 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public byte[] onWrite() {
 		String gameState ="";
 		if(GameState.getInstance().isHost)
-			gameState= "@"  + level.getPlayers().get(0).getScore() + "'"+ level.getPlayers().get(0).getLife()+ "'" + level.getPlayers().get(0).getScore()+ "'" + level.getPlayers().get(0).getLife();
+			gameState= level.getPlayers().get(0).getScore() + "'"+ level.getPlayers().get(0).getLife()+ "'" + level.getPlayers().get(0).getScore()+ "'" + level.getPlayers().get(0).getLife();
 		
-		gameState = gameState + "@";
+			gameState += "@";
+		
+	
+		
 		String msgBody = "";
 		List<NetworkObject> objects = onlineLevel.getNetworkObjectList();
 		List<Integer> deadKeys = new ArrayList<Integer>();
@@ -199,7 +202,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		}
 
-		String msgHeader = "1" + to5DigitString(msgBody.length());
+		String msgHeader = "1" + to5DigitString(msgBody.length() + gameState.length()) ;
 
 		return (msgHeader +gameState+ msgBody).getBytes();
 
