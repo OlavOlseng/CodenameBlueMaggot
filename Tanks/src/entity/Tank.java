@@ -393,8 +393,8 @@ public class Tank extends Entity {
 			crossHair = ResourceManager.CROSSHAIR2;
 		}
 
-		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - getYr() + 1), img.getWidth(), img.getHeight());
-		renderer.DrawImage(crossHair, -1, (int) (getCrosshairLocation().getX() - crossHair.getWidth()/2 + 2),
+		renderer.DrawImage(img, -1, (int) (x - getXr()) -1, (int) (y - getYr() + 1), img.getWidth(), img.getHeight());
+		renderer.DrawImage(crossHair, -1, (int) (getCrosshairLocation().getX() - crossHair.getWidth()/2 +1),
 				(int) (getCrosshairLocation().getY() - crossHair.getHeight()/2), crossHair.getWidth(), crossHair.getHeight());
 	}
 
