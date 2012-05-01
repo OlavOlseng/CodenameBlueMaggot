@@ -39,6 +39,7 @@ public class OnlineTank extends Tank {
 			
 		
 		if(!shouldTick() && getPlayerNumber() == 1){
+			
 			if (x > GameState.getInstance().getWidth() + 100 || x < -100 || y > GameState.getInstance().getHeight() + 100 || y < -1000)
 				remove();
 			this.dt = dt;

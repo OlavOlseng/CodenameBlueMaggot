@@ -160,7 +160,7 @@ public class OnlineCityScape extends cityScape {
 		synchronized (movementsToDo) {
 			if (movementsToDo.size() > 0 && readyForLan) {
 				time = (System.currentTimeMillis() - lastTime) * 0.0625;
-				System.out.println(time);
+			
 				
 
 				for (int i = 0; i < movementsToDo.size(); i++) {
