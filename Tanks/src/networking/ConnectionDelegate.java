@@ -12,4 +12,5 @@ public interface ConnectionDelegate {
 	public boolean shouldRead();
 
 	public boolean shouldWrite();
+	public void setLevel(String path,String backGround);
 }

@@ -60,6 +60,7 @@ public class RGBImage {
 			img = ImageIO.read(getClass().getResourceAsStream(path));
 		} catch (IOException e) {
 			BlueMaggot.e = e;
+			
 		}
 		setBufferedImage(img);
 	}

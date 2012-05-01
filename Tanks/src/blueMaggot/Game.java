@@ -3,6 +3,7 @@ package blueMaggot;
 import gfx.GameOverlay;
 import inputhandler.InputHandler;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +111,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 				+ GameState.getInstance().getSelectedLevelBackground().getName().split("_")[0]);
 		level = new cityScape(this, handler);
 		level.init();
+		
 		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 60);
 		GameState.getInstance().setRunning(true);
 
@@ -284,5 +286,23 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		GameState.getInstance().setRunning(true);
 		GameState.getInstance().players = level.getPlayers();
 
+	}
+
+	@Override
+	public void setLevel(String terrain,String backGround) {
+		GameState state = GameState.getInstance();
+		File terrainFile = null;
+		File backGroundFile = null;
+		if((terrainFile = new File(terrain)).exists() && (backGroundFile = new File(backGround)).exists()){
+		
+		state.setSelectedLevelTerrain(new File(terrain));
+		state.setSelectedLevelBackground(new File(backGround));
+		}else {
+			gameListener.ConnectionFailed("Could not find level file. Terrain:" + terrainFile.getName() + " Background:" + backGroundFile.getName());
+			
+		}
+		// TODO Auto-generated method stub
+		
+		
 	}
 }

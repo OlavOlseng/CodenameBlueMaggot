@@ -17,8 +17,13 @@ public class GameState {
 	private String player2Nick = "Player2";
 
 	private boolean isHost = false;
-	private File selectedLevelTerrain = new File("./lvl/Cityscape_terrain.png");
-	private File selectedLevelBackground = new File("./lvl/Cityscape_background.png");
+	private final String defaultTerrainPath = "./lvl/Cityscape_terrain.png";
+	private final String defaultBackgroundPath = "./lvl/Cityscape_background.png";
+	
+	private File selectedLevelTerrain = new File(defaultTerrainPath);
+	private File selectedLevelBackground = new File(defaultBackgroundPath);
+
+	
 
 	private int width = 1280;
 	private int height = 720;
@@ -32,6 +37,7 @@ public class GameState {
 	private static GameState instance = null;
 
 	public static GameState getInstance() {
+		
 		if (instance == null) {
 			instance = new GameState();
 		}
@@ -142,5 +148,12 @@ public class GameState {
 
 	public void setPlayer2Nick(String player2Nick) {
 		this.player2Nick = player2Nick;
+	}
+	public String getDefaultTerrainPath() {
+		return defaultTerrainPath;
+	}
+
+	public String getDefaultBackgroundPath() {
+		return defaultBackgroundPath;
 	}
 }
