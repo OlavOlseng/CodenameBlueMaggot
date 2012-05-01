@@ -94,8 +94,8 @@ public class InputHandler implements KeyListener {
 	}
 
 	public void reset() {
-		Action.RIGHT.setBind(KeyEvent.VK_A);
-		Action.LEFT.setBind(KeyEvent.VK_D);
+		Action.RIGHT.setBind(KeyEvent.VK_D);
+		Action.LEFT.setBind(KeyEvent.VK_A);
 		Action.JETPACK.setBind(KeyEvent.VK_W);
 		Action.SHOOT.setBind(KeyEvent.VK_2);
 		Action.CYCLE_WEAPON.setBind(KeyEvent.VK_S);

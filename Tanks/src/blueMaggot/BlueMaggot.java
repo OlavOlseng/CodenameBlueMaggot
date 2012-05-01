@@ -5,6 +5,7 @@ import gfx.GBC;
 import gfx.GBC.Align;
 import gfx.Labels;
 import gfx.MenuBackground;
+import gfx.MenuField;
 import gfx.MenuKeys;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
@@ -54,7 +55,6 @@ public class BlueMaggot extends JFrame implements Runnable {
 
 	private MenuBackground menuBackground;
 
-
 	public BlueMaggot() {
 		GameState.getInstance().init();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,7 +68,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		layeredPane.setOpaque(false);
 
 		game = new blueMaggot.Game(this);
-		inputReal.reset();
+		
 
 		menuTitle = new MenuTitle(game, this);
 		menuOptions = new MenuOptions(game);
@@ -89,12 +89,19 @@ public class BlueMaggot extends JFrame implements Runnable {
 		layeredPane.add(menuLevelSelect, new Integer(11));
 		layeredPane.add(menuAbout, new Integer(11));
 		layeredPane.add(menuKeys, new Integer(11));
+		
+		// reset keybindings to default
+		inputReal.reset();
+		for (MenuField menuField : MenuField.menuFields) {
+			menuField.reset();
+		}
 
 		add(layeredPane);
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(true);
 		repaint();
+
 	}
 
 	private void setUpGame() {
@@ -142,7 +149,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 				warning.setVisible(true);
 				warning.setAlwaysOnTop(true);
 				warning.setLocationRelativeTo(null);
-				
+
 			}
 		}
 	}
@@ -157,10 +164,10 @@ public class BlueMaggot extends JFrame implements Runnable {
 			inputReal.menu.clicked = false;
 			inputReal.releaseAll();
 			if (!menuTitle.isVisible()) {
-			
+
 				menuTitle.setVisible(true);
 				menuBackground.setVisible(true);
-				//menuTitle.paint(g);
+				// menuTitle.paint(g);
 				GameState.getInstance().setPaused(true);
 			}
 		}
@@ -173,15 +180,16 @@ public class BlueMaggot extends JFrame implements Runnable {
 			GameState.getInstance().setPaused(true);
 			GameState.getInstance().setRunning(false);
 			menuBackground.setVisible(true);
-		//	menuTitle.paint(g);
+			// menuTitle.paint(g);
 		}
 
-	/*	for (Tank tank : GameState.getInstance().getPlayers()) {
-			if (tank.getScore() != tank.getOldScore()) {
-				tank.setOldScore(tank.getScore());
-
-			}
-		}*/
+		/*
+		 * for (Tank tank : GameState.getInstance().getPlayers()) { if
+		 * (tank.getScore() != tank.getOldScore()) {
+		 * tank.setOldScore(tank.getScore());
+		 * 
+		 * } }
+		 */
 
 	}
 

@@ -115,8 +115,11 @@ public class MenuButton extends Button {
 					game.blueMaggot.menuAbout.setVisible(true);
 				else if (label == Labels.KEYS)
 					game.blueMaggot.menuKeys.setVisible(true);
-				else if (label == Labels.DEFAULT){
+				else if (label == Labels.DEFAULT) {
 					game.blueMaggot.inputReal.reset();
+					for (MenuField menuField : MenuField.menuFields) {
+						menuField.reset();
+					}
 				}
 
 				repaint();

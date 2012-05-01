@@ -57,8 +57,8 @@ public class MenuKeys extends Menu {
 		add(new MenuField(1, FieldType.KEY, Action.ANGLE_COUNTERCLOCKWISE2), new GBC(x, ++y, Align.TIGHT));
 
 		++y;
-		add(new MenuButton(Labels.APPLY, this, game), new GBC(x = 0, ++y, Align.MID).setSpan(1, 1));
-		add(new MenuButton(Labels.DEFAULT, this, game), new GBC(x = 1, y, Align.MID).setSpan(1, 1));
+//		add(new MenuButton(Labels.APPLY, this, game), new GBC(x = 0, ++y, Align.MID).setSpan(1, 1));
+		add(new MenuButton(Labels.DEFAULT, this, game), new GBC(x = 0, ++y, Align.MID).setSpan(2, 1));
 		add(new MenuButton(Labels.RETURN, this, game), new GBC(x = 2, y, Align.MID).setSpan(1, 1));
 	}
 }
