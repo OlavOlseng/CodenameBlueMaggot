@@ -78,7 +78,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		if (blueMaggot != null)
 			blueMaggot.tick(renderer.getGraphics());
 		
-		renderer.clearAllPixelData(Color.WHITE.getRGB());
+	//	renderer.clearAllPixelData(Color.WHITE.getRGB());
 		level.onDraw(renderer);
 
 	}
@@ -88,24 +88,15 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		GameState state = GameState.getInstance();
 		Tank player1 = state.players.get(0);
 		Tank player2 = state.players.get(1);
+
 //		if ((level != null && state.getPlayers().size() > 1 && overlay.needUppdate(player1.getScore(),
 //				player2.getScore(), player1.getLife(), player2.getLife(), player1.getCurrentWeapon(),
 //				player2.getCurrentWeapon()))) {
-			overlay.paintOverlay(renderer.getGraphics(), player1.getScore(), player2.getScore(), player1.getLife(),
-					player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon());
+			/*overlay.paintOverlay(renderer.getGraphics(), player1.getScore(), player2.getScore(), player1.getLife(),
+					player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon());*/
+		
 //		}
 	}
-
-	// public byte[] parseKeyStrokes() {
-	// byte[] msg = new byte[7];
-	// msg[0] = handler.left2.toByte();
-	// msg[1] = handler.up2.toByte();
-	// msg[2] = handler.right2.toByte();
-	// msg[3] = handler.down2.toByte();
-	// msg[4] = handler.rotateL2.toByte();
-	// msg[5] = handler.rotateR2.toByte();
-	// msg[6] = handler.fire2.toByte();
-	// return msg;
 	// }
 
 	public void startReuglarGame() {

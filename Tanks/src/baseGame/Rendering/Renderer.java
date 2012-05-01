@@ -20,7 +20,6 @@ public class Renderer {
 	public Renderer(Graphics2D g,int[] rgbPixels, int backgroundColor, int canvasWidth, int canvasHeight) {
 		rects[0] = new Rectangle(GameState.getInstance().getWidth(), GameState.getInstance().getHeight()/2);
 		rects[1] = new Rectangle(0,GameState.getInstance().getHeight()/2,GameState.getInstance().getWidth(), GameState.getInstance().getHeight()/2);
-		System.out.println();
 		this.g = g;
 		this.rgbPixels = rgbPixels;
 		this.canvasWidth = canvasWidth;

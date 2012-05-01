@@ -32,7 +32,7 @@ public class cityScape extends BasicLevel {
 
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
-		
+		System.out.println("starter");
 		
 			
 			ResourceManager.setBackGround(new RGBImage(GameState.getInstance().getSelectedLevelBackground()));
@@ -144,16 +144,13 @@ public class cityScape extends BasicLevel {
 
 	public void onDraw(Renderer renderer) {
 	//Draws background and terrain
-		long time1 = System.currentTimeMillis();
-		
+
 		//renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, GameState.getInstance().getWidth(), GameState.getInstance().getHeight());
 		//renderer.DrawImage(ResourceManager.getTerrain(), -1, 0, 0, terrain.getWidth(), terrain.getHeight());
 		
-		//renderer.DrawPixelArrayRGB(ResourceManager.getTerrain().getScreenPixels(), 0, 0, GameState.getInstance().getWidth() ,GameState.getInstance().getHeight());
-		renderer.DrawTerrain(ResourceManager.getTerrain(), 0, 0, 0 ,0);
+		renderer.DrawPixelArrayRGB(ResourceManager.getTerrain().getScreenPixels(), 0, 0, GameState.getInstance().getWidth() ,GameState.getInstance().getHeight());
+//		renderer.DrawTerrain(ResourceManager.getTerrain(), 0, 0, 0 ,0);
 		//renderer.getGraphics().drawImage(ResourceManager.getTerrain().screenImg, 0,0,GameState.getInstance().getWidth(),GameState.getInstance().getHeight(),Color.BLACK,null);
-		
-		System.out.println(System.currentTimeMillis()-time1);
 		super.render(renderer);
 	}
 }

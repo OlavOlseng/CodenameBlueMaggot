@@ -45,8 +45,7 @@ public class GameOverlay {
 
 			String statsOne = String.format("%s|%s|%s", playerOne.getNick(), playerOne.getScore(), playerOne.getCurrentWeaponName());
 			String statsTwo = String.format("%s|%s|%s", playerTwo.getCurrentWeaponName(), playerTwo.getScore(), playerTwo.getNick());
-			System.out.println(statsOne);
-			System.out.println(statsTwo);
+		
 
 			FontMetrics fm = g.getFontMetrics(font);
 
