@@ -5,8 +5,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.DecimalFormat;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import blueMaggot.GameState;
 
 public class ConnectionManager {
 
@@ -19,10 +22,13 @@ public class ConnectionManager {
 	private Thread readThread;
 	private Thread writeThread;
 	private long sleepTime = 1;
+	public DecimalFormat formater;
+	
 	// private int numPlayers = 2;
 
 	public ConnectionManager(ConnectionDelegate delegate) {
 		this.delegate = delegate;
+		formater = new DecimalFormat("#00000");
 		
 	}
 	public void endConnection(){
@@ -56,7 +62,17 @@ public class ConnectionManager {
 					this.cancel();
 					return;
 				}
-				
+				String terrainMsg = "" + GameState.getInstance().getSelectedLevelBackground().getPath() +"'" + GameState.getInstance().getSelectedLevelTerrain().getPath();
+				int len = terrainMsg.length();
+				String header = "" + to5DigitString(len);
+				try {
+					client.getOutputStream().write((header + terrainMsg).getBytes());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					delegate.connectionFailed(e.getLocalizedMessage());
+					this.cancel();
+					return;
+				}
 				this.cancel();
 				init();
 				// TODO Auto-generated method stub
@@ -108,7 +124,32 @@ public class ConnectionManager {
 					return;
 				}
 				System.out.println("Connected!");
-
+				
+			
+				byte[] byteHeader = new byte[5];
+				
+				
+				
+				try {
+					client.getInputStream().read(byteHeader, 0, 5);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					delegate.connectionFailed(e.getLocalizedMessage());
+					this.cancel();
+					return;
+				}
+				int len = Integer.parseInt(new String(byteHeader));
+				
+				byte[] levelData = new byte[len];
+				try {
+					client.getInputStream().read(levelData, 0, 5);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					delegate.connectionFailed(e.getLocalizedMessage());
+					this.cancel();
+					return;
+				}
+				
 				this.cancel();
 				init();
 				// TODO Auto-generated method stub
@@ -221,6 +262,14 @@ public class ConnectionManager {
 			}
 		};
 		writeThread.start();
+	}
+	private String to5DigitString(double x) {
+
+		if (x >= 0) {
+			return formater.format(x);
+		} else {
+			return "-" + formater.format(Math.abs(x)).substring(1);
+		}
 	}
 
 }

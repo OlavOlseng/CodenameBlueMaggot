@@ -59,12 +59,8 @@ public class BlueMaggot extends JFrame implements Runnable,GameListener{
 		setResizable(false);
 
 		layeredPane.setBounds(0, 0, GameState.getInstance().getWidth(), GameState.getInstance().getHeight());
-
 		layeredPane.setOpaque(false);
-
 		game = new blueMaggot.Game(this);
-		
-
 		menuTitle = new MenuTitle(game, this);
 		menuOptions = new MenuOptions(game);
 		menuOptionsLan = new MenuOptionsLan(game);
