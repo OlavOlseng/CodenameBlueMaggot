@@ -8,7 +8,7 @@ import baseGame.Rendering.RGBImage;
 import blueMaggot.Game;
 
 public class Terrain extends RGBImage {
-
+	private int[] collisionArray;
 	public Terrain(File file) throws IOException  {
 		super(file);
 	}
@@ -26,6 +26,7 @@ public class Terrain extends RGBImage {
 
 	}
 
+	
 	public void addExplosion(int x, int y, int radius) {
 		DrawCircle(Game.ALPHA_MASK, x, y, radius);
 	}

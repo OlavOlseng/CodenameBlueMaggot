@@ -1,5 +1,8 @@
 package blueMaggot.maps;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 import java.io.IOException;
 import java.util.Random;
 
@@ -29,7 +32,7 @@ public class cityScape extends BasicLevel {
 
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
-
+		
 		try {
 			terrain = new Terrain(GameState.getInstance().getSelectedLevelTerrain());
 			ResourceManager.setTerrain(terrain);
@@ -38,7 +41,26 @@ public class cityScape extends BasicLevel {
 			BlueMaggot.e = e;
 		}
 		SoundEffect.SPAWN.play();
-
+		this.players = GameState.getInstance().getPlayers();
+	//	testImg = new BufferedImage(GameState.getInstance().getWidth(),GameState.getInstance().getHeight(), BufferedImage.TYPE_INT_RGB);
+		/*int[] screen = ((DataBufferInt) testImg.getRaster().getDataBuffer()).getData();
+		
+		
+		int[] pixelsTerrain = terrain.getPixels();
+		System.out.println(pixelsTerrain[0]);
+		int[] pixelsBackground = ResourceManager.getBackGround().getPixels();
+		int mask = ResourceManager.COLORMASK.getRGB();
+		for(int i= 0;i<screen.length;i++){
+			
+				screen[i] = pixelsTerrain[i];
+			
+		}
+		for(int i= 0;i<screen.length;i++){
+			int p = screen[i];
+			if(p == -1){
+				screen[i] = pixelsBackground[i];
+			}
+		}*/
 	}
 
 	public void init() {
@@ -122,10 +144,14 @@ public class cityScape extends BasicLevel {
 	}
 
 	public void onDraw(Renderer renderer) {
-		// draws backgorund recursively
-
+	//Draws background and terrain
+		//long time1 = System.currentTimeMillis();
+		
 		renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, GameState.getInstance().getWidth(), GameState.getInstance().getHeight());
 		renderer.DrawImage(ResourceManager.getTerrain(), -1, 0, 0, terrain.getWidth(), terrain.getHeight());
+		
+		//renderer.getGraphics().drawImage(testImg, 0, 0, GameState.getInstance().getWidth() ,GameState.getInstance().getHeight(), Color.BLACK, null);
+		//System.out.println(System.currentTimeMillis()-time1);
 		super.render(renderer);
 	}
 }

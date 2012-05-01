@@ -59,7 +59,7 @@ public class Tank extends Entity {
 		super(x, y, 11, 6, level);
 	
 		GameState.getInstance().getPlayers().add(this);
-		this.level.getPlayers().add(this);
+		
 		
 		muzzleAngle = 0;
 		muzzleLength = 21;

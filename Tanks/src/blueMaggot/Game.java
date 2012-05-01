@@ -85,9 +85,12 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public void onUppdateUI(Renderer renderer) {
 		GameState state = GameState.getInstance();
-		if (level != null && state.getPlayers().size() > 0)
+		Tank player1 = state.players.get(0);
+		Tank player2 = state.players.get(1);
+		if((level != null && state.getPlayers().size() > 1 && overlay.needUppdate(player1.getScore(), player2.getScore(), player1.getLife(), player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon()))){
+		
 			overlay.paintOverlay(renderer.getGraphics());
-	}
+		}} 
 
 	// public byte[] parseKeyStrokes() {
 	// byte[] msg = new byte[7];
@@ -105,7 +108,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		System.out.println("starting level: " + GameState.getInstance().getSelectedLevelBackground().getName().split("_")[0]);
 		level = new cityScape(this, handler);
 		level.init();
-		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 60);
+		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 200);
 		GameState.getInstance().setRunning(true);
 	}
 
@@ -155,9 +158,9 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			Gun gun2 = Gun.valueOf(properties[5]);
 			
 
-		
+		System.out.println(level.getPlayers().size());
 		if(!state.isHost()){
-			System.out.println(GameState.getInstance().players.size());
+			
 			player2 = GameState.getInstance().players.get(1);
 			player2.setScore(score2);
 			player2.setLife(life2);
@@ -195,7 +198,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		GameState state = GameState.getInstance();
 
 		String gameState ="";
-		if(state.getPlayers() != null)
+		if(state.getPlayers() != null && state.getPlayers().size()>1)
 			gameState= state.getPlayers().get(0).getScore() + "'"+ state.getPlayers().get(1).getLife()+ "'" + state.getPlayers().get(0).getScore()+ "'" + state.players.get(1).getLife()+"'" +state.players.get(0).getCurrentWeaponName()+"'" +state.players.get(1).getCurrentWeaponName() ;
 		
 		gameState += "@";
@@ -229,7 +232,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		}
 
-
+		
 		String msgHeader = "1" + to5DigitString(msgBody.length() + gameState.length()) ;
 
 

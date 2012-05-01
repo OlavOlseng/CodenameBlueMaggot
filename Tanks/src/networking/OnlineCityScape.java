@@ -15,6 +15,7 @@ import entity.Package;
 import entity.Rocket;
 import entity.ScoreBubble;
 import entity.Shell;
+import entity.Tank;
 import inputhandler.InputHandler;
 import baseGame.BaseGame;
 import blueMaggot.GameState;
@@ -79,14 +80,22 @@ public class OnlineCityScape extends cityScape {
 			player1 = new OnlineTank(playerSpawns.getPoint(), 1, handler, this, null);
 			player2 = new OnlineTank(playerSpawns.getPoint(), 2, handler, this, null);
 
+			
 			addEntity(player1, objectCount, true, true);
 
 			addEntity(player2, objectCount, true, true);
 
 		}
+		System.out.println(players.size());
 
 	}
 
+	@Override
+	public void checkGameOver() {
+		if(!isClient){
+			super.checkGameOver();
+		}
+	}
 	@Override
 	public void addEntity(Entity entity) {
 		if (entity.getNetworkObjectType() != NetworkObjectType.NO_SYNC) {
@@ -183,9 +192,9 @@ public class OnlineCityScape extends cityScape {
 						boolean doTick = false;
 					
 
-						if (NetworkObjectType.TANK.equals(type)) {
+						if (NetworkObjectType.TANK.equals(type) && GameState.getInstance().getPlayerNumber()!=2) {
 							ent = new OnlineTank(0, 0, 0, handler, this, move);
-
+							System.out.println("new tank!");
 							if (Integer.parseInt(move[7]) == GameState.getInstance().getPlayerNumber()) {
 								player1 = (OnlineTank) ent;
 								doSend = true;
