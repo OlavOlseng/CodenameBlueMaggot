@@ -1,6 +1,7 @@
 package gfx;
 
 import gfx.GBC.Align;
+import gfx.MenuField.FieldType;
 import gfx.Labels;
 
 import java.awt.Dimension;
@@ -26,8 +27,8 @@ public class MenuOptions extends Menu {
 
 		setVisible(false);
 
-		fieldPlayerOne = new MenuField(20, "text");
-		fieldPlayerTwo = new MenuField(20, "text");
+		fieldPlayerOne = new MenuField(20, FieldType.TEXT);
+		fieldPlayerTwo = new MenuField(20, FieldType.TEXT);
 
 		btnStart = new MenuButton(Labels.START_GAME, this, game, btnSize);
 		btnReturn = new MenuButton(Labels.RETURN, this, game, btnSize);

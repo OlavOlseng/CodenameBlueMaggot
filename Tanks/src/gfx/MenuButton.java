@@ -41,11 +41,11 @@ public class MenuButton extends Button {
 		this.game = game;
 		setUp();
 	}
-	
+
 	public void setUp() {
 		String img = "/titleMenu/" + label.toString() + ".png";
 		try {
-			System.out.println("loading: " +img.toString());
+			System.out.println("loading: " + img.toString());
 			bgImage = ImageIO.read(getClass().getResourceAsStream(img.toString()));
 		} catch (IOException e) {
 			System.out.println("Nope: " + img.toString());
@@ -111,8 +111,15 @@ public class MenuButton extends Button {
 					menu.repaint();
 				} else if (label == Labels.LVL_SELECT)
 					game.blueMaggot.menuLevelSelect.setVisible(true);
-				else if (label == Labels.ABOUT) {
+				else if (label == Labels.ABOUT)
 					game.blueMaggot.menuAbout.setVisible(true);
+				else if (label == Labels.KEYS)
+					game.blueMaggot.menuKeys.setVisible(true);
+				else if (label == Labels.DEFAULT) {
+					game.blueMaggot.inputReal.reset();
+					for (MenuField menuField : MenuField.menuFields) {
+						menuField.reset();
+					}
 				}
 
 				repaint();

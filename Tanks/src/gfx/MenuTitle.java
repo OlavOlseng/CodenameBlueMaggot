@@ -20,12 +20,14 @@ public class MenuTitle extends Menu {
 		MenuButton btnAbout = new MenuButton(Labels.ABOUT, this, game);
 		MenuButton btnExit = new MenuButton(Labels.EXIT, this, null);
 		MenuButton btnLvls = new MenuButton(Labels.LVL_SELECT, this, game);
+		MenuButton btnKeys = new MenuButton(Labels.KEYS,this,game);
 
 		// add buttons for title menu here
 		ButtonArr.add(btnReturn);
 		ButtonArr.add(btnNewGame);
 		ButtonArr.add(btnNewOnlineGame);
 		ButtonArr.add(btnLvls);
+		ButtonArr.add(btnKeys);
 		ButtonArr.add(btnAbout);
 		ButtonArr.add(btnExit);
 
@@ -33,7 +35,7 @@ public class MenuTitle extends Menu {
 		c.gridwidth = 1;
 		c.gridx = 0;
 		c.gridy = 1;
-		c.insets = new Insets(10, 0, 10, 0);
+		c.insets = new Insets(6, 5, 6, 5);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridy++;
 

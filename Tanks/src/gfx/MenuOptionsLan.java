@@ -1,6 +1,7 @@
 package gfx;
 
 import gfx.GBC.Align;
+import gfx.MenuField.FieldType;
 
 import java.awt.Dimension;
 import blueMaggot.Game;
@@ -28,9 +29,9 @@ public class MenuOptionsLan extends Menu {
 
 		setVisible(false);
 
-		fieldIp = new MenuField(20, "ip");
-		fieldLanNick = new MenuField(20, "text");
-		fieldPlayerTwo = new MenuField(20, "text");
+		fieldIp = new MenuField(20, FieldType.IP);
+		fieldLanNick = new MenuField(20,FieldType.TEXT);
+		fieldPlayerTwo = new MenuField(20, FieldType.TEXT);
 
 		btnStartLan = new MenuButton(Labels.START_LAN_GAME, this, game, btnSize);
 		btnReturn = new MenuButton(Labels.RETURN, this, game, btnSize);
