@@ -85,7 +85,6 @@ public class OnlineCityScape extends cityScape {
 			addEntity(player2, objectCount, true, true);
 
 		}
-		System.out.println(players.size());
 
 	}
 
@@ -157,18 +156,18 @@ public class OnlineCityScape extends cityScape {
 
 		NetworkObject obj;
 		double time;
-
+		
 		synchronized (movementsToDo) {
 			if (movementsToDo.size() > 0 && readyForLan) {
 				time = (System.currentTimeMillis() - lastTime) * 0.0625;
-
+			
 				
 
 				for (int i = 0; i < movementsToDo.size(); i++) {
 
 					
 					String[] move = movementsToDo.get(i);
-
+					
 					int id = (int) Double.parseDouble(move[1]);
 					int type = (int) Double.parseDouble(move[2]);
 					
@@ -238,6 +237,7 @@ public class OnlineCityScape extends cityScape {
 			
 			if (isClient && player1 != null)
 				player1.tick(dt);
+			
 			super.tick(dt);
 			
 
