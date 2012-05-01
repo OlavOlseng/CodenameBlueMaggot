@@ -13,6 +13,9 @@ public class GameState {
 	private boolean running = false;
 	private int playerNumber;
 
+	private String player1Nick;
+	private String player2Nick;
+
 	private boolean isHost = false;
 	private File selectedLevelTerrain = new File("./lvl/Cityscape_terrain.png");
 	private File selectedLevelBackground = new File("./lvl/Cityscape_background.png");
@@ -124,5 +127,20 @@ public class GameState {
 
 	public void setPlayers(ArrayList<Tank> players) {
 		this.players = players;
+	}
+	public String getPlayer1Nick() {
+		return player1Nick;
+	}
+
+	public void setPlayer1Nick(String player1Nick) {
+		this.player1Nick = player1Nick;
+	}
+
+	public String getPlayer2Nick() {
+		return player2Nick;
+	}
+
+	public void setPlayer2Nick(String player2Nick) {
+		this.player2Nick = player2Nick;
 	}
 }
