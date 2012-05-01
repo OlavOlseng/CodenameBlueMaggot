@@ -89,8 +89,6 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			lastTime = System.currentTimeMillis();
 		
 			onUpdate(deltaTime);
-			
-			
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
 
 			Renderer renderer = new Renderer(g,pixels, backgroundColor, canvasWidth, canvasHeight);
@@ -98,11 +96,13 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			onDraw(renderer);
 	
 			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
-			
+		
 			if (showFps)
 				DrawfpsCounter(g, deltaTime);
+			
+			
 			onUppdateUI(renderer);
-		
+			
 			buffer.show();
 		
 			g.dispose();

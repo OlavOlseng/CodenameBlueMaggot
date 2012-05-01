@@ -59,7 +59,7 @@ public class Tank extends Entity {
 		super(x, y, 11, 6, level);
 	
 		GameState.getInstance().getPlayers().add(this);
-		this.level.getPlayers().add(this);
+		
 		
 		muzzleAngle = 0;
 		muzzleLength = 21;
@@ -74,6 +74,11 @@ public class Tank extends Entity {
 		boxUnderCenter.addPoint(new FloatingPoint(0, yr));
 		boxUnderCenter.addPoint(new FloatingPoint(1, yr));
 		boxUnderCenter.addPoint(new FloatingPoint(2, yr));
+		boxUnderCenter.addPoint(new FloatingPoint(-2, yr-1));
+		boxUnderCenter.addPoint(new FloatingPoint(-1, yr-1));
+		boxUnderCenter.addPoint(new FloatingPoint(0, yr-1));
+		boxUnderCenter.addPoint(new FloatingPoint(1, yr-1));
+		boxUnderCenter.addPoint(new FloatingPoint(2, yr-1));
 
 		boxLeft = new PixelHitbox();
 		boxRight = new PixelHitbox();
@@ -104,7 +109,6 @@ public class Tank extends Entity {
 
 	public Tank(FloatingPoint point, int playerNumber, InputHandler input, BasicLevel level) {
 		super(point.getX(), point.getY(), 11, 6, level);
-		this.level.getPlayers().add(this);
 		GameState.getInstance().getPlayers().add(this);
 		muzzleAngle = 90;
 		muzzleLength = 20;

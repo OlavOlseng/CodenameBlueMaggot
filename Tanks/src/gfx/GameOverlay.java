@@ -1,6 +1,8 @@
 package gfx;
 
 import entity.Tank;
+import entity.weapon.Gun;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -11,9 +13,22 @@ import blueMaggot.GameState;
 public class GameOverlay {
 
 	private final Font font = new Font("Consolas", Font.BOLD, 20);
+	private int score1;
+	private int score2;
+	private int lives1;
+	private int lives2;
+	private Gun wep1;
+	private Gun wep2;
+	
+	public void paintOverlay(Graphics2D g,int score1,int score2,int lives1,int lives2,Gun wep1,Gun wep2) {
 
-	public void paintOverlay(Graphics2D g) {
-
+		this.score1 = score1;
+		this.score2 = score2;
+		this.lives1 = lives1;
+		this.lives2 = lives2;
+		this.wep1 = wep1;
+		this.wep2 = wep2;
+		
 		Tank playerOne;
 		Tank playerTwo;
 
@@ -30,7 +45,6 @@ public class GameOverlay {
 
 			String statsOne = String.format("%s|%s|%s", playerOne.getNick(), playerOne.getScore(), playerOne.getCurrentWeaponName());
 			String statsTwo = String.format("%s|%s|%s", playerTwo.getCurrentWeaponName(), playerTwo.getScore(), playerTwo.getNick());
-			System.err.println(String.format("%s|%s|%s", playerTwo.getCurrentWeaponName(), playerTwo.getScore(), playerTwo.getNick()));
 
 			FontMetrics fm = g.getFontMetrics(font);
 
@@ -54,5 +68,9 @@ public class GameOverlay {
 				g.drawImage(ResourceManager.getInstance().HEART.getRgbBufferedImage(), GameState.getInstance().getWidth() / 2 + 7+ i * 14, 15, null);
 			}
 		}
+	}
+	public boolean needUppdate(int score1,int score2,int lives1,int lives2,Gun wep1,Gun wep2){
+		return this.score1 !=score1 || this.score2 != score2 || this.lives1 != lives1 || this.lives2 != lives2
+				|| this.wep1 != wep1 || this.wep2 != wep2;
 	}
 }

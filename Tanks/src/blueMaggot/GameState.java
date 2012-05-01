@@ -22,7 +22,7 @@ public class GameState {
 	public Dimension dimension = new Dimension(width, height);
 
 	// customizable player variables!
-	ArrayList<Tank> players = new ArrayList<Tank>();
+	ArrayList<Tank> players;
 
 	public String hostIp;
 
@@ -37,7 +37,11 @@ public class GameState {
 
 	private GameState() {
 	}
-
+	
+	public void init(){
+		players = new ArrayList<Tank>();
+	}
+	
 	public boolean isHost() {
 		return isHost;
 	}

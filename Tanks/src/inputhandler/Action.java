@@ -1,7 +1,6 @@
 package inputhandler;
 
 import java.awt.event.KeyEvent;
-import java.util.List;
 
 public enum Action {
 	LEFT(0), //

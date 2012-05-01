@@ -1,6 +1,11 @@
 package baseGame.Rendering;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
+import level.Terrain;
+
+import blueMaggot.GameState;
 
 public class Renderer {
 	private int canvasWidth;
@@ -9,9 +14,12 @@ public class Renderer {
 	private int backgroundColor;
 	private Graphics2D g;
 
-	public native int test();
-
+	private Rectangle[] rects = new Rectangle[2];
+	private boolean rect1Changed;
+	private boolean recr2Changed;
 	public Renderer(Graphics2D g,int[] rgbPixels, int backgroundColor, int canvasWidth, int canvasHeight) {
+		rects[0] = new Rectangle(GameState.getInstance().getWidth(), GameState.getInstance().getHeight()/2);
+		rects[1] = new Rectangle(0,GameState.getInstance().getHeight()/2,GameState.getInstance().getWidth(), GameState.getInstance().getHeight()/2);
 		this.g = g;
 		this.rgbPixels = rgbPixels;
 		this.canvasWidth = canvasWidth;
@@ -22,7 +30,10 @@ public class Renderer {
 	public void DrawImage(RGBImage img, int x, int y, int width, int height) {
 		DrawPixelArrayRGB(img.getPixels(), x, y, width, height);
 	}
-
+	public void DrawTerrain(Terrain t,int x,int y,int width,int height){
+		
+		
+	}
 	public void DrawImage(RGBImage img, int transparentColor, int x, int y, int width, int height) {
 		DrawPixelArrayRGB(img.getPixels(), transparentColor, x, y, width, height);
 	}
@@ -35,11 +46,16 @@ public class Renderer {
 				if ((j + x) > canvasWidth || (j + x) < 0 || (i + y) < 0 || adr >= rgbPixels.length)
 					continue;
 
-				rgbPixels[adr] = pixels[i * width + j];
+				int p = pixels[i * width + j];
+			
+				rgbPixels[adr] = p;
+		
+				
 			}
 		}
 	}
 
+	
 	public void DrawPixelArrayRGB(int[] pixels, int transparentColor, int x, int y, int width, int height) {
 		int offset = y * canvasWidth;
 
@@ -50,10 +66,14 @@ public class Renderer {
 				if ((j + x) > canvasWidth || (j + x) < 0 || (i + y) < 0 || adr >= rgbPixels.length)
 					continue;
 
+				
 				int c = pixels[i * width + j];
 				if (c != transparentColor) {
 					rgbPixels[adr] = c;
+					
 				}
+					
+				
 			}
 		}
 	}

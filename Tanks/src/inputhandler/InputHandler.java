@@ -8,7 +8,7 @@ import java.util.List;
 public class InputHandler implements KeyListener {
 
 	private List<Key> keys = new ArrayList<Key>();
-
+	
 	public Key menu = new Key(keys);
 	public Key menuOff = new Key(keys);
 	public Key tab = new Key(keys);
@@ -59,7 +59,6 @@ public class InputHandler implements KeyListener {
 
 		if (e.getKeyCode() == KeyEvent.VK_0)
 			grenadeSpam.toggle(pressed);
-
 		// if (e.getKeyCode() == KeyEvent.VK_S)
 		// down1.toggle(pressed);
 
@@ -88,7 +87,6 @@ public class InputHandler implements KeyListener {
 			rotateR2.toggle(pressed);
 		if (e.getKeyCode() == Action.ANGLE_COUNTERCLOCKWISE2.getBind())
 			rotateL2.toggle(pressed);
-
 	}
 
 	@Override

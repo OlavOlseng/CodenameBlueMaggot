@@ -13,8 +13,6 @@ public class MenuScoreBoard extends Menu {
 		add(new MenuButton(Labels.RETURN, this, game),new GBC(0, 2, null).setInsets(5, 5, 5, 5));
 	}
 
-	@Override
-	public void paint(Graphics g) {
-	}
+	
 
 }

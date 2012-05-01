@@ -36,7 +36,8 @@ public abstract class Menu extends Panel {
 		c.setBounds(GameState.getInstance().getWidth() / 2 - width / 2, GameState.getInstance().getHeight() / 2 - height / 2, width, height);
 	}
 	
-	public void tick(Menu menu){
+	/*public void tick(Menu menu){
+		System.out.println("heieieiei");
 		menu.repaint();
-	}
+	}*/
 }

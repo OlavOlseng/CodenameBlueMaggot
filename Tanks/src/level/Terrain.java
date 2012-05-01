@@ -1,22 +1,58 @@
 package level;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 import java.io.File;
 import java.io.IOException;
 
 import baseGame.Rendering.RGBImage;
 import blueMaggot.Game;
+import blueMaggot.GameState;
 
 public class Terrain extends RGBImage {
-
+	private int[] screen;
+	private int[] backGround;
+	public BufferedImage screenImg;
 	public Terrain(File file) throws IOException  {
 		super(file);
 	}
 
-	public Terrain(BufferedImage img) {
-		super(img);
+	public Terrain(BufferedImage terrain,RGBImage background) {
+		super(terrain);
+		this.backGround = ((DataBufferInt)background.getRgbBufferedImage().getRaster().getDataBuffer()).getData();
+		
+//		screenImg = new BufferedImage(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), BufferedImage.TYPE_INT_RGB);
+		screen = backGround.clone();
+//		screen =  ((DataBufferInt)screenImg.getRaster().getDataBuffer()).getData();
+		
+		
+		int[] terrainPixels = getPixels();
+		
+		for(int i = 0;i<screen.length;i++){
+			if(terrainPixels[i] != -1)
+				screen[i] = terrainPixels[i];
+		}
+		
+		
 	}
+	public void mergeTerrainAndBackground(int x,int y,int width,int height){
+		int[] terrainPixels = getPixels();
 
+		int realY = y * getWidth();
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < width; j++) {
+				int adr = realY + x + i * getWidth() + j;
+
+				if ((j + x) > getWidth() | (j + x) < 0 || (y + i) < 0 || adr >= getPixels().length)
+					continue;
+
+				
+				if (terrainPixels[adr] == -1) {
+					screen[adr] =backGround[adr];
+
+				}
+			}}
+	}
 	public boolean hitTestpoint(int x, int y) {
 
 		if (x < 0 || x >= getWidth() || y < 0 || y >= getHeight())
@@ -26,6 +62,9 @@ public class Terrain extends RGBImage {
 
 	}
 
+	public int[] getScreenPixels(){
+		return screen;
+	}
 	public void addExplosion(int x, int y, int radius) {
 		DrawCircle(Game.ALPHA_MASK, x, y, radius);
 	}
@@ -102,8 +141,9 @@ public class Terrain extends RGBImage {
 
 		}
 		pixels[width / 2 * width + width / 2] = color;
-
 		DrawRGBImage(pixels, -100, x0, y0, width, width);
+		
+		mergeTerrainAndBackground(x0,y0,width,width);
 
 	}
 }
