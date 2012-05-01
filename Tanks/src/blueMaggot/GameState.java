@@ -13,8 +13,8 @@ public class GameState {
 	private boolean running = false;
 	private int playerNumber;
 
-	private String player1Nick;
-	private String player2Nick;
+	private String player1Nick = "Player1";
+	private String player2Nick = "Player2";
 
 	private boolean isHost = false;
 	private File selectedLevelTerrain = new File("./lvl/Cityscape_terrain.png");

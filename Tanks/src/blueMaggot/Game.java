@@ -20,7 +20,7 @@ import baseGame.Rendering.Renderer;
 import blueMaggot.maps.cityScape;
 
 public class Game extends BaseGame implements ConnectionDelegate {
-
+	private GameListener gameListener;
 	public boolean didTick = false;
 	public static int ALPHA_MASK = -1;
 	private GameOverlay overlay;
@@ -46,6 +46,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	}
 
 	public Game(BlueMaggot blueMaggot) {
+		gameListener = blueMaggot;
 		overlay = new GameOverlay();
 		this.blueMaggot = blueMaggot;
 		blueMaggot.inputReal = handler;
@@ -138,6 +139,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public void connectionFailed(String message) {
 		System.out.println("connection failed: " + message);
+		gameListener.ConnectionFailed(message);
 	}
 
 	@Override
@@ -162,18 +164,23 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			Gun gun1 = Gun.valueOf(properties[4]);
 			Gun gun2 = Gun.valueOf(properties[5]);
 
+			String nick1 = properties[6];
+			String nick2 = properties[7];
 			if (!state.isHost()) {
 
 				player2 = GameState.getInstance().players.get(1);
 				player2.setScore(score1);
 				player2.setLife(life2);
 				player2.setCurrentWeapon(gun2);
+				state.setPlayer2Nick(nick2);
+				
 
 			} else {
 				player2 = GameState.getInstance().players.get(0);
 				player2.setScore(score1);
 				player2.setLife(life1);
 				player2.setCurrentWeapon(gun1);
+				state.setPlayer1Nick(nick1);
 			}
 
 //			state.setPlayers(level.getPlayers());
@@ -200,10 +207,12 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			index2 = 1;
 			
 		String gameState = "";
+		
 		if (state.getPlayers() != null && state.getPlayers().size() > 1)
 			gameState = state.getPlayers().get(index1).getScore() + "'" + state.getPlayers().get(index2).getLife() + "'"
 					+ state.getPlayers().get(index2).getScore() + "'" + state.players.get(index2).getLife() + "'"
-					+ state.players.get(0).getCurrentWeaponName() + "'" + state.players.get(1).getCurrentWeaponName();
+					+ state.players.get(0).getCurrentWeaponName() + "'" + state.players.get(1).getCurrentWeaponName() +
+					"'" + state.getPlayer1Nick() + "'" + state.getPlayer2Nick();
 
 		gameState += "@";
 

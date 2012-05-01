@@ -18,6 +18,7 @@ public class Bullet extends Projectile {
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
 		this.dy = dy * maxSpeed;
+		
 	}
 
 	@Override

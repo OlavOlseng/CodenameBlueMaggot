@@ -54,11 +54,11 @@ public enum SoundEffect {
 	// Play or Re-play the sound effect from the beginning, by rewinding.
 	public void play() {
 		if (volume != Volume.MUTE) {
-			if (clip.isRunning())
-				clip.stop(); // Stop the player if it is still running
-			clip.setFramePosition(0); // rewind to the beginning
-			clip.start(); // Start playing
-		}
+					if (clip.isRunning())
+						clip.stop(); // Stop the player if it is still running
+					clip.setFramePosition(0); // rewind to the beginning
+					clip.start(); // Start playing
+				}
 	}
 
 	public void stop() {
