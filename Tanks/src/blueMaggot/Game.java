@@ -88,8 +88,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		Tank player1 = state.players.get(0);
 		Tank player2 = state.players.get(1);
 		if((level != null && state.getPlayers().size() > 1 && overlay.needUppdate(player1.getScore(), player2.getScore(), player1.getLife(), player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon()))){
-		
-			overlay.paintOverlay(renderer.getGraphics());
+			
+			overlay.paintOverlay(renderer.getGraphics(),player1.getScore(), player2.getScore(), player1.getLife(), player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon());
 		}} 
 
 	// public byte[] parseKeyStrokes() {
@@ -117,6 +117,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		System.out.println("initiating connection");
 		if(connection != null)
 			connection.endConnection();
+		
+		
 		connection = new ConnectionManager(this);
 		if (isHost) {
 			GameState.getInstance().setPlayerNumber(2);
