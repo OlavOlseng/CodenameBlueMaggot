@@ -8,7 +8,7 @@ import java.util.List;
 public class InputHandler implements KeyListener {
 
 	private List<Key> keys = new ArrayList<Key>();
-	
+
 	public Key menu = new Key(keys);
 	public Key menuOff = new Key(keys);
 	public Key tab = new Key(keys);
@@ -74,6 +74,8 @@ public class InputHandler implements KeyListener {
 			rotateR1.toggle(pressed);
 		if (e.getKeyCode() == Action.ANGLE_COUNTERCLOCKWISE.getBind())
 			rotateL1.toggle(pressed);
+		if (e.getKeyCode() == Action.CYCLE_WEAPON.getBind())
+			down1.toggle(pressed);
 
 		if (e.getKeyCode() == Action.JETPACK2.getBind())
 			up2.toggle(pressed);
@@ -87,6 +89,8 @@ public class InputHandler implements KeyListener {
 			rotateR2.toggle(pressed);
 		if (e.getKeyCode() == Action.ANGLE_COUNTERCLOCKWISE2.getBind())
 			rotateL2.toggle(pressed);
+		if (e.getKeyCode() == Action.CYCLE_WEAPON2.getBind())
+			down2.toggle(pressed);
 	}
 
 	@Override
@@ -107,9 +111,9 @@ public class InputHandler implements KeyListener {
 		Action.JETPACK2.setBind(KeyEvent.VK_UP);
 		Action.SHOOT2.setBind(KeyEvent.VK_K);
 		Action.CYCLE_WEAPON2.setBind(KeyEvent.VK_DOWN);
-		Action.ANGLE_CLOCKWISE2.setBind(KeyEvent.VK_J);
-		Action.ANGLE_COUNTERCLOCKWISE2.setBind(KeyEvent.VK_L);
-		
+		Action.ANGLE_CLOCKWISE2.setBind(KeyEvent.VK_L);
+		Action.ANGLE_COUNTERCLOCKWISE2.setBind(KeyEvent.VK_J);
+
 		Action.MENU.setBind(KeyEvent.VK_ESCAPE);
 	}
 }
