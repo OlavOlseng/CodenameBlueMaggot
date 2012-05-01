@@ -8,6 +8,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import sun.swing.BakedArrayList;
+
 import entity.Tank;
 import entity.weapon.Gun;
 
@@ -290,7 +292,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void setLevel(String terrain,String backGround) {
-
+System.out.println(terrain + " " + backGround);
 		GameState state = GameState.getInstance();
 		File terrainFile = null;
 		File backGroundFile = null;

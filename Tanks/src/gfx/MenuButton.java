@@ -93,6 +93,7 @@ public class MenuButton extends Button {
 					} else if (label == Labels.START_GAME) {
 						game.startReuglarGame();
 						game.blueMaggot.menuOptions.apply(game);
+						GameState.getInstance().setRunning(true);
 					}
 					GameState.getInstance().setPaused(false);
 					menu.setVisible(false);
