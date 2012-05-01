@@ -33,13 +33,12 @@ public class cityScape extends BasicLevel {
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
 		
-		try {
-			terrain = new Terrain(GameState.getInstance().getSelectedLevelTerrain());
-			ResourceManager.setTerrain(terrain);
+		
+			
 			ResourceManager.setBackGround(new RGBImage(GameState.getInstance().getSelectedLevelBackground()));
-		} catch (IOException e) {
-			BlueMaggot.e = e;
-		}
+			terrain = new Terrain(new RGBImage(GameState.getInstance().getSelectedLevelTerrain()).getRgbBufferedImage(),ResourceManager.getBackGround());
+			ResourceManager.setTerrain(terrain);
+		
 		SoundEffect.SPAWN.play();
 		this.players = GameState.getInstance().getPlayers();
 	//	testImg = new BufferedImage(GameState.getInstance().getWidth(),GameState.getInstance().getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -145,13 +144,16 @@ public class cityScape extends BasicLevel {
 
 	public void onDraw(Renderer renderer) {
 	//Draws background and terrain
-		//long time1 = System.currentTimeMillis();
+		long time1 = System.currentTimeMillis();
 		
-		renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, GameState.getInstance().getWidth(), GameState.getInstance().getHeight());
-		renderer.DrawImage(ResourceManager.getTerrain(), -1, 0, 0, terrain.getWidth(), terrain.getHeight());
+		//renderer.DrawImage(ResourceManager.getBackGround(), 0, 0, GameState.getInstance().getWidth(), GameState.getInstance().getHeight());
+		//renderer.DrawImage(ResourceManager.getTerrain(), -1, 0, 0, terrain.getWidth(), terrain.getHeight());
 		
-		//renderer.getGraphics().drawImage(testImg, 0, 0, GameState.getInstance().getWidth() ,GameState.getInstance().getHeight(), Color.BLACK, null);
-		//System.out.println(System.currentTimeMillis()-time1);
+		//renderer.DrawPixelArrayRGB(ResourceManager.getTerrain().getScreenPixels(), 0, 0, GameState.getInstance().getWidth() ,GameState.getInstance().getHeight());
+		renderer.DrawTerrain(ResourceManager.getTerrain(), 0, 0, 0 ,0);
+		//renderer.getGraphics().drawImage(ResourceManager.getTerrain().screenImg, 0,0,GameState.getInstance().getWidth(),GameState.getInstance().getHeight(),Color.BLACK,null);
+		
+		System.out.println(System.currentTimeMillis()-time1);
 		super.render(renderer);
 	}
 }

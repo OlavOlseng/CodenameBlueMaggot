@@ -59,8 +59,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public void onUpdate(double deltaTime) {
 
-		if (blueMaggot != null)
-			blueMaggot.tick();
+
 
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
@@ -76,7 +75,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void onDraw(Renderer renderer) {
-
+		
+		if (blueMaggot != null)
+			blueMaggot.tick(renderer.getGraphics());
+		
 		renderer.clearAllPixelData(Color.WHITE.getRGB());
 		level.onDraw(renderer);
 
@@ -110,6 +112,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		level.init();
 		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 200);
 		GameState.getInstance().setRunning(true);
+		
 	}
 
 	/* network stuff */

@@ -16,6 +16,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -82,7 +83,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		layeredPane.add(menuOptionsLan, new Integer(11));
 		layeredPane.add(menuLevelSelect, new Integer(11));
 		layeredPane.add(menuAbout, new Integer(11));
-		layeredPane.add(uiScoreBoard, new Integer(12));
+		//layeredPane.add(uiScoreBoard, new Integer(12));
 
 		add(layeredPane);
 		pack();
@@ -136,11 +137,12 @@ public class BlueMaggot extends JFrame implements Runnable {
 				warning.setVisible(true);
 				warning.setAlwaysOnTop(true);
 				warning.setLocationRelativeTo(null);
+				
 			}
 		}
 	}
 
-	public void tick() {
+	public void tick(Graphics2D g) {
 		for (Tank tank : GameState.getInstance().getPlayers()) {
 			if (tank.getNick() == null)
 				tank.setNick("Player");
@@ -150,29 +152,31 @@ public class BlueMaggot extends JFrame implements Runnable {
 			inputReal.menu.clicked = false;
 			inputReal.releaseAll();
 			if (!menuTitle.isVisible()) {
+			
 				menuTitle.setVisible(true);
 				menuBackground.setVisible(true);
-				menuTitle.repaint();
+				//menuTitle.paint(g);
 				GameState.getInstance().setPaused(true);
 			}
 		}
 
 		// TODO: Implement scoreboard
 		if (GameState.getInstance().isGameOver()) {
+			System.out.println("Inmenu");
 			menuTitle.setVisible(true);
 			uiScoreBoard.setVisible(true);
 			GameState.getInstance().setPaused(true);
 			GameState.getInstance().setRunning(false);
 			menuBackground.setVisible(true);
-			menuTitle.repaint();
+		//	menuTitle.paint(g);
 		}
 
-		for (Tank tank : GameState.getInstance().getPlayers()) {
+	/*	for (Tank tank : GameState.getInstance().getPlayers()) {
 			if (tank.getScore() != tank.getOldScore()) {
 				tank.setOldScore(tank.getScore());
 
 			}
-		}
+		}*/
 
 	}
 

@@ -102,6 +102,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 			
 			
 			onUppdateUI(renderer);
+			
 			buffer.show();
 		
 			g.dispose();
