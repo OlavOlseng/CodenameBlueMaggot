@@ -290,6 +290,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void setLevel(String terrain,String backGround) {
+
 		GameState state = GameState.getInstance();
 		File terrainFile = null;
 		File backGroundFile = null;

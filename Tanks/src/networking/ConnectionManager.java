@@ -53,8 +53,9 @@ public class ConnectionManager {
 		TimerTask acceptLoop = new TimerTask() {
 			@Override
 			public void run() {
-				
+			
 				try {
+					listener.setSoTimeout(10000);
 					client = listener.accept();
 				} catch (IOException e) {
 					
@@ -131,6 +132,7 @@ public class ConnectionManager {
 				
 				
 				try {
+					while(client.getInputStream().available() <5){};
 					client.getInputStream().read(byteHeader, 0, 5);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -142,13 +144,19 @@ public class ConnectionManager {
 				
 				byte[] levelData = new byte[len];
 				try {
-					client.getInputStream().read(levelData, 0, 5);
+					
+					while(client.getInputStream().available() <len){};
+					client.getInputStream().read(levelData, 0, len);
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					delegate.connectionFailed(e.getLocalizedMessage());
 					this.cancel();
 					return;
 				}
+				String levelPaths = new String(levelData);
+				String[] paths = levelPaths.split("'");
+				delegate.setLevel(paths[0], paths[1]);
 				
 				this.cancel();
 				init();
