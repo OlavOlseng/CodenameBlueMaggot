@@ -22,8 +22,9 @@ public class InputHandler implements KeyListener {
 	static int PLAYER2_UP = KeyEvent.VK_UP;
 	static int PLAYER2_DOWN = KeyEvent.VK_DOWN;
 	static int PLAYER2_ROTATEL =  KeyEvent.VK_J;
-	static int PLAYER2_ROTATER = KeyEvent.VK_K;
-	static int PLAYER2_FIRE = KeyEvent.VK_L;
+	static int PLAYER2_ROTATER = KeyEvent.VK_L;
+	static int PLAYER2_FIRE = KeyEvent.VK_K;
+	
 
 	public Key menu = new Key(keys);
 	public Key menuOff = new Key(keys);
