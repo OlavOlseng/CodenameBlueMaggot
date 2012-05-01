@@ -85,6 +85,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void onUppdateUI(Renderer renderer) {
+		
 		GameState state = GameState.getInstance();
 		Tank player1 = state.players.get(0);
 		Tank player2 = state.players.get(1);
