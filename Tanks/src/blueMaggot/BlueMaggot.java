@@ -52,7 +52,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 	private MenuBackground menuBackground;
 
 	public BlueMaggot() {
-
+		GameState.getInstance().init();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setPreferredSize(new Dimension(GameState.getInstance().getWidth(), GameState.getInstance().getHeight() + 28));
