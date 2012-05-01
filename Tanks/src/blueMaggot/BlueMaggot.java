@@ -30,7 +30,7 @@ import javax.swing.JTextArea;
 /**
  * @author Habitats * this motherfucker starts the game
  */
-public class BlueMaggot extends JFrame implements Runnable {
+public class BlueMaggot extends JFrame implements Runnable,GameListener{
 
 	public InputHandler inputReal = new InputHandler();
 
@@ -174,5 +174,11 @@ public class BlueMaggot extends JFrame implements Runnable {
 			GameState.getInstance().setRunning(false);
 			menuBackground.setVisible(true);
 		}
+	}
+
+	@Override
+	public void ConnectionFailed(String msg) {
+		GameState.getInstance().setPaused(true);
+		GameState.getInstance().setRunning(false);
 	}
 }

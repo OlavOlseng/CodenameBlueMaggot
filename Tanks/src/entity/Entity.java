@@ -162,7 +162,7 @@ public abstract class Entity implements NetworkObject {
 
 		
 		if(type !=null)
-		return "'" + getId()+ "'" +type + "'"  + removed + "'"+ encodeToDouble(x) + "'" + encodeToDouble(y);
+		return "'" + getId()+ "'" +type + "'"  + removed + "'"+ encodeToDouble(x)+ "'" + encodeToDouble(y);
 		else
 		return "";
 	}

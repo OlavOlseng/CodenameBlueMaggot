@@ -4,10 +4,12 @@ import gfx.GBC.Align;
 import gfx.MenuField.FieldType;
 
 import java.awt.Dimension;
+import java.util.Comparator;
+
 import blueMaggot.Game;
 import blueMaggot.GameState;
 
-public class MenuOptionsLan extends Menu {
+public class MenuOptionsLan extends Menu{
 	private Dimension btnSize = new Dimension(200, 20);
 
 	private MenuField fieldPlayerTwo;
@@ -53,6 +55,7 @@ public class MenuOptionsLan extends Menu {
 		add(fieldIp, new GBC(1, 2, Align.LEFT));
 		add(btnStartLan, new GBC(0, 4, Align.RIGHT));
 		add(btnReturn, new GBC(1, 4, Align.LEFT));
+	
 	}
 
 	public void apply(Game game) {
@@ -68,4 +71,6 @@ public class MenuOptionsLan extends Menu {
 		System.out.println(GameState.getInstance().getPlayer2Nick());
 		// game.blueMaggot.ui.repaint();
 	}
+
+	
 }
