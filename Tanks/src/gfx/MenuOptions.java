@@ -52,9 +52,9 @@ public class MenuOptions extends Menu {
 
 	public void apply(Game game) {
 		if (fieldPlayerOne.msg != null)
-			GameState.getInstance().getPlayers().get(0).setNick(fieldPlayerOne.msg);
+			GameState.getInstance().setPlayer1Nick(fieldPlayerOne.msg);
 		if (fieldPlayerTwo.msg != null)
-			GameState.getInstance().getPlayers().get(1).setNick(fieldPlayerTwo.msg);
+			GameState.getInstance().setPlayer2Nick(fieldPlayerTwo.msg);
 //		game.blueMaggot.ui.repaint();
 	}
 }

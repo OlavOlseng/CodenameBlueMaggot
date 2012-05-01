@@ -116,6 +116,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	/* network stuff */
 	public void initConnection(boolean isHost, String addr) {
+		
 		GameState.getInstance().init();
 		System.out.println("initiating connection");
 		if (connection != null)

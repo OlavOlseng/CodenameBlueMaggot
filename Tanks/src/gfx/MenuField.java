@@ -1,6 +1,7 @@
 package gfx;
 
 import inputhandler.Action;
+import inputhandler.Key;
 
 import java.awt.Color;
 import java.awt.TextField;
@@ -50,8 +51,8 @@ public class MenuField extends TextField {
 					msg = ae.getActionCommand();
 					setBackground(Menu.green);
 				} else if (type == FieldType.KEY && tmpMsg.length() == 1) {
-					
-					action.setBind(KeyEvent.getExtendedKeyCodeForChar(tmpMsg.charAt(0)));
+					System.out.println(KeyEvent.getKeyText(tmpMsg.charAt(0)));
+					//action.setBind(KeyEvent.getExtendedKeyCodeForChar(tmpMsg.charAt(0)));
 					setText(tmpMsg);
 					setBackground(Menu.green);
 					return;
