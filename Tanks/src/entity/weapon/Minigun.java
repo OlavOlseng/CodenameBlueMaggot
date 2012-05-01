@@ -14,7 +14,7 @@ public class Minigun implements Weapon{
 	int bulletsFired = 0;
 	double currentCooldown = 0;
 	double cooldownTime = 180;
-	int ammo = 0;
+	int ammo = 100;
 	Tank owner;
 	BasicLevel level;
 	Random rand = new Random();
