@@ -12,11 +12,11 @@ public class Grenade extends Projectile {
 	private int liveTime = 0;
 	private int explosionTime = 150;
 	int explosionRadius = 40;
-	double explosionPower = 150;
+	double explosionPower = 250;
 
 	public Grenade(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		super(x, y, 4, 4, level, speedPercent, angle);
-		this.maxSpeed = 12;
+		this.maxSpeed = 13;
 		this.frictionConstant = 0.0004;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
@@ -61,22 +61,22 @@ public class Grenade extends Projectile {
 		if (up && down && left && right) {
 			liveTime += dt * 5;
 			setLocation(x - dx * 2, y - dy * 2);
-			setSpeed(-dx * 0.5, -dy * 0.5);
+			setSpeed(-dx * 0.4, -dy * 0.4);
 		} else if (up && down && left) {
 			setLocation(x - dx, y);
-			setSpeed(-dx * 0.4, dy * 0.8);
+			setSpeed(-dx * 0.4, dy * 0.6);
 		} else if (up && down && right) {
 			setLocation(x - dx, y);
-			setSpeed(-dx * 0.4, dy * 0.8);
+			setSpeed(-dx * 0.4, dy * 0.6);
 		} else if (up && left && right) {
 			setLocation(x, y - dy);
-			setSpeed(dx * 0.7, -dy * 0.8);
+			setSpeed(dx * 0.5, -dy * 0.6);
 		} else if (down && left && right) {
 			setLocation(x, y - dy);
-			setSpeed(dx * 0.5, -dy * 0.4);
+			setSpeed(dx * 0.4, -dy * 0.4);
 		} else if (right || left) {
 			setLocation(x - dx, y);
-			setSpeed(-dx * 0.5, dy);
+			setSpeed(-dx * 0.5, dy*0.7);
 		} else if (down || up) {
 			setLocation(x, y - dy);
 			setSpeed(dx * 0.4, -dy * 0.4);
