@@ -281,6 +281,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		level = onlineLevel;
 		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 60);
 		GameState.getInstance().setRunning(true);
+		GameState.getInstance().setPaused(false);
+		GameState.getInstance().setGameOver(false);
 		GameState.getInstance().players = level.getPlayers();
 
 	}
@@ -299,6 +301,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			gameListener.ConnectionFailed("Could not find level file. Terrain:" + terrainFile.getName() + " Background:" + backGroundFile.getName());
 
 		}
+		
 		// TODO Auto-generated method stub
 
 	}
