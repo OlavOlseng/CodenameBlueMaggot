@@ -279,7 +279,7 @@ public class Tank extends Entity {
 		return weaponList;
 	}
 
-	protected void player1Input() {
+	protected void player2Input() {
 		if (input.up1.down)
 			jetPack();
 		if (input.down1.clicked)
@@ -308,7 +308,7 @@ public class Tank extends Entity {
 			incrementMuzzleAngle(-3);
 	}
 
-	protected void player2Input() {
+	protected void player1Input() {
 	
 		if (input.up2.down)
 			jetPack();
