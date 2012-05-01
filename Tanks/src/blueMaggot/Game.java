@@ -8,7 +8,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import entity.Tank;
 import entity.weapon.Gun;
 
@@ -89,10 +88,13 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		GameState state = GameState.getInstance();
 		Tank player1 = state.players.get(0);
 		Tank player2 = state.players.get(1);
-		if((level != null && state.getPlayers().size() > 1 && overlay.needUppdate(player1.getScore(), player2.getScore(), player1.getLife(), player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon()))){
-			
-			overlay.paintOverlay(renderer.getGraphics(),player1.getScore(), player2.getScore(), player1.getLife(), player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon());
-		}} 
+//		if ((level != null && state.getPlayers().size() > 1 && overlay.needUppdate(player1.getScore(),
+//				player2.getScore(), player1.getLife(), player2.getLife(), player1.getCurrentWeapon(),
+//				player2.getCurrentWeapon()))) {
+			overlay.paintOverlay(renderer.getGraphics(), player1.getScore(), player2.getScore(), player1.getLife(),
+					player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon());
+//		}
+	}
 
 	// public byte[] parseKeyStrokes() {
 	// byte[] msg = new byte[7];
@@ -107,21 +109,23 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	// }
 
 	public void startReuglarGame() {
-		System.out.println("starting level: " + GameState.getInstance().getSelectedLevelBackground().getName().split("_")[0]);
+		GameState.getInstance().init();
+		System.out.println("starting level: "
+				+ GameState.getInstance().getSelectedLevelBackground().getName().split("_")[0]);
 		level = new cityScape(this, handler);
 		level.init();
-		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 200);
+		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 60);
 		GameState.getInstance().setRunning(true);
 		
 	}
 
 	/* network stuff */
 	public void initConnection(boolean isHost, String addr) {
+		GameState.getInstance().init();
 		System.out.println("initiating connection");
-		if(connection != null)
+		if (connection != null)
 			connection.endConnection();
-		
-		
+
 		connection = new ConnectionManager(this);
 		if (isHost) {
 			GameState.getInstance().setPlayerNumber(2);
@@ -144,57 +148,49 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		String gameData = new String(data);
 		String[] parts = gameData.split("\\@");
-	
+
 		String gameState = parts[0];
 		String[] properties = gameState.split("\\'");
-//		System.out.println("gamestate: " + gameState);
+		// System.out.println("gamestate: " + gameState);
 		Tank player1;
-		Tank player2 ;
-	
-		if(level != null &&level.getPlayers().size()> 1){
+		Tank player2;
+
+		if (level != null && level.getPlayers().size() > 1) {
 			GameState state = GameState.getInstance();
 			int score1 = Integer.parseInt(properties[0]);
-			int life1= Integer.parseInt(properties[1]);
-			
-			int score2= Integer.parseInt(properties[2]);
-			int life2= Integer.parseInt(properties[3]);	
-			
+			int life1 = Integer.parseInt(properties[1]);
+
+			int score2 = Integer.parseInt(properties[2]);
+			int life2 = Integer.parseInt(properties[3]);
+
 			Gun gun1 = Gun.valueOf(properties[4]);
 			Gun gun2 = Gun.valueOf(properties[5]);
-			
 
-		System.out.println(level.getPlayers().size());
-		if(!state.isHost()){
-			
-			player2 = GameState.getInstance().players.get(1);
-			player2.setScore(score2);
-			player2.setLife(life2);
-			player2.setCurrentWeapon(gun2);
-	
-		}else{
-			/*player2 = temp;
-			player2.setScore(score2);
-			player2.setLife(life2);
-			player2.setCurrentWeapon(gun2);*/
-		}
-		
-	
-	
-		
+			System.out.println(level.getPlayers().size());
+			if (!state.isHost()) {
 
-		
-		state.setPlayers(level.getPlayers());
-		
+				player2 = GameState.getInstance().players.get(1);
+				player2.setScore(score2);
+				player2.setLife(life2);
+				player2.setCurrentWeapon(gun2);
+
+			} else {
+				/*
+				 * player2 = temp; player2.setScore(score2);
+				 * player2.setLife(life2); player2.setCurrentWeapon(gun2);
+				 */
+			}
+
+			state.setPlayers(level.getPlayers());
+
 		}
-		
-			
-		
+
 		if (data.length > 0) {
 
 			onlineLevel.catchResponse(parts[1]);
 
 		}
-		
+
 	}
 
 	@Override
@@ -202,15 +198,16 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		GameState state = GameState.getInstance();
 
-		String gameState ="";
-		if(state.getPlayers() != null && state.getPlayers().size()>1)
-			gameState= state.getPlayers().get(0).getScore() + "'"+ state.getPlayers().get(1).getLife()+ "'" + state.getPlayers().get(0).getScore()+ "'" + state.players.get(1).getLife()+"'" +state.players.get(0).getCurrentWeaponName()+"'" +state.players.get(1).getCurrentWeaponName() ;
-		
+		String gameState = "";
+		if (state.getPlayers() != null && state.getPlayers().size() > 1)
+			gameState = state.getPlayers().get(0).getScore() + "'" + state.getPlayers().get(1).getLife() + "'"
+					+ state.getPlayers().get(0).getScore() + "'" + state.players.get(1).getLife() + "'"
+					+ state.players.get(0).getCurrentWeaponName() + "'" + state.players.get(1).getCurrentWeaponName();
+
 		gameState += "@";
 
-
 		String msgBody = "";
-		
+
 		List<NetworkObject> objects = onlineLevel.getNetworkObjectList();
 		List<Integer> deadKeys = new ArrayList<Integer>();
 
@@ -237,9 +234,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		}
 
-		
-		String msgHeader = "1" + to5DigitString(msgBody.length() + gameState.length()) ;
-
+		String msgHeader = "1" + to5DigitString(msgBody.length() + gameState.length());
 
 		return (msgHeader + gameState + msgBody).getBytes();
 
@@ -278,6 +273,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 60);
 		GameState.getInstance().setRunning(true);
 		GameState.getInstance().players = level.getPlayers();
-		
+
 	}
 }
