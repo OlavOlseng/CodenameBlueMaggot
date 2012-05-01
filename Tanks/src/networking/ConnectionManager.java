@@ -157,14 +157,13 @@ public class ConnectionManager {
 						offset = 0;
 						
 						remaining = data.length;
-						
+
 						while(in.available()< len){
 						
 						}
 						while (remaining > 0) {
 							remaining -= in.read(data, offset, data.length - offset);
 							offset = header.length - remaining;
-
 						}
 					
 
