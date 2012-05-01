@@ -157,7 +157,7 @@ public class ConnectionManager {
 						offset = 0;
 						
 						remaining = data.length;
-						System.out.println((int)len);
+						
 						while(in.available()< len){
 						
 						}
