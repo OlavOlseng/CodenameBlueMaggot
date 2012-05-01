@@ -74,6 +74,11 @@ public class Tank extends Entity {
 		boxUnderCenter.addPoint(new FloatingPoint(0, yr));
 		boxUnderCenter.addPoint(new FloatingPoint(1, yr));
 		boxUnderCenter.addPoint(new FloatingPoint(2, yr));
+		boxUnderCenter.addPoint(new FloatingPoint(-2, yr-1));
+		boxUnderCenter.addPoint(new FloatingPoint(-1, yr-1));
+		boxUnderCenter.addPoint(new FloatingPoint(0, yr-1));
+		boxUnderCenter.addPoint(new FloatingPoint(1, yr-1));
+		boxUnderCenter.addPoint(new FloatingPoint(2, yr-1));
 
 		boxLeft = new PixelHitbox();
 		boxRight = new PixelHitbox();

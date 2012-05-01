@@ -27,7 +27,11 @@ public class Package extends Entity {
 		hitbox.addPoint(new FloatingPoint(-xr, 0));
 		hitbox.addPoint(new FloatingPoint(0, -yr));
 		hitbox.addPoint(new FloatingPoint(0, 0));
+		hitbox.addPoint(new FloatingPoint(-2, yr));
+		hitbox.addPoint(new FloatingPoint(-1, yr));
 		hitbox.addPoint(new FloatingPoint(0, yr));
+		hitbox.addPoint(new FloatingPoint(1, yr));
+		hitbox.addPoint(new FloatingPoint(2, yr));
 		hitbox.addPoint(new FloatingPoint(xr, 0));
 	}
 
