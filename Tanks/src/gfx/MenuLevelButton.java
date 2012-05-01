@@ -16,8 +16,8 @@ public class MenuLevelButton extends Button {
 
 	private Image thumb;
 	private Image thumbBg;
-	private int width = 100;
-	private int height = 80;
+	private int width = 110;
+	private int height = 70;
 	private File lvlTerrain;
 	private File lvlBackground;
 	private int border = 2;

@@ -25,20 +25,25 @@ public class MenuLevelSelect extends Menu {
 		setVisible(false);
 		int gridx = 0;
 		int gridy = 0;
+		int lvlCount = 0;
 
 		if (path.exists()) {
 			for (File lvl : path.listFiles()) {
 				if (lvl.getName().contains("terrain")) {
+					if (lvlCount > 12)
+						BlueMaggot.e = new Exception("Too many levels added! Max is 12.");
 					MenuLevelButton btnLvl = new MenuLevelButton(lvl, this);
 					if (gridx <= 3) {
-						add(btnLvl, new GBC(gridx, gridy, null).setInsets(10, 10, 10, 10));
+						add(btnLvl, new GBC(gridx, gridy, Align.MID));
 						lvlBtns.add(btnLvl);
 						++gridx;
+						lvlCount++;
 					} else {
 						gridx = 0;
 						++gridy;
-						add(btnLvl, new GBC(gridx, gridy, null).setInsets(10, 10, 10, 10));
+						add(btnLvl, new GBC(gridx, gridy, Align.MID));
 						lvlBtns.add(btnLvl);
+						lvlCount++;
 					}
 					System.out.println("adding button");
 				}
@@ -46,8 +51,8 @@ public class MenuLevelSelect extends Menu {
 		} else
 			BlueMaggot.e = new FileNotFoundException("\nPath: " + path.getAbsolutePath());
 
-		add(new MenuButton(Labels.APPLY, this, game), new GBC(0, ++gridy, Align.RIGHT).setInsets(10, 10, 10, 10).setSpan(2, 1));
-		add(new MenuButton(Labels.RETURN, this, game), new GBC(2, gridy, Align.LEFT).setInsets(10, 10, 10, 10).setSpan(2, 1));
+		add(new MenuButton(Labels.APPLY, this, game), new GBC(0, ++gridy, Align.MID).setSpan(2, 1));
+		add(new MenuButton(Labels.RETURN, this, game), new GBC(2, gridy, Align.MID).setSpan(2, 1));
 	}
 
 	public void apply() {
