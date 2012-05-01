@@ -56,13 +56,15 @@ public class MenuOptionsLan extends Menu {
 
 	public void apply(Game game) {
 		GameState.getInstance().setHost(boxIsHost.getState());
-		/*if (fieldLanNick.msg != null)
+		 if(fieldLanNick.msg != null){
 			if (GameState.getInstance().isHost())
-				GameState.getInstance().getPlayers().get(0).setNick(fieldLanNick.msg);
+				GameState.getInstance().setPlayer2Nick(fieldLanNick.msg);
 			else
-				GameState.getInstance().getPlayers().get(1).setNick(fieldLanNick.msg);*/
-
+				GameState.getInstance().setPlayer1Nick(fieldLanNick.msg);
+		 }
 		GameState.getInstance().hostIp = fieldIp.msg;
+		
+		System.out.println(GameState.getInstance().getPlayer2Nick());
 		// game.blueMaggot.ui.repaint();
 	}
 }

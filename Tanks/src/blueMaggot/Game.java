@@ -58,8 +58,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public void onUpdate(double deltaTime) {
 
-
-
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
 
@@ -74,30 +72,36 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void onDraw(Renderer renderer) {
-		
+
 		if (blueMaggot != null)
 			blueMaggot.tick(renderer.getGraphics());
-		
-	//	renderer.clearAllPixelData(Color.WHITE.getRGB());
+
+		// renderer.clearAllPixelData(Color.WHITE.getRGB());
 		level.onDraw(renderer);
 
 	}
 
 	@Override
 	public void onUppdateUI(Renderer renderer) {
-		
+
+		if(GameState.getInstance().getPlayers() == null || GameState.getInstance().getPlayers().size() < 1)
+			return;
+
 		GameState state = GameState.getInstance();
 		Tank player1 = state.players.get(0);
 		Tank player2 = state.players.get(1);
 
-//		if ((level != null && state.getPlayers().size() > 1 && overlay.needUppdate(player1.getScore(),
-//				player2.getScore(), player1.getLife(), player2.getLife(), player1.getCurrentWeapon(),
-//				player2.getCurrentWeapon()))) {
-			/*overlay.paintOverlay(renderer.getGraphics(), player1.getScore(), player2.getScore(), player1.getLife(),
-					player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon());*/
-		
-//		}
+		// if ((level != null && state.getPlayers().size() > 1 &&
+		// overlay.needUppdate(player1.getScore(),
+		// player2.getScore(), player1.getLife(), player2.getLife(),
+		// player1.getCurrentWeapon(),
+		// player2.getCurrentWeapon()))) {
+		overlay.paintOverlay(renderer.getGraphics(), player1.getScore(), player2.getScore(), player1.getLife(),
+				player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon());
+
+		// }
 	}
+
 	// }
 
 	public void startReuglarGame() {
@@ -108,7 +112,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		level.init();
 		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 60);
 		GameState.getInstance().setRunning(true);
-		
+
 	}
 
 	/* network stuff */
@@ -146,15 +150,14 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		// System.out.println("gamestate: " + gameState);
 		Tank player1;
 		Tank player2;
-
+	
 		if (level != null && level.getPlayers().size() > 1) {
 			GameState state = GameState.getInstance();
-			int score1 = Integer.parseInt(properties[0]);
-			int life1 = Integer.parseInt(properties[1]);
-
-			int score2 = Integer.parseInt(properties[2]);
-			int life2 = Integer.parseInt(properties[3]);
-
+			int score1 = Integer.parseInt(properties[2]);
+			int score2 = Integer.parseInt(properties[0]);
+			int life1 = Integer.parseInt(properties[3]);
+			int life2 = Integer.parseInt(properties[1]);
+			
 			Gun gun1 = Gun.valueOf(properties[4]);
 			Gun gun2 = Gun.valueOf(properties[5]);
 
@@ -162,18 +165,18 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			if (!state.isHost()) {
 
 				player2 = GameState.getInstance().players.get(1);
-				player2.setScore(score2);
+				player2.setScore(score1);
 				player2.setLife(life2);
 				player2.setCurrentWeapon(gun2);
 
 			} else {
-				/*
-				 * player2 = temp; player2.setScore(score2);
-				 * player2.setLife(life2); player2.setCurrentWeapon(gun2);
-				 */
+				player2 = GameState.getInstance().players.get(0);
+				player2.setScore(score1);
+				player2.setLife(life1);
+				player2.setCurrentWeapon(gun1);
 			}
 
-			state.setPlayers(level.getPlayers());
+//			state.setPlayers(level.getPlayers());
 
 		}
 
@@ -189,11 +192,17 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public byte[] onWrite() {
 
 		GameState state = GameState.getInstance();
-
+		int index1 = 0;
+		int index2 = 0;
+		if(state.getPlayerNumber() ==1)
+			index1 = 1;
+		else
+			index2 = 1;
+			
 		String gameState = "";
 		if (state.getPlayers() != null && state.getPlayers().size() > 1)
-			gameState = state.getPlayers().get(0).getScore() + "'" + state.getPlayers().get(1).getLife() + "'"
-					+ state.getPlayers().get(0).getScore() + "'" + state.players.get(1).getLife() + "'"
+			gameState = state.getPlayers().get(index1).getScore() + "'" + state.getPlayers().get(index2).getLife() + "'"
+					+ state.getPlayers().get(index2).getScore() + "'" + state.players.get(index2).getLife() + "'"
 					+ state.players.get(0).getCurrentWeaponName() + "'" + state.players.get(1).getCurrentWeaponName();
 
 		gameState += "@";
