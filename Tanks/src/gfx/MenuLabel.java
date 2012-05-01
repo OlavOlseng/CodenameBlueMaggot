@@ -3,7 +3,6 @@ package gfx;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Label;
-import java.awt.Panel;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 

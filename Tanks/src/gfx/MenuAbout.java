@@ -1,7 +1,5 @@
 package gfx;
 
-import java.awt.Dimension;
-
 import gfx.GBC.Align;
 import gfx.Labels;
 

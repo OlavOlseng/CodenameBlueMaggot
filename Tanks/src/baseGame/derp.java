@@ -4,7 +4,6 @@ package baseGame;
 import javax.swing.JFrame;
 
 import blueMaggot.Game;
-import blueMaggot.GameState;
 
 public class derp extends JFrame {
 	Game game;

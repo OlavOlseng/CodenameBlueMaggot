@@ -3,7 +3,6 @@ package gfx;
 import inputhandler.Action;
 
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
 
 import gfx.GBC.Align;
 import gfx.MenuField.FieldType;

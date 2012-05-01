@@ -1,9 +1,5 @@
 package blueMaggot.maps;
 
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-import java.io.IOException;
 import java.util.Random;
 
 import sound.SoundEffect;
@@ -22,7 +18,6 @@ import inputhandler.InputHandler;
 import baseGame.BaseGame;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
-import blueMaggot.BlueMaggot;
 import blueMaggot.GameState;
 
 public class cityScape extends BasicLevel {

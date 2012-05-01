@@ -1,6 +1,5 @@
 package gfx;
 
-import gfx.MenuField.FieldType;
 import inputhandler.Action;
 
 import java.awt.Color;

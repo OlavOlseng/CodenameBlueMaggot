@@ -1,7 +1,5 @@
 package gfx;
 
-import java.awt.Graphics;
-
 import blueMaggot.Game;
 
 public class MenuScoreBoard extends Menu {

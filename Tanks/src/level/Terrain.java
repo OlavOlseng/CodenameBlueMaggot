@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import baseGame.Rendering.RGBImage;
 import blueMaggot.Game;
-import blueMaggot.GameState;
 
 public class Terrain extends RGBImage {
 	private int[] screen;
