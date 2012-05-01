@@ -35,11 +35,16 @@ public class Renderer {
 				if ((j + x) > canvasWidth || (j + x) < 0 || (i + y) < 0 || adr >= rgbPixels.length)
 					continue;
 
-				rgbPixels[adr] = pixels[i * width + j];
+				int p = pixels[i * width + j];
+			
+				rgbPixels[adr] = p;
+		
+				
 			}
 		}
 	}
 
+	
 	public void DrawPixelArrayRGB(int[] pixels, int transparentColor, int x, int y, int width, int height) {
 		int offset = y * canvasWidth;
 
@@ -50,10 +55,14 @@ public class Renderer {
 				if ((j + x) > canvasWidth || (j + x) < 0 || (i + y) < 0 || adr >= rgbPixels.length)
 					continue;
 
+				
 				int c = pixels[i * width + j];
 				if (c != transparentColor) {
 					rgbPixels[adr] = c;
+					
 				}
+					
+				
 			}
 		}
 	}
