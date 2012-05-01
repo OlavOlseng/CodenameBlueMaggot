@@ -55,7 +55,7 @@ public class ConnectionManager {
 			public void run() {
 			
 				try {
-					listener.setSoTimeout(10000);
+			//		listener.setSoTimeout(10000);
 					client = listener.accept();
 				} catch (IOException e) {
 					
@@ -156,7 +156,7 @@ public class ConnectionManager {
 				}
 				String levelPaths = new String(levelData);
 				String[] paths = levelPaths.split("'");
-				delegate.setLevel(paths[0], paths[1]);
+				delegate.setLevel(paths[1], paths[0]);
 				
 				this.cancel();
 				init();
