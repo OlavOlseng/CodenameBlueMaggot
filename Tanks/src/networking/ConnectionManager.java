@@ -63,7 +63,7 @@ public class ConnectionManager {
 					this.cancel();
 					return;
 				}
-				String terrainMsg = "" + GameState.getInstance().getSelectedLevelBackground().getPath() +"'" + GameState.getInstance().getSelectedLevelTerrain().getPath();
+				String terrainMsg = "" + GameState.getInstance().getSelectedLevelBackground().getName() +"'" + GameState.getInstance().getSelectedLevelTerrain().getName();
 				int len = terrainMsg.length();
 				String header = "" + to5DigitString(len);
 				try {
@@ -156,7 +156,7 @@ public class ConnectionManager {
 				}
 				String levelPaths = new String(levelData);
 				String[] paths = levelPaths.split("'");
-				delegate.setLevel(paths[1], paths[0]);
+				delegate.setLevel("./lvl/" +paths[1],"./lvl/" + paths[0]);
 				
 				this.cancel();
 				init();
