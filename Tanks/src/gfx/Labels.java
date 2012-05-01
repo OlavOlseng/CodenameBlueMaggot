@@ -7,8 +7,7 @@ public enum Labels {
 	NEW_GAME("newGame"), //
 	EXIT("exit"), //
 	LVL_SELECT("lvls"), //
-	CREATORS2("creators2"), //
-	CREATORS("creators"), //
+	WELCOME("welcome"), //
 	PLAYER_ONE("playerOne"), //
 	PLAYER_TWO("playerTwo"), //
 	LOGO("codenameBlueMaggot"), //
@@ -18,7 +17,8 @@ public enum Labels {
 	START_GAME("startGame"), //
 	START_LAN_GAME("startLanGame"), //
 	OPTIONS("options"), //
-	ABOUT("about");
+	ABOUT("about"), //
+	ABOUT_MSG("aboutMsg");
 
 	private String fileName;
 

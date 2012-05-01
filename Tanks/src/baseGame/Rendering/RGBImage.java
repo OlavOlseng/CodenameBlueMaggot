@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import blueMaggot.BlueMaggot;
+
 public class RGBImage {
 	public BufferedImage getRgbBufferedImage() {
 		return rgbBufferedImage;
@@ -52,29 +54,28 @@ public class RGBImage {
 
 	}
 
-	public RGBImage(String path) {
-
+	public RGBImage(String path)  {
 		BufferedImage img = null;
-
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream(path));
 		} catch (IOException e) {
-			e.printStackTrace();
+			BlueMaggot.e = e;
 		}
 		setBufferedImage(img);
 	}
 
-	public RGBImage(File file) {
+	public RGBImage(File file)  {
 		BufferedImage img = null;
 
 		try {
 			img = ImageIO.read(file);
 		} catch (IOException e) {
-			e.printStackTrace();
+			BlueMaggot.e = e;
 		}
 		setBufferedImage(img);
 	}
 
+	
 	public void DrawRGBImage(int[] pixels, int x, int y, int width, int height) {
 
 		int realY = y * canvasWidth;

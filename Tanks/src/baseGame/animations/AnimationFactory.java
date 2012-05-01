@@ -14,7 +14,7 @@ public class AnimationFactory {
 	private AnimationFactory() {
 		spriteSheets = new HashMap<String, SpriteSheet>();
 	}
-	public void addSpriteSheet(File path, String name, int spriteWidth, int spriteHeight) {
+	public void addSpriteSheet(File path, String name, int spriteWidth, int spriteHeight)  {
 		spriteSheets.put(name, new SpriteSheet(path, spriteWidth, spriteHeight));
 	}
 	public void addSpriteSheet(BufferedImage img, String name, int spriteWidth, int spriteHeight) {

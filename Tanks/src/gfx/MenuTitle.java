@@ -33,7 +33,6 @@ public class MenuTitle extends Menu {
 		c.gridwidth = 1;
 		c.gridx = 0;
 		c.gridy = 1;
-		c.ipadx = 140;
 		c.insets = new Insets(10, 0, 10, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridy++;

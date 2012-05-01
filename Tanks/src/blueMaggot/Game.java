@@ -112,6 +112,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	/* network stuff */
 	public void initConnection(boolean isHost, String addr) {
 		System.out.println("initiating connection");
+		if(connection != null)
+			connection.endConnection();
 		connection = new ConnectionManager(this);
 		if (isHost) {
 			GameState.getInstance().setPlayerNumber(2);
@@ -141,37 +143,44 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		Tank player1;
 		Tank player2 ;
 	
-		if(!GameState.getInstance().isHost()&& level != null &&level.getPlayers().size()> 1){
+		if(level != null &&level.getPlayers().size()> 1){
+			GameState state = GameState.getInstance();
 			int score1 = Integer.parseInt(properties[0]);
-
-			int score2= Integer.parseInt(properties[1]);
-			int life1= Integer.parseInt(properties[2]);
+			int life1= Integer.parseInt(properties[1]);
+			
+			int score2= Integer.parseInt(properties[2]);
 			int life2= Integer.parseInt(properties[3]);	
+			
 			Gun gun1 = Gun.valueOf(properties[4]);
 			Gun gun2 = Gun.valueOf(properties[5]);
 			
-		player1 = level.getPlayers().get(1);
-		player2 = level.getPlayers().get(0);
-		player1.setScore(score1);
-		player1.setLife(life1);
-		player1.setCurrentWeapon(gun1);
-		player2.setCurrentWeapon(gun2);
-		player2.setScore(score2);
-		player2.setLife(life2);
+
 		
-		GameState state = GameState.getInstance();
+		if(!state.isHost()){
+			System.out.println(GameState.getInstance().players.size());
+			player2 = GameState.getInstance().players.get(1);
+			player2.setScore(score2);
+			player2.setLife(life2);
+			player2.setCurrentWeapon(gun2);
+	
+		}else{
+			/*player2 = temp;
+			player2.setScore(score2);
+			player2.setLife(life2);
+			player2.setCurrentWeapon(gun2);*/
+		}
+		
+	
+	
+		
+
 		
 		state.setPlayers(level.getPlayers());
 		
 		}
-		else{
-			if(GameState.getInstance().isHost()){
-			Gun gun1 = Gun.valueOf(properties[4]);
-			if(level != null & level.getPlayers() != null)
-			level.getPlayers().get(0).setCurrentWeapon(gun1);
-			}
+		
 			
-		}
+		
 		if (data.length > 0) {
 
 			onlineLevel.catchResponse(parts[1]);

@@ -16,7 +16,7 @@ public class derp extends JFrame {
 		add(game);
 	}
 
-	public void init() {
+	public void init()  {
 
 	game.initConnection(true,"");GameState.getInstance().setPlayerNumber(2);
 //	game.initConnection(false, "127.0.0.1");GameState.getInstance().setPlayerNumber(1);

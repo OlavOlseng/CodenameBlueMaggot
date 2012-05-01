@@ -3,6 +3,7 @@ package gfx;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Label;
+import java.awt.Panel;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -10,30 +11,32 @@ import javax.imageio.ImageIO;
 
 public class MenuLabel extends Label {
 
-
 	private Labels label;
 	private BufferedImage lblImage;
-	
+
 	public MenuLabel(Labels logo) {
 		this.label = logo;
+		setPreferredSize(new Dimension(270, 13));
 		setUp();
 	}
 
 	public MenuLabel(Labels label, Dimension size) {
 		this.label = label;
-		super.setPreferredSize(size);
+		setPreferredSize(size);
 		setUp();
 	}
 
 	public void setUp() {
-		setPreferredSize(new Dimension(170, 13));
 		String img = "/titleMenu/" + label + ".png";
 		try {
 			lblImage = ImageIO.read(getClass().getResourceAsStream(img));
+			setPreferredSize(new Dimension(lblImage.getWidth(), lblImage.getHeight()));
+			setMinimumSize(new Dimension(lblImage.getWidth(), lblImage.getHeight()));
+			System.out.println(label + "  size: " + lblImage.getWidth() + " " + lblImage.getHeight());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		setText(label.toString());
+		// setText(label.toString());
 		setBackground(Menu.blue);
 	}
 

@@ -41,7 +41,7 @@ public class MenuButton extends Button {
 		this.game = game;
 		setUp();
 	}
-
+	
 	public void setUp() {
 		String img = "/titleMenu/" + label.toString() + ".png";
 		try {
@@ -111,7 +111,7 @@ public class MenuButton extends Button {
 					menu.repaint();
 				} else if (label == Labels.LVL_SELECT)
 					game.blueMaggot.menuLevelSelect.setVisible(true);
-				else if (label.equals("about")) {
+				else if (label == Labels.ABOUT) {
 					game.blueMaggot.menuAbout.setVisible(true);
 				}
 

@@ -80,6 +80,8 @@ public class InputHandler implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_1)
 			rotateL1.toggle(pressed);
 
+		
+		
 		if (e.getKeyCode() == KeyEvent.VK_UP)
 			up2.toggle(pressed);
 		if (e.getKeyCode() == KeyEvent.VK_DOWN)

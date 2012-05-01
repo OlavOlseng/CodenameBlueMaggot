@@ -15,7 +15,7 @@ public class GameState {
 
 	private boolean isHost = false;
 	private File selectedLevelTerrain = new File("./lvl/Cityscape_terrain.png");
-	private File selectedLevelBackground = new File("./lvl/Cityscape2_background.png");
+	private File selectedLevelBackground = new File("./lvl/Cityscape_background.png");
 
 	private int width = 1280;
 	private int height = 720;
