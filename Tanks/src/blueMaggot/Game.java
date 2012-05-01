@@ -58,8 +58,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public void onUpdate(double deltaTime) {
 
-
-
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
 
@@ -74,29 +72,34 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void onDraw(Renderer renderer) {
-		
+
 		if (blueMaggot != null)
 			blueMaggot.tick(renderer.getGraphics());
-		
-	//	renderer.clearAllPixelData(Color.WHITE.getRGB());
+
+		// renderer.clearAllPixelData(Color.WHITE.getRGB());
 		level.onDraw(renderer);
 
 	}
 
 	@Override
 	public void onUppdateUI(Renderer renderer) {
+		if(GameState.getInstance().getPlayers() == null || GameState.getInstance().getPlayers().size() < 1)
+			return;
 		GameState state = GameState.getInstance();
 		Tank player1 = state.players.get(0);
 		Tank player2 = state.players.get(1);
 
-//		if ((level != null && state.getPlayers().size() > 1 && overlay.needUppdate(player1.getScore(),
-//				player2.getScore(), player1.getLife(), player2.getLife(), player1.getCurrentWeapon(),
-//				player2.getCurrentWeapon()))) {
-			/*overlay.paintOverlay(renderer.getGraphics(), player1.getScore(), player2.getScore(), player1.getLife(),
-					player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon());*/
-		
-//		}
+		// if ((level != null && state.getPlayers().size() > 1 &&
+		// overlay.needUppdate(player1.getScore(),
+		// player2.getScore(), player1.getLife(), player2.getLife(),
+		// player1.getCurrentWeapon(),
+		// player2.getCurrentWeapon()))) {
+		overlay.paintOverlay(renderer.getGraphics(), player1.getScore(), player2.getScore(), player1.getLife(),
+				player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon());
+
+		// }
 	}
+
 	// }
 
 	public void startReuglarGame() {
@@ -107,7 +110,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		level.init();
 		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 60);
 		GameState.getInstance().setRunning(true);
-		
+
 	}
 
 	/* network stuff */
@@ -166,13 +169,13 @@ public class Game extends BaseGame implements ConnectionDelegate {
 				player2.setCurrentWeapon(gun2);
 
 			} else {
-				/*
-				 * player2 = temp; player2.setScore(score2);
-				 * player2.setLife(life2); player2.setCurrentWeapon(gun2);
-				 */
+				player2 = GameState.getInstance().players.get(0);
+				player2.setScore(score2);
+				player2.setLife(life2);
+				player2.setCurrentWeapon(gun2);
 			}
 
-			state.setPlayers(level.getPlayers());
+//			state.setPlayers(level.getPlayers());
 
 		}
 

@@ -109,7 +109,6 @@ public class Tank extends Entity {
 
 	public Tank(FloatingPoint point, int playerNumber, InputHandler input, BasicLevel level) {
 		super(point.getX(), point.getY(), 11, 6, level);
-		this.level.getPlayers().add(this);
 		GameState.getInstance().getPlayers().add(this);
 		muzzleAngle = 90;
 		muzzleLength = 20;
