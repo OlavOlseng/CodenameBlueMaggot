@@ -9,6 +9,22 @@ public class InputHandler implements KeyListener {
 
 	private List<Key> keys = new ArrayList<Key>();
 
+	static int PLAYER1_LEFT = KeyEvent.VK_A;
+	static int PLAYER1_RIGHT = KeyEvent.VK_D;
+	static int PLAYER1_UP = KeyEvent.VK_W;
+	static int PLAYER1_DOWN = KeyEvent.VK_S;
+	static int PLAYER1_ROTATEL = KeyEvent.VK_1;
+	static int PLAYER1_ROTATER = KeyEvent.VK_3;
+	static int PLAYER1_FIRE = KeyEvent.VK_2;
+
+	static int PLAYER2_LEFT = KeyEvent.VK_LEFT;
+	static int PLAYER2_RIGHT = KeyEvent.VK_RIGHT;
+	static int PLAYER2_UP = KeyEvent.VK_UP;
+	static int PLAYER2_DOWN = KeyEvent.VK_DOWN;
+	static int PLAYER2_ROTATEL =  KeyEvent.VK_J;
+	static int PLAYER2_ROTATER = KeyEvent.VK_K;
+	static int PLAYER2_FIRE = KeyEvent.VK_L;
+
 	public Key menu = new Key(keys);
 	public Key menuOff = new Key(keys);
 	public Key tab = new Key(keys);
@@ -65,36 +81,34 @@ public class InputHandler implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_0)
 			grenadeSpam.toggle(pressed);
 
-		if (e.getKeyCode() == KeyEvent.VK_W)
+		if (e.getKeyCode() == PLAYER1_UP)
 			up1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_S)
+		if (e.getKeyCode() == PLAYER1_DOWN)
 			down1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_A)
+		if (e.getKeyCode() == PLAYER1_LEFT)
 			left1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_D)
+		if (e.getKeyCode() == PLAYER1_RIGHT)
 			right1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_2)
+		if (e.getKeyCode() == PLAYER1_FIRE)
 			fire1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_3)
+		if (e.getKeyCode() == PLAYER1_ROTATER)
 			rotateR1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_1)
+		if (e.getKeyCode() == PLAYER1_ROTATEL)
 			rotateL1.toggle(pressed);
 
-		
-		
-		if (e.getKeyCode() == KeyEvent.VK_UP)
+		if (e.getKeyCode() == PLAYER2_UP)
 			up2.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_DOWN)
+		if (e.getKeyCode() == PLAYER2_DOWN)
 			down2.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_LEFT)
+		if (e.getKeyCode() == PLAYER2_LEFT)
 			left2.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+		if (e.getKeyCode() == PLAYER2_RIGHT)
 			right2.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_K)
+		if (e.getKeyCode() == PLAYER2_FIRE)
 			fire2.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_L)
+		if (e.getKeyCode() == PLAYER2_ROTATER)
 			rotateR2.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_J)
+		if (e.getKeyCode() == PLAYER2_ROTATEL)
 			rotateL2.toggle(pressed);
 
 	}
