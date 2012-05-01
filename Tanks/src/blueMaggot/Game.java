@@ -119,6 +119,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		
 		GameState.getInstance().init();
 		System.out.println("initiating connection");
+		
 		if (connection != null)
 			connection.endConnection();
 
@@ -161,7 +162,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			Gun gun1 = Gun.valueOf(properties[4]);
 			Gun gun2 = Gun.valueOf(properties[5]);
 
-			System.out.println(level.getPlayers().size());
 			if (!state.isHost()) {
 
 				player2 = GameState.getInstance().players.get(1);

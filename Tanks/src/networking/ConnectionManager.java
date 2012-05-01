@@ -18,7 +18,7 @@ public class ConnectionManager {
 	private int messageHeader = 6;
 	private Thread readThread;
 	private Thread writeThread;
-	private long sleepTime = 17;
+	private long sleepTime = 1;
 	// private int numPlayers = 2;
 
 	public ConnectionManager(ConnectionDelegate delegate) {
