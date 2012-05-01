@@ -4,8 +4,6 @@ import gfx.GBC.Align;
 import gfx.MenuField.FieldType;
 
 import java.awt.Dimension;
-import java.util.Comparator;
-
 import blueMaggot.Game;
 import blueMaggot.GameState;
 

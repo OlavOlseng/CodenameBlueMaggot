@@ -1,16 +1,12 @@
 package gfx;
 
 import inputhandler.Action;
-import inputhandler.Key;
-
 import java.awt.Color;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-
-import javax.swing.KeyStroke;
 
 public class MenuField extends TextField {
 
@@ -53,7 +49,7 @@ public class MenuField extends TextField {
 					msg = ae.getActionCommand();
 					setBackground(Menu.green);
 				} else if (type == FieldType.KEY && tmpMsg.length() == 1) {
-					action.setBind((int)tmpMsg.toUpperCase().charAt(0));
+					action.setBind(tmpMsg.toUpperCase().charAt(0));
 
 					setText(tmpMsg);
 					setBackground(Menu.green);

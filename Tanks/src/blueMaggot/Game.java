@@ -8,8 +8,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import sun.swing.BakedArrayList;
-
 import entity.Tank;
 import entity.weapon.Gun;
 
@@ -87,7 +85,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public void onUppdateUI(Renderer renderer) {
 
-		if(GameState.getInstance().getPlayers() == null || GameState.getInstance().getPlayers().size() < 1)
+		if (GameState.getInstance().getPlayers() == null || GameState.getInstance().getPlayers().size() < 1)
 			return;
 
 		GameState state = GameState.getInstance();
@@ -99,8 +97,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		// player2.getScore(), player1.getLife(), player2.getLife(),
 		// player1.getCurrentWeapon(),
 		// player2.getCurrentWeapon()))) {
-		overlay.paintOverlay(renderer.getGraphics(), player1.getScore(), player2.getScore(), player1.getLife(),
-				player2.getLife(), player1.getCurrentWeapon(), player2.getCurrentWeapon());
+		overlay.paintOverlay(renderer.getGraphics(), player1.getScore(), player2.getScore(), player1.getLife(), player2.getLife(), player1.getCurrentWeapon(),
+				player2.getCurrentWeapon());
 
 		// }
 	}
@@ -109,11 +107,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	public void startReuglarGame() {
 		GameState.getInstance().init();
-		System.out.println("starting level: "
-				+ GameState.getInstance().getSelectedLevelBackground().getName().split("_")[0]);
+		System.out.println("starting level: " + GameState.getInstance().getSelectedLevelBackground().getName().split("_")[0]);
 		level = new cityScape(this, handler);
 		level.init();
-		
+
 		init(GameState.getInstance().getWidth(), GameState.getInstance().getHeight(), 60);
 		GameState.getInstance().setRunning(true);
 
@@ -121,10 +118,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	/* network stuff */
 	public void initConnection(boolean isHost, String addr) {
-		
+
 		GameState.getInstance().init();
 		System.out.println("initiating connection");
-		
+
 		if (connection != null)
 			connection.endConnection();
 
@@ -157,14 +154,14 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		// System.out.println("gamestate: " + gameState);
 		Tank player1;
 		Tank player2;
-	
+
 		if (level != null && level.getPlayers().size() > 1) {
 			GameState state = GameState.getInstance();
 			int score1 = Integer.parseInt(properties[2]);
 			int score2 = Integer.parseInt(properties[0]);
 			int life1 = Integer.parseInt(properties[3]);
 			int life2 = Integer.parseInt(properties[1]);
-			
+
 			Gun gun1 = Gun.valueOf(properties[4]);
 			Gun gun2 = Gun.valueOf(properties[5]);
 
@@ -177,7 +174,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 				player2.setLife(life2);
 				player2.setCurrentWeapon(gun2);
 				state.setPlayer2Nick(nick2);
-				
 
 			} else {
 				player2 = GameState.getInstance().players.get(0);
@@ -187,7 +183,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 				state.setPlayer1Nick(nick1);
 			}
 
-//			state.setPlayers(level.getPlayers());
+			// state.setPlayers(level.getPlayers());
 
 		}
 
@@ -205,18 +201,17 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		GameState state = GameState.getInstance();
 		int index1 = 0;
 		int index2 = 0;
-		if(state.getPlayerNumber() ==1)
+		if (state.getPlayerNumber() == 1)
 			index1 = 1;
 		else
 			index2 = 1;
-			
+
 		String gameState = "";
-		
+
 		if (state.getPlayers() != null && state.getPlayers().size() > 1)
 			gameState = state.getPlayers().get(index1).getScore() + "'" + state.getPlayers().get(index2).getLife() + "'"
-					+ state.getPlayers().get(index2).getScore() + "'" + state.players.get(index2).getLife() + "'"
-					+ state.players.get(0).getCurrentWeaponName() + "'" + state.players.get(1).getCurrentWeaponName() +
-					"'" + state.getPlayer1Nick() + "'" + state.getPlayer2Nick();
+					+ state.getPlayers().get(index2).getScore() + "'" + state.players.get(index2).getLife() + "'" + state.players.get(0).getCurrentWeaponName()
+					+ "'" + state.players.get(1).getCurrentWeaponName() + "'" + state.getPlayer1Nick() + "'" + state.getPlayer2Nick();
 
 		gameState += "@";
 
@@ -291,21 +286,20 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	}
 
 	@Override
-	public void setLevel(String terrain,String backGround) {
-System.out.println(terrain + " " + backGround);
+	public void setLevel(String terrain, String backGround) {
+		System.out.println(terrain + " " + backGround);
 		GameState state = GameState.getInstance();
 		File terrainFile = null;
 		File backGroundFile = null;
-		if((terrainFile = new File(terrain)).exists() && (backGroundFile = new File(backGround)).exists()){
-		
-		state.setSelectedLevelTerrain(new File(terrain));
-		state.setSelectedLevelBackground(new File(backGround));
-		}else {
+		if ((terrainFile = new File(terrain)).exists() && (backGroundFile = new File(backGround)).exists()) {
+
+			state.setSelectedLevelTerrain(new File(terrain));
+			state.setSelectedLevelBackground(new File(backGround));
+		} else {
 			gameListener.ConnectionFailed("Could not find level file. Terrain:" + terrainFile.getName() + " Background:" + backGroundFile.getName());
-			
+
 		}
 		// TODO Auto-generated method stub
-		
-		
+
 	}
 }

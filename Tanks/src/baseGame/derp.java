@@ -1,11 +1,7 @@
 package baseGame;
 
 
-import java.awt.event.KeyEvent;
-
 import javax.swing.JFrame;
-import javax.swing.KeyStroke;
-
 import blueMaggot.Game;
 
 public class derp extends JFrame {
