@@ -52,7 +52,7 @@ public class MenuField extends TextField {
 					setBackground(Menu.green);
 				} else if (type == FieldType.KEY && tmpMsg.length() == 1) {
 					System.out.println(KeyEvent.getKeyText(tmpMsg.charAt(0)));
-					//action.setBind(KeyEvent.getExtendedKeyCodeForChar(tmpMsg.charAt(0)));
+					action.setBind((int)tmpMsg.toUpperCase().charAt(0));
 					setText(tmpMsg);
 					setBackground(Menu.green);
 					return;
