@@ -6,7 +6,7 @@ import java.awt.Insets;
 public class GBC extends GridBagConstraints {
 
 	public enum Align {
-		LEFT, RIGHT, MID;
+		LEFT, RIGHT, MID, TIGHT;
 	}
 
 	public GBC(int gridx, int gridy, Align align) {
@@ -19,6 +19,8 @@ public class GBC extends GridBagConstraints {
 				setInsets(5, 5, 5, 5);
 			else if (align == Align.RIGHT)
 				setInsets(5, 60, 5, 5);
+			else if (align == Align.TIGHT)
+				setInsets(3, 5, 3, 5);
 		}
 		setFill(HORIZONTAL);
 	}

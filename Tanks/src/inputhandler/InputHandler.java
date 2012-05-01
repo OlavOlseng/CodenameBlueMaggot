@@ -54,52 +54,64 @@ public class InputHandler implements KeyListener {
 
 	public void toggle(KeyEvent e, boolean pressed) {
 
-		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+		if (e.getKeyCode() == Action.MENU.getBind())
 			menu.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_2)
-			menuOff.toggle(pressed);
-
-		if (e.getKeyCode() == KeyEvent.VK_SHIFT)
-			tab.toggle(pressed);
 
 		if (e.getKeyCode() == KeyEvent.VK_0)
 			grenadeSpam.toggle(pressed);
 
-		if (e.getKeyCode() == KeyEvent.VK_W)
+		// if (e.getKeyCode() == KeyEvent.VK_S)
+		// down1.toggle(pressed);
+
+		if (e.getKeyCode() == Action.JETPACK.getBind())
 			up1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_S)
-			down1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_A)
+		if (e.getKeyCode() == Action.LEFT.getBind())
 			left1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_D)
+		if (e.getKeyCode() == Action.RIGHT.getBind())
 			right1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_2)
+		if (e.getKeyCode() == Action.SHOOT.getBind())
 			fire1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_3)
+		if (e.getKeyCode() == Action.ANGLE_CLOCKWISE.getBind())
 			rotateR1.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_1)
+		if (e.getKeyCode() == Action.ANGLE_COUNTERCLOCKWISE.getBind())
 			rotateL1.toggle(pressed);
 
-		
-		
-		if (e.getKeyCode() == KeyEvent.VK_UP)
+		if (e.getKeyCode() == Action.JETPACK2.getBind())
 			up2.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_DOWN)
-			down2.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_LEFT)
+		if (e.getKeyCode() == Action.LEFT2.getBind())
 			left2.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+		if (e.getKeyCode() == Action.RIGHT2.getBind())
 			right2.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_K)
+		if (e.getKeyCode() == Action.SHOOT2.getBind())
 			fire2.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_L)
+		if (e.getKeyCode() == Action.ANGLE_CLOCKWISE2.getBind())
 			rotateR2.toggle(pressed);
-		if (e.getKeyCode() == KeyEvent.VK_J)
+		if (e.getKeyCode() == Action.ANGLE_COUNTERCLOCKWISE2.getBind())
 			rotateL2.toggle(pressed);
 
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
+	}
+
+	public void reset() {
+		Action.RIGHT.setBind(KeyEvent.VK_A);
+		Action.LEFT.setBind(KeyEvent.VK_D);
+		Action.JETPACK.setBind(KeyEvent.VK_W);
+		Action.SHOOT.setBind(KeyEvent.VK_2);
+		Action.CYCLE_WEAPON.setBind(KeyEvent.VK_S);
+		Action.ANGLE_CLOCKWISE.setBind(KeyEvent.VK_3);
+		Action.ANGLE_COUNTERCLOCKWISE.setBind(KeyEvent.VK_1);
+
+		Action.RIGHT2.setBind(KeyEvent.VK_RIGHT);
+		Action.LEFT2.setBind(KeyEvent.VK_LEFT);
+		Action.JETPACK2.setBind(KeyEvent.VK_UP);
+		Action.SHOOT2.setBind(KeyEvent.VK_K);
+		Action.CYCLE_WEAPON2.setBind(KeyEvent.VK_DOWN);
+		Action.ANGLE_CLOCKWISE2.setBind(KeyEvent.VK_J);
+		Action.ANGLE_COUNTERCLOCKWISE2.setBind(KeyEvent.VK_L);
+		
+		Action.MENU.setBind(KeyEvent.VK_ESCAPE);
 	}
 }

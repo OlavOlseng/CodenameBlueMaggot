@@ -5,6 +5,7 @@ import gfx.GBC;
 import gfx.GBC.Align;
 import gfx.Labels;
 import gfx.MenuBackground;
+import gfx.MenuKeys;
 import gfx.MenuLevelSelect;
 import gfx.MenuOptions;
 import gfx.MenuOptionsLan;
@@ -45,11 +46,13 @@ public class BlueMaggot extends JFrame implements Runnable {
 	public MenuOptionsLan menuOptionsLan;
 	public MenuAbout menuAbout;
 	public MenuTitle menuTitle;
+	public MenuKeys menuKeys;
 	public static Exception e;
 
 	Game game;
 
 	private MenuBackground menuBackground;
+
 
 	public BlueMaggot() {
 
@@ -64,6 +67,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		layeredPane.setOpaque(false);
 
 		game = new blueMaggot.Game(this);
+		inputReal.reset();
 
 		menuTitle = new MenuTitle(game, this);
 		menuOptions = new MenuOptions(game);
@@ -72,6 +76,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		uiScoreBoard = new MenuScoreBoard(game);
 		menuLevelSelect = new MenuLevelSelect(game);
 		menuBackground = new MenuBackground(menuTitle);
+		menuKeys = new MenuKeys(game);
 		gamePanel = new JPanel();
 		gamePanel.setBackground(Color.DARK_GRAY);
 
@@ -83,6 +88,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		layeredPane.add(menuLevelSelect, new Integer(11));
 		layeredPane.add(menuAbout, new Integer(11));
 		layeredPane.add(uiScoreBoard, new Integer(12));
+		layeredPane.add(menuKeys, new Integer(11));
 
 		add(layeredPane);
 		pack();
