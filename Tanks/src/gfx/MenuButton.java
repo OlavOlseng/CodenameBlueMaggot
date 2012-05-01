@@ -89,6 +89,7 @@ public class MenuButton extends Button {
 					if (label == Labels.START_LAN_GAME) {
 						game.blueMaggot.menuOptionsLan.apply(game);
 						game.initConnection(GameState.getInstance().isHost(), GameState.getInstance().hostIp);
+						// game.blueMaggot.inputReal.setLan();
 					} else if (label == Labels.START_GAME) {
 						game.startReuglarGame();
 						game.blueMaggot.menuOptions.apply(game);
@@ -116,12 +117,14 @@ public class MenuButton extends Button {
 				else if (label == Labels.KEYS)
 					game.blueMaggot.menuKeys.setVisible(true);
 				else if (label == Labels.DEFAULT) {
-					game.blueMaggot.inputReal.reset();
-					for (MenuField menuField : MenuField.menuFields) {
+					game.blueMaggot.inputReal.resetSingle();
+					for (MenuField menuField : MenuField.menuFields)
 						menuField.reset();
-					}
+				} else if (label == Labels.DEFAULT_LAN) {
+					game.blueMaggot.inputReal.resetLan();
+					for (MenuField menuField : MenuField.menuFields)
+						menuField.reset();
 				}
-
 				repaint();
 			}
 

@@ -31,7 +31,6 @@ public class ResourceManager {
 	public final RGBImage HEART = new RGBImage("/graphics/Heart.png");
 	public static final Color COLORMASK = new Color(0x00FAE1);
 
-
 	private static ResourceManager instance = null;
 
 	public static ResourceManager getInstance() {

@@ -97,7 +97,7 @@ public class InputHandler implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 	}
 
-	public void reset() {
+	public void resetSingle() {
 		Action.RIGHT.setBind(KeyEvent.VK_D);
 		Action.LEFT.setBind(KeyEvent.VK_A);
 		Action.JETPACK.setBind(KeyEvent.VK_W);
@@ -113,6 +113,26 @@ public class InputHandler implements KeyListener {
 		Action.CYCLE_WEAPON2.setBind(KeyEvent.VK_DOWN);
 		Action.ANGLE_CLOCKWISE2.setBind(KeyEvent.VK_L);
 		Action.ANGLE_COUNTERCLOCKWISE2.setBind(KeyEvent.VK_J);
+
+		Action.MENU.setBind(KeyEvent.VK_ESCAPE);
+	}
+
+	public void resetLan() {
+		Action.RIGHT.setBind(KeyEvent.VK_D);
+		Action.LEFT.setBind(KeyEvent.VK_A);
+		Action.JETPACK.setBind(KeyEvent.VK_W);
+		Action.SHOOT.setBind(KeyEvent.VK_K);
+		Action.CYCLE_WEAPON.setBind(KeyEvent.VK_S);
+		Action.ANGLE_CLOCKWISE.setBind(KeyEvent.VK_L);
+		Action.ANGLE_COUNTERCLOCKWISE.setBind(KeyEvent.VK_J);
+
+		Action.RIGHT2.setBind(KeyEvent.VK_SCROLL_LOCK);
+		Action.LEFT2.setBind(KeyEvent.VK_SCROLL_LOCK);
+		Action.JETPACK2.setBind(KeyEvent.VK_SCROLL_LOCK);
+		Action.SHOOT2.setBind(KeyEvent.VK_SCROLL_LOCK);
+		Action.CYCLE_WEAPON2.setBind(KeyEvent.VK_SCROLL_LOCK);
+		Action.ANGLE_CLOCKWISE2.setBind(KeyEvent.VK_SCROLL_LOCK);
+		Action.ANGLE_COUNTERCLOCKWISE2.setBind(KeyEvent.VK_SCROLL_LOCK);
 
 		Action.MENU.setBind(KeyEvent.VK_ESCAPE);
 	}

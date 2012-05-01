@@ -86,7 +86,7 @@ public class BlueMaggot extends JFrame implements Runnable {
 		layeredPane.add(menuKeys, new Integer(11));
 		
 		// reset keybindings to default
-		inputReal.reset();
+		inputReal.resetLan();
 		for (MenuField menuField : MenuField.menuFields) {
 			menuField.reset();
 		}
@@ -159,10 +159,8 @@ public class BlueMaggot extends JFrame implements Runnable {
 			inputReal.menu.clicked = false;
 			inputReal.releaseAll();
 			if (!menuTitle.isVisible()) {
-
 				menuTitle.setVisible(true);
 				menuBackground.setVisible(true);
-				// menuTitle.paint(g);
 				GameState.getInstance().setPaused(true);
 			}
 		}
@@ -175,59 +173,6 @@ public class BlueMaggot extends JFrame implements Runnable {
 			GameState.getInstance().setPaused(true);
 			GameState.getInstance().setRunning(false);
 			menuBackground.setVisible(true);
-			// menuTitle.paint(g);
 		}
-
-		/*
-		 * for (Tank tank : GameState.getInstance().getPlayers()) { if
-		 * (tank.getScore() != tank.getOldScore()) {
-		 * tank.setOldScore(tank.getScore());
-		 * 
-		 * } }
-		 */
-
-	}
-
-	public void initResources() {
-		// try {
-		// ResourceManager.TANK1 = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
-		// ResourceManager.TANK2 = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
-		// ResourceManager.TANK3 = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
-		// ResourceManager.TANK4 = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Tank2.png")));
-		// ResourceManager.SHELL = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Shell_temp.png")));
-		// ResourceManager.SCOREBUBBLE = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Scorebubble.png")));
-		// ResourceManager.CROSSHAIR1 = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Crosshair.png")));
-		// ResourceManager.CROSSHAIR2 = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Crosshair.png")));
-		// ResourceManager.CROSSHAIR3 = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Crosshair.png")));
-		// ResourceManager.CROSSHAIR4 = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Crosshair.png")));
-		// ResourceManager.ROCKET = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Rocket_sheet.png")));
-		// ResourceManager.MINE = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Mine_sheet.png")));
-		// ResourceManager.GRENADE = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Grenade_temp.png")));
-		// ResourceManager.PACKAGE = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Package.png")));
-		// ResourceManager.BUBBLEHEARTH = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/BubbleHearth.png")));
-		// ResourceManager.AIRSTRIKEBEACON = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/AirStrikeBeacon.png")));
-		// ResourceManager.BULLET = new
-		// RGBImage(ImageIO.read(getClass().getResourceAsStream("/graphics/Bullet.png")));
-		// ResourceManager.COLORMASK = new Color(0x00FAE1);
-		//
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// }
 	}
 }

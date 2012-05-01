@@ -34,25 +34,22 @@ public class MenuLevelSelect extends Menu {
 						BlueMaggot.e = new Exception("Too many levels added! Max is 12.");
 					MenuLevelButton btnLvl = new MenuLevelButton(lvl, this);
 					if (gridx <= 3) {
-						add(btnLvl, new GBC(gridx, gridy, Align.MID));
-						lvlBtns.add(btnLvl);
-						++gridx;
-						lvlCount++;
+						gridx++;
 					} else {
-						gridx = 0;
+						gridx = 1;
 						++gridy;
-						add(btnLvl, new GBC(gridx, gridy, Align.MID));
-						lvlBtns.add(btnLvl);
-						lvlCount++;
 					}
+					add(btnLvl, new GBC(gridx, gridy, Align.MID));
+					lvlBtns.add(btnLvl);
+					lvlCount++;
 					System.out.println("adding button");
 				}
 			}
 		} else
 			BlueMaggot.e = new FileNotFoundException("\nPath: " + path.getAbsolutePath());
 
-		add(new MenuButton(Labels.APPLY, this, game), new GBC(0, ++gridy, Align.MID).setSpan(2, 1));
-		add(new MenuButton(Labels.RETURN, this, game), new GBC(2, gridy, Align.MID).setSpan(2, 1));
+		add(new MenuButton(Labels.APPLY, this, game), new GBC(1, ++gridy, Align.MID).setSpan(2, 1));
+		add(new MenuButton(Labels.RETURN, this, game), new GBC(3, gridy, Align.MID).setSpan(2, 1));
 	}
 
 	public void apply() {
