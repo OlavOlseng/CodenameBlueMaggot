@@ -5,14 +5,10 @@ import blueMaggot.GameState;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
-import java.awt.FontFormatException;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.Panel;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 import javax.swing.JLayeredPane;
 
 public abstract class Menu extends Panel {
@@ -34,11 +30,9 @@ public abstract class Menu extends Panel {
 	public static Color pinkDark = new Color(254, 186, 197);
 
 	public Menu() {
-
 		putCenter(this, width, height);
 		setLayout(new GridBagLayout());
 		setBackground(Menu.blue);
-		System.out.println(pinkDark.getRGB());
 		if (font == null) {
 			try {
 				// font = Font.createFont(Font.TRUETYPE_FONT, new
@@ -54,9 +48,4 @@ public abstract class Menu extends Panel {
 	public void putCenter(Component c, int width, int height) {
 		c.setBounds(GameState.getInstance().getWidth() / 2 - width / 2, GameState.getInstance().getHeight() / 2 - height / 2, width, height);
 	}
-
-	/*
-	 * public void tick(Menu menu){ System.out.println("heieieiei");
-	 * menu.repaint(); }
-	 */
 }

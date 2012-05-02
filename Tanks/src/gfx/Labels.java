@@ -31,7 +31,8 @@ public enum Labels {
 	ONE("one"), //
 	TWO("two"), //
 	DEFAULT("offline"), //
-	DEFAULT_LAN("lan");
+	DEFAULT_LAN("lan"), //
+	YOUR_IP("yourIp");
 
 	private String fileName;
 

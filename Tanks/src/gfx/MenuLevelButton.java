@@ -31,8 +31,8 @@ public class MenuLevelButton extends Button {
 		lvlBackground = new File(lvl.getAbsolutePath().split("_")[lvl.getAbsolutePath().split("_").length - 2] + "_background.png");
 		if (!lvlBackground.exists())
 			lvlBackground = new File("./lvl/default_background.png");
-		System.out.println("terrain: " + lvlTerrain + " exist: " + lvlTerrain.exists());
-		System.out.println("background: " + lvlBackground + " exist: " + lvlBackground.exists());
+//		System.out.println("terrain: " + lvlTerrain + " exist: " + lvlTerrain.exists());
+//		System.out.println("background: " + lvlBackground + " exist: " + lvlBackground.exists());
 
 		setPreferredSize(new Dimension(width, height));
 

@@ -5,11 +5,9 @@ import gfx.MenuField.FieldType;
 
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -17,7 +15,8 @@ import blueMaggot.Game;
 import blueMaggot.GameState;
 
 public class MenuOptionsLan extends Menu {
-	private Dimension btnSize = new Dimension(150, 20);
+	private Dimension btnSize = new Dimension(180, 20);
+	private int width;
 
 	private MenuField fieldLanNick;
 	private MenuField fieldIp;
@@ -28,23 +27,26 @@ public class MenuOptionsLan extends Menu {
 	private MenuLabel playerOne;
 	private MenuLabel connectIp;
 	private MenuLabel isHost;
+	private MenuLabel yourIp;
 
 	private MenuCheckBox boxIsHost;
 
-	private drawCustomText yourIp;
 	private drawCustomText showIp;
 
 	private class drawCustomText extends Canvas {
 		String text;
 
 		drawCustomText(String text) {
+			super.repaint();
 			this.text = text;
+			System.out.println(btnSize);
 			setPreferredSize(btnSize);
 			setMaximumSize(btnSize);
 			setMinimumSize(btnSize);
 			setVisible(true);
 		}
 
+		@Override
 		public void paint(Graphics g) {
 			// g.setColor(Color.yellow);
 			// g.fillRect(0, 0, getWidth(), getHeight());
@@ -62,7 +64,7 @@ public class MenuOptionsLan extends Menu {
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-		System.out.println(ip);
+		System.out.println("local ip: " + ip);
 		return ip;
 	}
 
@@ -83,7 +85,7 @@ public class MenuOptionsLan extends Menu {
 
 		boxIsHost = new MenuCheckBox();
 		showIp = new drawCustomText(getLocalIp());
-		yourIp = new drawCustomText("YOUR IP");
+		yourIp = new MenuLabel(Labels.YOUR_IP);
 
 		// left column
 		add(playerOne, new GBC(0, 0, Align.RIGHT));

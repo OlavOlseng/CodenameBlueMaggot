@@ -4,13 +4,8 @@ import entity.Tank;
 import entity.weapon.Gun;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 import blueMaggot.GameState;
 
 public class GameOverlay {
