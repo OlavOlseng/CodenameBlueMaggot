@@ -81,10 +81,15 @@ public class BlueMaggot extends JFrame implements GameListener {
 		layeredPane.add(menuLevelSelect, new Integer(11));
 		layeredPane.add(menuAbout, new Integer(11));
 		layeredPane.add(menuKeys, new Integer(11));
-		layeredPane.add(menuScore,new Integer(12));
+		layeredPane.add(menuScore, new Integer(12));
 
-		// reset keybindings to default
-		inputReal.resetLan();
+		try {
+			inputReal.readConfig();
+			System.out.println("reading keybinds from config");
+		} catch (Exception e) {
+			inputReal.resetLan();
+			System.out.println("no config found, setting defaults");
+		}
 		for (MenuField menuField : MenuField.menuFields) {
 			menuField.reset();
 		}
@@ -167,7 +172,7 @@ public class BlueMaggot extends JFrame implements GameListener {
 			GameState.getInstance().setPaused(true);
 			GameState.getInstance().setGameOver(false);
 			menuBackground.setVisible(true);
-		
+
 		}
 	}
 

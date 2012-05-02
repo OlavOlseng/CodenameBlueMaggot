@@ -18,7 +18,7 @@ public class MenuTitle extends Menu {
 		MenuButton btnNewGame = new MenuButton(Labels.NEW_GAME, this, game);
 		MenuButton btnNewOnlineGame = new MenuButton(Labels.NEW_LAN_GAME, this, game);
 		MenuButton btnAbout = new MenuButton(Labels.ABOUT, this, game);
-		MenuButton btnExit = new MenuButton(Labels.EXIT, this, null);
+		MenuButton btnExit = new MenuButton(Labels.EXIT, this, game);
 		MenuButton btnLvls = new MenuButton(Labels.LVL_SELECT, this, game);
 		MenuButton btnKeys = new MenuButton(Labels.KEYS,this,game);
 

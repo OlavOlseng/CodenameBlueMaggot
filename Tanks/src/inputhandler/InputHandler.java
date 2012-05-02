@@ -2,7 +2,15 @@ package inputhandler;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class InputHandler implements KeyListener {
@@ -135,5 +143,55 @@ public class InputHandler implements KeyListener {
 		Action.ANGLE_COUNTERCLOCKWISE2.setBind(KeyEvent.VK_0);
 
 		Action.MENU.setBind(KeyEvent.VK_ESCAPE);
+	}
+
+	public void writeConfig() {
+		File config = new File("config.txt");
+		PrintWriter out = null;
+		try {
+			out = new PrintWriter(new FileWriter(config));
+			for (Action action : Action.values()) {
+				out.println(action.name() + ":" + action.getBind());
+				System.out.println(action.name() + ":" + action.getBind());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				out.close();
+			} catch (Exception e) {
+				System.out.println("couldn't close file: " + out);
+			}
+		}
+	}
+
+	public void readConfig() {
+		BufferedReader in = null;
+		File config = new File("config.txt");
+		if (!config.exists())
+			return;
+		try {
+			in = new BufferedReader(new FileReader(config));
+			String c;
+			while ((c = in.readLine()) != null) {
+				String key = c.split(":")[0];
+				int value = Integer.parseInt(c.split(":")[1]);
+				for (Action action : Action.values()) {
+					if (action.name().equals(key))
+						action.setBind(value);
+				}
+			}
+		} catch (IOException e) {
+			System.out.println("couldn't find file: " + config.getAbsolutePath());
+		} finally {
+			try {
+				in.close();
+			} catch (Exception e) {
+				System.out.println("couldn't close file: " + in);
+			}
+		}
+		for (Action action : Action.values()) {
+			System.out.println(action.name() + " - " + action.getBind());
+		}
 	}
 }
