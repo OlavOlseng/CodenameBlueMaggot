@@ -84,7 +84,6 @@ public class BubbleHearth extends Entity {
 				if (player.damageTaken < 2) {
 					player.damageTaken = 0;
 				} else
-					playerToheal = player.playerNumber;
 					player.takeDamage(healthContained);
 				remove();
 			}

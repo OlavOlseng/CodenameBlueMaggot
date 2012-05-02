@@ -83,6 +83,7 @@ public class ScoreBubble extends Entity {
 	public void handlePlayerIntersections() {
 		for (Tank player : level.getPlayers()) {
 			if (intersectsEntity(player)) {
+				
 				player.addScore(scoreAmount);
 				SoundEffect.BUBBLE.play();
 				remove();
