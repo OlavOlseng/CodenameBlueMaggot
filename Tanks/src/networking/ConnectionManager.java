@@ -212,7 +212,7 @@ public class ConnectionManager {
 
 						String head = new String(header);
 						if(head.length()<6)
-							return;
+							continue;
 						
 						double len ;
 						try {
