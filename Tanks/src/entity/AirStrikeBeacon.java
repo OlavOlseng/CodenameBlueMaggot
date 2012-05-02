@@ -98,7 +98,7 @@ public class AirStrikeBeacon extends Projectile {
 	
 		boolean willDie = Boolean.parseBoolean(msg[3]);
 		if(willDie){
-			explode();
+			SoundEffect.CALLDOWN2.play();
 			remove();
 		}
 	}
