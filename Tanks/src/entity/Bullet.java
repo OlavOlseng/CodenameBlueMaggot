@@ -23,8 +23,10 @@ public class Bullet extends Projectile {
 
 	@Override
 	public void explode() {
+		
 		level.getTerrain().addExplosion((int) (x - explosionRadius), (int) (y - explosionRadius), explosionRadius);
 		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, explosionPower));
+		
 	}
 
 	public boolean intersectsTerrain() {
