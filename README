@@ -75,10 +75,6 @@ Contents
 2.	The Menu Screen
 ------------------------------------------------------------------------------------------------------	
 
-		IMPORTANT!
-		For the game to read any input into textfields, you have to press 'Enter' to verify your input.
-		the textfield should turn green when the game has read the input properly.
-		
 		2.1 The Return Button
 			Returns you to a game if one is currently running.
 		
@@ -87,20 +83,20 @@ Contents
 			
 		2.3 The New LAN Game Button
 			Starts a LAN game on the selected map. The host should check the isHost button. The
-			connecting players should put in the correct IPv4 address and press enter to verify,
-			if the IP address is valid, the textfield should turn green. The host must start the game
+			connecting players should put in the correct IPv4 address.
+			If the IP address is valid, the textfield should turn green. The host must start the game
 			first, and once the other peers connect, the game will commence.
 			
 		2.4 The Level Select Button
 			Here you can select the level you will play on, just press the desired map, and the border
 			around the level should turn green, then press apply.
 			
-		2.5	The Control button
+		2.5 The Control button
 			Here you can rebind the key inputs to your own taste. The LAN and Offline buttons will
 			default the key mapping to recomended defaults. To rebind a key, press a textfield, insert
-			the desired key and verify using enter.
+			the desired key. Everything should update realtime.
 	
-		2.6	The About button
+		2.6 The About button
 			Shows you a little info about the game and it's makers.
 		
 		2.7 The Exit button
@@ -129,11 +125,11 @@ Contents
 	The game can be played in two ways:
 		
 		1. Score hoarder
-				The player with the most score at the end of the game wins. You gain a 100 score
-				every time you pickup a scorebubble, and lose 100 points everytime you lose a life.
+		        The player with the most score at the end of the game wins. You gain a 100 score
+		        every time you pickup a scorebubble, and lose 100 points everytime you lose a life.
 				
 		2. Last man standing
-			The last player alive is the victor
+		        The last player alive is the victor
 			
 	3.1 Controls
 		Your tank is controlled accordingly to the keys you set in the "Control" option in the main
