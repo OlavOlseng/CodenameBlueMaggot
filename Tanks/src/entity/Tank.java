@@ -387,7 +387,7 @@ public class Tank extends Entity {
 		setLocation(level.getPlayerSpawns().getPoint());
 		setSpeed(0, -1);
 		muzzleAngle = 90;
-		damageTaken = 10;
+		damageTaken = 1;
 		initInventory();
 		currentWeapon = Gun.SHELLGUN;
 	}
