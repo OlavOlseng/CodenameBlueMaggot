@@ -90,6 +90,7 @@ public class BubbleHearth extends Entity {
 
 	@Override
 	public void tick(double dt) {
+		System.out.println(level.getPlayers().get(0).damageTaken);
 		super.tick(dt);
 		handleTerrainIntersections();
 		handlePlayerIntersections();

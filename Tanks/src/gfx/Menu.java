@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GridBagLayout;
 import java.awt.Panel;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
@@ -30,17 +32,27 @@ public abstract class Menu extends Panel {
 	public static Color blueDark = new Color(108, 209, 234);
 	public static Color pink = new Color(255, 212, 218);
 	public static Color pinkDark = new Color(254, 186, 197);
-
+	
 	public Menu() {
+
+		
 		putCenter(this, width, height);
 		setLayout(new GridBagLayout());
 		setBackground(Menu.blue);
 		System.out.println(pinkDark.getRGB());
+		if(font == null){
 		try {
-			font = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new java.io.File(getClass().getResource("/res/8-BitCustom.TTF").toURI()));
+			
+			//font = Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getResource("/res/8-BitCustom.TTF").toURI()));
+			font  = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream("./res/8-BitCustom.TTF"));
 			font = font.deriveFont(15.0F);
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("jbdkllllllllllakjsdfalsdjfhlsakhdakfhlkajfhlksadfhjaklsfhkljfhsdkajlfhklsdafhjldsfhkdjsahfkslhfdkaljfhlsdkjfhslkafhjkjsdh");
+			
+	
+		
+		}
 		}
 	}
 
