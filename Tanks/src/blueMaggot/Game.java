@@ -191,7 +191,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		}
 
-		if (data.length > 0) {
+		if (data.length > 0 && parts.length>0) {
 
 			onlineLevel.catchResponse(parts[1]);
 
