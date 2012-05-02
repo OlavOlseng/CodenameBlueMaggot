@@ -7,11 +7,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.Panel;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 import javax.swing.JLayeredPane;
 
@@ -37,28 +33,10 @@ public abstract class Menu extends Panel {
 		putCenter(this, width, height);
 		setLayout(new GridBagLayout());
 		setBackground(Menu.blue);
-		InputStream in = null;
-		FileOutputStream out = null;
-		try {
-			new File("test.ttf").delete();
-			out = new FileOutputStream("test.ttf");
-			in = getClass().getResourceAsStream("/res/8-BitCustom.ttf");
-			int c;
-			while ((c = in.read()) != -1)
-				out.write(c);
-		} catch (Exception e) {
-
-		} finally {
-			try {
-				in.close();
-				out.close();
-			} catch (Exception e) {
-				System.out.println("nope");
-			}
-		}
 		if (font == null) {
 			try {
-				font = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream("test.ttf"));
+//				font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/res/8-BitCustom.TTF"));
+				font  = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream("./res/8-BitCustom.TTF"));
 				font = font.deriveFont(15.0F);
 			} catch (Exception e) {
 				e.printStackTrace();
