@@ -126,13 +126,13 @@ public class InputHandler implements KeyListener {
 		Action.ANGLE_CLOCKWISE.setBind(KeyEvent.VK_L);
 		Action.ANGLE_COUNTERCLOCKWISE.setBind(KeyEvent.VK_J);
 
-		Action.RIGHT2.setBind(KeyEvent.VK_SCROLL_LOCK);
-		Action.LEFT2.setBind(KeyEvent.VK_SCROLL_LOCK);
-		Action.JETPACK2.setBind(KeyEvent.VK_SCROLL_LOCK);
-		Action.SHOOT2.setBind(KeyEvent.VK_SCROLL_LOCK);
-		Action.CYCLE_WEAPON2.setBind(KeyEvent.VK_SCROLL_LOCK);
-		Action.ANGLE_CLOCKWISE2.setBind(KeyEvent.VK_SCROLL_LOCK);
-		Action.ANGLE_COUNTERCLOCKWISE2.setBind(KeyEvent.VK_SCROLL_LOCK);
+		Action.RIGHT2.setBind(KeyEvent.VK_0);
+		Action.LEFT2.setBind(KeyEvent.VK_0);
+		Action.JETPACK2.setBind(KeyEvent.VK_0);
+		Action.SHOOT2.setBind(KeyEvent.VK_0);
+		Action.CYCLE_WEAPON2.setBind(KeyEvent.VK_0);
+		Action.ANGLE_CLOCKWISE2.setBind(KeyEvent.VK_0);
+		Action.ANGLE_COUNTERCLOCKWISE2.setBind(KeyEvent.VK_0);
 
 		Action.MENU.setBind(KeyEvent.VK_ESCAPE);
 	}
