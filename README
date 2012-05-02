@@ -66,7 +66,7 @@ Contents
 
 			NOTE!
 				ARGB is not oficially supported. The supported resolutions are 1280x720. 
-				The formats supported are .png. The game only supports eight (8) levels at a time, 
+				The formats supported are .png. The game only supports twelve (12) levels at a time, 
 				so to get any new levels into the game, you need to remove one of the other 
 				levels from the .lvl folder.
 
@@ -170,3 +170,4 @@ Contents
 6. Credits
 ----------------------------------------------------------------------------------------------------
 	
+        wmdb.org - for helping out with some of the maps

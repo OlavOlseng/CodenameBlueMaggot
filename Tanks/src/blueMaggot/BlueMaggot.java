@@ -166,10 +166,7 @@ public class BlueMaggot extends JFrame implements GameListener {
 			GameState.getInstance().setPaused(true);
 			GameState.getInstance().setGameOver(false);
 			menuBackground.setVisible(true);
-		}else{
-			if(menuScore.isVisible()){
-				menuScore.setVisible(false);
-			}
+		
 		}
 	}
 
