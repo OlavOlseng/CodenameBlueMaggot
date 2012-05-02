@@ -125,16 +125,28 @@ public class BubbleHearth extends Entity {
 		super.handleMessage(msg);
 		boolean willDie = Boolean.parseBoolean(msg[3]);
 		int playerToheal = Integer.parseInt(msg[6]);
-		
+	
 		if(willDie){
+	
+			if(playerToheal != 0){
+				Tank player = null;
 			if(playerToheal == 1){
-				SoundEffect.HEALTHUP.play();
-				level.getPlayers().get(0).takeDamage(healthContained);
+				
+				player = level.getPlayers().get(0);
+				
+				
 			}else{if(playerToheal== 2){
-				SoundEffect.HEALTHUP.play();
-				level.getPlayers().get(1).takeDamage(healthContained);
+				player = level.getPlayers().get(1);
 				
 			}}
+			if (player.damageTaken < 2) {
+				player.damageTaken = 0;
+			} else
+				player.takeDamage(healthContained);
+			
+			SoundEffect.HEALTHUP.play();
+			}
+			
 			remove();
 	
 		}

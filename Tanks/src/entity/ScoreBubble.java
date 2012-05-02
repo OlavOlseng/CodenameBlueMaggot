@@ -86,16 +86,12 @@ public class ScoreBubble extends Entity {
 			if (intersectsEntity(player)) {
 				owner = player.getPlayerNumber();
 				player.addScore(scoreAmount);
-			
+				SoundEffect.RELOAD.play();
 				remove();
 			}
 		}
 	}
-	@Override
-	public void remove(){
-		SoundEffect.BUBBLE.play();
-		super.remove();
-	}
+
 	@Override
 	public void tick(double dt) {
 		super.tick(dt);
@@ -127,10 +123,10 @@ public class ScoreBubble extends Entity {
 		if(willDie){
 		
 			remove();
-			if(owner == 1){
+			if(owner == 2){
 				SoundEffect.RELOAD.play();
 				level.getPlayers().get(0).addScore(100);
-			}else{if(owner == 2){
+			}else{if(owner == 1){
 				SoundEffect.RELOAD.play();
 				level.getPlayers().get(1).addScore(100);
 				

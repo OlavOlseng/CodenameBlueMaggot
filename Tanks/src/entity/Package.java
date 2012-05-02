@@ -104,7 +104,7 @@ public class Package extends Entity {
 		for (Tank player : level.getPlayers()) {
 			if (intersectsEntity(player)) {
 				player.getWeaponList().get(wep.ordinal()).addAmmo();
-			
+				SoundEffect.RELOAD.play();
 				owner = player.playerNumber;
 				remove();
 			}
