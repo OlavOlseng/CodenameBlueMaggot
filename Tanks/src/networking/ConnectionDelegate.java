@@ -10,7 +10,7 @@ public interface ConnectionDelegate {
 	public byte[] onWrite();
 
 	public boolean shouldRead();
-
+	public void didWrite();
 	public boolean shouldWrite();
 	public void setLevel(String path,String backGround);
 }
