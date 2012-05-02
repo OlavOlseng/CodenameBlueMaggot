@@ -172,7 +172,6 @@ public class BlueMaggot extends JFrame implements GameListener {
 
 	@Override
 	public void ConnectionFailed(String msg) {
-		GameState.getInstance().setGameOver(true);
 		GameState.getInstance().setPaused(true);
 		menuTitle.setVisible(true);
 		System.out.println("game crashed, retreat!");

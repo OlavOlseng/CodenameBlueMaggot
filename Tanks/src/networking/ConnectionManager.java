@@ -57,6 +57,7 @@ public class ConnectionManager {
 				try {
 			//		listener.setSoTimeout(10000);
 					client = listener.accept();
+				
 				} catch (IOException e) {
 					
 					delegate.connectionFailed(e.getLocalizedMessage());
@@ -102,12 +103,22 @@ public class ConnectionManager {
 				delegate.connectionFailed(e.getLocalizedMessage());
 				return;
 			}
+			
+				try {
+					while(in.available()>0){
+					in.read();
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					delegate.connectionFailed(e.getLocalizedMessage());
+				}
+			}
 			startListenerThread();
 			startWritingThread();
 			delegate.startOnlineGame();
 
 		}
-	}
+	
 
 	public void joinGame(final String adr) {
 
@@ -175,7 +186,7 @@ public class ConnectionManager {
 		readThread = new Thread() {
 			@Override
 			public void run() {
-				while (true) {
+				while (!GameState.getInstance().isGameOver()) {
 					try {
 						Thread.sleep(sleepTime);
 					} catch (InterruptedException e) {
@@ -199,7 +210,8 @@ public class ConnectionManager {
 						}
 
 						String head = new String(header);
-						
+						if(head.length()<6)
+							return;
 						double len = Double.parseDouble((head.substring(1, 6)));
 						
 						byte[] data = new byte[(int) len];
@@ -239,7 +251,7 @@ public class ConnectionManager {
 		writeThread = new Thread() {
 			@Override
 			public void run() {
-				while (true) {
+				while (!GameState.getInstance().isGameOver()) {
 					try {
 						Thread.sleep(sleepTime);
 					} catch (InterruptedException e) {
