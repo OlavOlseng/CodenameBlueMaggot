@@ -409,7 +409,7 @@ public class Tank extends Entity {
 
 	public String getObject(){
 	
-		return super.getObject() + "'" + encodeToDouble(this.muzzleAngle) + "'" + getPlayerNumber();
+		return super.getObject() + "'" + encodeToDouble(this.muzzleAngle) + "'" + getPlayerNumber() + "'" + damageTaken;
 
 
 	}
@@ -418,6 +418,8 @@ public class Tank extends Entity {
 	public void handleMessage(String[] msg) {
 		super.handleMessage(msg);
 		double muzzleAngle = decodeToDouble(Integer.parseInt(msg[6]));
+		double damageTaken = decodeToDouble(Integer.parseInt(msg[7]));
+		this.damageTaken = damageTaken;
 		setMuzzleAngle(muzzleAngle);
 	}
 

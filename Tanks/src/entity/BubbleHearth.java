@@ -80,7 +80,7 @@ public class BubbleHearth extends Entity {
 	public void handlePlayerIntersections() {
 		for (Tank player : level.getPlayers()) {
 			if (intersectsEntity(player)) {
-				SoundEffect.HEALTHUP.play();
+			
 				if (player.damageTaken < 2) {
 					player.damageTaken = 0;
 				} else
@@ -91,6 +91,10 @@ public class BubbleHearth extends Entity {
 		}
 	}
 
+	@Override
+	public void remove(){
+		SoundEffect.HEALTHUP.play();
+	}
 	@Override
 	public void tick(double dt) {
 		System.out.println(level.getPlayers().get(0).damageTaken);
@@ -113,17 +117,13 @@ public class BubbleHearth extends Entity {
 	public void handleMessage(String[] msg){
 		super.handleMessage(msg);
 		boolean willDie = Boolean.parseBoolean(msg[3]);
-		int playerToheal = Integer.parseInt(msg[4]);
-		if(playerToheal == GameState.getInstance().getPlayerNumber()){
-			GameState.getInstance().getPlayers().get(0).takeDamage(healthContained);
-		}
+
+
 		if(willDie)
 			remove();
+	
 	}
-	public String getObject(){
-		return super.getObject() + "'" + playerToheal;
-		
-	}
+
 	@Override
 	public void initNetworkValues() {
 		// TODO Auto-generated method stub
