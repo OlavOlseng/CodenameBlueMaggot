@@ -11,13 +11,13 @@ public class AirStrikeBeacon extends Projectile {
 	RGBImage beaconSheet = ResourceManager.AIRSTRIKEBEACON;
 	private boolean touchingGround = false;
 	private boolean triggered = false;
-	private double calldownTime = 150;
+	private double calldownTime = 80;
 	private int explosionRadius = 10;
 	private int explosionPower = 10;
 
 	public AirStrikeBeacon(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		super(x, y, 6, 6, level, speedPercent, angle);
-		this.maxSpeed = 11;
+		this.maxSpeed = 13;
 		this.frictionConstant = 0.005;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;
