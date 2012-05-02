@@ -23,13 +23,15 @@ public class ConnectionManager {
 	private Thread writeThread;
 	private long sleepTime = 1;
 	public DecimalFormat formater;
+	private boolean doWrite;
+	private boolean doRead;
 	
 	// private int numPlayers = 2;
 
 	public ConnectionManager(ConnectionDelegate delegate) {
 		this.delegate = delegate;
 		formater = new DecimalFormat("#00000");
-		
+	
 	}
 	public void endConnection(){
 		try{
@@ -37,6 +39,8 @@ public class ConnectionManager {
 			client.close();
 		if(listener != null)
 			listener.close();
+		doWrite = false;
+		doRead = false;
 	}catch (Exception e) {
 		// TODO: handle exception
 		delegate.connectionFailed(e.getLocalizedMessage());
@@ -184,6 +188,7 @@ public class ConnectionManager {
 
 	private void startListenerThread() {
 
+		
 		readThread = new Thread() {
 			@Override
 			public void run() {
@@ -191,6 +196,7 @@ public class ConnectionManager {
 					try {
 						Thread.sleep(sleepTime);
 					} catch (InterruptedException e) {
+						
 						e.printStackTrace();
 					}
 					int offset = 0;
@@ -241,10 +247,10 @@ public class ConnectionManager {
 
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
-						synchronized (delegate) {
+						
 							delegate.connectionFailed(e.getLocalizedMessage());
-
-						}
+						
+						
 						return;
 					}
 				}
@@ -254,6 +260,7 @@ public class ConnectionManager {
 
 	}
 
+	
 	private void startWritingThread() {
 		writeThread = new Thread() {
 			@Override

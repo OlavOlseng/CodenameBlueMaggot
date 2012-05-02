@@ -21,7 +21,7 @@ public abstract class Entity implements NetworkObject {
 	private boolean doTick = true;
 	private NetworkObjectType type;
 	public DecimalFormat formater;
-	
+	protected boolean hitTable = true;
 	public Entity(double x, double y, double xr, double yr, BasicLevel level) {
 		
 		formater = new DecimalFormat("#00000");
@@ -186,7 +186,7 @@ public abstract class Entity implements NetworkObject {
 		double xRight = p[0] + ent.xr;
 		double yTop = p[1] - ent.yr;
 		double yBot = p[1] + ent.yr;
-		if (!(x + xr < xLeft || y + yr < yTop || x - xr > xRight || y - yr > yBot)) {
+		if (hitTable && !(x + xr < xLeft || y + yr < yTop || x - xr > xRight || y - yr > yBot)) {
 			return true;
 		}
 		return false;
