@@ -94,6 +94,7 @@ public class BubbleHearth extends Entity {
 	@Override
 	public void remove(){
 		SoundEffect.HEALTHUP.play();
+		super.remove();
 	}
 	@Override
 	public void tick(double dt) {
