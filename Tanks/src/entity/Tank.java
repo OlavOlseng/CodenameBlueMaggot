@@ -32,21 +32,22 @@ public class Tank extends Entity {
 	private double muzzleAngle;
 	private int muzzleLength = 16;
 
-
 	protected int playerNumber;
-	
+
 	public void setPlayerNumber(int playerNumber) {
 		this.playerNumber = playerNumber;
 	}
+
 	protected double jetPackFuel = 100;
 	protected double cannonCharge = 0;
+	private boolean canGoUp = true;
 	private boolean canGoLeft = true;
 	private boolean canGoRight = true;
 	private boolean canGoDown = true;
 	protected boolean chargingCannon = false;
 
 	private Gun currentWeapon = Gun.SHELLGUN;
-	
+
 	private double torque = 0.15;
 
 	private ArrayList<Weapon> weaponList;
@@ -57,10 +58,9 @@ public class Tank extends Entity {
 
 	public Tank(double x, double y, int playerNumber, InputHandler input, BasicLevel level) {
 		super(x, y, 11, 6, level);
-	
+
 		GameState.getInstance().getPlayers().add(this);
-		
-		
+
 		muzzleAngle = 0;
 		muzzleLength = 21;
 		this.playerNumber = playerNumber;
@@ -74,11 +74,11 @@ public class Tank extends Entity {
 		boxUnderCenter.addPoint(new FloatingPoint(0, yr));
 		boxUnderCenter.addPoint(new FloatingPoint(1, yr));
 		boxUnderCenter.addPoint(new FloatingPoint(2, yr));
-		boxUnderCenter.addPoint(new FloatingPoint(-2, yr-1));
-		boxUnderCenter.addPoint(new FloatingPoint(-1, yr-1));
-		boxUnderCenter.addPoint(new FloatingPoint(0, yr-1));
-		boxUnderCenter.addPoint(new FloatingPoint(1, yr-1));
-		boxUnderCenter.addPoint(new FloatingPoint(2, yr-1));
+		boxUnderCenter.addPoint(new FloatingPoint(-2, yr - 1));
+		boxUnderCenter.addPoint(new FloatingPoint(-1, yr - 1));
+		boxUnderCenter.addPoint(new FloatingPoint(0, yr - 1));
+		boxUnderCenter.addPoint(new FloatingPoint(1, yr - 1));
+		boxUnderCenter.addPoint(new FloatingPoint(2, yr - 1));
 
 		boxLeft = new PixelHitbox();
 		boxRight = new PixelHitbox();
@@ -147,7 +147,6 @@ public class Tank extends Entity {
 		return playerNumber;
 	}
 
-
 	public double getX() {
 
 		return x;
@@ -190,26 +189,52 @@ public class Tank extends Entity {
 	}
 
 	public FloatingPoint getCrosshairLocation() {
-		return (new FloatingPoint(x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)), y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle))));
+		return (new FloatingPoint(x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)), y - muzzleLength
+				* Math.sin(Math.toRadians(muzzleAngle))));
 	}
 
 	public void fire(double speedPercent) {
 		if (speedPercent < 0.2)
 			speedPercent = 0.2;
 		weaponList.get(currentWeapon.ordinal()).fire(this.x + muzzleLength * Math.cos(Math.toRadians(muzzleAngle)),
-				this.y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle)), this.level, speedPercent, this.muzzleAngle - 4);
+				this.y - muzzleLength * Math.sin(Math.toRadians(muzzleAngle)), this.level, speedPercent,
+				this.muzzleAngle - 4);
 	}
 
 	public void handleTerrainIntersection() {
+
+		do {
+			canGoDown = true;
+			canGoUp = true;
+			for (FloatingPoint point : boxUnderCenter) {
+				if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y + 1))) {
+					canGoDown = false;
+					break;
+				}
+			}
+
+			for (FloatingPoint point : boxUp) {
+				if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
+					canGoUp = false;
+					break;
+				}
+			}
+			if (!canGoUp && !canGoDown){
+				setLocation(x - Math.signum(dx) * 1, y - Math.signum(dy) * 1);
+			}
+		} while (!canGoUp && !canGoDown);
+
 		canGoLeft = true;
 		canGoRight = true;
 		canGoDown = true;
+		canGoUp = true;
+
 		for (FloatingPoint point : boxLeft) {
 			if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y))) {
 
 				canGoLeft = false;
 				if (dx < 0)
-					dx = 0;
+					dx = -0.2 * dx;
 			}
 		}
 		for (FloatingPoint point : boxRight) {
@@ -217,13 +242,7 @@ public class Tank extends Entity {
 
 				canGoRight = false;
 				if (dx > 0)
-					dx = 0;
-			}
-		}
-		for (FloatingPoint point : boxUnderCenter) {
-			if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y + 1))) {
-				canGoDown = false;
-				break;
+					dx = -0.2 * dx;
 			}
 		}
 		for (FloatingPoint point : boxUnderCenter) {
@@ -232,6 +251,7 @@ public class Tank extends Entity {
 					setLocation(x, y - 1);
 					setSpeed(dx, 0);
 				}
+				canGoDown = false;
 				return;
 			}
 		}
@@ -244,6 +264,7 @@ public class Tank extends Entity {
 				break;
 			}
 		}
+
 	}
 
 	public boolean intersectsTerrain() {
@@ -268,7 +289,7 @@ public class Tank extends Entity {
 	}
 
 	public void toggleWeapon() {
-		currentWeapon = Gun.values()[(currentWeapon.ordinal()+1)%Gun.values().length];
+		currentWeapon = Gun.values()[(currentWeapon.ordinal() + 1) % Gun.values().length];
 		if (currentWeapon.ordinal() >= weaponList.size())
 			currentWeapon = Gun.SHELLGUN;
 		if (weaponList.get(currentWeapon.ordinal()).getAmmo() == 0)
@@ -309,7 +330,7 @@ public class Tank extends Entity {
 	}
 
 	protected void player1Input() {
-	
+
 		if (input.up2.down)
 			jetPack();
 		if (input.down2.clicked)
@@ -345,16 +366,19 @@ public class Tank extends Entity {
 	}
 
 	public void applyFriction() {
-		if (!canGoDown)
-			accelerate(-dx * frictionConstant, 0);
+		for (FloatingPoint point : boxUnderCenter) {
+			if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y + 1)))
+				accelerate(-dx * frictionConstant, 0);
+			return;
+		}
 	}
 
 	@Override
 	public void remove() {
-	
-		if(!removed){
-		score -= 100;
-		--life;
+
+		if (!removed) {
+			score -= 100;
+			--life;
 		}
 		if (life == 0) {
 			super.remove();
@@ -386,7 +410,7 @@ public class Tank extends Entity {
 		handleTerrainIntersection();
 		applyFriction();
 		tickWeapons(dt);
-		
+
 		if (this.y < -500)
 			remove();
 	}
@@ -404,28 +428,27 @@ public class Tank extends Entity {
 			crossHair = ResourceManager.CROSSHAIR2;
 		}
 
-		renderer.DrawImage(img, -1, (int) (x - getXr()) -1, (int) (y - getYr() + 1), img.getWidth(), img.getHeight());
-		renderer.DrawImage(crossHair, -1, (int) (getCrosshairLocation().getX() - crossHair.getWidth()/2 +1),
-				(int) (getCrosshairLocation().getY() - crossHair.getHeight()/2), crossHair.getWidth(), crossHair.getHeight());
+		renderer.DrawImage(img, -1, (int) (x - getXr()) - 1, (int) (y - getYr() + 1), img.getWidth(), img.getHeight());
+		renderer.DrawImage(crossHair, -1, (int) (getCrosshairLocation().getX() - crossHair.getWidth() / 2 + 1),
+				(int) (getCrosshairLocation().getY() - crossHair.getHeight() / 2), crossHair.getWidth(),
+				crossHair.getHeight());
 	}
 
 	@Override
+	public String getObject() {
 
-	public String getObject(){
-	
 		return super.getObject() + "'" + encodeToDouble(this.muzzleAngle) + "'" + getPlayerNumber() + "'" + damageTaken;
 	}
 
 	@Override
 	public void handleMessage(String[] msg) {
 		super.handleMessage(msg);
-		
+
 		double muzzleAngle = decodeToDouble(Integer.parseInt(msg[6]));
 		setMuzzleAngle(muzzleAngle);
 		double damageTaken = decodeToDouble(Integer.parseInt(msg[7]));
 		this.damageTaken = damageTaken;
-	
-	
+
 	}
 
 	@Override
@@ -462,7 +485,8 @@ public class Tank extends Entity {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public String getCurrentWeaponName(){
+
+	public String getCurrentWeaponName() {
 		return this.currentWeapon.name();
 	}
 }
