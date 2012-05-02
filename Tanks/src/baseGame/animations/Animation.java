@@ -26,6 +26,7 @@ public class Animation extends Entity {
 
 	@Override
 	public void tick(double dt) {
+		
 		if (currentFrame + 1 < frames.length) {
 			currentFrame += framesPerTick * dt;
 			if (currentFrame + 1 > frames.length)

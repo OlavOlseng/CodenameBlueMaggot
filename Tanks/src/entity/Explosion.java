@@ -27,6 +27,7 @@ public class Explosion extends Entity {
 			ani = new Animation(AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS2,
 					Animations.BIGEXPLOSION), 26, 0, x, y, level);
 		}
+		hitTable = false;
 		level.addEntity(ani);
 	}
 
