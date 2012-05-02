@@ -140,7 +140,7 @@ public class GameState {
 		return player2Nick;
 	}
 
-	public void setPlayer1Nick(String player1Nick) {
+	public void setPlayer2Nick(String player1Nick) {
 		this.player2Nick = player1Nick;
 	}
 
@@ -148,7 +148,7 @@ public class GameState {
 		return player1Nick;
 	}
 
-	public void setPlayer2Nick(String player2Nick) {
+	public void setPlayer1Nick(String player2Nick) {
 		this.player1Nick = player2Nick;
 	}
 	public String getDefaultTerrainPath() {

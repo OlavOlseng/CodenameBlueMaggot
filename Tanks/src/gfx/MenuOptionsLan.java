@@ -107,9 +107,9 @@ public class MenuOptionsLan extends Menu {
 	
 		if (fieldLanNick.msg != null) {
 			if (GameState.getInstance().isHost())
-				GameState.getInstance().setPlayer2Nick(fieldLanNick.msg);
-			else
 				GameState.getInstance().setPlayer1Nick(fieldLanNick.msg);
+			else
+				GameState.getInstance().setPlayer2Nick(fieldLanNick.msg);
 		}
 		GameState.getInstance().hostIp = fieldIp.msg;
 	}

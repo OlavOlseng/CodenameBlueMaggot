@@ -180,14 +180,14 @@ public class Game extends BaseGame implements ConnectionDelegate {
 				player2.setScore(score1);
 				player2.setLife(life2);
 				player2.setCurrentWeapon(gun2);
-				state.setPlayer2Nick(nick2);
+				state.setPlayer1Nick(nick2);
 
 			} else {
 				player2 = GameState.getInstance().players.get(0);
 				player2.setScore(score1);
 				player2.setLife(life1);
 				player2.setCurrentWeapon(gun1);
-				state.setPlayer1Nick(nick1);
+				state.setPlayer2Nick(nick1);
 			}
 
 			// state.setPlayers(level.getPlayers());
