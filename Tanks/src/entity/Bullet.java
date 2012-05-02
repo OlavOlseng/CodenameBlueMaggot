@@ -1,5 +1,6 @@
 package entity;
 
+import sound.SoundEffect;
 import networking.NetworkObjectType;
 import gfx.ResourceManager;
 import baseGame.Rendering.RGBImage;
@@ -25,6 +26,8 @@ public class Bullet extends Projectile {
 	public void explode() {
 		level.getTerrain().addExplosion((int) (x - explosionRadius), (int) (y - explosionRadius), explosionRadius);
 		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, explosionPower));
+//		if(!SoundEffect.THUD.isRunning())
+			SoundEffect.THUD.play();
 	}
 
 	public boolean intersectsTerrain() {
@@ -44,7 +47,6 @@ public class Bullet extends Projectile {
 			if (intersectsEntity(level.getPlayers().get(i)))
 				return true;
 		}
-
 		return false;
 	}
 	
@@ -59,6 +61,7 @@ public class Bullet extends Projectile {
 	
 	@Override
 	public void remove(){
+		
 		super.remove();
 		explode();
 	}

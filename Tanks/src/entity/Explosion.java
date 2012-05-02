@@ -17,15 +17,12 @@ public class Explosion extends Entity {
 
 		this.explosionPower = explosionPower;
 		if (radius < 40) {
-
-			if (radius < 15)
-				SoundEffect.THUD.play();
-			else
-				SoundEffect.EXPLOSION1.play();
+				if(radius >= 15)
+					SoundEffect.EXPLOSION1.play();
 
 			ani = new Animation(AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS,
 					Animations.SMALLEXPLOSION), 18, 0, x, y, level);
-		} else {
+		} else if (radius >= 40) {
 			SoundEffect.EXPLOSION2.play();
 			ani = new Animation(AnimationFactory.getInstance().getAnimation(Animations.EXPLOSIONS2,
 					Animations.BIGEXPLOSION), 26, 0, x, y, level);

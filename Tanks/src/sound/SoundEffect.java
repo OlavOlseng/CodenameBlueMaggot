@@ -65,7 +65,10 @@ public enum SoundEffect {
 		clip.stop();
 		clip.setFramePosition(0);
 	}
-
+	
+	public boolean isRunning(){
+		return clip.isRunning();
+	}
 	// Optional static method to pre-load all the sound files.
 	public static void init() {
 		values(); // calls the constructor for all the elements
