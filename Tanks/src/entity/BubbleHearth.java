@@ -4,6 +4,7 @@ import networking.NetworkObjectType;
 import sound.SoundEffect;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
+import blueMaggot.GameState;
 import gfx.ResourceManager;
 import level.BasicLevel;
 
@@ -12,6 +13,7 @@ public class BubbleHearth extends Entity {
 	private double lifeTime = 400; 
 	private double timeAlive = 0;
 	private double healthContained = -2;
+	private int playerToheal = 0;
 	PixelHitbox hitbox;
 
 	public BubbleHearth(FloatingPoint point, BasicLevel level) {
@@ -82,6 +84,7 @@ public class BubbleHearth extends Entity {
 				if (player.damageTaken < 2) {
 					player.damageTaken = 0;
 				} else
+					playerToheal = player.playerNumber;
 					player.takeDamage(healthContained);
 				remove();
 			}
@@ -110,8 +113,16 @@ public class BubbleHearth extends Entity {
 	public void handleMessage(String[] msg){
 		super.handleMessage(msg);
 		boolean willDie = Boolean.parseBoolean(msg[3]);
+		int playerToheal = Integer.parseInt(msg[4]);
+		if(playerToheal == GameState.getInstance().getPlayerNumber()){
+			GameState.getInstance().getPlayers().get(0).takeDamage(healthContained);
+		}
 		if(willDie)
 			remove();
+	}
+	public String getObject(){
+		return super.getObject() + "'" + playerToheal;
+		
 	}
 	@Override
 	public void initNetworkValues() {
