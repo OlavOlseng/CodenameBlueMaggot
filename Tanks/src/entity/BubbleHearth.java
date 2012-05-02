@@ -80,7 +80,7 @@ public class BubbleHearth extends Entity {
 	public void handlePlayerIntersections() {
 		for (Tank player : level.getPlayers()) {
 			if (intersectsEntity(player)) {
-			
+				
 				if (player.damageTaken < 2) {
 					player.damageTaken = 0;
 				} else
@@ -118,8 +118,7 @@ public class BubbleHearth extends Entity {
 	public void handleMessage(String[] msg){
 		super.handleMessage(msg);
 		boolean willDie = Boolean.parseBoolean(msg[3]);
-
-
+		
 		if(willDie)
 			remove();
 	
