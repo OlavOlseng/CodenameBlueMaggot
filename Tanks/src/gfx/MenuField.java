@@ -64,6 +64,17 @@ public class MenuField extends TextField {
 					}
 					if (!getText().matches("LEFT|RIGHT|UP|DOWN") && msg.matches("LEFT|RIGHT|UP|DOWN"))
 						setText(msg);
+					if (msg.length() == 1 || msg.equals("RIGHT") || msg.equals("LEFT") || msg.equals("DOWN") || msg.equals("UP")) {
+						action.setBind(msg.toUpperCase().charAt(0));
+						if (msg.equals("RIGHT"))
+							action.setBind(KeyEvent.VK_RIGHT);
+						else if (msg.equals("LEFT"))
+							action.setBind(KeyEvent.VK_LEFT);
+						else if (msg.equals("DOWN"))
+							action.setBind(KeyEvent.VK_DOWN);
+						else if (msg.equals("UP"))
+							action.setBind(KeyEvent.VK_UP);
+					}
 				}
 
 				if (msg.length() == 0)
