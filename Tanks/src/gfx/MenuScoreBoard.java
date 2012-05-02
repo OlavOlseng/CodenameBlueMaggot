@@ -30,7 +30,7 @@ public class MenuScoreBoard extends Menu {
 		g.setColor(Color.black);
 		g.setFont(Menu.font);
 		g.drawString("Scores", borderLeft, borderTop);
-		g.drawString(playerOne.getNick() + "  -  POINTS: " + playerOne.getScore() + "  -  LIFE: " + playerOne.getLife(), borderLeft, borderTop + 50);
-		g.drawString(playerTwo.getNick() + "  -  POINTS: " + playerTwo.getScore() + "  -  LIFE: " + playerTwo.getLife(), borderLeft, borderTop + 80);
+		g.drawString(GameState.getInstance().getPlayer1Nick() + "  -  POINTS: " + playerOne.getScore() + "  -  LIFE: " + playerOne.getLife(), borderLeft, borderTop + 50);
+		g.drawString(GameState.getInstance().getPlayer2Nick()+ "  -  POINTS: " + playerTwo.getScore() + "  -  LIFE: " + playerTwo.getLife(), borderLeft, borderTop + 80);
 	}
 }

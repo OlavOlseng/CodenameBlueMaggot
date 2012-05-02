@@ -55,7 +55,7 @@ public class MenuOptions extends Menu {
 			GameState.getInstance().setPlayer1Nick(fieldPlayerOne.msg);
 		if (fieldPlayerTwo.msg != null)
 			GameState.getInstance().setPlayer2Nick(fieldPlayerTwo.msg);
-		System.out.println(GameState.getInstance().getPlayer1Nick());
+		System.out.println(GameState.getInstance().getPlayer2Nick());
 //		game.blueMaggot.ui.repaint();
 	}
 }

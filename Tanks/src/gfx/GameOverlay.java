@@ -47,8 +47,8 @@ public class GameOverlay {
 			playerOneScore = Integer.toString(playerOne.getScore());
 			playerTwoScore = Integer.toString(playerTwo.getScore());
 
-			String statsOne = String.format("%s I %s I %s", GameState.getInstance().getPlayer2Nick(), playerOneScore, playerOne.getCurrentWeaponName()); 
-			String statsTwo = String.format("%s I %s I %s", playerTwo.getCurrentWeaponName(), playerTwoScore, GameState.getInstance().getPlayer1Nick());
+			String statsOne = String.format("%s I %s I %s", GameState.getInstance().getPlayer1Nick(), playerOneScore, playerOne.getCurrentWeaponName()); 
+			String statsTwo = String.format("%s I %s I %s", playerTwo.getCurrentWeaponName(), playerTwoScore, GameState.getInstance().getPlayer2Nick());
 
 			FontMetrics fm = g.getFontMetrics(Menu.font);
 

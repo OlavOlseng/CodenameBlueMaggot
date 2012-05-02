@@ -136,7 +136,7 @@ public class GameState {
 	public void setPlayers(ArrayList<Tank> players) {
 		this.players = players;
 	}
-	public String getPlayer1Nick() {
+	public String getPlayer2Nick() {
 		return player1Nick;
 	}
 
@@ -144,7 +144,7 @@ public class GameState {
 		this.player1Nick = player1Nick;
 	}
 
-	public String getPlayer2Nick() {
+	public String getPlayer1Nick() {
 		return player2Nick;
 	}
 

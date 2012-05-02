@@ -218,7 +218,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		if (state.getPlayers() != null && state.getPlayers().size() > 1)
 			gameState = state.getPlayers().get(index1).getScore() + "'" + state.getPlayers().get(index2).getLife() + "'"
 					+ state.getPlayers().get(index2).getScore() + "'" + state.players.get(index2).getLife() + "'" + state.players.get(0).getCurrentWeaponName()
-					+ "'" + state.players.get(1).getCurrentWeaponName() + "'" + state.getPlayer1Nick() + "'" + state.getPlayer2Nick() ;
+					+ "'" + state.players.get(1).getCurrentWeaponName() + "'" + state.getPlayer2Nick() + "'" + state.getPlayer1Nick() ;
 
 		if(GameState.getInstance().isHost())
 			gameState += "'" + GameState.getInstance().isGameOver();
