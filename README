@@ -7,6 +7,166 @@ The idea was concieved by three students at the Norwegian University of Science 
 Eirik Jakobsen, Patrick Skjennum and Olav Olseng.
 
 
+====================================================================================================
+
+Contents
+
+1. 					Installing
+	1.1					Installing your own maps
+	
+2.					The Menu screen
+	2.1					The Return button
+	2.2					The New Game button
+	2.3					The New Lan Game
+	2.4					The Level Select button
+	2.5					The Control button
+	2.6					The About button
+	2.7 				The Exit button
+
+3. 					The Game	
+	3.1					Controls
+	
+4.					Known Issues
+5. 					GIT
+6.					Credits
 
 
+----------------------------------------------------------------------------------------------------
+1.	Installing
+----------------------------------------------------------------------------------------------------	
+	
+	The game should come packaged as a .rar file, which should contain everything you need to run
+	the game. The .jar game file (which is what you use to run the game), the lvl folder, and 
+	this README. The .jar and the .lvl folder must be located in the same folder for the game to load! 
+	
+	The game is built with the Java SDK 1.6, so to run it, you at least need the 
+	Java Runtime Environment version 6, which can be downloaded for free here:
+	http://java.com/en/download/index.jsp
+	
+	Once you have the JRE installed, you should be able to run the game by running the .jar file.
+	
+	
+	1.1 Installing your own maps
+		
+		To put your own maps into the game, all you need is an image with the proper settings. These are
+		as follows:
+		
+			1. A terrain picture.
+				The alpha mask is -1 (0xFFFFFF) in RGB, this means that the places on your picture should
+				you want your tanks to not collide with the terrain should use this color. To load 
+				the terrain into the game, give it a name followed by "_terrain.png", for instance:
+				grassyHills_terrain.png
+				
+				
+			2. (Optional) A background picture
+				If you do not create a specific background for your level, it will automatically
+				become black. The background picture should have the same name as the terrain picture, 
+				followed by "_background.png". for instance:
+				grassyHills_background.png
 
+			NOTE!
+				ARGB is not oficially supported. The supported resolutions are 1280x720. 
+				The formats supported are .png. The game only supports eight (8) levels at a time, 
+				so to get any new levels into the game, you need to remove one of the other 
+				levels from the .lvl folder.
+
+				
+------------------------------------------------------------------------------------------------------				
+2.	The Menu Screen
+------------------------------------------------------------------------------------------------------	
+
+		IMPORTANT!
+		For the game to read any input into textfields, you have to press 'Enter' to verify your input.
+		the textfield should turn green when the game has read the input properly.
+		
+		2.1 The Return Button
+			Returns you to a game if one is currently running.
+		
+		2.2 The New Game Button
+			Starts a new local multiplayer game on the selected map.
+			
+		2.3 The New LAN Game Button
+			Starts a LAN game on the selected map. The host should check the isHost button. The
+			connecting players should put in the correct IPv4 address and press enter to verify,
+			if the IP address is valid, the textfield should turn green. The host must start the game
+			first, and once the other peers connect, the game will commence.
+			
+		2.4 The Level Select Button
+			Here you can select the level you will play on, just press the desired map, and the border
+			around the level should turn green, then press apply.
+			
+		2.5	The Control button
+			Here you can rebind the key inputs to your own taste. The LAN and Offline buttons will
+			default the key mapping to recomended defaults. To rebind a key, press a textfield, insert
+			the desired key and verify using enter.
+	
+		2.6	The About button
+			Shows you a little info about the game and it's makers.
+		
+		2.7 The Exit button
+			Gracefully crashes the game.
+			
+
+------------------------------------------------------------------------------------------------------
+3. The Game
+------------------------------------------------------------------------------------------------------
+	
+	Inside the game, the overlay at the top of the screen shows the remaining lives (represented by 
+	hearts) of each player, their respective accumulated score and their currently selected weapons.
+	You start every life with only the shellgun and the grenade, of which you have unlimited ammo.
+	You lose a life everytime you leave the boundries of the map, very much like Smash Bros for the 
+	N64. For each hit you take, the amount you get pushed back is increased, making it harder to 
+	stay within the boundries of map.
+	
+	Crates:
+		The game will spawn weapon crates on the map, adding a powerful weapon with limited ammo to
+		your arsenal.
+		
+	BubbleHearths:
+		The BubbleHearth item will reduce the damage you have taken by 200%. This is useful for not
+		dieing.
+
+	The game can be played in two ways:
+		
+		1. Score hoarder
+				The player with the most score at the end of the game wins. You gain a 100 score
+				every time you pickup a scorebubble, and lose 100 points everytime you lose a life.
+				
+		2. Last man standing
+			The last player alive is the victor
+			
+	3.1 Controls
+		Your tank is controlled accordingly to the keys you set in the "Control" option in the main
+		menu. Most projectiles will travel faster the longer you hold the fire button. It will go in
+		the direction of your reticule.
+		Pressing the JETPACK button, will propell your tank upwards. Beware, that your jetpack has
+		limited fuel, that regenerates slowly over time. Use it accordingly.
+		
+		
+----------------------------------------------------------------------------------------------------
+4. Known Issues
+----------------------------------------------------------------------------------------------------
+	
+	GENERAL:
+		
+	
+	OSX:
+		1. The GUI is flickering.
+		
+	WINDOWS:
+	
+	
+----------------------------------------------------------------------------------------------------
+5. GIT
+----------------------------------------------------------------------------------------------------
+
+	The game is open source, and is at the time of writing located at:
+		git@github.com:OlavOlseng/CodenameBlueMaggot.git
+		
+	Feel free to help us improve it!
+	
+
+----------------------------------------------------------------------------------------------------
+6. Credits
+----------------------------------------------------------------------------------------------------
+	
