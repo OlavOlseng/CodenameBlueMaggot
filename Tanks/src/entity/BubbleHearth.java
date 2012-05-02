@@ -4,7 +4,6 @@ import networking.NetworkObjectType;
 import sound.SoundEffect;
 import baseGame.Rendering.RGBImage;
 import baseGame.Rendering.Renderer;
-import blueMaggot.GameState;
 import gfx.ResourceManager;
 import level.BasicLevel;
 
@@ -100,7 +99,6 @@ public class BubbleHearth extends Entity {
 	}
 	@Override
 	public void tick(double dt) {
-		System.out.println(level.getPlayers().get(0).damageTaken);
 		super.tick(dt);
 		handleTerrainIntersections();
 		handlePlayerIntersections();

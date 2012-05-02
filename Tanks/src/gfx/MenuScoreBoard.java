@@ -1,7 +1,6 @@
 package gfx;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 
 import entity.Tank;
@@ -23,6 +22,7 @@ public class MenuScoreBoard extends Menu {
 		add(new MenuButton(Labels.RETURN, this, game), new GBC(0, 0, null).setInsets(200, 5, 5, 5).setIpad(150, 0));
 	}
 
+	@Override
 	public void paint(Graphics g) {
 		playerOne = GameState.getInstance().getPlayers().get(1);
 		playerTwo = GameState.getInstance().getPlayers().get(0);
@@ -32,7 +32,5 @@ public class MenuScoreBoard extends Menu {
 		g.drawString("Scores", borderLeft, borderTop);
 		g.drawString(playerOne.getNick() + "  -  POINTS: " + playerOne.getScore() + "  -  LIFE: " + playerOne.getLife(), borderLeft, borderTop + 50);
 		g.drawString(playerTwo.getNick() + "  -  POINTS: " + playerTwo.getScore() + "  -  LIFE: " + playerTwo.getLife(), borderLeft, borderTop + 80);
-		System.out.println("painting");
-		System.out.println(Character.isDigit("1nds".charAt(0)));
 	}
 }

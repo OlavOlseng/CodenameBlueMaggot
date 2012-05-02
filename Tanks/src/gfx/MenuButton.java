@@ -48,10 +48,8 @@ public class MenuButton extends Button {
 	public void setUp() {
 		String img = "/titleMenu/" + label.toString() + ".png";
 		try {
-			System.out.println("loading: " + img.toString());
 			bgImage = ImageIO.read(getClass().getResourceAsStream(img.toString()));
 		} catch (IOException e) {
-			System.out.println("Nope: " + img.toString());
 			e.printStackTrace();
 		}
 

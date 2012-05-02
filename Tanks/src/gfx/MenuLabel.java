@@ -33,7 +33,6 @@ public class MenuLabel extends Label {
 			lblImage = ImageIO.read(getClass().getResourceAsStream(img));
 			setPreferredSize(new Dimension(lblImage.getWidth(), lblImage.getHeight()));
 			setMinimumSize(new Dimension(lblImage.getWidth(), lblImage.getHeight()));
-			System.out.println(label + "  size: " + lblImage.getWidth() + " " + lblImage.getHeight());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

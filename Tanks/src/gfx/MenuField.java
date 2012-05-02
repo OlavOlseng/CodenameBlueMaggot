@@ -6,8 +6,6 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class MenuField extends TextField {
@@ -54,7 +52,6 @@ public class MenuField extends TextField {
 					} else {
 						setBackground(Menu.pink);
 						setText("max 9 chars!");
-						System.out.println("dicks");
 					}
 				} else if (type == FieldType.KEY) {
 					if (tmpMsg.length() == 1 || tmpMsg.equals("RIGHT") || tmpMsg.equals("LEFT") || tmpMsg.equals("DOWN") || tmpMsg.equals("UP")) {
