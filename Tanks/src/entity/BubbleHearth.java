@@ -80,11 +80,10 @@ public class BubbleHearth extends Entity {
 	public void handlePlayerIntersections() {
 		for (Tank player : level.getPlayers()) {
 			if (intersectsEntity(player)) {
-				
+				SoundEffect.HEALTHUP.play();
 				if (player.damageTaken < 2) {
 					player.damageTaken = 0;
 				} else
-					playerToheal = player.playerNumber;
 					player.takeDamage(healthContained);
 				remove();
 			}
@@ -93,7 +92,7 @@ public class BubbleHearth extends Entity {
 
 	@Override
 	public void remove(){
-		SoundEffect.HEALTHUP.play();
+	
 		super.remove();
 	}
 	@Override
@@ -119,8 +118,10 @@ public class BubbleHearth extends Entity {
 		super.handleMessage(msg);
 		boolean willDie = Boolean.parseBoolean(msg[3]);
 		
-		if(willDie)
+		if(willDie){
 			remove();
+	
+		}
 	
 	}
 

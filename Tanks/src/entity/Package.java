@@ -122,11 +122,7 @@ public class Package extends Entity {
 			timeAlive += dt;
 	}
 
-	@Override
-	public void remove(){
-		SoundEffect.RELOAD.play();
-		super.remove();
-	}
+
 	
 	@Override
 	public void render(Renderer renderer) {
@@ -144,13 +140,14 @@ public class Package extends Entity {
 		super.handleMessage(msg);
 		boolean willDie = Boolean.parseBoolean(msg[3]);
 		int owner = Integer.parseInt(msg[6]);
-		if(willDie ){
-			
+		if(willDie){
+		
 			remove();
 			if(owner == 1){
-			
+				SoundEffect.RELOAD.play();
 				level.getPlayers().get(0).getWeaponList().get(wep.ordinal()).addAmmo();
 			}else{if(owner == 2){
+				SoundEffect.RELOAD.play();
 				level.getPlayers().get(1).getWeaponList().get(wep.ordinal()).addAmmo();
 				
 			}}

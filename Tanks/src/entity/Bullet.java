@@ -24,10 +24,15 @@ public class Bullet extends Projectile {
 
 	@Override
 	public void explode() {
+		
 		level.getTerrain().addExplosion((int) (x - explosionRadius), (int) (y - explosionRadius), explosionRadius);
 		level.addEntity(new Explosion(x, y, explosionRadius + 2, level, explosionPower));
+<<<<<<< HEAD
 //		if(!SoundEffect.THUD.isRunning())
 			SoundEffect.THUD.play();
+=======
+		
+>>>>>>> 62f8f5a67657acf6e679352d17d581a873fdc6b7
 	}
 
 	public boolean intersectsTerrain() {

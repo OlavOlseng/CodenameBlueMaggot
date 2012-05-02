@@ -30,6 +30,7 @@ public class Minigun implements Weapon{
 			firing = true;
 			bulletsFired = 0;
 			currentCooldown = cooldownTime;
+			
 			SoundEffect.MINIGUN.play();
 		}
 	}

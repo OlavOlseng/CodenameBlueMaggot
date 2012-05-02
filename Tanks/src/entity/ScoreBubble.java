@@ -11,6 +11,7 @@ public class ScoreBubble extends Entity {
 
 	PixelHitbox hitbox;
 	private int scoreAmount;
+	private int owner = 0;
 	private double lifeTime = 600; 
 	private double timeAlive = 0;
 	
@@ -83,13 +84,18 @@ public class ScoreBubble extends Entity {
 	public void handlePlayerIntersections() {
 		for (Tank player : level.getPlayers()) {
 			if (intersectsEntity(player)) {
+				owner = player.getPlayerNumber();
 				player.addScore(scoreAmount);
-				SoundEffect.BUBBLE.play();
+			
 				remove();
 			}
 		}
 	}
-
+	@Override
+	public void remove(){
+		SoundEffect.BUBBLE.play();
+		super.remove();
+	}
 	@Override
 	public void tick(double dt) {
 		super.tick(dt);
@@ -109,13 +115,28 @@ public class ScoreBubble extends Entity {
 		renderer.DrawImage(img, -1, (int) (x - getXr()), (int) (y - 2 * getYr()), img.getWidth(), img.getHeight());
 	}
 
-	
+	@Override
+	public String getObject(){
+		return super.getObject() + "'" + owner;
+	}
 	@Override
 	public void handleMessage(String[] msg){
 		super.handleMessage(msg);
 		boolean willDie = Boolean.parseBoolean(msg[3]);
-		if(willDie)
+		int owner = Integer.parseInt(msg[4]);
+		if(willDie){
+		
 			remove();
+			if(owner == 1){
+				SoundEffect.RELOAD.play();
+				level.getPlayers().get(0).addScore(100);
+			}else{if(owner == 2){
+				SoundEffect.RELOAD.play();
+				level.getPlayers().get(1).addScore(100);
+				
+			}}
+			
+		}
 	}
 	@Override
 	public void initNetworkValues() {

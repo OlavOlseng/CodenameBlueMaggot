@@ -117,11 +117,11 @@ public abstract class BasicLevel {
 	public void tick(double dt) {
 
 		// handler.tick(dt);
-		if (handler.grenadeSpam.clicked) {
+	/*	if (handler.grenadeSpam.clicked) {
 			for (int i = 0; i < 100; i++) {
 				addEntity(new Grenade(500, 50, this, rand.nextDouble(), rand.nextInt(360)));
 			}
-		}
+		}*/
 		// ticks all the ents
 
 		for (int i = 0; i < entities.size(); i++) {
