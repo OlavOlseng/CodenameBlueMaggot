@@ -219,7 +219,7 @@ public class Tank extends Entity {
 					break;
 				}
 			}
-			if (!canGoUp && !canGoDown){
+			if (!canGoUp && !canGoDown) {
 				setLocation(x - Math.signum(dx) * 1, y - Math.signum(dy) * 1);
 			}
 		} while (!canGoUp && !canGoDown);
@@ -367,9 +367,10 @@ public class Tank extends Entity {
 
 	public void applyFriction() {
 		for (FloatingPoint point : boxUnderCenter) {
-			if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y + 1)))
+			if (level.getTerrain().hitTestpoint((int) (point.getX() + x), (int) (point.getY() + y + 1))) {
 				accelerate(-dx * frictionConstant, 0);
-			return;
+				return;
+			}
 		}
 	}
 
