@@ -118,6 +118,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		if(level != null)
 			level = null;
 		
+			
 		System.out.println("initiating connection");
 		
 		resetSockets();

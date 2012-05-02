@@ -19,6 +19,7 @@ public class Animation extends Entity {
 		framesPerTick = (double) frames.length / (double) duration;
 		this.duration = duration;
 		this.frames = frames;
+		hitTable = false;
 		this.currentFrame = startFrame;
 
 	}
