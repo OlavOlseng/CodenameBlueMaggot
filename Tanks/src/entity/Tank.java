@@ -352,8 +352,11 @@ public class Tank extends Entity {
 	@Override
 	public void remove() {
 		System.out.println("didDie");
+		if(!removed){
 		score -= 100;
-		if (--life == 0) {
+		--life;
+		}
+		if (life == 0) {
 			super.remove();
 			return;
 		}
@@ -411,8 +414,6 @@ public class Tank extends Entity {
 	public String getObject(){
 	
 		return super.getObject() + "'" + encodeToDouble(this.muzzleAngle) + "'" + getPlayerNumber() + "'" + damageTaken;
-
-
 	}
 
 	@Override

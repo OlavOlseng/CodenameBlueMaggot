@@ -62,7 +62,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
 
-		if (!GameState.getInstance().isPaused()) {
+		if (!(GameState.getInstance().isPaused() || GameState.getInstance().isGameOver())) {
 			level.tick(deltaTime);
 			didTick = true;
 		}
@@ -116,6 +116,9 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	public void initConnection(boolean isHost, String addr) {
 
 		GameState.getInstance().init();
+		if(level != null)
+			level = null;
+		
 		System.out.println("initiating connection");
 
 		if (connection != null){

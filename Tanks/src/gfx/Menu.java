@@ -48,8 +48,8 @@ public abstract class Menu extends Panel {
 			try {
 				// font = Font.createFont(Font.TRUETYPE_FONT, new
 				// FileInputStream("./res/8-BitCustom.TTF"));
-//				font  = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream("./res/8-BitCustom.TTF"));
-				font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/res/8-BitCustom.TTF"));
+				font  = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream("./res/8-BitCustom.TTF"));
+//				font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/res/8-BitCustom.TTF"));
 				font = font.deriveFont(15.0F);
 			} catch (Exception e) {
 				e.printStackTrace();
