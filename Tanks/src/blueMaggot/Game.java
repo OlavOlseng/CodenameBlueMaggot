@@ -81,7 +81,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 	@Override
 	public void onUppdateUI(Renderer renderer) {
 
-		if (GameState.getInstance().getPlayers() == null || GameState.getInstance().getPlayers().size() < 1)
+		if (GameState.getInstance().getPlayers() == null || GameState.getInstance().getPlayers().size() < 2)
 			return;
 
 		GameState state = GameState.getInstance();
@@ -275,6 +275,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public void startOnlineGame() {
+		GameState.getInstance().init();
 		onlineLevel = new OnlineCityScape(this, handler);
 		onlineLevel.init();
 		level = onlineLevel;

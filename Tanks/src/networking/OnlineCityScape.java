@@ -23,7 +23,7 @@ import blueMaggot.maps.cityScape;
 public class OnlineCityScape extends cityScape {
 	private int objectCount;
 	private int multiple = 2;
-		
+
 	private HashMap<Integer, NetworkObject> networkObjects;
 	private ArrayList<NetworkObject> networkObjectList;
 	private ArrayList<String[]> movementsToDo;
@@ -39,7 +39,7 @@ public class OnlineCityScape extends cityScape {
 			isClient = true;
 			System.out.println("true");
 			objectCount++;
-			
+
 		}
 
 	}
@@ -64,7 +64,7 @@ public class OnlineCityScape extends cityScape {
 
 	@Override
 	public boolean shouldSpawnBubbleHearth() {
-		
+
 		return super.shouldSpawnBubbleHearth() && !isClient && readyForLan;
 	}
 
@@ -79,7 +79,6 @@ public class OnlineCityScape extends cityScape {
 			player1 = new OnlineTank(playerSpawns.getPoint(), 1, handler, this, null);
 			player2 = new OnlineTank(playerSpawns.getPoint(), 2, handler, this, null);
 
-			
 			addEntity(player1, objectCount, true, true);
 
 			addEntity(player2, objectCount, true, true);
@@ -90,10 +89,11 @@ public class OnlineCityScape extends cityScape {
 
 	@Override
 	public void checkGameOver() {
-		if(!isClient){
+		if (!isClient) {
 			super.checkGameOver();
 		}
 	}
+
 	@Override
 	public void addEntity(Entity entity) {
 		if (entity.getNetworkObjectType() != NetworkObjectType.NO_SYNC) {
@@ -101,7 +101,7 @@ public class OnlineCityScape extends cityScape {
 			networkObjectList.add(entity);
 			entity.setShouldBeSent(true);
 			entity.setId(objectCount);
-			objectCount+= multiple;
+			objectCount += multiple;
 
 		}
 
@@ -125,11 +125,10 @@ public class OnlineCityScape extends cityScape {
 
 	public void catchResponse(String entityData) {
 		String[] objects = entityData.split("\\?");
-		
+
 		for (int i = 1; i < objects.length; i++) {
 			String[] properties = objects[i].split("\\'");
 			synchronized (movementsToDo) {
-
 
 				movementsToDo.add(properties);
 
@@ -156,23 +155,20 @@ public class OnlineCityScape extends cityScape {
 
 		NetworkObject obj;
 		double time;
-		
+
 		synchronized (movementsToDo) {
 			if (movementsToDo.size() > 0 && readyForLan) {
 				time = (System.currentTimeMillis() - lastTime) * 0.0625;
-			
-				
 
 				for (int i = 0; i < movementsToDo.size(); i++) {
 
-					
 					String[] move = movementsToDo.get(i);
-					
+
 					int id = (int) Double.parseDouble(move[1]);
 					int type = (int) Double.parseDouble(move[2]);
-					
+
 					if ((obj = networkObjects.get(id)) != null) {
-						if(!obj.getNetworkObjectType().equals(type)){
+						if (!obj.getNetworkObjectType().equals(type)) {
 							System.out.println("Overlap");
 						}
 						obj.handleMessage(move);
@@ -188,16 +184,14 @@ public class OnlineCityScape extends cityScape {
 
 						boolean doSend = false;
 						boolean doTick = false;
-					
 
-						if (NetworkObjectType.TANK.equals(type) && GameState.getInstance().getPlayerNumber()!=2) {
+						if (NetworkObjectType.TANK.equals(type) && GameState.getInstance().getPlayerNumber() != 2) {
 							ent = new OnlineTank(0, 0, 0, handler, this, move);
 							System.out.println("new tank!");
 							if (Integer.parseInt(move[7]) == GameState.getInstance().getPlayerNumber()) {
 								player1 = (OnlineTank) ent;
 								doSend = true;
-							
-								
+
 							}
 
 						} else if (NetworkObjectType.SHELL.equals(type))
@@ -232,14 +226,13 @@ public class OnlineCityScape extends cityScape {
 
 				movementsToDo = new ArrayList<String[]>();
 				lastTime = System.currentTimeMillis();
-				
+
 			}
-			
+
 			if (isClient && player1 != null)
 				player1.tick(dt);
-			
+
 			super.tick(dt);
-			
 
 		}
 
