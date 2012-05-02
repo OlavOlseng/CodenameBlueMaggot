@@ -86,14 +86,21 @@ public class AirStrikeBeacon extends Projectile {
 	
 	@Override
 	public String getObject(){
-		return super.getObject() + "'" +triggered;
+		return super.getObject() + "'" +triggered ;
 	}
 	
 	@Override
 	public void handleMessage(String[] msg){
 		super.handleMessage(msg);
 		boolean triggered = Boolean.parseBoolean(msg[6]);
-		this.triggered = triggered;
+		if(triggered)
+			trigger();
+	
+		boolean willDie = Boolean.parseBoolean(msg[3]);
+		if(willDie){
+			explode();
+			remove();
+		}
 	}
 	@Override
 	public void render(Renderer renderer) {
