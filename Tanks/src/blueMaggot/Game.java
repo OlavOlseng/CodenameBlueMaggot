@@ -118,8 +118,9 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		GameState.getInstance().init();
 		System.out.println("initiating connection");
 
-		if (connection != null)
+		if (connection != null){
 			connection.endConnection();
+		}
 
 		connection = new ConnectionManager(this);
 		if (isHost) {
@@ -163,6 +164,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 			String nick1 = properties[6];
 			String nick2 = properties[7];
+			boolean gameOver = Boolean.parseBoolean(properties[8]);
+			if(gameOver)
+				state.setGameOver(gameOver);
+			
 			if (!state.isHost()) {
 
 				player2 = GameState.getInstance().players.get(1);
@@ -207,8 +212,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		if (state.getPlayers() != null && state.getPlayers().size() > 1)
 			gameState = state.getPlayers().get(index1).getScore() + "'" + state.getPlayers().get(index2).getLife() + "'"
 					+ state.getPlayers().get(index2).getScore() + "'" + state.players.get(index2).getLife() + "'" + state.players.get(0).getCurrentWeaponName()
-					+ "'" + state.players.get(1).getCurrentWeaponName() + "'" + state.getPlayer1Nick() + "'" + state.getPlayer2Nick();
+					+ "'" + state.players.get(1).getCurrentWeaponName() + "'" + state.getPlayer1Nick() + "'" + state.getPlayer2Nick() ;
 
+		if(GameState.getInstance().isHost())
+			gameState += "'" + GameState.getInstance().isGameOver();
+		
 		gameState += "@";
 
 		String msgBody = "";

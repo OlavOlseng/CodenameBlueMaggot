@@ -50,6 +50,7 @@ public class GameState {
 	
 	public void init(){
 		players = new ArrayList<Tank>();
+		gameOver = false;
 	}
 	
 	public boolean isHost() {
