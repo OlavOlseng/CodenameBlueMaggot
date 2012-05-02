@@ -164,7 +164,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 			String nick1 = properties[6];
 			String nick2 = properties[7];
-			boolean gameOver = Boolean.parseBoolean(properties[8]);
+			boolean gameOver = false;
+			if(!state.isHost())
+			gameOver = Boolean.parseBoolean(properties[8]);
+			
 			if(gameOver)
 				state.setGameOver(gameOver);
 			
@@ -216,7 +219,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		if(GameState.getInstance().isHost())
 			gameState += "'" + GameState.getInstance().isGameOver();
-		
 		gameState += "@";
 
 		String msgBody = "";
