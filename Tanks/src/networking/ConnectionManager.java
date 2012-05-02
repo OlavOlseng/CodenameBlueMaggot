@@ -271,7 +271,7 @@ public class ConnectionManager {
 							if (delegate.shouldWrite()) {
 
 								out.write(delegate.onWrite());
-
+								delegate.didWrite();
 							}
 						}
 					}

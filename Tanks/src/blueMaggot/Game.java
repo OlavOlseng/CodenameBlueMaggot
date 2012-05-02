@@ -51,7 +51,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		overlay = new GameOverlay();
 		this.blueMaggot = blueMaggot;
 		blueMaggot.inputReal = handler;
-
 		formater = new DecimalFormat("#00000");
 		addKeyListener(handler);
 	}
@@ -120,10 +119,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			level = null;
 		
 		System.out.println("initiating connection");
-
-		if (connection != null){
-			connection.endConnection();
-		}
+		
+		resetSockets();
 
 		connection = new ConnectionManager(this);
 		if (isHost) {
@@ -171,8 +168,13 @@ public class Game extends BaseGame implements ConnectionDelegate {
 			if(!state.isHost())
 			gameOver = Boolean.parseBoolean(properties[8]);
 			
-			if(gameOver)
+			if(gameOver){
 				state.setGameOver(gameOver);
+				resetSockets();
+				return;
+			}
+			
+				
 			
 			if (!state.isHost()) {
 
@@ -201,7 +203,13 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		}
 
 	}
-
+	
+	@Override
+	public void didWrite(){
+		if(GameState.getInstance().isHost() && GameState.getInstance().isGameOver())
+			resetSockets();
+		
+	}
 	@Override
 	public byte[] onWrite() {
 
@@ -222,6 +230,8 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		if(GameState.getInstance().isHost())
 			gameState += "'" + GameState.getInstance().isGameOver();
+			
+		
 		gameState += "@";
 
 		String msgBody = "";
@@ -253,6 +263,7 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		return (msgHeader + gameState + msgBody).getBytes();
 	}
 
+	
 	private String to5DigitString(double x) {
 		if (x >= 0) {
 			return formater.format(x);
@@ -263,16 +274,23 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public boolean shouldRead() {
-		return onlineLevel != null;
+		return onlineLevel != null && connection != null ;
 	}
 
 	@Override
 	public boolean shouldWrite() {
 		boolean temp = didTick;
 		didTick = false;
-		return (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size() > 0;
+		return (onlineLevel != null) && connection != null && temp && onlineLevel.getNetworkObjects().size() >0 ;
 	}
-
+	public void resetSockets(){
+		if(connection != null){
+			System.out.println("reset");
+			connection.endConnection();
+			connection = null;
+		}
+			
+	}
 	@Override
 	public void startOnlineGame() {
 		GameState.getInstance().init();
