@@ -5,10 +5,10 @@ import blueMaggot.GameState;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.Panel;
+import java.io.FileInputStream;
+
 import javax.swing.JLayeredPane;
 
 public abstract class Menu extends Panel {
@@ -35,13 +35,13 @@ public abstract class Menu extends Panel {
 		setBackground(Menu.blue);
 		if (font == null) {
 			try {
-				// font = Font.createFont(Font.TRUETYPE_FONT, new
-				// FileInputStream("./res/8-BitCustom.TTF"));
-				font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/res/8-BitCustom.TTF"));
+//				font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/res/8-BitCustom.TTF"));
+				font  = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream("./res/8-BitCustom.TTF"));
 				font = font.deriveFont(15.0F);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+
 		}
 	}
 

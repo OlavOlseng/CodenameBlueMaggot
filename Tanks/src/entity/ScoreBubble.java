@@ -86,7 +86,7 @@ public class ScoreBubble extends Entity {
 			if (intersectsEntity(player)) {
 				owner = player.getPlayerNumber();
 				player.addScore(scoreAmount);
-				SoundEffect.RELOAD.play();
+				SoundEffect.BUBBLE.play();
 				remove();
 			}
 		}

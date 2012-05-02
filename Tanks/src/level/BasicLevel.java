@@ -98,14 +98,14 @@ public abstract class BasicLevel {
 	protected ArrayList<Tank> players;
 
 	public void checkGameOver() {
-		int playerAliveCount = 0;
-		for (Tank player : players) {
-			if (!player.removed)
-				playerAliveCount++;
+	
+		for (Tank player : players ) {
+			
+			if(player.getLife() == 0){
+				GameState.getInstance().setGameOver(true);
+			}
 		}
-		if (playerAliveCount <= 1) {
-			GameState.getInstance().setGameOver(true);
-		}
+		
 	}
 
 	public void render(Renderer renderer) {

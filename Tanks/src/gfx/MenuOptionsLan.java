@@ -104,6 +104,7 @@ public class MenuOptionsLan extends Menu {
 
 	public void apply(Game game) {
 		GameState.getInstance().setHost(boxIsHost.getState());
+	
 		if (fieldLanNick.msg != null) {
 			if (GameState.getInstance().isHost())
 				GameState.getInstance().setPlayer2Nick(fieldLanNick.msg);
