@@ -88,7 +88,7 @@ public class BlueMaggot extends JFrame implements GameListener {
 			inputReal.readConfig();
 			System.out.println("reading keybinds from config");
 		} catch (Exception e) {
-			System.out.println("no config found, setting defaults");
+			System.out.println("no conefig found, setting defaults");
 		}
 		for (MenuField menuField : MenuField.menuFields) {
 			menuField.reset();

@@ -95,6 +95,9 @@ Contents
 			Here you can rebind the key inputs to your own taste. The LAN and Offline buttons will
 			default the key mapping to recomended defaults. To rebind a key, press a textfield, insert
 			the desired key. Everything should update realtime.
+			
+			The chosen keybinds will also be stored in a config file (in the same directory as the .jar),
+			which will load when the game starts.
 	
 		2.6 The About button
 			Shows you a little info about the game and it's makers.
