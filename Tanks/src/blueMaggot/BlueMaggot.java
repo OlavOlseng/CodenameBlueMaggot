@@ -83,11 +83,11 @@ public class BlueMaggot extends JFrame implements GameListener {
 		layeredPane.add(menuKeys, new Integer(11));
 		layeredPane.add(menuScore, new Integer(12));
 
+		inputReal.resetLan();
 		try {
 			inputReal.readConfig();
 			System.out.println("reading keybinds from config");
 		} catch (Exception e) {
-			inputReal.resetLan();
 			System.out.println("no config found, setting defaults");
 		}
 		for (MenuField menuField : MenuField.menuFields) {
