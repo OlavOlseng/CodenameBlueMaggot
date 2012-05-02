@@ -14,8 +14,8 @@ public class GameState {
 	
 	private int playerNumber;
 
-	private String player1Nick = "Player1";
 	private String player2Nick = "Player2";
+	private String player1Nick = "Player1";
 
 	private boolean isHost = false;
 	private final String defaultTerrainPath = "./lvl/Cityscape_terrain.png";
@@ -137,19 +137,19 @@ public class GameState {
 		this.players = players;
 	}
 	public String getPlayer2Nick() {
-		return player1Nick;
-	}
-
-	public void setPlayer1Nick(String player1Nick) {
-		this.player1Nick = player1Nick;
-	}
-
-	public String getPlayer1Nick() {
 		return player2Nick;
 	}
 
-	public void setPlayer2Nick(String player2Nick) {
-		this.player2Nick = player2Nick;
+	public void setPlayer2Nick(String player1Nick) {
+		this.player2Nick = player1Nick;
+	}
+
+	public String getPlayer1Nick() {
+		return player1Nick;
+	}
+
+	public void setPlayer1Nick(String player2Nick) {
+		this.player1Nick = player2Nick;
 	}
 	public String getDefaultTerrainPath() {
 		return defaultTerrainPath;
