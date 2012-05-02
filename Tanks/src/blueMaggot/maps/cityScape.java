@@ -27,7 +27,7 @@ public class cityScape extends BasicLevel {
 
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
-		System.out.println("starter");
+	
 		
 			
 			
@@ -43,7 +43,7 @@ public class cityScape extends BasicLevel {
 		
 		
 		int[] pixelsTerrain = terrain.getPixels();
-		System.out.println(pixelsTerrain[0]);
+	
 		int[] pixelsBackground = ResourceManager.getBackGround().getPixels();
 		int mask = ResourceManager.COLORMASK.getRGB();
 		for(int i= 0;i<screen.length;i++){
@@ -123,20 +123,19 @@ public class cityScape extends BasicLevel {
 		if (shouldSpawnBubbleHearth()) {
 			spawnBubbleHearth();
 		}
-		totalElapsedTime += dt;
+		totalElapsedTime += dt*16;
 	}
 
 	protected boolean shouldSpawnBubble() {
-		int ticket = rand.nextInt(300);
-		return ticket == 5;
+		return (totalElapsedTime % 5000 > 4984);
 	}
 
 	protected boolean shouldSpawnCrate() {
-		return (totalElapsedTime % 1200 < 2);
+		return (totalElapsedTime % 7000 > 6984);
 	}
 
 	protected boolean shouldSpawnBubbleHearth() {
-		return (totalElapsedTime % 1500 < 1);
+		return (totalElapsedTime % 12000 > 11984);
 	}
 
 	public void onDraw(Renderer renderer) {

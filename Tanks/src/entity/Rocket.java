@@ -12,13 +12,13 @@ public class Rocket extends Projectile {
 	RGBImage rocketSheet = ResourceManager.ROCKET;
 	int explosionRadius = 45;
 	double explosionPower = 350;
-	double thrust = 0.8;
-	double fuel = 45;
+	double thrust = 0.7;
+	double fuel = 35;
 	double burnTime = 0;
 
 	public Rocket(double x, double y, BasicLevel level, double speedPercent, double angle) {
 		super(x, y, 4, 4, level, speedPercent, angle);
-		this.maxSpeed = 8;
+		this.maxSpeed = 11;
 		this.frictionConstant = 0.0002;
 		this.angle = angle;
 		this.dx = dx * maxSpeed;

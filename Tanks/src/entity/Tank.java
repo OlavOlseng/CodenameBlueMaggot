@@ -351,7 +351,7 @@ public class Tank extends Entity {
 
 	@Override
 	public void remove() {
-		System.out.println("didDie");
+	
 		if(!removed){
 		score -= 100;
 		--life;

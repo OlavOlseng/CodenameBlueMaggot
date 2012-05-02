@@ -108,6 +108,7 @@ public class ConnectionManager {
 					while(in.available()>0){
 					in.read();
 					}
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					delegate.connectionFailed(e.getLocalizedMessage());
@@ -211,9 +212,15 @@ public class ConnectionManager {
 
 						String head = new String(header);
 						if(head.length()<6)
-							return;
-						double len = Double.parseDouble((head.substring(1, 6)));
+							continue;
 						
+						double len ;
+						try {
+							len =  Double.parseDouble((head.substring(1, 6)));
+						} catch (Exception e) {
+							// TODO: handle exception
+							continue;
+						}
 						byte[] data = new byte[(int) len];
 						offset = 0;
 						
