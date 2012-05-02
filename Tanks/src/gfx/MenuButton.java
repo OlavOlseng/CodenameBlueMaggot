@@ -56,11 +56,12 @@ public class MenuButton extends Button {
 		addMouseListener(new MouseListener() {
 
 			@Override
-			public void mouseReleased(MouseEvent arg0) {
+			public void mouseReleased(MouseEvent me) {
 				btnColor = Menu.pinkDark;
-				if (label == Labels.EXIT)
+				if (label == Labels.EXIT) {
+					game.blueMaggot.inputReal.writeConfig();
 					System.exit(1);
-				else if (label == Labels.RETURN) {
+				} else if (label == Labels.RETURN) {
 					if (menu instanceof MenuScoreBoard) {
 						GameState.getInstance().setGameOver(false);
 						game.blueMaggot.menuTitle.setVisible(true);
