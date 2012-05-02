@@ -219,7 +219,7 @@ public class ConnectionManager {
 							len =  Double.parseDouble((head.substring(1, 6)));
 						} catch (Exception e) {
 							// TODO: handle exception
-							return;
+							continue;
 						}
 						byte[] data = new byte[(int) len];
 						offset = 0;
