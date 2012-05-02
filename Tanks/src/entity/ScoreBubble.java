@@ -120,19 +120,19 @@ public class ScoreBubble extends Entity {
 		super.handleMessage(msg);
 		boolean willDie = Boolean.parseBoolean(msg[3]);
 		int owner = Integer.parseInt(msg[6]);
-		System.out.println(owner);
+		
 		
 		
 		if(willDie){
 			if(owner == 1){
 				SoundEffect.BUBBLE.play();
 				level.getPlayers().get(0).addScore(100);
-				System.out.println("score1!");
+				
 				remove();
 			}else 
 				if(owner == 2){
 			
-				System.out.println("score2!");
+			
 				SoundEffect.BUBBLE.play();
 				level.getPlayers().get(1).addScore(100);
 				remove();

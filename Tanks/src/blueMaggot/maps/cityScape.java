@@ -27,7 +27,7 @@ public class cityScape extends BasicLevel {
 
 	public cityScape(BaseGame game, InputHandler handler) {
 		super(game, handler);
-		System.out.println("starter");
+	
 		
 			
 			
@@ -43,7 +43,7 @@ public class cityScape extends BasicLevel {
 		
 		
 		int[] pixelsTerrain = terrain.getPixels();
-		System.out.println(pixelsTerrain[0]);
+	
 		int[] pixelsBackground = ResourceManager.getBackGround().getPixels();
 		int mask = ResourceManager.COLORMASK.getRGB();
 		for(int i= 0;i<screen.length;i++){

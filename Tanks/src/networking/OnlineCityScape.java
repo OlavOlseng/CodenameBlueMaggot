@@ -37,7 +37,7 @@ public class OnlineCityScape extends cityScape {
 
 		if (GameState.getInstance().getPlayerNumber() != 2) {
 			isClient = true;
-			System.out.println("true");
+
 			objectCount++;
 
 		}
@@ -169,7 +169,7 @@ public class OnlineCityScape extends cityScape {
 
 					if ((obj = networkObjects.get(id)) != null) {
 						if (!obj.getNetworkObjectType().equals(type)) {
-							System.out.println("Overlap");
+							System.out.println("Sync error: id overlap");
 						}
 						obj.handleMessage(move);
 						if (obj.isRemoved()) {
@@ -187,7 +187,7 @@ public class OnlineCityScape extends cityScape {
 
 						if (NetworkObjectType.TANK.equals(type) && GameState.getInstance().getPlayerNumber() != 2) {
 							ent = new OnlineTank(0, 0, 0, handler, this, move);
-							System.out.println("new tank!");
+						
 							if (Integer.parseInt(move[7]) == GameState.getInstance().getPlayerNumber()) {
 								player1 = (OnlineTank) ent;
 								doSend = true;
