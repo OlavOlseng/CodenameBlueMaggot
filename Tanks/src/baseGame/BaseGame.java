@@ -24,7 +24,6 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	private long msDelay;
 	private RGBImage backgroundImage;
 	private int backgroundColor = Color.BLACK.getRGB();
-	private BufferedImage backGround = null;
 	private int[] pixels;
 	private boolean once = false;
 
@@ -52,19 +51,14 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		pixels = ((DataBufferInt) mainCanvas.getRaster().getDataBuffer()).getData();
 
 		this.fps = fps;
-
 		msDelay = 1000 / (long) fps;
-
 		gameRect = new Rectangle(0, 0, canvasWidth, canvasHeight);
 		setIgnoreRepaint(true);
 		createBufferStrategy(2);
-
+		
 		buffer = getBufferStrategy();
-
 		runLoop = new Thread(this);
-
 		lastTime = System.currentTimeMillis();
-
 		runLoop.start();
 	}
 
@@ -74,9 +68,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 		while (true) {
 
 			long deltaTime = System.currentTimeMillis() - lastTime;
-
 			while (deltaTime < msDelay) {
-
 				try {
 					Thread.sleep(msDelay - deltaTime);
 				} catch (InterruptedException e) {
@@ -85,28 +77,18 @@ public abstract class BaseGame extends Canvas implements Runnable {
 				deltaTime = System.currentTimeMillis() - lastTime;
 			}
 
-
 			lastTime = System.currentTimeMillis();
-		
+
 			onUpdate(deltaTime);
 			Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
-
-			Renderer renderer = new Renderer(g,pixels, backgroundColor, canvasWidth, canvasHeight);
-			
+			Renderer renderer = new Renderer(g, pixels, backgroundColor, canvasWidth, canvasHeight);
 			onDraw(renderer);
-	
 			g.drawImage(mainCanvas, 0, 0, canvasWidth, canvasHeight, Color.BLACK, null);
-		
 			if (showFps)
 				DrawfpsCounter(g, deltaTime);
-			
-			
 			onUppdateUI(renderer);
-			
 			buffer.show();
-		
 			g.dispose();
-	
 		}
 	}
 
@@ -114,7 +96,6 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	private boolean onScreen(int x, int y, int width, int height) {
 		Rectangle rect = new Rectangle(x, y, width, height);
 		return gameRect.intersects(rect);
-
 	}
 
 	private boolean onScreen(int x, int y, int radius) {
@@ -122,17 +103,11 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	}
 
 	private void DrawCircle(Graphics2D g, Renderable renderable) {
-		// if (onScreen(renderable.getX(), renderable.getY(),
-		// renderable.getRadius())) {
-
 		g.setColor(renderable.getColor());
 		g.fillOval(renderable.getX(), renderable.getY(), renderable.getRadius() * 2, renderable.getRadius() * 2);
-		// }
 	}
 
 	private void DrawBuffImage(Graphics2D g, Renderable renderable) {
-		// if (onScreen(renderable.getX(), renderable.getY(),
-		// renderable.getWidth(), renderable.getHeight()))
 		g.drawImage(renderable.getImg(), renderable.getX(), renderable.getY(), renderable.getWidth(), renderable.getHeight(), Color.black, null);
 	}
 
@@ -146,5 +121,7 @@ public abstract class BaseGame extends Canvas implements Runnable {
 	public abstract void onUpdate(double deltaTime);
 
 	public abstract void onDraw(Renderer renderer);
-	public  void onUppdateUI(Renderer renderer){}
+
+	public void onUppdateUI(Renderer renderer) {
+	}
 }

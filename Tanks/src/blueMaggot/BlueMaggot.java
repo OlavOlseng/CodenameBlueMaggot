@@ -30,14 +30,14 @@ import javax.swing.JTextArea;
 /**
  * @author Habitats * this motherfucker starts the game
  */
-public class BlueMaggot extends JFrame implements Runnable,GameListener{
+public class BlueMaggot extends JFrame implements GameListener {
 
 	public InputHandler inputReal = new InputHandler();
 
 	private JLayeredPane layeredPane = new JLayeredPane();
 	private JPanel gamePanel;
 
-	public MenuScoreBoard uiScoreBoard;
+	public MenuScoreBoard menuScore;
 	public MenuLevelSelect menuLevelSelect;
 	public MenuOptions menuOptions;
 	public MenuOptionsLan menuOptionsLan;
@@ -65,7 +65,7 @@ public class BlueMaggot extends JFrame implements Runnable,GameListener{
 		menuOptions = new MenuOptions(game);
 		menuOptionsLan = new MenuOptionsLan(game);
 		menuAbout = new MenuAbout(game);
-		uiScoreBoard = new MenuScoreBoard(game);
+		menuScore = new MenuScoreBoard(game);
 		menuLevelSelect = new MenuLevelSelect(game);
 		menuBackground = new MenuBackground(menuTitle);
 		menuKeys = new MenuKeys(game);
@@ -80,7 +80,8 @@ public class BlueMaggot extends JFrame implements Runnable,GameListener{
 		layeredPane.add(menuLevelSelect, new Integer(11));
 		layeredPane.add(menuAbout, new Integer(11));
 		layeredPane.add(menuKeys, new Integer(11));
-		
+		layeredPane.add(menuScore,new Integer(12));
+
 		// reset keybindings to default
 		inputReal.resetLan();
 		for (MenuField menuField : MenuField.menuFields) {
@@ -103,14 +104,9 @@ public class BlueMaggot extends JFrame implements Runnable,GameListener{
 		gamePanel.add(game);
 	}
 
-	@Override
-	public void run() {
-		setUpGame();
-	}
-
 	public static void main(String[] args) {
 		try {
-			(new BlueMaggot()).run();
+			(new BlueMaggot()).setUpGame();
 		} catch (Exception exception) {
 			e = exception;
 		} finally {
@@ -161,13 +157,14 @@ public class BlueMaggot extends JFrame implements Runnable,GameListener{
 			}
 		}
 
-		// TODO: Implement scoreboard
 		if (GameState.getInstance().isGameOver()) {
-			System.out.println("Inmenu");
 			menuTitle.setVisible(true);
-			uiScoreBoard.setVisible(true);
-			GameState.getInstance().setPaused(true);
+			menuScore.setVisible(true);
+			menuScore.repaint();
 			GameState.getInstance().setRunning(false);
+			GameState.getInstance().setPaused(true);
+			GameState.getInstance().setGameOver(false);
+			
 			menuBackground.setVisible(true);
 		}
 	}

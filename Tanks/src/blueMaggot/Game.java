@@ -62,13 +62,10 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		handler.tick(deltaTime);
 		deltaTime *= 0.0625;
 
-		if (!GameState.getInstance().isPaused()) {// ||
-													// !GameState.getInstance().isRunning())
-													// {
+		if (!GameState.getInstance().isPaused()) {
 			level.tick(deltaTime);
 			didTick = true;
 		}
-
 	}
 
 	@Override
@@ -79,7 +76,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 		// renderer.clearAllPixelData(Color.WHITE.getRGB());
 		level.onDraw(renderer);
-
 	}
 
 	@Override
@@ -236,21 +232,15 @@ public class Game extends BaseGame implements ConnectionDelegate {
 					i--;
 				}
 			}
-
 		}
 		for (Integer key : deadKeys) {
 			onlineLevel.getNetworkObjects().remove(key);
-
 		}
-
 		String msgHeader = "1" + to5DigitString(msgBody.length() + gameState.length());
-
 		return (msgHeader + gameState + msgBody).getBytes();
-
 	}
 
 	private String to5DigitString(double x) {
-
 		if (x >= 0) {
 			return formater.format(x);
 		} else {
@@ -260,18 +250,14 @@ public class Game extends BaseGame implements ConnectionDelegate {
 
 	@Override
 	public boolean shouldRead() {
-
 		return onlineLevel != null;
-
 	}
 
 	@Override
 	public boolean shouldWrite() {
 		boolean temp = didTick;
 		didTick = false;
-
 		return (onlineLevel != null) && temp && onlineLevel.getNetworkObjects().size() > 0;
-
 	}
 
 	@Override
@@ -284,7 +270,6 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		GameState.getInstance().setPaused(false);
 		GameState.getInstance().setGameOver(false);
 		GameState.getInstance().players = level.getPlayers();
-
 	}
 
 	@Override
@@ -294,15 +279,11 @@ public class Game extends BaseGame implements ConnectionDelegate {
 		File terrainFile = null;
 		File backGroundFile = null;
 		if ((terrainFile = new File(terrain)).exists() && (backGroundFile = new File(backGround)).exists()) {
-
 			state.setSelectedLevelTerrain(new File(terrain));
 			state.setSelectedLevelBackground(new File(backGround));
 		} else {
 			gameListener.ConnectionFailed("Could not find level file. Terrain:" + terrainFile.getName() + " Background:" + backGroundFile.getName());
 
 		}
-		
-		// TODO Auto-generated method stub
-
 	}
 }

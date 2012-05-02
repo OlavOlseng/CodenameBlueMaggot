@@ -32,6 +32,9 @@ public class MenuButton extends Button {
 		this.label = label;
 		this.menu = menu;
 		this.game = game;
+		setPreferredSize(size);
+		setMaximumSize(size);
+		setMinimumSize(size);
 		setUp();
 	}
 

@@ -2,7 +2,7 @@ package entity.weapon;
 
 public enum Gun {
 
-	SHELLGUN, GRENADE, ROCKETLAUNCHER, MINELAUNCHER, AIRSTRIKE, MINIGUN;
+	SHELLGUN, GRENADE, ROCKET, MINE, AIRSTRIKE, MINIGUN;
 	
 	@Override
 	public String toString(){

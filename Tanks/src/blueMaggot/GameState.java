@@ -11,6 +11,7 @@ public class GameState {
 	private boolean paused = false;
 	private boolean gameOver = false;
 	private boolean running = false;
+	
 	private int playerNumber;
 
 	private String player1Nick = "Player1";

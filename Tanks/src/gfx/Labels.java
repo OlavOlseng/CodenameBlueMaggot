@@ -30,8 +30,8 @@ public enum Labels {
 	MENU("menu"), //
 	ONE("one"), //
 	TWO("two"), //
-	DEFAULT("default"), //
-	DEFAULT_LAN("default");
+	DEFAULT("offline"), //
+	DEFAULT_LAN("lan");
 
 	private String fileName;
 

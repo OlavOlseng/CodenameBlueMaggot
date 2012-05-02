@@ -21,6 +21,8 @@ public class MenuLabel extends Label {
 
 	public MenuLabel(Labels label, Dimension size) {
 		this.label = label;
+		setMaximumSize(size);
+		setMinimumSize(size);
 		setPreferredSize(size);
 		setUp();
 	}

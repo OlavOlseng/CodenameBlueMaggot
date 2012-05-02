@@ -86,10 +86,10 @@ public class Package extends Entity {
 		int gun = rand.nextInt(4);
 		switch (gun) {
 		case 0:
-			this.wep = Gun.ROCKETLAUNCHER;
+			this.wep = Gun.ROCKET;
 			break;
 		case 1:
-			this.wep = Gun.MINELAUNCHER;
+			this.wep = Gun.MINE;
 			break;
 		case 2:
 			this.wep = Gun.AIRSTRIKE;

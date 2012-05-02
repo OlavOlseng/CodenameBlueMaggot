@@ -9,7 +9,7 @@ import blueMaggot.Game;
 import blueMaggot.GameState;
 
 public class MenuOptions extends Menu {
-	private Dimension btnSize = new Dimension(200, 20);
+	private Dimension btnSize = new Dimension(150, 20);
 
 	private MenuField fieldPlayerTwo;
 	private MenuField fieldPlayerOne;
